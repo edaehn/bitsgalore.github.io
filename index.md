@@ -1,8 +1,17 @@
 ---
 title: Hello, World!
-layout: default
 ---
 
 # Test
 
 Testing Jekyll, let's see what happens now ...
+
+# Blog posts
+
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
