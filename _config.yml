@@ -1,7 +1,7 @@
 name: "bitsgalore.github.io"
 description: "bitsgalore's blog"
 
-
+encoding: UTF-8
 
 url: "[http://localhost:4000]"
 
