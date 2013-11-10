@@ -3,4 +3,10 @@ layout: post
 title: My first post
 ---
 
-And what a great post it is!
+Da ist ein groovy Beat ja, einfach Super!
+
+##Section
+Some text here...
+
+##Another section
+Some more bollocks ...
