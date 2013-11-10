@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>bitsgalore.github.io</title>
+    <title>{{ site.name }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="bitsgalore's blog">
+    <meta name="description" content="{{ site.description }}">
 
 
 
@@ -34,15 +34,12 @@
 
 
 
-v-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="#">bitsgalore.github.io</a> <div class="nav-collapse collapse"> <ul class="nav"> <li class="active"><a href="/">Home</a></li> </ul> </div> </div> </div> </div>
+v-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="#">{{ site.name }}</a> <div class="nav-collapse collapse"> <ul class="nav"> <li class="active"><a href="/">Home</a></li> </ul> </div> </div> </div> </div>
 
 
 <code class="nt">&lt;div</code> <code class="na">class=</code><code class="s">&quot;container&quot;</code><code class="nt">&gt;</code>
 
-  <h1 id="test">Test</h1>
-
-<p>Testing Jekyll, let’s see what happens now …</p>
-
+  {{ content }}
 
 <code class="nt">&lt;/div&gt;</code>
 
