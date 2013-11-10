@@ -8,10 +8,8 @@ title: Hello, World!
 Testing Jekyll, let's see what happens now ...
 
 # Blog posts
-<ul>
-  {% for post in site.posts %}
-      <a href="{{ post.url }}">{{ post.title }}</a>
-      <p>{{ post.excerpt }}</p>
 
-  {% endfor %}
-</ul>
+{% for post in site.posts %}
+    <a href="{{ post.url }}">{{ post.title }}</a>
+    <p>{{ post.excerpt }}</p>
+{% endfor %}
