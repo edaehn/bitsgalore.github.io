@@ -1,133 +1,70 @@
-### HEAD
+## Changelog
 
-### 4.3.0 (September 10, 2013)
+Public releases are all root nodes.  
+Incremental version bumps that were not released publicly are nested where appropriate.
 
-* Use one apple-touch-icon instead of six ([#1367](https://github.com/h5bp/html5-boilerplate/issues/1367)).
-* Move font-related declarations from `body` to `html` ([#1411](https://github.com/h5bp/html5-boilerplate/issues/1411)).
-* Update to Apache Server Configs 1.1.0.
-* Add `initial-scale=1` to the viewport `meta` ([#1398](https://github.com/h5bp/html5-boilerplate/pull/1398)).
-* Vertical centering for audio-, canvas- and video-tags ([#1326](https://github.com/h5bp/html5-boilerplate/issues/1326)).
-* Remove Google Chrome Frame related code ([#1379](https://github.com/h5bp/html5-boilerplate/pull/1379), [#1396](https://github.com/h5bp/html5-boilerplate/pull/1396)).
-* Update to Google Universal Analytics ([#1347](https://github.com/h5bp/html5-boilerplate/issues/1347)).
-* Update to jQuery 1.10.2.
-* Update to Normalize.css 1.1.3.
+P.S. If there is a standard (popular) changelog format, please let me know.
 
-### 4.2.0 (April 8, 2013)
+- **0.3.0 : 2013.02.24**
+    - **Features**
+    - Update twitter bootstrap to 2.2.2. Add responsiveness and update design a bit.
+    - @techotaku fixes custom tagline support (finally made it in!)
+    - @opie4624 adds ability to set tags from the command-line.
+    - @lax adds support for RSS feed. Adds rss and atom html links for discovery.
+    - Small typo fixes.
 
-* Remove Google Analytics protocol check ([#1319](https://github.com/h5bp/html5-boilerplate/pull/1319)).
-* Update to Normalize.css 1.1.1.
-* Update Apache configurations to include the latest changes in the canonical
-  [`.htaccess`](https://github.com/h5bp/server-configs-apache) file.
-* Use a protocol relative URL for the 404 template script.
-* Update to jQuery 1.9.1.
+    - **Bug Fixes**
+    - @xuhdev fixes theme:install bug which does not overwrite theme even if saying 'yes'.
 
-### 4.1.0 (January 21, 2013)
+- **0.2.13 : 2012.03.24**   
+    - **Features**
+    - 0.2.13 : @mjpieters Updates pages_list helper to only show pages having a title.
+    - 0.2.12 : @sway recommends showing page tagline only if tagline is set.
+    - 0.2.11 : @LukasKnuth adds 'description' meta-data field to post/page scaffold.
 
-* Update to Normalize.css 1.1.0.
-* Update to jQuery 1.9.0.
+    - **Bug Fixes**
+    - 0.2.10 : @koriroys fixes typo in atom feed
 
-### 4.0.3 (January 12, 2013)
+- **0.2.9 : 2012.03.01**   
+    - **Bug Fixes**
+    - 0.2.9 : @alishutc Fixes the error on post creation if date was not specified.
 
-* Use 32x32 favicon.ico ([#1286](https://github.com/h5bp/html5-boilerplate/pull/1286)).
-* Remove named function expression in plugins.js ([#1280](https://github.com/h5bp/html5-boilerplate/pull/1280)).
-* Adjust CSS image-replacement code ([#1239](https://github.com/h5bp/html5-boilerplate/issues/1239)).
-* Update HiDPI example media query ([#1127](https://github.com/h5bp/html5-boilerplate/issues/1127)).
+- **0.2.8 : 2012.03.01**   
+    - **Features**
+    - 0.2.8 : @metalelf0 Added option to specify a custom date when creating post.
+    - 0.2.7 : @daz Updates twitter theme framework to use 2.x while still maintaining core layout. #50
+              @philips and @treggats add support for page.tagline metadata. #31 & #48
+    - 0.2.6 : @koomar Adds Mixpanel analytics provider. #49
+    - 0.2.5 : @nolith Adds ability to load custom rake scripts. #33
+    - 0.2.4 : @tommyblue Updated disqus comments provider to be compatible with posts imported from Wordpress. #47
 
-### 4.0.2 (December 9, 2012)
+    - **Bug Fixes**
+    - 0.2.3 : @3martini Adds Windows MSYS Support and error checks for git system calls. #40
+    - 0.2.2 : @sstar Resolved an issue preventing disabling comments for individual pages #44
+    - 0.2.1 : Resolve incorrect HOME\_PATH/BASE\_PATH settings
 
-* Update placeholder icons.
-* Update to Normalize.css 1.0.2.
-* Update to jQuery 1.8.3.
+- **0.2.0 : 2012.02.01**   
+  Features
+    - Add Theme Packages v 0.1.0
+      All themes should be tracked and maintained outside of JB core.
+      Themes get "installed" via the Theme Installer.
+      Theme Packages versioning is done separately from JB core with
+      the main intent being to make sure theme versions are compatible with the given installer.
 
-### 4.0.1 (October 20, 2012)
+    - 0.1.2 : @jamesFleeting adds facebook comments support
+    - 0.1.1 : @SegFaultAX adds tagline as site-wide configuration
 
-* Further improvements to `console` method stubbing ([#1206](https://github.com/h5bp/html5-boilerplate/issues/1206), [#1229](https://github.com/h5bp/html5-boilerplate/pull/1229)).
-* Update to jQuery 1.8.2.
-* Update to Modernizr 2.6.2.
-* Minor additions to the documentation.
-
-### 4.0.0 (August 28, 2012)
-
-* Improve the Apache compression configuration ([#1012](https://github.com/h5bp/html5-boilerplate/issues/1012), [#1173](https://github.com/h5bp/html5-boilerplate/issues/1173)).
-* Add a HiDPI example media query ([#1127](https://github.com/h5bp/html5-boilerplate/issues/1127)).
-* Add bundled docs ([#1154](https://github.com/h5bp/html5-boilerplate/issues/1154)).
-* Add MIT license ([#1139](https://github.com/h5bp/html5-boilerplate/issues/1139)).
-* Update to Normalize.css 1.0.1.
-* Separate Normalize.css from the rest of the CSS ([#1160](https://github.com/h5bp/html5-boilerplate/issues/1160)).
-* Improve `console.log` protection ([#1107](https://github.com/h5bp/html5-boilerplate/issues/1107)).
-* Replace hot pink text selection color with a neutral color.
-* Change image replacement technique ([#1149](https://github.com/h5bp/html5-boilerplate/issues/1149)).
-* Code format and consistency changes ([#1112](https://github.com/h5bp/html5-boilerplate/issues/1112)).
-* Rename CSS file and rename JS files and subdirectories.
-* Update to jQuery 1.8 ([#1161](https://github.com/h5bp/html5-boilerplate/issues/1161)).
-* Update to Modernizr 2.6.1 ([#1086](https://github.com/h5bp/html5-boilerplate/issues/1086)).
-* Remove uncompressed jQuery ([#1153](https://github.com/h5bp/html5-boilerplate/issues/1153)).
-* Remove superfluous inline comments ([#1150](https://github.com/h5bp/html5-boilerplate/issues/1150)).
-
-### 3.0.2 (February 19, 2012)
-
-* Update to Modernizr 2.5.3.
-
-### 3.0.1 (February 08, 2012).
-
-* Update to Modernizr 2.5.2 (includes html5shiv 3.3).
-
-### 3.0.0 (February 06, 2012)
-
-* Improvements to `.htaccess`.
-* Improve 404 design.
-* Simplify JS folder structure.
-* Change `html` IE class names changed to target ranges rather than specific versions of IE.
-* Update CSS to include latest normalize.css changes and better typographic defaults ([#825](https://github.com/h5bp/html5-boilerplate/issues/825)).
-* Update to Modernizr 2.5 (includes yepnope 1.5 and html5shiv 3.2).
-* Update to jQuery 1.7.1.
-* Revert to async snippet for the Google Analytics script.
-* Remove the ant build script ([#826](https://github.com/h5bp/html5-boilerplate/issues/826)).
-* Remove Respond.js ([#816](https://github.com/h5bp/html5-boilerplate/issues/816)).
-* Remove the `demo/` directory ([#808](https://github.com/h5bp/html5-boilerplate/issues/808)).
-* Remove the `test/` directory ([#808](https://github.com/h5bp/html5-boilerplate/issues/808)).
-* Remove Google Chrome Frame script for IE6 users; replace with links to Chrome Frame and options for alternative browsers.
-* Remove `initial-scale=1` from the viewport `meta` ([#824](https://github.com/h5bp/html5-boilerplate/issues/824)).
-* Remove `defer` from all scripts to avoid legacy IE bugs.
-* Remove explicit Site Speed tracking for Google Analytics. It's now enabled by default.
-
-### 2.0.0 (August 10, 2011)
-
-* Change starting CSS to be based on normalize.css instead of reset.css ([#500](https://github.com/h5bp/html5-boilerplate/issues/500)).
-* Add Respond.js media query polyfill.
-* Add Google Chrome Frame script prompt for IE6 users.
-* Simplify the `html` conditional comments for modern browsers and add an `oldie` class.
-* Update clearfix to use "micro clearfix".
-* Add placeholder CSS MQs for mobile-first approach.
-* Add `textarea { resize: vertical; }` to only allow vertical resizing.
-* Add `img { max-width: 100%; }` to the print styles; prevents images being truncated.
-* Add Site Speed tracking for Google Analytics.
-* Update to jQuery 1.6.2 (and use minified by default).
-* Update to Modernizr 2.0 Complete, Production minified (includes yepnope, html5shiv, and Respond.js).
-* Use `Modernizr.load()` to load the Google Analytics script.
-* Much faster build process.
-* Add build script options for CSSLint, JSLint, JSHint tools.
-* Build script now compresses all images in subfolders.
-* Build script now versions files by SHA hash.
-* Many `.htaccess` improvements including: disable directory browsing, improved support for all versions of Apache, more robust and extensive HTTP compression rules.
-* Remove `handheld.css` as it has very poor device support.
-* Remove touch-icon `link` elements from the HTML and include improved touch-icon support.
-* Remove the cache-busting query paramaters from files references in the HTML.
-* Remove IE6 PNGFix.
-
-### 1.0.0 (March 21, 2011)
-
-* Rewrite build script to make it more customizable and flexible.
-* Add a humans.txt.
-* Numerous `.htaccess` improvements (including inline documentation).
-* Move the alternative server configurations to the H5BP server configs repo.
-* Use a protocol-relative url to reference jQuery and prevent mixed content warnings.
-* Optimize the Google Analytics snippet.
-* Use Eric Meyer's recent CSS reset update and the HTML5 Doctor reset.
-* More robust `sub`/`sup` CSS styles.
-* Add keyboard `.focusable` helper class that extends `.visuallyhidden`.
-* Print styles no longer print hash or JavaScript links.
-* Add a print reset for IE's proprietary filters.
-* Remove IE9-specific conditional class on the `html` element.
-* Remove margins from lists within `nav` elements.
-* Remove YUI profiling.
+- **0.1.0 : 2012.01.24**   
+  First major versioned release.   
+  Features   
+    - Standardize Public API
+    - Use name-spacing and modulation where possible.
+    - Ability to override public methods with custom code.
+    - Publish the theme API.
+    - Ship with comments, analytics integration.
+  
+- **0.0.1 : 2011.12.30**    
+  First public release, lots of updates =p
+  Thank you everybody for dealing with the fast changes and helping
+  me work out the API to a manageable state.
+  
