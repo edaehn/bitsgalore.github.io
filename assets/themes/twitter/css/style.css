@@ -1,11 +1,15 @@
 /* Custom container */
 .container-narrow {
   margin: 0 auto;
-  max-width: 700px; }
-
+  max-width: 600px; }
+  
 .container-narrow > hr {
   margin: 30px 0; }
 
+p{
+  font-family: Georgia, Palatino, serif;
+  font-size:16px;line-height:22px}
+  
 .navbar .nav {
   float: right; }
 
