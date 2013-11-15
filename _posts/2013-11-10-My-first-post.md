@@ -1,9 +1,9 @@
 ---
 layout: post
-title: My first post
+title: Test post rubbish
 ---
 
-Da ist ein groovy Beat ja, einfach Super!
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras commodo, sem at ultricies blandit, massa purus lobortis diam, sodales malesuada purus magna ut tellus. Suspendisse eu libero at risus congue varius. Vestibulum imperdiet consequat elit sit amet porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean ullamcorper odio sem, sed dapibus ipsum semper eget. Phasellus feugiat posuere libero nec dapibus. 
 
 ##Section
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras commodo, sem at ultricies blandit, massa purus lobortis diam, sodales malesuada purus magna ut tellus. Suspendisse eu libero at risus congue varius. Vestibulum imperdiet consequat elit sit amet porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean ullamcorper odio sem, sed dapibus ipsum semper eget. Phasellus feugiat posuere libero nec dapibus. Vivamus quis varius justo. Proin urna justo, volutpat et mattis eget, consectetur sit amet neque. Phasellus vitae urna quis odio hendrerit feugiat. Pellentesque sed feugiat erat. Nam commodo tortor vitae mauris laoreet dignissim in et risus. Integer interdum suscipit est, id ornare ipsum egestas vel. Nulla ac mi adipiscing, scelerisque est eu, sodales tortor.
@@ -11,6 +11,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras commodo, sem at ul
 ##Another section
 Quisque commodo neque eget nisi bibendum, vitae bibendum ante gravida. Donec sit amet facilisis erat. Quisque adipiscing ultrices ultricies. Phasellus eu arcu nunc. Duis vehicula odio non pretium vehicula. Aenean vel nulla id arcu porta vestibulum. Donec placerat lobortis neque non pretium. Donec ultrices augue quis ultrices ultrices. Fusce faucibus tortor id nulla condimentum, quis malesuada nibh pulvinar. Nam faucibus massa eros, sit amet dictum sem posuere a. Vestibulum ac commodo mauris, quis tempus mauris.
 
-pendisse non neque magna. Nunc venenatis molestie lacus lobortis sagittis. Donec eu enim rutrum felis varius sagittis.
+<iframe width="600" height="360" src="//www.mixcloud.com/widget/iframe/?feed=http%3A%2F%2Fwww.mixcloud.com%2Fcrapstanzo%2Fsuper-sounds-of-xmas%2F&mini=&stylecolor=&hide_artwork=&embed_type=widget_standard&embed_uuid=43d34f34-453d-4102-8783-a15e626742b9&hide_tracklist=&hide_cover=1&autoplay=" frameborder="0"></iframe><div style="clear:both; height:3px; width:592px;"></div><p style="display:block; font-size:12px; font-family:Helvetica, Arial, sans-serif; margin:0; padding: 3px 4px; color:#02a0c7; width:592px;"><a href="http://www.mixcloud.com/crapstanzo/super-sounds-of-xmas/?utm_source=widget&amp;utm_medium=web&amp;utm_campaign=base_links&amp;utm_term=resource_link" target="_blank" style="color:#02a0c7; font-weight:bold;">Super Sounds of Xmas</a><span> by </span><a href="http://www.mixcloud.com/crapstanzo/?utm_source=widget&amp;utm_medium=web&amp;utm_campaign=base_links&amp;utm_term=profile_link" target="_blank" style="color:#02a0c7; font-weight:bold;">Crapstanzo</a><span> on </span><a href="http://www.mixcloud.com/?utm_source=widget&utm_medium=web&utm_campaign=base_links&utm_term=homepage_link" target="_blank" style="color:#02a0c7; font-weight:bold;"> Mixcloud</a></p><div style="clear:both; height:3px;"></div>
+
 
 Etiam id posuere nibh, eget pretium lorem. Proin eu tempor mauris. Suspendisse nisi mauris, convallis quis orci tempor, interdum tincidunt augue. Fusce ut pharetra erat. Suspendisse eu dapibus diam, nec varius dolor. Proin malesuada eros id dolor placerat dapibus. Vestibulum vel posuere arcu. Praesent hendrerit, mauris nec semper fringilla, dolor nunc consectetur dolor, at pretium erat elit vitae erat. Nullam sollicitudin ligula ut enim facilisis pulvinar. Suspendisse ac urna turpis. Aenean ut dolor sed lacus egestas pharetra quis nec lacus. Duis commodo pellentesque pharetra. Quisque vitae sem id lacus condimentum condimentum nec non tortor. 

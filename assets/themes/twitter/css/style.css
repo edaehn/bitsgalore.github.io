@@ -8,7 +8,13 @@
 
 p{
   font-family: Georgia, Palatino, serif;
-  font-size:16px;line-height:22px}
+  font-size:16px;line-height:22px;
+  margin:0 0 20px; }
+
+h1{font-size:28px; line-height:30px;margin:0 0 10px;}
+h2{font-size:20px; line-height:22px; margin:0 0 10px;}
+h3{font-size:18px; line-height:20px; margin:0 0 10px;}
+
   
 .navbar .nav {
   float: right; }
