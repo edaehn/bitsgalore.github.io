@@ -6,6 +6,8 @@
 .container-narrow > hr {
   margin: 30px 0; }
 
+.banner-header{margin:10px 0 10px 330px; border-style:none; }
+
 p{
   font-family: Georgia, Palatino, serif;
   font-size:16px;line-height:22px;
