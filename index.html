@@ -6,9 +6,11 @@ title: bitsgalore.org
 
 
 {% for post in paginator.posts %}
+   <div class="post-entry">
    <h3><a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small></h3>
-   {{ post.excerpt }}
+   {{ post.excerpt }} 
    <small><a href="{{ BASE_PATH }}{{ post.url }}">More ...</a></small>
+   </div> 
 {% endfor %}
 
 <!-- Pagination links -->
