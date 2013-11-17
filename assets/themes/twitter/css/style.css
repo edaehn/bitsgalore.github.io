@@ -12,19 +12,19 @@
 
 p{
   font-size:16px;line-height:22px;
-  margin:0 0 20px; }
+  /*margin:0 0 20px;*/ }
   
 blockquote p{
   margin-bottom:0; font-size:16px; font-style:italic; font-weight:300 ;line-height:22px; }
   
-h1{font-size:28px; line-height:30px;margin:0 0 10px;}
-h2{font-size:20px; line-height:22px; margin:0 0 10px;}
-h3{font-size:18px; line-height:20px; margin:0 0 10px;}
+h1{font-size:28px; line-height:30px;margin: 0 0 0 0;}
+h2{font-size:20px; line-height:22px; margin:20px 0 0 0;}
+h3{font-size:18px; line-height:20px; margin:20px 0 0 0;}
 
 table{
   font-size:14px;line-height:16px;
   border-collapse:collapse;
-  margin:0 0 20px; }
+  /*margin:0 0 20px;*/ }
 
 td, th{
  padding:15px;
