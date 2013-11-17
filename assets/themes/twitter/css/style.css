@@ -9,7 +9,6 @@
 .banner-header{margin:30px 0 10px 330px; }
 
 p{
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size:16px;line-height:22px;
   margin:0 0 20px; }
   
@@ -21,7 +20,6 @@ h2{font-size:20px; line-height:22px; margin:0 0 10px;}
 h3{font-size:18px; line-height:20px; margin:0 0 10px;}
 
 table{
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size:14px;line-height:16px;
   border-collapse:collapse;
   margin:0 0 20px; }
