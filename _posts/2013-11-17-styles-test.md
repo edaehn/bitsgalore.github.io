@@ -3,8 +3,11 @@ layout: post
 title: Styles test
 ---
 
+![Klaus]({{ site.url }}/images/wunderlich.jpg)
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras commodo, sem at ultricies blandit, massa purus lobortis diam, sodales malesuada purus magna ut tellus. Suspendisse eu libero at risus congue varius. Vestibulum imperdiet consequat elit sit amet porta. 
 
+<!-- more -->
 
 > Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean ullamcorper odio sem, sed dapibus ipsum semper eget. Phasellus feugiat posuere libero nec dapibus. 
 
