@@ -34,16 +34,25 @@
   </head>
 
   <body>
-  
-  <div class="banner-header">
-    <a href="/"><img src="/assets/themes/twitter/images/banner3.png" alt="bitsgalore"  width="619" height="108"></a>
+    
+  <!-- Place banner image aligned with column layout --> 
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span2">
+      </div>
+      <div class="span6">
+        <div class="banner-header">
+          <a href="/"><img src="/assets/themes/twitter/images/banner3.png" alt="bitsgalore"  width="619" height="108"></a>
+        </div>
+      </div>
+    </div>
   </div>
   
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container-narrow">
-          <!-- <a class="brand" href="/">bitsgalore.org</a> -->
-          <ul class="nav">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container-narrow">
+        <!-- <a class="brand" href="/">bitsgalore.org</a> -->
+        <ul class="nav">
             
             
             
@@ -101,15 +110,20 @@
 
 
 
-          </ul>
-        </div>
+        </ul>
       </div>
     </div>
-
-    <div class="container-narrow">
-
-      <div class="content">
-        
+  </div>
+	
+  <div class="container-fluid">
+	<div class="row-fluid">
+	  <div class="span2">
+	      <!--Empty column -->
+	  </div>
+	
+	  <div class="span6">
+        <div class="content">
+          
 <div class="page-header">
   <!-- <h1>bitsgalore.org </h1> (commented out, JvdK)-->
 </div>
@@ -155,16 +169,35 @@
 </div>
 
 
+        </div>	
+	  </div>
+	
+	  <div class="span1">
+	    <!--Empty column -->
+	  </div>
+	
+	  <div class="span2"> 
+	    <a href="https://twitter.com/bitsgalore" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @bitsgalore</a>
+	    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	    <p>Das ist groovy ja, ganz nicht schlecht so. Jetzt geht's mal richtig los!</p>
+	  </div>	
+	</div>
+	
+	<footer>
+	<hr>
+	<div class="row-fluid">
+      <div class="span1">
+	    <!--Empty column -->
+	  </div>
+	  
+	  <div class="span6">
+	    <p><small>&copy; 2013 Johan van der Knijff
+        with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+        and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a></small></p>
       </div>
-      <hr>
-      <footer>
-        <p><small>&copy; 2013 Johan van der Knijff
-          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a></small>
-        </p>
-      </footer>
-
-    </div>
+	</div>
+    </footer>
+  </div>
 
     
   </body>

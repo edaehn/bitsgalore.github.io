@@ -1,12 +1,20 @@
 /* Custom container */
 .container-narrow {
-  margin: 0 auto;
-  max-width: 600px; }
+  margin: auto auto auto 150px;
+  max-width: 600px; 
+  }
   
 .container-narrow > hr {
   margin: 30px 0; }
 
-.banner-header{margin:30px 0 10px 330px; }
+.container-right{
+  margin: 30px 100px auto auto;
+  max-width: 200px; }
+  
+.banner-header{
+   margin-top: 30px;
+   margin-bottom: 10px;
+   width: auto}
 
 .post-entry{padding-bottom:25px;}
 
