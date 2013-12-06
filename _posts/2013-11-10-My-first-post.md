@@ -1,9 +1,12 @@
 ---
 layout: post
 title: Test post rubbish
+tags: Latin Christmas
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras commodo, sem at ultricies blandit, massa purus lobortis diam, sodales malesuada purus magna ut tellus. Suspendisse eu libero at risus congue varius. Vestibulum imperdiet consequat elit sit amet porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean ullamcorper odio sem, sed dapibus ipsum semper eget. Phasellus feugiat posuere libero nec dapibus. 
+
+<!-- more -->
 
 ##Section
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras commodo, sem at ultricies blandit, massa purus lobortis diam, sodales malesuada purus magna ut tellus. Suspendisse eu libero at risus congue varius. Vestibulum imperdiet consequat elit sit amet porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean ullamcorper odio sem, sed dapibus ipsum semper eget. Phasellus feugiat posuere libero nec dapibus. Vivamus quis varius justo. Proin urna justo, volutpat et mattis eget, consectetur sit amet neque. Phasellus vitae urna quis odio hendrerit feugiat. Pellentesque sed feugiat erat. Nam commodo tortor vitae mauris laoreet dignissim in et risus. Integer interdum suscipit est, id ornare ipsum egestas vel. Nulla ac mi adipiscing, scelerisque est eu, sodales tortor.

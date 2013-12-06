@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Styles test
+tags:  English Wunderlich
 ---
 
 ![Klaus]({{ site.url }}/images/wunderlich.jpg)
