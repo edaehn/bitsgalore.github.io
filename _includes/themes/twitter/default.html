@@ -43,7 +43,9 @@
       <div class="span6">
 	    <!-- Column center (banner goes here) -->
         <div class="banner-header">
-          <a href="{{ HOME_PATH }}"><img src="{{ ASSET_PATH }}/images/banner3.png" alt="bitsgalore"  width="619" height="108"></a>
+          <!-- <a href="{{ HOME_PATH }}"><img src="]({{ site.url }}/images/banner3.png" alt="bitsgalore"  width="619" height="108"></a> -->
+		  <a href="{{ HOME_PATH }}"><img src="{{ site.url }}/images/banner4.png" alt="bitsgalore"  width="615" height="80"></a>
+		  <div class="banner-tagline">assorted &#9642;&#9642; random &#9642;&#9642; stuff</div>
         </div>
       </div>
     </div>
@@ -57,6 +59,8 @@
             {% assign pages_list = site.pages %}
             {% assign group = 'navigation' %}
             {% include JB/pages_list %}
+			<li><a href="{{ site.url }}/atom.xml">ATOM Feed</a></li>
+            <li><a href="{{ site.url }}/rss.xml">RSS Feed</a></li>
         </ul>
       </div>
     </div>
