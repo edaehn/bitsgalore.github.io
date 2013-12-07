@@ -14,8 +14,8 @@
 
 @font-face{ 
     font-family: "ComputerAmok"; 
-    src: url('fonts/ComputerAmok.eot'); /* For IE */ 
-    src: local('ComputerAmok'), url('fonts/ComputerAmok.ttf') format('truetype'); /* For non-IE */
+    src: url('/fonts/ComputerAmok.eot'); /* For IE */ 
+    src: local('bullsh'), url('/fonts/ComputerAmok.ttf') format('truetype'); /* For non-IE */
 	}
 
 .banner-header{
