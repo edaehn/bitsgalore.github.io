@@ -53,21 +53,6 @@
   </div>
   </div>
   
-  <div class="navbar">
-    <div class="navbar-inner">
-      <div class="container-narrow">
-        <!-- <a class="brand" href="{{ HOME_PATH }}">{{ site.title }}</a> -->
-        <ul class="nav">
-            {% assign pages_list = site.pages %}
-            {% assign group = 'navigation' %}
-            {% include JB/pages_list %}
-			<li><a href="{{ site.url }}/atom.xml">ATOM Feed</a></li>
-            <li><a href="{{ site.url }}/rss.xml">RSS Feed</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-	
   <div class="container-fluid">
 	<div class="row-fluid">
 	  <div class="span2">
@@ -85,11 +70,31 @@
 	    <!--Another empty column to create some space -->
 	  </div>
 	
-	  <div class="span2"> 
-	    <!-- Column right (Twitter button, might add menu or any other random crazy shit later) -->
-	    <a href="https://twitter.com/bitsgalore" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @bitsgalore</a>
-	    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-	  </div>	
+	  <div class="span3"> 
+	    <div class="sidebar">
+	      <!-- Column right -->
+		  <h1><a href="{{ site.url }}/about.html">about</a></h1>
+
+		  <h1>twitter</h1>
+		  <a href="https://twitter.com/bitsgalore" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @bitsgalore</a>
+	      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+		  <h1>feeds</h1>
+		  
+		  <p>
+		  <a href="{{ site.url }}/rss.xml"><img src="{{ site.url }}/images/feed-icon-32px.png" alt="RSS"  width="32" height="32"></a>
+		  <a href="{{ site.url }}/rss.xml">RSS</a>
+		  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		  <a href="{{ site.url }}/atom.xml"><img src="{{ site.url }}/images/feed-icon-32px.png" alt="ATOM"  width="32" height="32"></a>
+		  <a href="{{ site.url }}/atom.xml">ATOM</a>
+		  </p>
+
+		  <h1>archive</h1>
+		  {% include JB/setup %}
+          {% assign posts_collate = site.posts %}
+          {% include JB/posts_collate %}
+	    </div>
+      </div>	  
 	</div>
 	
 	<footer>
