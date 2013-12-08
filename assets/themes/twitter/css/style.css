@@ -12,31 +12,10 @@
   margin-bottom: 20px;
 }
 
-@font-face{ 
-    font-family: "ComputerAmok"; 
-    src: url('/fonts/ComputerAmok.eot'); /* For IE */ 
-    src: local('bullsh'), url('/fonts/ComputerAmok.ttf') format('truetype'); /* For non-IE */
-	}
-
 .banner-header{
-   margin-top: 30px;
+   margin-top: 10px;
    margin-bottom: 10px;
   }
-
-.banner-title{
-    font-family: "ComputerAmok";
-    font-size: 70pt;
-	color:#aa0000;
-	padding-top:20px;
-	padding-bottom:40px;
-  }
-
-.banner-title a:link {color:#aa0000;}      /* unvisited link */
-.banner-title a:visited {color:#aa0000;}  /* visited link */
-.banner-title a:hover {color:#aa0000;
-  text-decoration:none;}  /* mouse over link */
-.banner-title a:active {color:#aa0000;
-  text-decoration:none;}  /* selected link */
   
 .banner-tagline{
   font-size:26px;
