@@ -24,9 +24,9 @@ This method is faster than using the web interface, but you will first need to i
 
 2. Click at the left-hand site of the URL bar, and drag it to the bookmarks toolbar of your browser. The figure below shows how this works in FireFox: 
 
-    ![Installation of bookmarklet]({{ BASE_PATH }}/images/wbmarkletInstall.png)
+   ![Installation of bookmarklet]({{ BASE_PATH }}/images/wbmarkletInstall.png)
 
-    Alternatively you can also use *Add Bookmark* in the *Bookmarks* menu.
+   Alternatively you can also use *Add Bookmark* in the *Bookmarks* menu.
 
 ###Using the bookmarklet
 1. Open the web page that you want to save in your browser.
