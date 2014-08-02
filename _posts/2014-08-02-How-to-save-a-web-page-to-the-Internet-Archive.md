@@ -9,8 +9,7 @@ This short tutorial shows how to take a snapshot of a web page, and save it to t
 
 ##Method 1: web interface
 
-1. Open the Wayback website:   
-    <https://archive.org/web/>
+1. Go to the Wayback website: <https://archive.org/web/>
 2. Paste the URL of the page you want to archive into the *Save Page Now* box (at the bottom-right).
 3. Click on the *Save Page* button (or press *enter*).
 4. Wait while the page is being crawled. Once the archiving process is complete, the URL of the archived page appears.
