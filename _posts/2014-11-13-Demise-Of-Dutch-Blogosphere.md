@@ -19,7 +19,7 @@ Each block in the figure represents one blog, where the color and the number of 
 |![](http://www.sargasso.nl/wp-content/uploads/2006/03/bf5k1.png)|Almost dead|
 |![](http://www.sargasso.nl/wp-content/uploads/2006/03/bf6k1.png)|Casualty of war|
 
-The really outstanding feature here is that by now most of these blogs are now in the "casualty of war" category. These blogs are simply *gone*; the URLs either don't work, or they link to a completely different website. A pretty dramatic demonstration of the importance of web archiving if you ask me.
+The really outstanding feature here is that most of these blogs are now in the "casualty of war" category. They're simply *gone*; the URLs either don't work, or they link to a completely different website. A pretty dramatic demonstration of the importance of web archiving if you ask me.
 
 ## Link to original feature on Sargasso
 
