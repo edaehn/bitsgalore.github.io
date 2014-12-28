@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>bitsgalore.org</title>
+ <link href="http://bitsgalore.org/" rel="self"/>
+ <link href="http://bitsgalore.org"/>
+ <updated>2014-12-28T13:15:51+01:00</updated>
+ <id>http://bitsgalore.org</id>
+ <author>
+   <name>Johan van der Knijff</name>
+   <email>bitsgalore@bitsgalore.org</email>
+ </author>
+
+ 
+ <entry>
+   <title>Demise of the Dutch Blogosphere</title>
+   <link href="http://bitsgalore.org/2014/11/13/Demise-Of-Dutch-Blogosphere"/>
+   <updated>2014-11-13T00:00:00+01:00</updated>
+   <id>http://bitsgalore.org/2014/11/13/Demise-Of-Dutch-Blogosphere</id>
+   <content type="html">&lt;p&gt;Back in 2006, Dutch weblog &lt;a href=&quot;http://sargasso.nl/&quot;&gt;Sargasso&lt;/a&gt; started following the activity of about 260 Dutch blogs that were active at the time, mainly by looking at the frequency of new postings. &lt;!-- more --&gt; Earlier this week Sargasso &lt;a href=&quot;http://sargasso.nl/battle-blogs-war-lost/&quot;&gt;published an update of the the status of these blogs in 2014&lt;/a&gt;. They summarised the results of their analysis with this fascinating visualisation: &lt;/p&gt;
+
+&lt;iframe width=&quot;415&quot; height=&quot;620&quot; scrolling=&quot;no&quot; src=&quot;http://sargasso.nl/wp-content/uploads/2014/11/botb2014b.htm&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Each block in the figure represents one blog, where the color and the number of dots indicate how often new postings appear. Here’s the legend:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Symbol&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Posting frequency&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;img src=&quot;http://www.sargasso.nl/wp-content/uploads/2006/03/bf1k1.png&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;High&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;img src=&quot;http://www.sargasso.nl/wp-content/uploads/2006/03/bf2k1.png&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Occasional gaps&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;img src=&quot;http://www.sargasso.nl/wp-content/uploads/2006/03/bf3k1.png&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Gaps of one or more days&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;img src=&quot;http://www.sargasso.nl/wp-content/uploads/2006/03/bf4k1.png&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Lots of large gaps&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;img src=&quot;http://www.sargasso.nl/wp-content/uploads/2006/03/bf5k1.png&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Almost dead&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;img src=&quot;http://www.sargasso.nl/wp-content/uploads/2006/03/bf6k1.png&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Casualty of war&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The really outstanding feature here is that most of these blogs are now in the “casualty of war” category. They’re simply &lt;em&gt;gone&lt;/em&gt;; the URLs either don’t work, or they link to a completely different website. A pretty dramatic demonstration of the importance of web archiving if you ask me.&lt;/p&gt;
+
+&lt;h2 id=&quot;link-to-original-feature-on-sargasso&quot;&gt;Link to original feature on Sargasso&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://sargasso.nl/battle-blogs-war-lost/&quot;&gt;Battle of the Blogs - The war is lost&lt;/a&gt; (in Dutch)&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>How to save a web page to the Internet Archive</title>
+   <link href="http://bitsgalore.org/2014/08/02/How-to-save-a-web-page-to-the-Internet-Archive"/>
+   <updated>2014-08-02T00:00:00+02:00</updated>
+   <id>http://bitsgalore.org/2014/08/02/How-to-save-a-web-page-to-the-Internet-Archive</id>
+   <content type="html">&lt;p&gt;This short tutorial shows how to take a snapshot of a web page, and save it to the Internet Archive’s &lt;a href=&quot;http://en.wikipedia.org/wiki/Wayback_Machine&quot;&gt;Wayback Machine&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;method-1-web-interface&quot;&gt;Method 1: web interface&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Go to the Wayback website: &lt;a href=&quot;https://archive.org/web/&quot;&gt;https://archive.org/web/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Paste the URL of the page you want to archive into the &lt;em&gt;Save Page Now&lt;/em&gt; box (at the bottom-right).&lt;/li&gt;
+  &lt;li&gt;Click on the &lt;em&gt;Save Page&lt;/em&gt; button (or press &lt;em&gt;enter&lt;/em&gt;).&lt;/li&gt;
+  &lt;li&gt;Wait while the page is being crawled. Once the archiving process is complete, the URL of the archived page appears.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;method-2-bookmarklet&quot;&gt;Method 2: bookmarklet&lt;/h2&gt;
+&lt;p&gt;This method is faster than using the web interface, but you will first need to install a &lt;a href=&quot;http://en.wikipedia.org/wiki/Bookmarklet&quot;&gt;bookmarklet&lt;/a&gt; (which is just a browser bookmark that contains some JavaScript).&lt;/p&gt;
+
+&lt;h3 id=&quot;installation&quot;&gt;Installation&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Go to the &lt;em&gt;Save Page to Wayback Machine Bookmarklet&lt;/em&gt; link here: 
+ &lt;a href=&quot;http://marklets.com/Save%20Page%20to%20Wayback%20Machine.aspx&quot;&gt;http://marklets.com/Save%20Page%20to%20Wayback%20Machine.aspx&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Click at the left-hand site of the URL bar, and drag it to the bookmarks toolbar of your browser. The figure below shows how this works in FireFox: &lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/wbmarkletInstall.png&quot; alt=&quot;Installation of bookmarklet&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Alternatively you can also use &lt;em&gt;Add Bookmark&lt;/em&gt; in the &lt;em&gt;Bookmarks&lt;/em&gt; menu.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;using-the-bookmarklet&quot;&gt;Using the bookmarklet&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Open the web page that you want to save in your browser.&lt;/li&gt;
+  &lt;li&gt;Click on &lt;em&gt;Save Page to Wayback Machine&lt;/em&gt; in the bookmarks toolbar.&lt;/li&gt;
+  &lt;li&gt;Wait while the page is being crawled. Once the archiving process is complete, the URL of the archived page appears.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;method-3-chrome-extension&quot;&gt;Method 3: Chrome extension&lt;/h2&gt;
+&lt;p&gt;If you’re using the Google Chrome browser, you may want to check out Jimmy Lin’s “Save a Page” extension. Once installed, it allows you to save a page by simply right-clicking on it. The extension can be found here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/lintool/chrome-archive-this-page&quot;&gt;https://github.com/lintool/chrome-archive-this-page&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Just follow the installation instructions on that page.&lt;/p&gt;
+
+&lt;h2 id=&quot;limitations&quot;&gt;Limitations&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Webmasters can use &lt;a href=&quot;http://en.wikipedia.org/wiki/Robots_exclusion_standard&quot;&gt;&lt;em&gt;robots.txt&lt;/em&gt;&lt;/a&gt; to prevent web crawlers from crawling/saving anything on their website. &lt;/li&gt;
+  &lt;li&gt;If a webmaster decides to change the &lt;em&gt;robots.txt&lt;/em&gt; permissions at some point in the future, a saved page may be removed from the Wayback Machine. For details see: &lt;a href=&quot;https://archive.org/about/exclude.php&quot;&gt;https://archive.org/about/exclude.php&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;acknowledgement&quot;&gt;Acknowledgement&lt;/h2&gt;
+&lt;p&gt;This tutorial partially draws from a &lt;a href=&quot;http://searchengineland.com/save-urls-wayback-machine-demand-191150&quot;&gt;blog post&lt;/a&gt; by Gary Price on &lt;a href=&quot;http://searchengineland.com/&quot;&gt;&lt;em&gt;Search Engine Land&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Why I ended up ditching Amazon</title>
+   <link href="http://bitsgalore.org/2014/02/01/Why-I-ended-up-ditching-Amazon"/>
+   <updated>2014-02-01T00:00:00+01:00</updated>
+   <id>http://bitsgalore.org/2014/02/01/Why-I-ended-up-ditching-Amazon</id>
+   <content type="html">&lt;p&gt;I’m a bit of music nut with a penchant for the slightly, well, how should I put this, &lt;em&gt;unusual&lt;/em&gt;. Even though I enjoy visiting ‘real’ record shops, the reality is that my tastes are far better served by on-line stores, and it will surprise no-one that I’ve been happily using the services of &lt;em&gt;Amazon&lt;/em&gt; to satisfy much of my music (and book!) needs for over the past twelve years. However, recently I’ve become increasingly uneasy about my &lt;em&gt;Amazon&lt;/em&gt; habit, and  ultimately this made me decide that I should better kick it altogether.
+&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;business-model-built-on-tax-avoidance&quot;&gt;Business model built on tax avoidance&lt;/h2&gt;
+&lt;p&gt;Early 2013, I watched &lt;a href=&quot;http://tegenlicht.vpro.nl/backlight/tax-free-tour.html&quot;&gt;&lt;em&gt;The Tax Free Tour&lt;/em&gt;&lt;/a&gt;, a documentary that was broadcast on Dutch national TV about tax dodging by multinational companies. It explains how multinationals such as &lt;em&gt;Apple&lt;/em&gt;, &lt;em&gt;Google&lt;/em&gt;, &lt;em&gt;Starbucks&lt;/em&gt; and &lt;em&gt;Amazon&lt;/em&gt; (to name but a few) avoid paying corporate taxes by exploiting loopholes in international tax laws, assisted by armies of clever accountants. The situation has attracted quite a bit of press coverage, especially in the UK (see e.g. &lt;a href=&quot;http://www.theguardian.com/technology/2012/apr/04/amazon-british-operation-corporation-tax&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;http://www.theguardian.com/technology/2013/may/15/amazon-tax-bill-new-questions&quot;&gt;here&lt;/a&gt;), and several Members of Parliament there have even &lt;a href=&quot;http://www.theguardian.com/money/2013/nov/30/alternatives-to-amazon-mps-boycott&quot;&gt;called for a boycott&lt;/a&gt;. Commenting on the specific case of &lt;em&gt;Amazon&lt;/em&gt;, UK magazine &lt;a href=&quot;http://www.ethicalconsumer.org/commentanalysis/corporatewatch/isittimetoboycottamazon.aspx&quot;&gt;&lt;em&gt;Ethical Consumer&lt;/em&gt;&lt;/a&gt; remarks that “its whole business model appears to be built around tax avoidance as a way of competing on price”.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.economicshelp.org/blog/6241/economics/impact-of-tax-avoidance-by-amazon/&quot;&gt;Here&lt;/a&gt;’s a concise summary of the impact of &lt;em&gt;Amazon&lt;/em&gt;’s tax avoidance: first, it gives &lt;em&gt;Amazon&lt;/em&gt; a financial advantage that allows it to put smaller competitors out of business. Second, &lt;em&gt;Amazon&lt;/em&gt; benefits from publicly-funded infrastructures and services,  while at the same time contributing very little to them, if anything at all.&lt;/p&gt;
+
+&lt;h2 id=&quot;they-pay-shit-because-they-can&quot;&gt;They pay shit because they can&lt;/h2&gt;
+&lt;p&gt;Later on I came across &lt;a href=&quot;http://www.theguardian.com/technology/2013/dec/01/week-amazon-insider-feature-treatment-employees-work&quot;&gt;this &lt;em&gt;Guardian&lt;/em&gt; feature&lt;/a&gt; by journalist Carole Cadwalladr, who spent a week inside the belly of the &lt;em&gt;Amazon&lt;/em&gt; beast by working as an order-picker in one of its giant warehouses. Her description of the working conditions makes for some grim reading. For example, employees have to put up with 10½-hour shifts of hard, physical work, every second of which all their moves are electronically monitored. Their (short) breaks include the time they need to walk from  wherever they happen to be in the warehouse, which may mean they’ll end up spending 12 minutes out of a 15-minute break just &lt;em&gt;walking&lt;/em&gt; to the loo and back. Then there’s also a policy of sacking workers that report sick three times during a three-month period. For this they are paid minimum wage. Not that most of them have much of a choice in this, since &lt;em&gt;Amazon&lt;/em&gt; deliberately locates its distribution centres in places where economic opportunities are few, and unemployment is high. In the case of the Swansea warehouse where Cadwalladr worked, &lt;em&gt;Amazon&lt;/em&gt; was even given £8.8m in goverment grants -funded by tax money- for opening it there in the first place. As one forklift truck driver that is interviewed by Cadwalladr aptly puts it, “they pay shit because they can”.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-alternatives&quot;&gt;The alternatives&lt;/h2&gt;
+&lt;p&gt;So, I asked myself whether I really want to keep contributing to all this by buying stuff from &lt;em&gt;Amazon&lt;/em&gt;. Well, not really, thank you very much! But what are the alternatives? For the sake of brevity I’ll restrict myself to music (and in particular CDs - yes, some people are still buying those!) here. Books are a different matter, which I may well cover in a follow-up to this blog.&lt;/p&gt;
+
+&lt;p&gt;The first option is to buy CDs directly from the artist or label. This is something I already did often before ditching &lt;em&gt;Amazon&lt;/em&gt;, and I’ll probably take this route even more often from now on. Having said that, this option is not always possible or practical. &lt;/p&gt;
+
+&lt;p&gt;Marketplace  sites can be another good option, as they allow you to buy from a large number of independent sellers. The most obvious choice here would be &lt;em&gt;eBay&lt;/em&gt;, but just like &lt;em&gt;Amazon&lt;/em&gt; it uses &lt;a href=&quot;http://www.thefinancepages.co.uk/companies/ebay-ikea-evade-tax/02611/&quot;&gt;similar accounting techniques&lt;/a&gt; to minimise its tax bill. A better option may be &lt;a href=&quot;http://www.discogs.com/&quot;&gt;&lt;em&gt;Discogs&lt;/em&gt;&lt;/a&gt;. I’ve only used this service a few times, but my initial impression is really good, and I wouldn’t be surprised to see this turn into one of my favourite music outlets over the coming months.&lt;/p&gt;
+
+&lt;p&gt;Then there’s a range of web stores that specialise in specific niche areas. A personal favourite is &lt;a href=&quot;http://boomkat.com/&quot;&gt;&lt;em&gt;Boomkat&lt;/em&gt;&lt;/a&gt;, which offers an excellent selection of electronic and slightly  more experimental stuff. While researching this piece I was also pleasantly surprised to see the return of &lt;a href=&quot;http://moviegrooves.com/&quot;&gt;&lt;em&gt;Movie Grooves&lt;/em&gt;&lt;/a&gt;. This used to be a great resource for soundtracks and library music, both of which are right up my street, and I was a regular customer there until it closed shop some time in 2011. Apparently it was then sold to a new owner, who re-launched the site in 2013 (something I  had completely missed out about!). Even more options are given in this &lt;a href=&quot;http://www.ethicalconsumer.org/boycotts/boycottamazon/amazonshoppingalternatives.aspx&quot;&gt;&lt;em&gt;Amazon&lt;/em&gt; alternatives guide&lt;/a&gt; by &lt;em&gt;Ethical Consumer&lt;/em&gt;. I’ll probably end up trying out some of these over the coming months as well.&lt;/p&gt;
+
+&lt;p&gt;Finally I’ve started rediscovering local record shops. Many of them sell online as well these days, which can make them a useful alternative for tracking down specific hard-to-find items. For example, just a few weeks ago I was looking for a particular CD that wasn’t on offer at any marketplace site or web store (apart from &lt;em&gt;Amazon&lt;/em&gt;), but after some searching I was able to buy it from some local shop in Belgium. &lt;/p&gt;
+
+&lt;h2 id=&quot;amazon-free-life-is-entirely-possible&quot;&gt;&lt;em&gt;Amazon&lt;/em&gt;-free life is entirely possible&lt;/h2&gt;
+&lt;p&gt;I decided to stop buying from &lt;em&gt;Amazon&lt;/em&gt; around early December. Since then I’ve been buying my music using a combination of the above methods. My experiences so far suggest that this is entirely possible, but things &lt;em&gt;do&lt;/em&gt; take more time, effort, and occasionally a bit more money as well. In one case I had to resort to &lt;em&gt;eBay&lt;/em&gt; in the end (the alternatives were either &lt;em&gt;Amazon&lt;/em&gt; or the label’s web shop, which turned out to be broken). Overall, the &lt;em&gt;Amazon&lt;/em&gt;-free life isn’t nearly as hard as I’d imagined, and I think I’m going to stick with it!&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;//www.youtube-nocookie.com/embed/d4o13isDdfY&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;em&gt;The Tax Free Tour (English version, more info &lt;a href=&quot;http://tegenlicht.vpro.nl/backlight/tax-free-tour.html&quot;&gt;here&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Super Sounds of Christmas</title>
+   <link href="http://bitsgalore.org/2013/12/15/Super-Sounds-of-Christmas"/>
+   <updated>2013-12-15T00:00:00+01:00</updated>
+   <id>http://bitsgalore.org/2013/12/15/Super-Sounds-of-Christmas</id>
+   <content type="html">&lt;p&gt;And there you have it, the launch of &lt;a href=&quot;http://www.bitsgalore.org/&quot;&gt;bitsgalore.org&lt;/a&gt;. And what better way to inaugurate this blog than with this fine selection of festive music. I compiled &lt;em&gt;Super Sounds of Christmas&lt;/em&gt; over a year ago, but it still sounds pretty good to me.&lt;/p&gt;
+
+&lt;p&gt;Style-wise it’s all over the place: there’s seventies disco (including an amazing track by the Salsoul Orchestra), exotica, reggae, polka, a truck-driving song by Red Simpson, a glass harp rendition of &lt;em&gt;Dance of the Sugar Plum Fairy&lt;/em&gt;, eighties &lt;em&gt;MIDI&lt;/em&gt; madness from Finland, and even a  Klaus Wunderlich track. And then some.&lt;/p&gt;
+
+&lt;p&gt;This mix was loosely inspired by the annual Christmas mix CDs by the inimitable Jonny Trunk, and if you enjoyed &lt;em&gt;Super Sounds of Christmas&lt;/em&gt;, chances are you will like his mixes as well (if not even more). The latest instalment is available  from his &lt;a href=&quot;http://trunkrecords.greedbag.com/buy/xmas-suckers-mix/&quot;&gt;Trunkshoppe&lt;/a&gt;; stocks usually run out pretty fast, so get one there while you can. In the meantime, here’s &lt;em&gt;Super Sounds of Christmas&lt;/em&gt;!&lt;/p&gt;
+
+&lt;iframe width=&quot;600&quot; height=&quot;360&quot; src=&quot;//www.mixcloud.com/widget/iframe/?feed=http%3A%2F%2Fwww.mixcloud.com%2Fcrapstanzo%2Fsuper-sounds-of-xmas%2F&amp;amp;mini=&amp;amp;stylecolor=&amp;amp;hide_artwork=&amp;amp;embed_type=widget_standard&amp;amp;embed_uuid=4119e81a-001d-4ae6-9909-bce7f61695a2&amp;amp;hide_tracklist=&amp;amp;hide_cover=1&amp;amp;autoplay=&quot;&gt;&lt;/iframe&gt;
+&lt;div style=&quot;clear:both; height:3px; width:592px;&quot;&gt;&lt;/div&gt;
+&lt;p style=&quot;display:block; font-size:12px; font-family:Helvetica, Arial, sans-serif; margin:0; padding: 3px 4px; color:#02a0c7; width:592px;&quot;&gt;&lt;a href=&quot;http://www.mixcloud.com/crapstanzo/super-sounds-of-xmas/?utm_source=widget&amp;amp;utm_medium=web&amp;amp;utm_campaign=base_links&amp;amp;utm_term=resource_link&quot; target=&quot;_blank&quot; style=&quot;color:#02a0c7; font-weight:bold;&quot;&gt;Super Sounds of Xmas&lt;/a&gt;&lt;span&gt; by &lt;/span&gt;&lt;a href=&quot;http://www.mixcloud.com/crapstanzo/?utm_source=widget&amp;amp;utm_medium=web&amp;amp;utm_campaign=base_links&amp;amp;utm_term=profile_link&quot; target=&quot;_blank&quot; style=&quot;color:#02a0c7; font-weight:bold;&quot;&gt;Crapstanzo&lt;/a&gt;&lt;span&gt; on &lt;/span&gt;&lt;a href=&quot;http://www.mixcloud.com/?utm_source=widget&amp;amp;utm_medium=web&amp;amp;utm_campaign=base_links&amp;amp;utm_term=homepage_link&quot; target=&quot;_blank&quot; style=&quot;color:#02a0c7; font-weight:bold;&quot;&gt; Mixcloud&lt;/a&gt;&lt;/p&gt;
+&lt;div style=&quot;clear:both; height:3px;&quot;&gt;&lt;/div&gt;
+
+</content>
+ </entry>
+ 
+ 
+</feed>
