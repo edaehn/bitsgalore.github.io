@@ -33,6 +33,10 @@ En die zit wel in Internet Archive:
 
 Er zullen dus nog wel meer artikelen op vergelijkbare wijze door het net zijn geglipt. Als lezers nog aanvullingen of correcties hebben dan hoor ik dat natuurlijk graag!
 
+## AD
+
+Het *AD* is nog veel verder gegaan dan *Trouw*, en heeft gelijk *alle* artikelen waarvan Ramesar auteur is verwijderd. Van veel van deze stukken [zijn de originele URLs nog te achterhalen via de *Google* cache](https://www.google.nl/?q=%22Perdiep+Ramesar%22+site:ad.nl#q=%22Perdiep+Ramesar%22+site:ad.nl). Maar niet lang meer! Omdat het hier om honderden artikelen gaat, is het geen doen om de URLs allemaal handmatig op te vragen. [*Google* biedt een *Search API*](https://developers.google.com/custom-search/json-api/v1/overview) aan, en daarmee zou het mogelijk moeten zijn om dit grotendeels te automatiseren. Die URLs kun je vervolgens weer proberen terug te zoeken in Internet Archive, net zoals ik dat voor de *Trouw* artikelen heb gedaan. Ik ga daar zelf nu geen tijd in steken, maar misschien heeft iemand anders zin om hiermee aan de slag te gaan. Enige haast is hierbij wel geboden, want binnen een paar weken zullen de links uit *Google*'s cache verdwenen zijn, en het is maar de vraag of je het dan nog ooiy terug kunt vinden.
+
 
 ## Links
 
