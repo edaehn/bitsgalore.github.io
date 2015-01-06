@@ -6,7 +6,7 @@ tags: English archiving webpage
 
 Back in 2006, Dutch weblog [Sargasso](http://sargasso.nl/) started following the activity of about 260 Dutch blogs that were active at the time, mainly by looking at the frequency of new postings. <!-- more --> Earlier this week Sargasso [published an update of the the status of these blogs in 2014](http://sargasso.nl/battle-blogs-war-lost/). They summarised the results of their analysis with this fascinating visualisation: 
 
-<iframe width="415" height="620" scrolling="no" src="http://sargasso.nl/wp-content/uploads/2014/11/botb2014b.htm"></iframe>
+<iframe width="435" height="670" src="http://sargasso.nl/wp-content/uploads/2014/11/botb2014b.htm"></iframe>
 
 Each block in the figure represents one blog, where the color and the number of dots indicate how often new postings appear. Here's the legend:
 
