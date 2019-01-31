@@ -5,6 +5,8 @@ tags: archiving
 ---
 Earlier this year I [blogged about *Isolyzer*]({{ BASE_PATH }}/2017/01/13/detecting-broken-iso-images-introducing-isolyzer/), a tool designed to help the detection of broken ISO images. Today I released a shiny new [beta version](https://github.com/KBNLresearch/isolyzer) that adds a significant amount of new functionality. Below is an overview of the main changes, followed by some warnings and caveats.
 
+<!-- more -->
+
 ## Support of more file systems
 
 Where previous versions only supported disc images with an [*ISO 9660*](https://en.wikipedia.org/wiki/ISO_9660) file system (with limited support for hybrid *ISO 9660*/Apple *HFS* file systems), the new release can deal with a much broader range of file systems. In particular, it adds support for the [*Universal Disk Format*](https://en.wikipedia.org/wiki/Universal_Disk_Format) (*UDF*) and Apple's [*HFS+*](https://en.wikipedia.org/wiki/HFS_Plus) file system. Unlike previous versions, *Isolyzer* can now also deal with Apple disc layouts that don't contain a [partition map](https://en.wikipedia.org/wiki/Apple_Partition_Map) (see also [here](https://en.wikipedia.org/wiki/Hybrid_disc#Multiple_file_systems) for more details on Apple disc layouts). Crucially, all of the above are supported both as stand-alone file systems (e.g. a CD image with exclusively a *HFS+* file system) as well as in various hybrid configurations (e.g. [*UDF Bridge*](http://www.afterdawn.com/glossary/term.cfm/udf_bridge) format).
