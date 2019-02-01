@@ -42,7 +42,7 @@ With the *SCSI* controller inserted into our *BitCurator* workstation, I hooked 
 
 ## Post-processing
 
-Since *tapeimgr* is format-agnostic, it's up to the user to figure out how to further process the recovered files. Identifying the file format is the first step, and this can be done using the usual suspects such as Unix [*file(1)*](https://linux.die.net/man/1/file), [*Siegfied*](https://www.itforarchivists.com/siegfried/) (both accessible through right-click context menus in *BitCurator*). Once the format is known, format-specific tools (e.g. [*tar*](https://linux.die.net/man/1/tar)) can be used to extract the files' contents.  
+Since *tapeimgr* is format-agnostic, it's up to the user to figure out how to further process the recovered files. Identifying the file format is the first step, and this can be done using the usual suspects such as Unix [*file(1)*](https://linux.die.net/man/1/file), [*Siegfied*](https://www.itforarchivists.com/siegfried/) (both accessible through right-click context menus in *BitCurator*). Once the format is known, format-specific tools (e.g. [*tar*](https://linux.die.net/man/1/tar)) can be used to extract the files' contents.
 
 ## Recovering the first sample set
 
