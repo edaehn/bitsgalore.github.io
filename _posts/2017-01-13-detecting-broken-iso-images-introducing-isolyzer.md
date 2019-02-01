@@ -6,11 +6,11 @@ tags: archiving
 
 In my [previous blog post]({{ BASE_PATH }}/2017/01/04/breaking-waves-and-some-flacs/) I addressed the detection of broken audio files in an automated workflow for ripping audio CDs. For (data) CD-ROMs and DVDs that are imaged to an ISO image, a similar problem exists: how can we be reasonably sure that the created image is complete? In this blog post I will discuss some possible ways of doing this using existing tools, along with their limitations. I then introduce *Isolyzer*, a new tool that might be a useful addition to the existing methods.
 
-<!--more-->
+<!-- more -->
 
 ## Checksums
 
-A  number of techniques exist to verify a newly created ISO image. A seemingly obvious solution would be to do a checksum comparison on both the ISO image and the physical carrier. For instance, the following will work on any Linux system:  
+A  number of techniques exist to verify a newly created ISO image. A seemingly obvious solution would be to do a checksum comparison on both the ISO image and the physical carrier. For instance, the following will work on any Linux system:
 
     md5sum myimage.iso
     md5sum /dev/sr0
@@ -44,7 +44,7 @@ This demonstrates that *isovfy* is not very useful for detecting truncated ISO f
 
 At this point I decided it was time to start digging into some specs. The [ISO 9660 page on the OSDev Wiki](http://wiki.osdev.org/ISO_9660) gives a good explanation of the internal organisation of an ISO 9660 image. From this I learnt that the [Primary Volume Descriptor](http://wiki.osdev.org/ISO_9660#The_Primary_Volume_Descriptor) (which is a data structure that is present on all ISO images) contains two interesting fields:
 
-* *Volume Space Size*, which is the "number of Logical Blocks in which the volume is recorded";   
+* *Volume Space Size*, which is the "number of Logical Blocks in which the volume is recorded";
 * *Logical Block Size*, which is "the size in bytes of a logical block".
 
 In theory, multiplying both figures should give the expected size of the ISO image, and this would provide a useful way to check if data are missing. To test this, I wrote a Python script that parses an ISO's Primary Volume Descriptor fields, calculates the expected file size and then compares this against the actual file size. Running the script against some 20 ISO images I had lying around showed that for 7 files the expected size was indeed identical to the actual file size. For most images, the actual size turned out to be marginally larger than expected (typically about 300-600 kB). For 3 images, the actual size was about twice the expected size. Digging deeper, I found out that these were hybrid images that contain an Apple partition on top of the ISO 9660 file system. According to [this Wikipedia article](https://en.wikipedia.org/wiki/Hybrid_disc#Multiple_file_systems), these hybrid discs come in two varieties:
@@ -113,3 +113,4 @@ One thing that puzzles me a bit is that for the majority of ISO images I've come
 ## Download links
 
 Isolyzer can be found [here on Github](https://github.com/KBNLresearch/verifyISOSize). It can be installed using *pip*; [see the instructions here](https://github.com/KBNLresearch/verifyISOSize#installation-with-pip). For Windows users who cannot/don't want to install Python I also provided stand-alone Windows binaries, which are available for download [here](https://github.com/KBNLresearch/verifyISOSize/releases).
+

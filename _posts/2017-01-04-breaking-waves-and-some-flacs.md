@@ -8,7 +8,7 @@ At the KB we have a large collection of offline optical media. Most of these are
 
 To get a better idea of what software tool(s) are best suitable for this task, I created a small dataset of audio files which I deliberately damaged. I subsequently ran each of these files through a set of candidate tools, and then looked which tools were able to detect the faulty files. The first half of this blog post focuses on the [*WAVE*](http://fileformats.archiveteam.org/wiki/WAVE) format; the second half covers the [*FLAC*](http://fileformats.archiveteam.org/wiki/FLAC) format (at the moment we haven't decided on which format to use yet).
 
-<!--more-->
+<!-- more -->
 
 ## *WAVE* dataset
 
@@ -20,7 +20,7 @@ For the *WAVE* dataset I started out with a [small, intact *WAVE* file](https://
 
 ## Candidate tools, *WAVE*
 
-The candidate tools I used to analyse the *WAVE* files are:  
+The candidate tools I used to analyse the *WAVE* files are:
 
 * [**jhove**](http://jhove.openpreservation.org/) includes a [*WAVE* validation module](http://jhove.openpreservation.org/modules/wave/), which makes it an obvious choice. The tested version is  1.14.6, 2016-05-12.
 * [**shntool**](http://www.etree.org/shnutils/shntool/) is a "multi-purpose WAVE data processing and reporting utility". It was first released in 2000. The tested version is 3.0.7.
@@ -97,7 +97,7 @@ Interestingly, Ffmpeg reports an error for both files that have 1 byte missing, 
 ### Mediainfo
 
 Mediainfo didn't report errors or warnings for any of these files. This is not surprising, but it does 
-confirm that Mediainfo cannot be used for detecting broken *WAVE* files.  
+confirm that Mediainfo cannot be used for detecting broken *WAVE* files.
 
 ## *FLAC* dataset
 
@@ -128,7 +128,7 @@ The full output results of each tool can be found [here](https://github.com/KBNL
 
 ### Shntool
 
-Even though Shntool supports *FLAC*, it was not able to detect the missing data in any of the files:  
+Even though Shntool supports *FLAC*, it was not able to detect the missing data in any of the files:
 
 |File|Result|
 |:--|:--|
@@ -158,7 +158,7 @@ Similar to the *WAVE* results, Mediainfo again didn't report errors or warnings 
 
 ### Flac
 
-Finally the results for the Flac tool:  
+Finally the results for the Flac tool:
 
 |File|Result|
 |:--|:--|
@@ -181,4 +181,5 @@ All example files, scripts and raw tool output are available here:
 
 
 [^1]: On a side note, I noticed that the error stream of the Flac tool sometimes contained a sequence of 21 non-printable '0x08' (backspace0 characters. This is probably a bug. 
-[^2]: Also, [this thread on *superuser.com*](http://superuser.com/a/100290/681049) recommends Ffmpeg for checking the integrity of video files.  
+[^2]: Also, [this thread on *superuser.com*](http://superuser.com/a/100290/681049) recommends Ffmpeg for checking the integrity of video files.
+

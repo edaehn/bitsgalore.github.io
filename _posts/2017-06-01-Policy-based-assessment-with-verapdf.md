@@ -53,7 +53,7 @@ It is important to note that, unlike in my earlier *Apache Preflight* experiment
 
 ## Basic operation
 
-Supposing that the *PDF*s we want to analyze are in directory `~/myPdfs`, and that the *Schematron* rules that represent our policy are in the file `demo-policy.sch`, we can do a policy-based validation of all these files with one single command:  
+Supposing that the *PDF*s we want to analyze are in directory `~/myPdfs`, and that the *Schematron* rules that represent our policy are in the file `demo-policy.sch`, we can do a policy-based validation of all these files with one single command:
 
     verapdf -x --policyfile demo-policy.sch ~/myPdfs/* > myPdfsOut.xml
     
@@ -137,7 +137,7 @@ One thing I missed is the reporting of *Actions*. Without this, it is not possib
    
 Not having worked on *PDF*-related things for a while myself, it took me some time to figure out how to put together the (Schematron) policy file. The *VeraPDF* [documentation gives some guidance](http://docs.verapdf.org/policy/), but I couldn't find an exhaustive description of every possible feature  in the features report. This meant I first had to run *VeraPDF* (with feature extraction enabled) on a number of files that I *knew* to contain certain features I wanted to include in my policy (e.g. embedded fonts, multimedia), inspect the *XML* output, and then write my Schematron rules based on that output. As I have a pretty good knowledge of the specific *PDF* data structures involved I was able to do this, but it did make me wonder about users who don't have that technical knowledge. Possible solutions would be:
 
-* Additional documentation of all possible output elements in the features report. This [seems to be in the works already](http://docs.verapdf.org/cli/feature-extraction/) (though not complete yet)  
+* Additional documentation of all possible output elements in the features report. This [seems to be in the works already](http://docs.verapdf.org/cli/feature-extraction/) (though not complete yet)
 * Inclusion of some example policy files. Actually *veraPDF*'s Github repo [contains a number of these](https://github.com/veraPDF/veraPDF-policy-docs/tree/master/Schemas) already, but they are not (yet) referenced by the documentation, and I only found out about them after I ran my tests.
 
 It would also help if users of *veraPDF* would publish and share their policy files.
@@ -149,3 +149,4 @@ Finally it just occurred to me this is a good occasion to give one more bump to 
 * [PDF policy-based validation demo, veraPDF](https://github.com/KBNLresearch/pdfPolicyVeraPDF) - Github repo with scripts, Schematron policy file and all output files
 * [VeraPDF](http://verapdf.org/)
 * [Adobe Portable Document Format - Inventory of long-term preservation risks](https://doi.org/10.5281/zenodo.801661)
+
