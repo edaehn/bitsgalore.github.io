@@ -111,17 +111,29 @@
 
 body{
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    font-size: 18px;
-    line-height: 27px;
+    font-size: 20px;
+    line-height: 30px;
     color: #454545;
   }
   
 blockquote p{
-  margin-bottom:0; font-size:16px; font-style:italic; font-weight:300 ;line-height:22px; }
+  margin-bottom:0; font-size:20px; font-style:italic; font-weight:300 ;}
 
-h1{font-size:24px; text-align:left;}
-h2{font-size:22px; text-align:left;}
-h3{font-size:20px; text-align:left;}  
+h1{
+    font-size:28px;
+    text-align:left;
+    padding-bottom:20px;
+}
+
+h2{
+    font-size:24px;
+    text-align:left;
+}
+
+h3{
+font-size:22px;
+    text-align:left;
+}
 
 li{
   padding-top:5px;
@@ -146,7 +158,7 @@ figure figcaption{
     text-align: left;}
 
 table{
-  font-size:14px;line-height:16px;
+  font-size:18px;line-height:22px;
   border-collapse:collapse;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -155,6 +167,14 @@ table{
 td, th{
  padding:15px;
  border: 1px solid black; }
+
+li {
+  line-height: 35px; }
+
+code{
+    font-size:16px;
+}
+
 
 .span12{
   margin: 0px 0px 0px 0px;
@@ -181,7 +201,8 @@ td, th{
 /* post-full*/
 .post-full .date {
   margin-bottom: 20px;
-  font-weight: bold; }
+  font-weight: bold;
+  padding-bottom:20px;}
 
 /* tag_box */
 .tag_box {
