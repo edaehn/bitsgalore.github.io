@@ -57,7 +57,7 @@ I then started the server with the command:
 
 After this the archive is available from <http://localhost:8080/my-web-archive/>. Below is a screenshot of one page:
 
-![]({{ BASE_PATH }}/images/NL-menu-pywb.png)
+![]({{ BASE_PATH }}/images/2018/07/NL-menu-pywb.png)
 
 Note that the *Archived* date as shown by *pywb* corresponds to our modified system date (i.e. 23 january 2004).
 

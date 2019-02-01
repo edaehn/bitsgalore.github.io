@@ -14,11 +14,11 @@ Shortly before Christmas, Dutch daily newspaper *Trouw* [removed 126 articles](h
 
 A quick check on a handful of Ramesar's articles revealed that quite a few were still accessible from the [Internet Archive's Wayback Machine](http://archive.org/web/). This got me curious how many out of the 126 deleted articles would still be available there. Answering this question isn't completely straightforward, because the Wayback Machine isn't easily searchable. In order to locate any of the deleted articles, one first needs to know its original URL (i.e. the one at *Trouw*'s website). A [list of all deleted articles](http://static3.trouw.nl/static/asset/2014/Artikelen_met_niet_verifieerbare_bronnen_Ramesar_2007_2014_7708.pdf) does exist, but this only provides each article's *title*, without listing the full URL.
 
-However, by entering each title into a search engine (I used a combination of *Google* and *DuckDuckGo*[^1]), I was able to recover the original URL of every article in the list. In many cases the URLs were still present in the cache of the search engine. In other cases URLs could be recovered from linking pages on the *Trouw* website. I then wrote a simple [script](https://github.com/bitsgalore/trouwRamesarWayback/blob/master/scripts/checkLinksInWayback.py) to check the availability of each URL in Internet Archive's Wayback Machine. The script is just a wrapper around Wayback's [Availability JSON API](https://archive.org/help/wayback_api.php), which is insanely handy (and really easy to use as well!). This yielded a [list]({{ BASE_PATH }}/images/ramesarTrouwURLSWayback.csv) with -for each article- its status in Wayback (i.e. has it been archived), and, if so, the URL to the most recent capture. 
+However, by entering each title into a search engine (I used a combination of *Google* and *DuckDuckGo*[^1]), I was able to recover the original URL of every article in the list. In many cases the URLs were still present in the cache of the search engine. In other cases URLs could be recovered from linking pages on the *Trouw* website. I then wrote a simple [script](https://github.com/bitsgalore/trouwRamesarWayback/blob/master/scripts/checkLinksInWayback.py) to check the availability of each URL in Internet Archive's Wayback Machine. The script is just a wrapper around Wayback's [Availability JSON API](https://archive.org/help/wayback_api.php), which is insanely handy (and really easy to use as well!). This yielded a [list]({{ BASE_PATH }}/images/2015/01/ramesarTrouwURLSWayback.csv) with -for each article- its status in Wayback (i.e. has it been archived), and, if so, the URL to the most recent capture. 
 
 ## Result
 
-The results of the above exercise are summarised in [this table]({{ BASE_PATH }}/images/tabelRamesar.html). As it turned out, 53 out of the 126 deleted articles are still accessible from the Internet Archive. These are mostly pieces that were written from 2010 onward, and include the notorious "Sharia Triangle" ones. From the time period 2007-2009 very few articles could be found. 
+The results of the above exercise are summarised in [this table]({{ BASE_PATH }}/images/2015/01/tabelRamesar.html). As it turned out, 53 out of the 126 deleted articles are still accessible from the Internet Archive. These are mostly pieces that were written from 2010 onward, and include the notorious "Sharia Triangle" ones. From the time period 2007-2009 very few articles could be found. 
 
 ## Possibly more?
 
@@ -36,12 +36,12 @@ This is the *news* link under which the article was first published, and a snaps
 
 Likewise, I expect that some articles may have slipped through the net in a similar way. Nevertheless, I think the above results are pretty good as they are! 
 
-**[Click here for the full list of removed articles, includes both original URLs and URLs in Internet Archive (if available)]({{ BASE_PATH }}/images/tabelRamesar.html)**
+**[Click here for the full list of removed articles, includes both original URLs and URLs in Internet Archive (if available)]({{ BASE_PATH }}/images/2015/01/tabelRamesar.html)**
 
 
 ## Links
 
-* [Data as comma-separated text file (UTF-8)]({{ BASE_PATH }}/images/ramesarTrouwURLSWayback.csv)
+* [Data as comma-separated text file (UTF-8)]({{ BASE_PATH }}/images/2015/01/ramesarTrouwURLSWayback.csv)
 * [Github repo with scripts and raw data files](https://github.com/bitsgalore/trouwRamesarWayback)
 * [Github repo (as single ZIP file)](https://github.com/bitsgalore/trouwRamesarWayback/archive/master.zip)
 

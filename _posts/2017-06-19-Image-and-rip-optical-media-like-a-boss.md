@@ -24,7 +24,7 @@ The workflow is built around a number of tried and tested software components. F
 
 The workflow (which is written in Python) integrates the above components. The figure below gives an overview:
 
-![]({{ BASE_PATH }}/images/iromlabArchitectureSmall.png)
+![]({{ BASE_PATH }}/images/2017/06/iromlabArchitectureSmall.png)
 
 In short, *Iromlab* consists of a main module (*iromlab.pyw*) that defines a graphical interface that is used to enter data about each disc. For each disc the entered data are sent as job files to a file-based processing queue. These jobs are monitored by a worker module (*cdworker.py*), which orchestrates the main heavy-lifting (disc identification, imaging, etcetera). The jobs are processed in ["First In First Out"](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)) order. As the physical discs are inserted into the machine in the same order, this ensures that the workflow keeps track of the relationship between the discs and the entered data (in the absence of data entry errors!). Since the worker module runs as a subprocess (separate thread from the data entry interface), new discs can be loaded continuously while the imaging/ripping process is ongoing. The overall goal was to make the workflow as simple as possible to use for an operator, which meant that manual data entry is reduced to a minimum.
 
@@ -36,19 +36,19 @@ All output of an *Iromlab* session is written to a batch. Each disc is represent
 
 Upon startup, *Iromlab* launches a simple graphical interface that is used for data entry. An operator then presses a button to create a new batch. Once the batch is initialised, the following fields need to be entered for each disc:
 
-![]({{ BASE_PATH }}/images/iromAllesBestandsformaten.png)
+![]({{ BASE_PATH }}/images/2017/06/iromAllesBestandsformaten.png)
 
 Here, *PPN* is the identifier of the catalogue record that is associated with the disc. *Volume number* defines the sequential order in case multiple discs are associated with one record (e.g. a CD box set). Note that *Carrier type* does not influence the imaging or ripping process; it is only used to describe the disc at the metadata level. After pressing "Submit", *Iromlab* looks up the entered *PPN* identifier in the KB catalogue using an [*SRU*](https://en.wikipedia.org/wiki/Search/Retrieve_via_URL) query, and then prompts the operator to confirm the publication title that was returned:   
 
-![]({{ BASE_PATH }}/images/iromConfirmTitle.png)
+![]({{ BASE_PATH }}/images/2017/06/iromConfirmTitle.png)
 
 After confirming this, *Iromlab* prompts the operator to insert the disc into the disc robot:  
 
-![]({{ BASE_PATH }}/images/loadDisc.png)
+![]({{ BASE_PATH }}/images/2017/06/loadDisc.png)
 
 This second prompt tries to enforce a fixed processing order (i.e. enter the data first, and then insert the disc), which reduces the risk of synchronisation errors between the jobs queue and the stack of physical discs in the disc robot. After pressing "OK", the job is added to the processing queue.
 
-![]({{ BASE_PATH }}/images/workstationSmall.jpg)
+![]({{ BASE_PATH }}/images/2017/06/workstationSmall.jpg)
 
 *Iromlab in action; disc robot on the left.*
 
