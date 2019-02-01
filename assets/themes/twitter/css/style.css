@@ -118,9 +118,9 @@ body{
 blockquote p{
   margin-bottom:0; font-size:16px; font-style:italic; font-weight:300 ;line-height:22px; }
 
-h1{font-size:28px;}
-h2{font-size:20px;}
-h3{font-size:18px;}  
+h1{font-size:24px; text-align:left;}
+h2{font-size:22px; text-align:left;}
+h3{font-size:20px; text-align:left;}  
   
 figure{
   display:inline-block;
@@ -142,12 +142,19 @@ figure figcaption{
 table{
   font-size:14px;line-height:16px;
   border-collapse:collapse;
+  margin-top: 10px;
+  margin-bottom: 20px;
   }
 
 td, th{
  padding:15px;
  border: 1px solid black; }
- 
+
+.span12{
+  margin: 0px 0px 0px 0px;
+  text-align: left;
+} 
+
 .navbar .nav {
   float: right; }
 
@@ -205,3 +212,4 @@ td, th{
   background: #57A957;
   border: 1px solid #4c964d;
   color: #FFF; }
+
