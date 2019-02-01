@@ -111,7 +111,8 @@
 
 body{
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 27px;
     color: #454545;
   }
   
@@ -121,7 +122,12 @@ blockquote p{
 h1{font-size:24px; text-align:left;}
 h2{font-size:22px; text-align:left;}
 h3{font-size:20px; text-align:left;}  
-  
+
+li{
+  padding-top:5px;
+  padding-bottom:5px;
+}
+
 figure{
   display:inline-block;
   margin-left: auto;
