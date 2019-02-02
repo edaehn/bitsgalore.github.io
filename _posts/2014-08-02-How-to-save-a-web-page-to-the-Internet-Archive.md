@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to save a web page to the Internet Archive
-tags: English archiving webpage wayback
+tags: [web archiving]
 ---
 This short tutorial shows how to take a snapshot of a web page, and save it to the Internet Archive's [Wayback Machine](http://en.wikipedia.org/wiki/Wayback_Machine).
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Resurrecting the first Dutch web index&#58; NL-menu revisited
-tags: archiving
+tags: [optical media, web archaeology, web archiving]
 ---
 
 *NL-menu* was the first Dutch web index. The site was originally founded by a consortium of [SURFnet](https://en.wikipedia.org/wiki/SURFnet), Dutch universities and the  KB. From the mid-nineties onwards it was maintained solely by the KB. *NL-menu* was [discontinued in 2004](https://www.robcoers.nl/nl-menu-is-straks-niet-meer-leve-nl-menu/), after which the site was taken offline. In 2006 the domain name was sold to a private company that used it for hosting a web index that was partially based on the original *NL-menu* site.

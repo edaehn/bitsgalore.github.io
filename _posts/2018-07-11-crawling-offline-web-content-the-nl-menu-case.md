@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Crawling offline web content&#58; the NL-menu case
-tags: archiving
+tags: [web archaeology, web archiving]
 ---
 
 In a [previous blog post]({{ BASE_PATH }}/2018/04/24/Resurrecting-the-first-Dutch-web-index/) I showed how we resurrected *NL-menu*, the first Dutch web index. It explains how we recovered the site's data from an old CD-ROM, and how we subsequently created a local copy of the site by [serving the CD-ROM's contents on the *Apache* web server](https://github.com/KBNLresearch/nl-menu-resources/blob/master/doc/serving-static-website-with-Apache.md). This follow-up post covers the final step: crawling the resurrected site to a [WARC](https://en.wikipedia.org/wiki/Web_ARChive) file that can be ingested into our web archive.
