@@ -34,50 +34,11 @@
   font-size:30px;
   letter-spacing:4px;
   text-align:center;
-  color:#595959;
+  color:#404040;
   padding-top: 10px;
   margin-bottom: 0px;
   }
 
-h1 a:link{
-  color: #595959;
-  text-decoration: none;
-  }
-
-h1 a:visited{
-  color: #595959;
-  text-decoration: none;
-  }
-
-h1 a:hover{
-  color: #1a1aff;
-  text-decoration: none;
-  }
-
-h1 a:active{
-  color: #595959;
-  text-decoration: none;
-  }
-
-h2 a:link{
-  color: #595959;
-  text-decoration: none;
-  }
-
-h2 a:visited{
-  color: #595959;
-  text-decoration: none;
-  }
-
-h2 a:hover{
-  color: #1a1aff;
-  text-decoration: none;
-  }
-
-h2 a:active{
-  color: #595959;
-  text-decoration: none;
-  }
 
 .footnotes{
   border-top: 2px solid black;
@@ -98,13 +59,17 @@ h2 a:active{
 
 .post-entry{padding-bottom:25px;}
 
+.post-entry small{
+  color: #666666;
+}
+
 .newsbar{
   margin-top: 0px;
   margin-bottom: 20px;
   padding: 15px;
   border: 2px solid #ccc;
   }
-  
+
 .newsbar h2{
   font-size:20px;
   line-height:26px; 
@@ -139,7 +104,7 @@ h2 a:active{
   } 
 
 .sidebar small{
-  color:#708090;;
+  color:#404040;
 }
 
 .sidebar figure figcaption{
@@ -169,7 +134,7 @@ body{
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     font-size: 20px;
     line-height: 30px;
-    color: #454545;
+    color: #404040;
   }
   
 blockquote p{
