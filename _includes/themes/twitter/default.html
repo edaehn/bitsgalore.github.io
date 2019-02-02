@@ -76,18 +76,15 @@
 		  <h2><a href="{{ site.url }}/atom.xml">ATOM feed</a></h2>
           <h2><a href="{{ site.url }}/archive.html">Archive</a></h2>
 
-		  
 	    </div>
 
 	    <div class="sidebar">
 	      <!-- Tag cloud -->
           <h2><a href="{{ site.url }}/tags.html">Tags</a></h2>
-          <p>
           <ul class="tag_box inline">
             {% assign tags_list = site.tags %}  
             {% include JB/tags_list %}
           </ul>
-          </p>
       </div>	  
 	</div>
 	
