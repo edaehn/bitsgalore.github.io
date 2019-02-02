@@ -21,22 +21,22 @@
 
 .banner-header{
     /*@include box-shadow(rgba(0, 0, 0, 0.30) 0 4px 10px 0);
-    background: url({{ site.url }}/images/bitrotbanner.jpg) no-repeat center center fixed;
-    height: 400px;
-    width: 1900px;
-    background-position: center;
-    background-size: cover;*/
+    background: url({{ site.url }}/images/banner.png);
+    height: 95px;
+    width: 615px;
+    background-position: center;*/
+    padding-top: 50px;
+    margin-bottom: 50px;
   }
 
 .banner-tagline{
   font-family: Verdana, Geneva, sans-serif;
-  font-size:40px;
+  font-size:30px;
   letter-spacing:4px;
-  line-height:40px;
   text-align:center;
   color:#595959;
-  padding-top: 100px;
-  margin-bottom: 50px;
+  padding-top: 10px;
+  margin-bottom: 0px;
   }
 
 .banner-tagline a:link{
@@ -171,6 +171,12 @@ li{
   padding-top:5px;
   padding-bottom:5px;
 }
+
+.img-center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+ }
 
 figure{
   display:inline-block;
