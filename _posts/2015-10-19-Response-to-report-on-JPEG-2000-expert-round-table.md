@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Response to report on JPEG 2000 expert round table 
-tags: [jpeg2000, JP2]
+tags: [jpeg2000,JP2]
 ---
 
 Today my attention was caught by [this report of an "Expert round table" on JPEG2000 and Digitisation](https://www.townswebarchiving.com/2015/10/jpeg2000-and-digitisation-expert-round-table/), which was published on the  TownsWeb Archiving blog. Although the report as a whole is quite balanced, it's unfortunate that it provides fuel to some long-running myths about JPEG 2000 not supporting fully lossless compression. Since I wasn't able to leave a comment on the Townweb blog itself, I turned my response into this small blog post.

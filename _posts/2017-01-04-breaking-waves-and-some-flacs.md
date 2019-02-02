@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Breaking WAVEs (and some FLACs too)
-tags: [WAV, WAVE, FLAC, optical media]
+tags: [WAVE,FLAC,optical media]
 ---
 
 At the KB we have a large collection of offline optical media. Most of these are CD-ROMs, but we also have a sizeable proportion of audio CDs. We're currently in the process of designing a workflow for stabilising the contents of these materials using disk imaging. For audio CDs this involves 'ripping' the tracks to audio files. Since the workflow will be automated to a high degree, basic quality checks on the created audio files are needed. In particular, we want to be sure that the created audio files are complete, as it is possible that some hardware failure during the ripping process could result in truncated or otherwise incomplete files.

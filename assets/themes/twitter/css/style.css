@@ -82,8 +82,8 @@
   font-family: Verdana, Geneva, sans-serif;
   text-align:left;
   /*color:#595959;*/
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   /*padding-left: 50px;*/
   border-bottom: 2px solid black;
   }

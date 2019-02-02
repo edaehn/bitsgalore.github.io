@@ -1,7 +1,7 @@
 ---
 layout: post
 title: PDF/A as a preferred, sustainable format for spreadsheets?
-tags: [PDF, PDF/A]
+tags: [PDF]
 ---
 
 Earlier this week the National Archives of the Netherlands (NANeth) published a [report on preferred file formats](http://www.nationaalarchief.nl/sites/default/files/docs/na_rapport_voorkeursformaten-web_0.pdf). It gives an overview of NANeth's 'preferred' and 'acceptable' formats for 9 content categories, and also explains the reasoning behind the selected formats. Even though in Dutch language only, the report is well worth a look. However, I found a few of the choices a little surprising, especially the 'spreadsheet' category for which it lists the following 'preferred' and 'acceptable' formats:
