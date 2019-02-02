@@ -71,7 +71,11 @@
   font-size:14px;
   font-weight:bold;
   }
-  
+
+.content p{
+  padding-bottom: 20px;
+  }
+
 .post-entry{padding-bottom:25px;}
 
 .newsbar{
@@ -165,11 +169,6 @@ h2{
 h3{
 font-size:22px;
     text-align:left;
-}
-
-li{
-  padding-top:5px;
-  padding-bottom:5px;
 }
 
 .img-center{
