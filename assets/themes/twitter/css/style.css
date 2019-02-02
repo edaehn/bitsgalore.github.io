@@ -39,22 +39,42 @@
   margin-bottom: 0px;
   }
 
-.banner-tagline a:link{
+h1 a:link{
   color: #595959;
   text-decoration: none;
   }
 
-.banner-tagline a:visited{
+h1 a:visited{
   color: #595959;
   text-decoration: none;
   }
 
-.banner-tagline a:hover{
-  color: #990000;
+h1 a:hover{
+  color: #1a1aff;
   text-decoration: none;
   }
 
-.banner-tagline a:active{
+h1 a:active{
+  color: #595959;
+  text-decoration: none;
+  }
+
+h2 a:link{
+  color: #595959;
+  text-decoration: none;
+  }
+
+h2 a:visited{
+  color: #595959;
+  text-decoration: none;
+  }
+
+h2 a:hover{
+  color: #1a1aff;
+  text-decoration: none;
+  }
+
+h2 a:active{
   color: #595959;
   text-decoration: none;
   }
