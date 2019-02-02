@@ -81,6 +81,7 @@
 	    <div class="sidebar">
 	      <!-- Tag cloud -->
           <h2><a href="{{ site.url }}/tags.html">Tags</a></h2>
+          {% include JB/setup %}
           <ul class="tag_box inline">
             {% assign tags_list = site.tags %}  
             {% include JB/tags_list %}

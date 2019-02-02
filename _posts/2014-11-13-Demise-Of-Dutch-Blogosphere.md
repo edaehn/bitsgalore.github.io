@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Demise of the Dutch Blogosphere
-tags: [web archiving]
+tags: [web-archiving]
 ---
 
 Back in 2006, Dutch weblog [Sargasso](http://sargasso.nl/) started following the activity of about 260 Dutch blogs that were active at the time, mainly by looking at the frequency of new postings. <!-- more --> Earlier this week Sargasso [published an update of the the status of these blogs in 2014](http://sargasso.nl/battle-blogs-war-lost/). They summarised the results of their analysis with this fascinating visualisation: 
