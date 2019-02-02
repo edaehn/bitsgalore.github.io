@@ -39,6 +39,22 @@
   margin-bottom: 50px;
   }
 
+.banner-tagline a:link{
+  color: #595959;
+  }
+
+.banner-tagline a:visited{
+  color: #595959;
+  }
+
+.banner-tagline a:hover{
+  color: #595959;
+  }
+
+.banner-tagline a:active{
+  color: #595959;
+  }
+
 .footnotes{
   border-top: 2px solid black;
   margin-top: 50px;
