@@ -23,17 +23,9 @@ Finally *Isolyzer*'s documentation has been given a major overhaul, as you can s
 
 ## Installation
 
-<strike>Because of the inclusion of breaking changes, and also the fact that so far we've only been able to test it on a limited number of *UDF*, *HFS* and *HFS+* images, the software is currently released as a *pre-release* that has not been merged into *Isolyzer*'s main branch yet. You can install it with [*pip*](https://en.wikipedia.org/wiki/Pip_(package_manager)), but if you do make sure to add the `--pre` option, e.g.:
-
-    pip install isolyzer --user --pre
-
-If you omit `--pre`, the command will install the most recent 'stable' version instead!</strike> 
-
-**Update September 2017:** I just published *Isolyzer* as a regular (non-beta) release, which can be installed without the `--pre` option. So you can simply use this: 
+You can install *Isolyzer* with [*pip*](https://en.wikipedia.org/wiki/Pip_(package_manager)), using the following command:
 
     pip install isolyzer --user
-
-<strike>For Windows users [32-bit Windows binaries are available here](https://github.com/KBNLresearch/isolyzer/files/1139582/isolyzer_1_0_0b3_win32.zip).</strike>
 
 For Windows users [64- and 32-bit binaries are available here](https://github.com/KBNLresearch/isolyzer/releases/tag/1.0.0). These binaries are completely stand-alone and don't require Python on your machine.
 
@@ -46,6 +38,6 @@ As always feedback on *Isolyzer* is highly appreciated, if only because any prob
 * [*Isolyzer* on Github](https://github.com/KBNLresearch/isolyzer/)
 * [Windows binaries (64- and 32-bit)](https://github.com/KBNLresearch/isolyzer/releases/tag/1.0.0))
 
-## Postscript (4 September 2017)
+## Postscript (2 February 2019)
 
-As I just published this version of *Isolyzer* as a regular (non-beta) release, I updated all links to the *isolyzer* repo to point to the master branch.
+Removed some outdated and possibly confusing information from the "Installation" section.
