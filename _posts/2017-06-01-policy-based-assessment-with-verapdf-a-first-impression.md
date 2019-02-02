@@ -4,7 +4,7 @@ title: Policy-based assessment with VeraPDF - a first impression
 tags: [PDF,VeraPDF]
 ---
 
-Some four years ago I wrote [a blog post]({{ BASE_PATH }}/2013/07/25/identification-pdf-preservation-risks-sequel/) that demonstrated how *Apache Preflight* (the PDF/A validator tool that is part of [*Apache PDFBox*](https://pdfbox.apache.org/)) can be used to detect features in a PDF that are potential preservation risks. A [follow-up blog]({{ BASE_PATH }}//2014/01/27/identification-pdf-preservation-risks-analysis-govdocs-selected-corpus/) applied [*Schematron*](https://en.wikipedia.org/wiki/Schematron) rules to the *Preflight* output in an attempt at doing policy-based assessments. The results of that work were quite promising, but dealing with Preflight's multitude of (especially font-related) validation errors proved to be a challenge.
+Some four years ago I wrote [a blog post]({{ BASE_PATH }}/2013/07/25/identification-pdf-preservation-risks-sequel) that demonstrated how *Apache Preflight* (the PDF/A validator tool that is part of [*Apache PDFBox*](https://pdfbox.apache.org/)) can be used to detect features in a PDF that are potential preservation risks. A [follow-up blog]({{ BASE_PATH }}//2014/01/27/identification-pdf-preservation-risks-analysis-govdocs-selected-corpus) applied [*Schematron*](https://en.wikipedia.org/wiki/Schematron) rules to the *Preflight* output in an attempt at doing policy-based assessments. The results of that work were quite promising, but dealing with Preflight's multitude of (especially font-related) validation errors proved to be a challenge.
 
 The idea of using a *PDF/A* validor for policy-based assessments of "regular" *PDF* files (i.e. *PDF*s that are not necessarily *PDF/A*) was explicitly addressed as a use case for [*veraPDF*](http://verapdf.org/). With *VeraPDF* now having entered its "final testing phase", I thought this was a good time for a small test-drive of *veraPDF*'s capabilities in this area. All test results are based on *VeraPDF* 1.4.7.
 
@@ -21,7 +21,7 @@ The dataset is quite small, but contains many complex and otherwise challenging 
  
 ## Policy
 
-The policy is similar to the one used in [my 2014 blog post]({{ BASE_PATH }}//2014/01/27/identification-pdf-preservation-risks-analysis-govdocs-selected-corpus/), and it is defined by the following objectives:
+The policy is similar to the one used in [my 2014 blog post]({{ BASE_PATH }}//2014/01/27/identification-pdf-preservation-risks-analysis-govdocs-selected-corpus), and it is defined by the following objectives:
 
 1. No encryption / password protection
 2. All fonts are embedded

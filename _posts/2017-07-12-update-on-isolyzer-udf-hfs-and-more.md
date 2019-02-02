@@ -3,7 +3,7 @@ layout: post
 title: Update on Isolyzer&#58; UDF, HFS+ and more!
 tags: [isolyzer,optical media,ISO 9660,HFS,UDF]
 ---
-Earlier this year I [blogged about *Isolyzer*]({{ BASE_PATH }}/2017/01/13/detecting-broken-iso-images-introducing-isolyzer/), a tool designed to help the detection of broken ISO images. Today I released a shiny new [beta version](https://github.com/KBNLresearch/isolyzer) that adds a significant amount of new functionality. Below is an overview of the main changes, followed by some warnings and caveats.
+Earlier this year I [blogged about *Isolyzer*]({{ BASE_PATH }}/2017/01/13/detecting-broken-iso-images-introducing-isolyzer), a tool designed to help the detection of broken ISO images. Today I released a shiny new [beta version](https://github.com/KBNLresearch/isolyzer) that adds a significant amount of new functionality. Below is an overview of the main changes, followed by some warnings and caveats.
 
 <!-- more -->
 

@@ -18,7 +18,7 @@ The level of automation that is required for this job implied we would need to u
 
 ## Main workflow components
 
-The workflow is built around a number of tried and tested software components. For the disc type identification it uses [*cd-info*](https://linux.die.net/man/1/cd-info), which is part of [*libcdio*](https://www.gnu.org/software/libcdio/), the "GNU Compact Disc Input and Control Library". Extraction of data tracks from CD-ROMs and DVDs is done with [*IsoBuster*](https://www.isobuster.com/). Audio ripping is done with [*dBpoweramp*](https://www.dbpoweramp.com/). Since *dBpoweramp* only has a graphical interface, we contacted its author, and through a small development contract with the KB he wrote a [command-line tool](https://github.com/KBNLresearch/iromlab/tree/master/dBpowerampconsolerip) for the core ripping software. This enabled us to to integrate *dBpoweramp* into the workflow as well. Ripped audio files are verified for completeness using either [*Shntool*](http://www.etree.org/shnutils/shntool/) (WAVE format) or [*flac*](https://xiph.org/flac/) (Flac format). ISO images are checked with [*Isolyzer*]({{ BASE_PATH }}/2017/01/13/detecting-broken-iso-images-introducing-isolyzer/). Finally, operation of the disc robot is done using the *dBpoweramp* driver tools.
+The workflow is built around a number of tried and tested software components. For the disc type identification it uses [*cd-info*](https://linux.die.net/man/1/cd-info), which is part of [*libcdio*](https://www.gnu.org/software/libcdio/), the "GNU Compact Disc Input and Control Library". Extraction of data tracks from CD-ROMs and DVDs is done with [*IsoBuster*](https://www.isobuster.com/). Audio ripping is done with [*dBpoweramp*](https://www.dbpoweramp.com/). Since *dBpoweramp* only has a graphical interface, we contacted its author, and through a small development contract with the KB he wrote a [command-line tool](https://github.com/KBNLresearch/iromlab/tree/master/dBpowerampconsolerip) for the core ripping software. This enabled us to to integrate *dBpoweramp* into the workflow as well. Ripped audio files are verified for completeness using either [*Shntool*](http://www.etree.org/shnutils/shntool/) (WAVE format) or [*flac*](https://xiph.org/flac/) (Flac format). ISO images are checked with [*Isolyzer*]({{ BASE_PATH }}/2017/01/13/detecting-broken-iso-images-introducing-isolyzer). Finally, operation of the disc robot is done using the *dBpoweramp* driver tools.
 
 ## Architecture
 
@@ -57,7 +57,7 @@ This second prompt tries to enforce a fixed processing order (i.e. enter the dat
 Meanwhile the worker module continuously scans the processing queue for job files. Once it picks up a job, it reads the information from the job file, and  tries to load a new disc. The processing of each disc then involves the following steps: 
 
 * Analyse the disc with *cd-info*. 
-* Record information about the sector layout of the physical disc (this is needed to ensure ISO images extracted from [CD-Extra / Bluebook]({{ BASE_PATH }}/2017/04/25/imaging-cd-extra-blue-book-discs/) discs are accessible).
+* Record information about the sector layout of the physical disc (this is needed to ensure ISO images extracted from [CD-Extra / Bluebook]({{ BASE_PATH }}/2017/04/25/imaging-cd-extra-blue-book-discs) discs are accessible).
 * Rip any audio tracks to WAVE or FLAC; extract data tracks to ISO images.
 * Record information about the extraction process (logs, exit codes).
 * Check the integrity of the extracted/ripped files.
