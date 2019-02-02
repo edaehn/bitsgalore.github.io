@@ -41,18 +41,22 @@
 
 .banner-tagline a:link{
   color: #595959;
+  text-decoration: none;
   }
 
 .banner-tagline a:visited{
   color: #595959;
+  text-decoration: none;
   }
 
 .banner-tagline a:hover{
-  color: #595959;
+  color: #990000;
+  text-decoration: none;
   }
 
 .banner-tagline a:active{
   color: #595959;
+  text-decoration: none;
   }
 
 .footnotes{
