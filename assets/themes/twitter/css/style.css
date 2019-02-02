@@ -53,6 +53,10 @@
   font-weight:bold;
   }
 
+.pagination em{
+text-decoration: underline;
+  }
+
 .content p{
   padding-bottom: 20px;
   }
@@ -61,6 +65,9 @@
 
 .post-entry small{
   color: #666666;
+}
+
+footer {
 }
 
 .newsbar{

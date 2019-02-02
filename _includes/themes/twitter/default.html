@@ -85,16 +85,14 @@
             {% assign tags_list = site.tags %}  
             {% include JB/tags_list %}
           </ul>
-      </div>	  
+        </div>	  
 	</div>
 	
 	<footer>
 	<hr>
 	<div class="row-fluid">
-      <div class="span3">
-	    <!-- Column left (empty) -->
-	  </div>
 	  
+      <div class="span4"></div>
 	  <div class="span5">
 	  <!-- Column center (footer text) -->
 	    <p><small>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
@@ -105,6 +103,6 @@
     </footer>
   </div>
 
-    {% include JB/analytics %}
+  {% include JB/analytics %}
   </body>
 </html>
