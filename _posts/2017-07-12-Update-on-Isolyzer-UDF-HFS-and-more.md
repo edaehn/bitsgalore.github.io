@@ -33,7 +33,7 @@ If you omit `--pre`, the command will install the most recent 'stable' version i
 
     pip install isolyzer --user
 
-<strike>For Windows users [32-bit Windows binaries are available here](https://github.com/KBNLresearch/isolyzer/files/1139582/isolyzer_1_0_0b3_win32.zip)</strike>.
+<strike>For Windows users [32-bit Windows binaries are available here](https://github.com/KBNLresearch/isolyzer/files/1139582/isolyzer_1_0_0b3_win32.zip).</strike>
 
 For Windows users [64- and 32-bit binaries are available here](https://github.com/KBNLresearch/isolyzer/releases/tag/1.0.0). These binaries are completely stand-alone and don't require Python on your machine.
 
@@ -48,4 +48,4 @@ As always feedback on *Isolyzer* is highly appreciated, if only because any prob
 
 ## Postscript (4 September 2017)
 
-As I just moved published this version of *Isolyzer* as a regular (non-beta) release, I updated all links to the *isolyzer* repo to point to the master branch.
+As I just published this version of *Isolyzer* as a regular (non-beta) release, I updated all links to the *isolyzer* repo to point to the master branch.
