@@ -22,9 +22,10 @@
 .banner-header{
     /*@include box-shadow(rgba(0, 0, 0, 0.30) 0 4px 10px 0);
     background: url({{ site.url }}/images/bitrotbanner.jpg) no-repeat center center fixed;
-    height: 300px;
+    height: 400px;
+    width: 1900px;
     background-position: center;
-    background-size: cover; */
+    background-size: cover;*/
   }
 
 .banner-tagline{
@@ -34,7 +35,7 @@
   line-height:40px;
   text-align:center;
   color:#595959;
-  margin-top: 100px;
+  padding-top: 100px;
   margin-bottom: 50px;
   }
 
@@ -92,7 +93,6 @@
   font-size:16px;
   line-height:18px;
   } 
-
 
 .sidebar small{
   color:#708090;;
