@@ -87,7 +87,7 @@ First we run *ddrescue* with the following command line:
 
     ddrescue -b 2048 -r4 -v /dev/sr0 mydisk.iso mydisk.log
 
-Here *-b* sets the block size (which is typically 2048 bytes for a CD-ROM); *-r4* sets the maximum number of retries in case of bad sectors to 4[^7], and *-v* activates verbose output mode. File *mydisk.log* is a so-called [*mapfile*](https://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html#Mapfile-structure) (known as *logfile* in *ddrescue* versions prior to 1.20). The *mapfile* contains (among a few other things) information on the recovery status of blocks of data. After running the above command on a faulty CD-ROM, we end up with output that looks like this:
+Here `-b` sets the block size (which is typically 2048 bytes for a CD-ROM); `-r4` sets the maximum number of retries in case of bad sectors to 4[^7], and `-v` activates verbose output mode. File *mydisk.log* is a so-called [*mapfile*](https://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html#Mapfile-structure) (known as *logfile* in *ddrescue* versions prior to 1.20). The *mapfile* contains (among a few other things) information on the recovery status of blocks of data. After running the above command on a faulty CD-ROM, we end up with output that looks like this:
 
     GNU ddrescue 1.17
     About to copy 624918 kBytes from /dev/sr0 to mydisk.iso
@@ -108,11 +108,11 @@ From this we can see the following:
 * A total of 47104 bytes were *not* rescued ('errorsize' field)
 * 3 errors occurred while reading the CD ('errors' field)  
 
-However, it is often possible to improve the result by additional runs of *ddrescue* using either different options, or other hardware. First we'll see if we can improve things by re-running in [*direct disc access*](https://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html#Direct-disc-access) mode (this does not work on some systems, in which case *ddrescue* will report a warning). So we use the following command[^6]: 
+However, it is often possible to improve the result by additional runs of *ddrescue* using either different options, or other hardware. First we'll see if we can improve things by re-running in [*direct disc access*](https://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html#Direct-disc-access) mode (this does not work on some systems, in which case *ddrescue* will report a warning). So we use the following command[^6]:
 
     ddrescue -d -b 2048 -r1 -v /dev/sr0 mydisk.iso mydisk.log
 
-Here the *-d* switch activates direct disc access, which bypasses the kernel cache (note that the number of retries is set to 1 in the above example). Running the command causes *ddrescue* to update both the ISO and the mapfile. The screen output now looks like this:
+Here the `-d` switch activates direct disc access, which bypasses the kernel cache (note that the number of retries is set to 1 in the above example). Running the command causes *ddrescue* to update both the ISO and the mapfile. The screen output now looks like this:
 
     GNU ddrescue 1.17
     About to copy 624918 kBytes from /dev/sr0 to mydisk.iso
@@ -232,7 +232,7 @@ Result:
     ::
     etc
 
-It looks like all items that are followed by *;1* are files, and those that aren't are directories. Also, the *-l* option can be used for a detailed list that includes additional file attributes (size, date, etc.).
+It looks like all items that are followed by *;1* are files, and those that aren't are directories. Also, the `-l` option can be used for a detailed list that includes additional file attributes (size, date, etc.).
 
 ### Disktype
 
@@ -271,7 +271,7 @@ or:
 
     cdparanoia -B -l
 
-The *-L* switch results in the generation of a detailed log file; *-l* produces a summary log (name:  *cdparanoia.log*)[^5]. File names are generated automatically like this:
+The `-L` switch results in the generation of a detailed log file; `-l` produces a summary log (name:  *cdparanoia.log*)[^5]. File names are generated automatically like this:
 
     track01.cdda.wav
     track02.cdda.wav
@@ -383,11 +383,11 @@ Next use *bchunk* to convert the *BIN/TOC* to an ISO file (the last argument is 
 
 In this case this resulted in file *no201.iso*, which is a mountable ISO image.
 
-For *audio* images *bchunk* has a *-w* option, which creates output in *WAVE* format. Just use  this:  
+For *audio* images *bchunk* has a `-w` option, which creates output in *WAVE* format. Just use  this:  
 
     bchunk -s -w no1.bin no1.cue no1
 
-Note the use of the *-s* switch, which does a byte swap on the audio track samples. I initially omitted this, and ended up with *WAVE* files that all played as static noise! This strikes me as odd, since according to its [specification](http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html) the *WAVE* format is little-Endian by definition.
+Note the use of the `-s` switch, which does a byte swap on the audio track samples. I initially omitted this, and ended up with *WAVE* files that all played as static noise! This strikes me as odd, since according to its [specification](http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html) the *WAVE* format is little-Endian by definition.
 
 ## Additional material
 
