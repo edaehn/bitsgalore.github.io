@@ -15,7 +15,7 @@ Nevertheless, throughout the initial testing phase I was surprised at the number
 
 In addition there's a final section that covers my attempts at imaging a multisession / mixed mode CD. The result of this particular exercise wasn't all that successful, but I included it anyway, as some may find it useful. All software mentioned here are open-source tools that are available for any modern Linux distribution (I'm using Linux Mint myself). Some can be used under Windows as well using [Cygwin](https://www.cygwin.com/).
 
-<!--more-->
+<!-- more -->
 
 ## Find the device path of the CD drive (Linux)
 

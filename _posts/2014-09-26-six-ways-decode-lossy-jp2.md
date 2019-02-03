@@ -8,7 +8,7 @@ Some time ago Will Palmer, Peter May and Peter Cliff of the British Library publ
  
 A limitation of the paper's methodology is that it obscures the individual effects of the encoding and decoding components, since both are essentially lumped in the analysis. Thus, it's not clear how much of the observed degradation in image quality is caused by the compression, and how much by the decoding. This made me wonder how similar the *decode* results of different codecs really are.
 
-<!--more-->
+<!-- more -->
 
 ## An experiment
 

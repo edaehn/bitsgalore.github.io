@@ -6,7 +6,7 @@ tags: [format-identification,magic,unix-file]
 
 The purpose of this post is to give a brief introduction to creating, editing and submitting format signatures (or '*magic*' entries) for the well-known *File* tool. The occasion for this was some work I did last week on improving *File*'s identification of the *JPEG 2000* formats. I had some difficulty finding any easy-to-follow documentation that describes how to do this. The information is all out there, but it's pretty fragmented. So, I wrote this brief tutorial, which is intended as an accessible introduction to *magic* editing. It only covers the very basics, but hopefully this is enough to overcome some initial stumbling blocks.
 
-<!--more-->
+<!-- more -->
 
 ## How to get File
 

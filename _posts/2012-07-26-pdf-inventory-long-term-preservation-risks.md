@@ -7,7 +7,7 @@ tags: [PDF]
 In this blog post I'll be dusting off some old stuff for a change. The occasion for this is the following question,  posted by Paul Wheatley on the [Libraries and Information Science Stack Exchange website][LibStack] a few days ago:
 > [What preservation risks are associated with the PDF file format?][PDFStack]
 
-<!--more-->
+<!-- more -->
 
 ## Report
 
