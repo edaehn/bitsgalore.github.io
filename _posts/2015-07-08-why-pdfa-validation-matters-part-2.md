@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Why PDF/A validation matters, even if you don't have PDF/A - Part 2
-tags: [PDF,VeraPDF,Apache-Preflight,preservation-risks]
+tags: [PDF,VeraPDF,Apache-Preflight,preservation-risks,schematron]
 ---
 
 This is the second and final instalment of a 2-part blog on the use of PDF/A validators for identifying preservation risks in PDF. You can read the first part [here]({{ BASE_PATH }}/2015/07/07/why-pdfa-validation-matters-even-if-you-dont-have-pdfa). In Part 1 I showed how PDF/A validators can be used to identify preservation risks in a PDF. I illustrated this with an example that uses the PDF/A validator component of Adobe Acrobat's Preflight tool. Needless to say, Acrobat is  not scalabe to situations where you need to verify large volumes of PDFs. Luckily, several stand-alone PDF/A validators exist that are designed especially to do just that. 
@@ -30,7 +30,7 @@ During the [SCAPE](http://www.scape-project.eu/) project we did a number of expe
           <details>Action is forbidden, GoToPage isn't authorized as named action</details>
           <page>0</page>
         </error>
-         
+
         ::
         ::
 
