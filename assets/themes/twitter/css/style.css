@@ -35,7 +35,7 @@
   letter-spacing:4px;
   text-align:center;
   color:#595959;
-  padding-top: 10px;
+  padding-top: 30px;
   margin-bottom: 0px;
   }
 
@@ -87,11 +87,13 @@ footer {
   
 .sidebar{
   font-family: Verdana, Geneva, sans-serif;
-  text-align:left;
+  text-align: left;
   /*color:#595959;*/
+  margin-left: 150px;
   padding-top: 20px;
   padding-bottom: 20px;
-  /*padding-left: 50px;*/
+  padding-left: 0px;
+  padding-right: 0px;
   border-bottom: 2px solid black;
   }
   
