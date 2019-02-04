@@ -6,7 +6,7 @@ tags: [EPUB]
 
 [*EpubCheck*](https://github.com/IDPF/epubcheck) is an invaluable tool for assessing the quality of *EPUB* files. Still, it is possible that *EPUB*s that are valid according to the format specification (and thus *EpubCheck*) are nevertheless inaccessible to some users. Some weeks ago a colleague sent me an *EPUB* 2 file that produced some really strange behaviour across a number of viewer applications. For a start, the text wouldn't reflow properly after re-sizing the viewer window, and increasing the font size resulted in garbled text. Running the file through *EpubCheck* did return some validation errors, but none of these were related to the behaviour I was getting. Closer inspection revealed some very peculiar stylesheet and *HTML* use.
 
-<!--more-->
+<!-- more -->
 
 ## Crazy Fixed Layout
 
