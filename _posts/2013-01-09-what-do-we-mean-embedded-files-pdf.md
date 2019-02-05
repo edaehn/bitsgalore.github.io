@@ -113,14 +113,25 @@ This *PDF* 1.7 file was created in *Acrobat* 9, and if you open it you will see 
 
 Digging through the underlying *PDF* code reveals a *Screen Annotation*, a *Rendition Action* and a *Media clip data dictionary*. The latter looks like this:
 
-    41 0 obj   
-    <</CT(video/quicktime)/D 42 0 R/N(Media clip from animation.mov)/P<</TF(TEMPACCESS)>>/S/MCD>>   
+    41 0 obj
+    <<
+        /CT(video/quicktime)
+        /D 42 0 R
+        /N(Media clip from animation.mov)
+        /P<</TF(TEMPACCESS)>>
+        /S/MCD
+    >>
     endobj
 
 It contains a reference to another object (42 0), which turns out to be a *File Specification Dictionary*:
 
-    42 0 obj    
-    <</EF<</F 43 0 R>>/F(<embedded file>)/Type/Filespec/UF(<embedded file>)>>    
+    42 0 obj
+    <<
+        /EF<</F 43 0 R>>
+        /F(<embedded file>)
+        /Type/Filespec
+        /UF(<embedded file>)
+    >>
     endobj
 
 What's particularly interesting here is the */EF* entry, which means we're dealing with an embedded file stream here. (The actual movie data are in a stream object (43 0) that is referenced by the file specification dictionary.)
@@ -162,5 +173,3 @@ In this blog post I have tried to shed some light on a number of common misconce
 The *PDF* specification is vast and complex, and I have only addressed a limited number of its features here. For instance, one might argue that a discussion of embedding-related features should also include fonts, metadata, *ICC* profiles, and so on. The coverage of multimedia features here is also incomplete, as I didn't include *Movie Annotations* or *Sound Annotations* (which preceded the *Screen Annotations*, which are now more commonly used). These things were all left out here because of time and space constraints.  This also means that further surprises may well be lurking ahead!
 
 [^1]: Source: [this unofficial newsletter item](http://www.pdfa.org/2012/10/pdf-association-newsletter-issue-26/), as at this moment I don't have access to the full specification of *PDF/A-3*.
-
-
