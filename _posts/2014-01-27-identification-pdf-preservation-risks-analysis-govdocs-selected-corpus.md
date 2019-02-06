@@ -130,3 +130,6 @@ For those who want to have a go at the analyses that I've presented here, I've c
 [^2]: This selection was only based on file extension, which introduces the possibility that some of these files aren't really *PDF*s.
 [^3]: Errors that were reported for less than 1% of all analysed *PDF*s are not included in the table.
 [^4]: In addition to this, it seems that *Preflight* [sometimes fails to detect fonts that are not embedded](https://issues.apache.org/jira/browse/PDFBOX-1864), so the number of *PDF*s with font issues may be even greater than this test suggests.
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2014/01/27/identification-pdf-preservation-risks-analysis-govdocs-selected-corpus/)

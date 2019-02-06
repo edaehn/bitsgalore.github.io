@@ -114,3 +114,6 @@ One thing that puzzles me a bit is that for the majority of ISO images I've come
 
 Isolyzer can be found [here on Github](https://github.com/KBNLresearch/verifyISOSize). It can be installed using *pip*; [see the instructions here](https://github.com/KBNLresearch/verifyISOSize#installation-with-pip). For Windows users who cannot/don't want to install Python I also provided stand-alone Windows binaries, which are available for download [here](https://github.com/KBNLresearch/verifyISOSize/releases).
 
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2017/01/13/detecting-broken-iso-images-introducing-isolyzer/)

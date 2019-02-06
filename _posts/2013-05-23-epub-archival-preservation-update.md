@@ -87,3 +87,6 @@ Since the release of the [KB report on the suitability of *EPUB* for archival pr
 * [EPUB for archival preservation (2012 report)](https://zenodo.org/record/839711)
 
 * [On the Interoperability of eBook Formats - report by the European Booksellers Federation](http://www.europeanbooksellers.eu/positionpaper/interoperability-e-books-formats)
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2013/05/23/epub-archival-preservation-update/)

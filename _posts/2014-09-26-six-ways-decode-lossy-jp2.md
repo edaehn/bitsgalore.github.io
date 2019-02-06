@@ -107,3 +107,6 @@ This tentative analysis does not support any conclusions on which decoders are '
 [William Palmer, Peter May and Peter Cliff: An Analysis of Contemporary JPEG2000 Codecs for Image Format Migration (Proceedings, iPres 2013)](http://www.scape-project.eu/publication/palmer-ipres2013)
 
 [^2]: Identical in terms of pixel values; for this analysis I didn't look at things such as embedded ICC profiles, [which not all encoders/decoders handle well](http://wiki.opf-labs.org/display/TR/Handling+of+ICC+profiles).
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2014/09/26/six-ways-decode-lossy-jp2/)

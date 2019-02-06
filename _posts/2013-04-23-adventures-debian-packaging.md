@@ -155,3 +155,6 @@ I also came across a few minor errors in the OPF guide. I left a short comment o
 ## Post scriptum
 
 Proof again that it's always a bad idea to come up with a clever title for a blog post without [Googling](https://www.google.com/#hl=en&gs_rn=11&gs_ri=psy-ab&cp=2&gs_id=zz&xhr=t&q=%22adventures+in+Debian+Packaging%22&es_nrs=true&pf=p&sclient=psy-ab&oq=%22adventures+in+Debian+Packaging%22&gs_l=&pbx=1&bav=on.2,or.r_qf.&bvm=bv.45580626,d.d2k&fp=6b211d71a5d752ed&biw=1140&bih=553) it first: after writing this post I found out that the [Mid Hudson Valley Linux and Open Source Users Group](http://mhvlug.org/) will be organising a meeting called [*Adventures in Debian Packaging*](http://mhvlug.org/meetings/2013/adventures-in-debian-packaging) later this year in Poughkeepsie, NY. Completely unrelated to this blog, of course, but it's only fair to give it a mention. Well, there you go.
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2013/04/23/adventures-debian-packaging/)

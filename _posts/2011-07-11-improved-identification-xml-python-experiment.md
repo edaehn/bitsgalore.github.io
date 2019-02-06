@@ -103,3 +103,6 @@ For those who want to do some tests for themselves, I have <strike>attached the
 demo script to this post</strike> [uploaded the demo script to GitHub](https://github.com/bitsgalore/isXMLDemo). The <strike>ZIP file</strike> repository contains the Python script with its  documentation in PDF format. If you end up with any interesting
 results, or if you have any other thoughts on this: please report back
 in the comments!
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2011/07/11/improved-identification-xml-python-experiment/)

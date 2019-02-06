@@ -35,3 +35,6 @@ The potential benefits *PDF/A* may be more obvious for a lot of born-digital con
 ## Conclusions
 
 Although migrating *PDF* documents to *PDF/A* may look superficially attractive, it is actually quite risky in practice, and it may easily result in unintentional data loss. Moreover, the risks increase with the number of preservation-unfriendly features, meaning that the migration is most likely to be successful for source *PDF*s that weren't problematic to begin with, which belies the very purpose of migrating to *PDF/A*. For specific cases, migration to *PDF/A* may still be a sensible approach, but the expected benefits should be weighed carefully against the risks. In the absence of stable, generally accepted tools for assessing the quality of *PDF*s (both source *and* destination!), it would also seem prudent to always keep the originals.
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2014/08/27/when-not-migrate-pdf-pdfa/)

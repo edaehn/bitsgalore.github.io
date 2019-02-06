@@ -169,3 +169,6 @@ File's [source repository on Github][githubFile] gives a number of guidelines fo
 [bugtracker]:http://bugs.gw.com/my_view_page.php
 [magicJvdK]:https://github.com/bitsgalore/jp2kMagic/blob/master/magic/jpeg2000Magic
 [githubFile]:https://github.com/glensc/file
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2012/08/09/magic-editing-and-creation-primer/)

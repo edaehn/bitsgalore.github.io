@@ -408,3 +408,6 @@ Note the use of the `-s` switch, which does a byte swap on the audio track sampl
 [^6]: It is important that the names of the ISO and mapping file are identical to those used in the previous *ddrescue* run. This allows the tool to process *only* the problematic sectors (and skip everything else). 
 
 [^7]: This is a pretty arbitrary value, and you can use whatever value you like.
+
+<hr>
+Originally published at the [KB Research blog](http://blog.kbresearch.nl/2015/11/13/preserving-optical-media-from-the-command-line/)

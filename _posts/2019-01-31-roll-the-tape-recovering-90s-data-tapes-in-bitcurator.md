@@ -67,3 +67,6 @@ Thanks are due to Peter Boel and René van Egdom for their help digging out the 
 [^1]: Also see [this useful diagram](https://upload.wikimedia.org/wikipedia/commons/1/15/PCI_Keying.svg) that shows different PCI card types.
 
 [^2]: Importantly, for the testing phase we only used some unimportant tapes that we still happened to have lying around. This was done to minimise any chance of accidental damage to the tapes that were loaned to us (we did not know in advance whether the tape drives were still working correctly!).
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2019/01/31/roll-the-tape-recovering-90s-data-tapes-in-bitcurator/)

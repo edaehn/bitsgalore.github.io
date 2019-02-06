@@ -81,3 +81,5 @@ Finally, from version 1.15.1 onwards we are now providing 64 bit Windows binarie
 ## Links
 
 [Jpylyzer website](http://jpylyzer.openpreservation.org/)
+<hr>
+Originally published at the [KB Research blog](http://blog.kbresearch.nl/2015/12/08/jpylyzer-2015-round-up/)

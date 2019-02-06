@@ -41,3 +41,6 @@ Het volgende artikel is interessant voor wie meer wil weten over
 Ten slotte is hier de *jpylyzer* homepage:
 
 <http://jpylyzer.openpreservation.org/>
+
+<hr>
+Originally published at the [KB Research blog](http://blog.kbresearch.nl/2014/09/11/jpylyzer-software-finalist-voor-digitale-duurzaamheidsprijs/)

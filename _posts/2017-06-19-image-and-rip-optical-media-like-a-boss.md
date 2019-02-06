@@ -92,3 +92,6 @@ Thanks are due to *dBpoweramp* creator "Mr. Spoon" for his work on the *dBpowera
 * [*Iromlab* on Github](https://github.com/KBNLresearch/iromlab)
 * [Documentation](https://github.com/KBNLresearch/iromlab/tree/master/doc)
 * [*Iromlab* demo batch](https://github.com/KBNLresearch/iromlabDemobatch)
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2017/06/19/image-and-rip-optical-media-like-a-boss/)

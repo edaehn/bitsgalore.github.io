@@ -155,3 +155,6 @@ Finally, the presence of *DTBook* resources [^5] incorrectly causes the validati
 [^3]: They only differ in the way the JP2 image is referenced in the text, as the *EPUB* specification is not completely clear on this.
 [^4]: Doesn't yet work with *Epubcheck* 4 because it uses slightly different output messages (could be easily adapted).
 [^5]: These are, by the way, pretty rare.
+
+<hr>
+Originally published at the [KB Research blog](http://blog.kbresearch.nl/2015/03/13/policy-based-assessment-of-epub-with-epubcheck/)

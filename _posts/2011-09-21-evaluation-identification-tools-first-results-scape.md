@@ -68,3 +68,6 @@ appreciate any of your feedback on this!
 
 [Evaluation of characterisation tools – Part 1:
 Identification](https://zenodo.org/record/840345)
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2011/09/21/evaluation-identification-tools-first-results-scape/)

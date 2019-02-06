@@ -196,3 +196,6 @@ Thanks are due to Ilya Kreymer, Raffaele Messuti and Andy Jackson for their help
 [^4]: A detailed discussion of the methods that were used for this analysis is beyond the scope of this blog post; however some [rough working notes are available here](https://github.com/KBNLresearch/nl-menu-resources/blob/master/doc/qa-archived-site.md).
 
 [^5]: Note that I removed the `--mirror` option here, as it seems that this causes *wget* to do a recursive crawl *for each single URL* in the list. The result of this is that *wget* keeps crawling for hours without any (new) data being added to the crawl result.
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2018/07/11/crawling-offline-web-content-the-nl-menu-case/)

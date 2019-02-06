@@ -165,3 +165,6 @@ Thanks go out to David Taubman, whose [reply to some of my questions on Kakadu's
 
 * [Dataset with all test images (Github link)](https://github.com/bitsgalore/JP2AccessGeneration)
 * [Buckley & Tanner (2009): JPEG 2000 as a Preservation and Access Format for the Wellcome Trust Digital Library](http://wellcomelibrary.org/assets/wtx056572.pdf)
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2013/08/19/optimising-archival-jp2s-derivation-access-copies/)

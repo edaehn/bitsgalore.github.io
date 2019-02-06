@@ -169,3 +169,6 @@ Finally, I was surpprised at the complete lack of any software tool that is capa
 * [Sample multisession ISO image](https://github.com/KBNLresearch/isolyzer/raw/master/testFiles/multisession.iso) (6 MB download; start sector of the data session is 21917)
 
 [^1]: This is analogous to the `-N` option in *cdinfo*.
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2017/04/25/imaging-cd-extra-blue-book-discs/)

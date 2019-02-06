@@ -53,3 +53,6 @@ The amendment to JP2 fixes the previous shortcomings that were mentioned in my 2
 [Handling of ICC Profiles by JPEG 2000 encoders (OPF File Format Risk Registry)](http://wiki.opf-labs.org/display/TR/Handling+of+ICC+profiles)
 
 [Handling of resolution fields by JPEG 2000 encoders (OPF File Format Risk Registry)](http://wiki.opf-labs.org/display/TR/Resolution+not+in+expected+header+fields)
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2013/07/01/icc-profiles-and-resolution-jp2-update-2011-d-lib-paper/)

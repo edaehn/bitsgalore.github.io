@@ -101,3 +101,6 @@ This results in output as shown here:
 [^1]: Acrobat's *Preferences* do include some options for configuring behavior with multimedia content (explained [here](https://helpx.adobe.com/acrobat/using/playing-video-audio-multimedia-formats.html)), but the list of media players in the *Preferred Media Player* dropdown list only included Windows Media Player and Adobe Flash Player. Neither of these support Quicktime. VLC Media player *does* support Quicktime, but it is not included in the dropdown list, leaving me no way to configure it. Bummer!
 
 [^2]: At the time of writing the Acrobat Engineering site was down, and this particular PDF is not included in any Wayback crawls either. Bummer again!
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2015/07/07/why-pdfa-validation-matters-even-if-you-dont-have-pdfa/)

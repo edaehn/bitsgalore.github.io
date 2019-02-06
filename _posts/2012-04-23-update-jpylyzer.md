@@ -63,3 +63,6 @@ In order to make a tool sustainable, it is important that its maintenance and de
 [SOTON]:http://www.southampton.ac.uk/
 [AIT]:http://www.ait.ac.at/
 [DebBraga]: http://www.openplanetsfoundation.org/blogs/2012-02-15-sustainability-and-adoption-preservation-tools
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2012/04/23/update-jpylyzer/)

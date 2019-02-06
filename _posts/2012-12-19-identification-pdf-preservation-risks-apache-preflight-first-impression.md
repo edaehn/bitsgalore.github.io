@@ -105,3 +105,6 @@ showed that *Apache Preflight*'s ability to identify 'risky' features
 has improved significantly since I published my report back in December,
 and the issues that are mentioned in the report appear to have been
 largely resolved!
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2012/12/19/identification-pdf-preservation-risks-apache-preflight-first-impression/)

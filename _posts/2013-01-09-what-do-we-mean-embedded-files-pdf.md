@@ -173,3 +173,5 @@ In this blog post I have tried to shed some light on a number of common misconce
 The *PDF* specification is vast and complex, and I have only addressed a limited number of its features here. For instance, one might argue that a discussion of embedding-related features should also include fonts, metadata, *ICC* profiles, and so on. The coverage of multimedia features here is also incomplete, as I didn't include *Movie Annotations* or *Sound Annotations* (which preceded the *Screen Annotations*, which are now more commonly used). These things were all left out here because of time and space constraints.  This also means that further surprises may well be lurking ahead!
 
 [^1]: Source: [this unofficial newsletter item](http://www.pdfa.org/2012/10/pdf-association-newsletter-issue-26/), as at this moment I don't have access to the full specification of *PDF/A-3*.
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2013/01/09/what-do-we-mean-embedded-files-pdf/)

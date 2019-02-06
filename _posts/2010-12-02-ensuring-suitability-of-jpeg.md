@@ -152,4 +152,4 @@ started by Richard Clark, and in particular by a contribution to this
 discussion by William Kilbride.
 
 <hr>
-Originally published at the [Wellcome Library Blog](http://blog.wellcomelibrary.org/2010/12/guest-post-ensuring-the-suitability-of-jpeg-2000-for-preservation/).
+Originally published at the [Wellcome Library Blog](http://blog.wellcomelibrary.org/2010/12/guest-post-ensuring-the-suitability-of-jpeg-2000-for-preservation/)

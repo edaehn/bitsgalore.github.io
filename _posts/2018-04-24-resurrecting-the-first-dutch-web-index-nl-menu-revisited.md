@@ -106,3 +106,6 @@ Thanks are due to the folllowing people for their advice and suggestions: Annema
 * [NL-menu (2004 snapshot at kbresearch.nl)](http://www.kbresearch.nl/nl-menu/nl-menu/)
 * [Serving a static website with the Apache web server (technical notes)](https://github.com/KBNLresearch/nl-menu-resources/blob/master/doc/serving-static-website-with-Apache.md)
 * [How can we improve our web collection? An evaluation of web archiving at the KB National Library of the Netherlands (2007-2017)](https://zenodo.org/record/881109)
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2018/04/24/resurrecting-the-first-dutch-web-index-nl-menu-revisited/)

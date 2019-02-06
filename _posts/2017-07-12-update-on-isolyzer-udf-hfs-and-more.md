@@ -41,3 +41,6 @@ As always feedback on *Isolyzer* is highly appreciated, if only because any prob
 ## Postscript (2 February 2019)
 
 Removed some outdated and possibly confusing information from the "Installation" section.
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2017/07/12/update-on-isolyzer-udf-hfs-and-more/)

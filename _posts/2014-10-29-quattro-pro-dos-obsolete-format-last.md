@@ -92,3 +92,6 @@ In response to this blog post, Euan Cochrane has done [some  additional tests wi
 [^1]: I wasn't able to locate these converters anywhere on Microsoft's website.
 
 [^2]: Just in case anyone's wondering: these spreadsheets calculate a soil's saturated [hydraulic conductivity](http://en.wikipedia.org/wiki/Hydraulic_conductivity) from field measurement data using the [inverse auger hole method](http://www.samsamwater.com/library/DETERMINING_HYDRAULIC_CONDUCTIVITY_WITH_THE_INVERSED_AUGER_HOLE_AND_INFILTROMETER_METHODS.pdf).
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2014/10/29/quattro-pro-dos-obsolete-format-last/)

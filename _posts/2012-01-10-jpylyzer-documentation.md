@@ -20,3 +20,6 @@ Meanwhile work on *jpylyzer* remains ongoing, so watch this space for
 any updates on this.
 
 **Update February 2019**: updated links in original blog post
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2012/01/10/jpylyzer-documentation/)

@@ -80,3 +80,6 @@ Victor van der Wolf prepared the file extension counts; Danny Stephan prepared t
 [^1]: Most of these are tiny images that are part of XML representations of scientific papers (mostly mathematical equations).
 
 [^2]: The dataset is not  representative of the collection as a whole because of its limited size, and the sub-optimal sampling procedure that was used.
+
+<hr>
+Originally published at the [KB Research blog](http://blog.kbresearch.nl/2015/04/29/top-50-file-formats-in-the-kb-e-depot/)

@@ -119,3 +119,6 @@ The example files that are referred to in this blog post are all available here:
 [^4]: Incidentally, spreadsheet forms can be highly interactive (e.g. by letting a user enter data by selecting a value from a drop-down list); this is again an indication that interactivity may not be a good criterion for deciding on PDF/A as a target format
 
 [^5]: Forum Standaardisatie is a Dutch government body that promotes the use of open standards in the public sector. 
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2016/12/09/pdfa-as-a-preferred-sustainable-format-for-spreadsheets/)

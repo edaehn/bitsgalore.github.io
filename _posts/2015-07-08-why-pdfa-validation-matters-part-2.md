@@ -157,3 +157,5 @@ In this blog series I've given a brief overview of some preservation risks of th
 [^3]: More precisely, I deliberately changed the [object reference](https://raw.githubusercontent.com/corkami/pics/master/PDF.png) to an image to a nonsense value. Incidentally, Acrobat Preflight *does* detect this error, which means that it checks at least *some* aspects of canonical PDF.
 
 [^4]: Adobe's web team [are aware of the issue](https://twitter.com/bitsgalore/status/615485792375468032), but it's not clear when the site will be back (if at all)
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2015/07/08/why-pdfa-validation-matters-part-2/)

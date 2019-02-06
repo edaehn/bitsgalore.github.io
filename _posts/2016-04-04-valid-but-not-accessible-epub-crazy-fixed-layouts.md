@@ -131,3 +131,5 @@ There's some irony in that this file was published by [*EDRLab*](http://edrlab.o
 The *EPUB*s used for this blog post are part of the [EPUB KB policy testing repository](https://github.com/KBNLresearch/epubPolicyTests). This is an annotated set of openly licensed *EPUB* files that were specifically created for testing purposes.
 
 [^1]: Note that *EpubCheck* 3 (now outdated) [does not report this warning](https://github.com/KBNLresearch/epubPolicyTests/blob/master/epubcheckout/3.0.1/epub20_crazy_columns.xml), so always use *EpubCheck* 4.
+<hr>
+Originally published at the [KB Research blog](http://blog.kbresearch.nl/2016/04/04/valid-but-not-accessible-epub-crazy-fixed-layouts/)

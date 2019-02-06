@@ -128,3 +128,6 @@ The re-analysis of the PDF Cabinet of Horrors corpus, and the subsequent analysi
 * [Identification of PDF preservation risks with Apache Preflight: a first impression](https://zenodo.org/record/2556637)
 
 * [PDFBox Preflight 2 - Uses and Abuses (OPF Wiki)](http://wiki.opf-labs.org/display/SPR/PDFBox+Preflight+2++-+Uses+and+Abuses)
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2013/07/25/identification-pdf-preservation-risks-sequel/)

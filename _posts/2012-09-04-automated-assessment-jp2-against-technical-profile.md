@@ -318,3 +318,5 @@ Big thanks go out to Adam Retter (The National Archives) for his suggestion to u
 [9]:https://github.com/bitsgalore/jpylyzerProfileDemo/blob/master/demoAccessLossy.sch
 [10]:http://www.schematron.com/implementation.html
 [11]:https://github.com/bitsgalore/jpylyzerProfileDemo/zipball/master
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2012/09/04/automated-assessment-jp2-against-technical-profile/)

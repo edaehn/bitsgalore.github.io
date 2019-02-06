@@ -122,3 +122,6 @@ please feel free to use the comment fields below for your feedback
 The *jp2StructCheck* tool is superseded by [*jpylyzer*](http://jpylyzer.openpreservation.org/)
 (of which *jp2StructCheck* was an early precursor). Unlike *jp2StructCheck*, *jpylyzer* is a
 full-fledged validator for the *JP2* format.
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2011/09/01/simple-jp2-file-structure-checker/)

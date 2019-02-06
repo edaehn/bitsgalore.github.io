@@ -64,3 +64,6 @@ Here, check the *Unknown sources* option [^1]. Then go back to the *Downloads* f
 In this blog I provided some basic information about Android's APK format, how to run Android in VirtualBox, and how to install an archived app. I tested this myself with a handful of apps. One thing I noticed was that some apps didn't quite work as expected on my virtual Android machine, but as I didn't have access to a 'real' (physical) device it's impossible to tell whether this  was due to the virtualisation or just a shortcoming of those apps. This would obviously need more work. Nevertheless, considering that I only spent a few  odd afternoons on this, this approach looks quite promising.
 
 [^1]: Note that this will also enable you to install apps that are possibly harmful; use with care!
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2014/10/23/running-archived-android-apps-pc-first-impressions/)

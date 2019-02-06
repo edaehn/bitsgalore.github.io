@@ -135,3 +135,6 @@ time. Meanwhile, any feedback on the current prototype is highly
 appreciated!
 
 [^1]: Postscript, February 2019 - all links in this section point to an insanely outdated version of *jpylyzer*! Don't use them, but go to the *jpylyzer* web site at <http://jpylyzer.openpreservation.org/> instead (unless you're some future software historian with an unlikely interest in the history of *jpylyzer*).
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2011/12/14/prototype-jp2-validator-and-properties-extractor/)

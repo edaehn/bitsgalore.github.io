@@ -101,3 +101,6 @@ Ouch!
 ## Final remarks
 
 I limited my tests to a *Windows* environment only, and results may well be better under *Linux* for some of these tools. Nevertheless, I find it nothing less than astounding that so many of these (often widely cited) preservation tools fail to even *execute* on today's [most widespread operating system](http://en.wikipedia.org/wiki/Usage_share_of_operating_systems). Granted, in some cases there are workarounds, such as tweaking the launcher scripts, or circumventing them altogether. However, this is not an option for less tech-savvy users, who will simply conclude "*Hey, this tool doesn't work*", give up, and move on to other things. Moreover, this means that much of the (often huge) amounts of development effort that went into these tools will simply fail to reach its potential audience, and I think this is a tremendous waste. I'm also wondering why there's been so little progress on this over the past 2.5 years. Is it really that difficult to develop preservation tools with command-line interfaces that follow basic design conventions that have been ubiquitous elsewhere for more than 30 years? Tools that *just work*?
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2014/01/31/why-cant-we-have-digital-preservation-tools-just-work/)

@@ -44,3 +44,5 @@ In addition, the final chapter contains two subsections with *Community Recommen
 
 [KB]: http://www.kb.nl/index-en.html
 [epubPreservation]: https://zenodo.org/record/839711
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2012/06/18/epub-archival-preservation/)

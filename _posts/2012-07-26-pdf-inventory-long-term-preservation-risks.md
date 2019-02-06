@@ -30,3 +30,5 @@ As for the report, I should add that some of it is a little rough around the edg
 [LibStack]:http://libraries.stackexchange.com/
 
 [KnowledgeBase]:http://wiki.opf-labs.org/display/TR/Formats
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2012/07/26/pdf-inventory-long-term-preservation-risks/)

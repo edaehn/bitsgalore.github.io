@@ -150,3 +150,6 @@ Finally it just occurred to me this is a good occasion to give one more bump to 
 * [VeraPDF](http://verapdf.org/)
 * [Adobe Portable Document Format - Inventory of long-term preservation risks](https://doi.org/10.5281/zenodo.801661)
 
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2017/06/01/policy-based-assessment-with-verapdf-a-first-impression/)

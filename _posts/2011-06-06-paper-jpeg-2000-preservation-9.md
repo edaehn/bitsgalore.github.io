@@ -68,3 +68,6 @@ risks for existing collections.
 [JPEG 2000 for Long-term Preservation: JP2 as a Preservation
 Format](http://www.dlib.org/dlib/may11/vanderknijff/05vanderknijff.html)
 
+
+<hr>
+Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2011/06/06/paper-jpeg-2000-preservation-9/)

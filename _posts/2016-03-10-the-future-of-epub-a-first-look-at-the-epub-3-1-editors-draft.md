@@ -138,3 +138,6 @@ Thanks to Matt Garrish for his prompt replies to my questions on Github.
 [^4]: See the [*HTML5* Reference](https://dev.w3.org/html5/html-author/#the-html-and-xhtml-syntax) for a discussion of the differences between both syntaxes
 
 [^5]: The [discussion thread on this topic in the issue tracker](https://github.com/IDPF/epub-revision/issues/642) is worth checking out, as it contains some excellent additional observations.
+
+<hr>
+Originally published at the [KB Research blog](http://blog.kbresearch.nl/2016/03/10/the-future-of-epub-a-first-look-at-the-epub-3-1-editors-draft/)
