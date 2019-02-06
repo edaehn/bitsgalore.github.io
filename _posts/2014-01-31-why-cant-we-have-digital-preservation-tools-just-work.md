@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Why can't we have digital preservation tools that just work?
-tags: [tools,rant]
+tags: [DROID,JHOVE,JHOVE2,FITS,Fido,rant]
 ---
 
 One of my first blogs here covered an [evaluation of a number of format identification tools]({{ BASE_PATH }}/2011/09/21/evaluation-identification-tools-first-results-scape). One of the more surprising results of that work was that out of the five tools that were tested, no less than four of them (*FITS*, *DROID*, *Fido* and *JHOVE2*) failed to even *run* when executed with their associated launcher script. In many cases the *Windows* launcher scripts (batch files) only worked when executed from the installation folder. Apart from making things unnecessarily difficult for the user, this also completely flies in the face of all existing conventions on command-line interface design. Around the time of this work (summer 2011) I had been in contact with the developers of all the evaluated tools, and until last week I thought those issues were a thing of the past. Well, was I wrong!
