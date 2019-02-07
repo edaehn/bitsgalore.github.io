@@ -14,172 +14,23 @@ This blog post describes a simple method for doing a rule-based assessment of *J
 
 The table below shows the format profile that we'll be using throughout this blog post, which is a typical 'access'-oriented profile using lossy compression. Note that it is provided here for illustrative purposes only!
 
-<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding=
-"0" style='margin-left:5.4pt;border-collapse:collapse;border:none'>
-<tr>
-<td width="237" valign="top" style=
-'width:142.2pt;border:solid windowtext 1.0pt; padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'><b>Parameter</b></p>
-</td>
-<td width="378" valign="top" style=
-'width:3.15in;border:solid windowtext 1.0pt; border-left:none;padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'><b>Value</b></p>
-</td>
-</tr>
-<tr>
-<td width="237" valign="top" style=
-'width:142.2pt;border:solid windowtext 1.0pt; border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>File format</p>
-</td>
-<td width="378" valign="top" style=
-'width:3.15in;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>JP2 (JPEG 2000 Part
-1)</p>
-</td>
-</tr>
-<tr>
-<td width="237" valign="top" style=
-'width:142.2pt;border:solid windowtext 1.0pt; border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Compression type</p>
-</td>
-<td width="378" valign="top" style=
-'width:3.15in;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Lossy (irreversible
-9-7 wavelet filter)</p>
-</td>
-</tr>
-<tr>
-<td width="237" valign="top" style=
-'width:142.2pt;border:solid windowtext 1.0pt; border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Colour transform</p>
-</td>
-<td width="378" valign="top" style=
-'width:3.15in;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Yes (only for colour
-images)</p>
-</td>
-</tr>
-<tr>
-<td width="237" valign="top" style=
-'width:142.2pt;border:solid windowtext 1.0pt; border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Number of
-decomposition levels</p>
-</td>
-<td width="378" valign="top" style=
-'width:3.15in;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>5</p>
-</td>
-</tr>
-<tr>
-<td width="237" valign="top" style=
-'width:142.2pt;border:solid windowtext 1.0pt; border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Progression
-order</p>
-</td>
-<td width="378" valign="top" style=
-'width:3.15in;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>RPCL</p>
-</td>
-</tr>
-<tr>
-<td width="237" valign="top" style=
-'width:142.2pt;border:solid windowtext 1.0pt; border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Tile size</p>
-</td>
-<td width="378" valign="top" style=
-'width:3.15in;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>1024 x 1024</p>
-</td>
-</tr>
-<tr>
-<td width="237" valign="top" style=
-'width:142.2pt;border:solid windowtext 1.0pt; border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Code block size</p>
-</td>
-<td width="378" valign="top" style=
-'width:3.15in;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>64 x 64
-</p>
-</td>
-</tr>
-<tr>
-<td width="237" valign="top" style=
-'width:142.2pt;border:solid windowtext 1.0pt; border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Precinct size</p>
-</td>
-<td width="378" valign="top" style=
-'width:3.15in;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>256 x 256
- for 2 highest resolution levels; 128 x 128
-for remaining resolution levels</p>
-</td>
-</tr>
-<tr>
-<td width="237" valign="top" style=
-'width:142.2pt;border:solid windowtext 1.0pt; border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Number of quality
-layers</p>
-</td>
-<td width="378" valign="top" style=
-'width:3.15in;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>8</p>
-</td>
-</tr>
-<tr>
-<td width="237" valign="top" style=
-'width:142.2pt;border:solid windowtext 1.0pt; border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Target compression
-ratio</p>
-</td>
-<td width="378" valign="top" style=
-'width:3.15in;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoNormal" style='margin-left:0in'>20:1</p>
-</td>
-</tr>
-<tr>
-<td width="237" valign="top" style=
-'width:142.2pt;border:solid windowtext 1.0pt; border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Error resilience</p>
-</td>
-<td width="378" valign="top" style=
-'width:3.15in;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Start-of-packet
-headers; end-of-packet headers; segmentation symbols</p>
-</td>
-</tr>
-<tr>
-<td width="237" valign="top" style=
-'width:142.2pt;border:solid windowtext 1.0pt; border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Grid resolution</p>
-</td>
-<td width="378" valign="top" style=
-'width:3.15in;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Stored in
-&ldquo;Capture Resolution&rdquo; fields</p>
-</td>
-</tr>
-<tr>
-<td width="237" valign="top" style=
-'width:142.2pt;border:solid windowtext 1.0pt; border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>ICC profiles</p>
-</td>
-<td width="378" valign="top" style=
-'width:3.15in;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Embedded using
-&ldquo;Restricted ICC&rdquo; method</p>
-</td>
-</tr>
-<tr>
-<td width="237" valign="top" style=
-'width:142.2pt;border:solid windowtext 1.0pt; border-top:none;padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Capture metadata</p>
-</td>
-<td width="378" valign="top" style=
-'width:3.15in;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; padding:0in 5.4pt 0in 5.4pt'>
-<p class="MsoBodyText" style='margin-left:0in'>Embedded in XML box</p>
-</td>
-</tr>
-</table>
+
+| **Parameter**                  | **Value**                                                                            |
+| ------------------------------ | ------------------------------------------------------------------------------------ |
+| File format                    | JP2 (JPEG 2000 Part 1)                                                               |
+| Compression type               | Lossy (irreversible 9-7 wavelet filter)                                              |
+| Colour transform               | Yes (only for colour images)                                                         |
+| Number of decomposition levels | 5                                                                                    |
+| Progression order              | RPCL                                                                                 |
+| Tile size                      | 1024 x 1024                                                                          |
+| Code block size                | 64 x 64                                                                              |
+| Precinct size                  | 256 x 256 for 2 highest resolution levels; 128 x 128 for remaining resolution levels |
+| Number of quality layers       | 8                                                                                    |
+| Target compression ratio       | 20:1                                                                                 |
+| Error resilience               | Start-of-packet headers; end-of-packet headers; segmentation symbols                 |
+| Grid resolution                | Stored in “Capture Resolution” fields                                                |
+| ICC profiles                   | Embedded using “Restricted ICC” method                                               |
+| Capture metadata               | Embedded in XML box                                                                  |
 
 ## Corresponding properties in *jpylyzer* output
 
@@ -305,6 +156,10 @@ Big thanks go out to Adam Retter (The National Archives) for his suggestion to u
 + [Probatron][2]  
 + [Demo: check if JP2 file matches a technical profile][4]  
 + [Demo (download as ZIP)][11]
+
+## Post script, February 2019
+
+Since this post was originally published, *jpylyzer*'s output format has changed slightly: from version 1.14.0 onward, all output elements have an associated namespace. This means that the Schematron rules must be adapted accordingly. A [set of example Schematron defintions that work with current versions of *jpylyzer* can be found here](https://github.com/KBNLresearch/jprofile/tree/master/jprofile/schemas). They are part of [*jprofile*](https://github.com/KBNLresearch/jprofile), a simple tool that we use at the KB to assess JP2s from external suppliers. The source code of *jprofile* also demonstrates how to do this type of assessment in Python.
 
 [1]: http://jpylyzer.openpreservation.org/
 [2]: http://www.probatron.org/probatron4j.html
