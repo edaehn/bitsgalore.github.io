@@ -67,9 +67,24 @@
 	    <!-- Column right -->
 
         <div class="sidebar">
+        <!-- Avatar and search box -->
           <p>
           <a href="{{ HOME_PATH }}"><img src="{{ BASE_PATH }}/images/bgava.png" alt="bitsgalore avatar"  width="159" height="200"></a>	  	
 		  </p>
+
+          <!-- Search form -->
+          <div class="searchForm">
+            <form action="/search" method="get">
+              <input type="text" id="search-query" name="q" placeholder="Search" autocomplete="off">
+            </form>
+          </div>
+
+          <section id="search-results" style="display: none;"> </section>
+
+        </div>
+
+        <div class="sidebar">
+        <!-- About page and social media -->
 		  <h2><a href="{{ site.url }}/about.html">About</a></h2>
 		  <h2><a href="https://twitter.com/bitsgalore" target="_blank">Twitter</a></h2>
           <h2><a href="https://digipres.club/@bitsgalore" target="_blank">Mastodon (digipres.club)</a></h2>
@@ -77,13 +92,14 @@
         </div>
 
 	    <div class="sidebar">
+        <!-- Feeds and archive -->
 		  <h2><a href="{{ site.url }}/rss.xml">RSS feed</a></h2>
 		  <h2><a href="{{ site.url }}/atom.xml">ATOM feed</a></h2>
           <h2><a href="{{ site.url }}/archive.html">Archive</a></h2>
 	    </div>
 
 	    <div class="sidebar">
-	      <!-- Tag cloud -->
+	    <!-- Tag cloud -->
           <h2><a href="{{ site.url }}/tags.html">Tags</a></h2>
           {% include JB/setup %}
           <ul class="tag_box inline">
@@ -117,4 +133,8 @@
 	</div>
   </div>
   </body>
+
+  <script src="{{ BASE_PATH }}/js/lunr.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="{{ BASE_PATH }}/js/search.min.js" type="text/javascript" charset="utf-8"></script>
+
 </html>
