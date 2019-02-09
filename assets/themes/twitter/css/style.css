@@ -1,6 +1,39 @@
 ---
 ---
 
+#container {
+    /*width:1200px;
+    margin:20px auto;*/
+}
+
+#header {
+    margin-bottom: 20px;
+    border-bottom: 2px solid black;
+}
+
+#sidebarLeft {
+    float:left;
+    min-width: 200px;
+    width:10%;
+}
+
+#content {
+    float:left;
+    width:62%;
+    min-width: 740px;
+    max-width: 740px;
+}
+
+#sidebarRight {
+    float:left;
+    width:28%;
+}
+
+#footer {
+    clear:both;
+}
+
+
 /* Custom container */
 .container-narrow {
   margin: auto auto auto 150px;
