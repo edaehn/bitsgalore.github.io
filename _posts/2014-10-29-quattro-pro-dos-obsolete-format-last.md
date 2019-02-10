@@ -87,7 +87,7 @@ If anyone decides to have a go at this, I'd be very interested to see the result
 
 ## Update: analysis by Euan Cochrane; Lotus 1-2-3 problematic as well?
 
-In response to this blog post, Euan Cochrane has done [some  additional tests with my Quattro Pro files](https://openpreservation.org/blog/2014/10/29/opening-johans-quattro-pro-files-quattro-pro-6-win-311/) using Quattro Pro 6 running in an emulated environment. Euan's analysis is highly recommended for any readers of this post. Moreover, trying to open a Lotus 1-2-3 file that Euan created as part of his analysis made me realise that Lotus 1-2-3 spreadsheets may also be more problematic than I initially thought. See my [comment](http://openplanetsfoundation.org/comment/603#comment-603) under Euan's blog post. 
+In response to this blog post, Euan Cochrane has done [some  additional tests with my Quattro Pro files](https://www.webarchive.org.uk/wayback/en/archive/20160105203022/http://openpreservation.org/blog/2014/10/29/opening-johans-quattro-pro-files-quattro-pro-6-win-311/) using Quattro Pro 6 running in an emulated environment. Euan's analysis is highly recommended for any readers of this post. Moreover, trying to open a Lotus 1-2-3 file that Euan created as part of his analysis made me realise that Lotus 1-2-3 spreadsheets may also be more problematic than I initially thought. See my [comment](https://www.webarchive.org.uk/wayback/en/archive/20160105203022mp_/http://openpreservation.org/blog/2014/10/29/opening-johans-quattro-pro-files-quattro-pro-6-win-311/#comment-354) under Euan's blog post.
 
 [^1]: I wasn't able to locate these converters anywhere on Microsoft's website.
 
