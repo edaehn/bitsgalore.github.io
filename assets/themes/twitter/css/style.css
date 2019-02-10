@@ -11,10 +11,6 @@
     border-bottom: 2px solid black;
 }
 
-#sidebarLeft {
-    float:left;
-    width:17%;
-}
 
 #content {
     float:left;
@@ -25,14 +21,26 @@
     max-width: 740px;*/
 }
 
+#footer {
+    clear:both;
+}
+
+#sidebarLeft {
+    float:left;
+    width:17%;
+    min-height: 1px;
+}
+
 #sidebarRight {
     float:left;
     width:35%;
     min-width: 500px;
 }
 
-#footer {
-    clear:both;
+#sidebarFooterLeft {
+    float:left;
+    width:17%;
+    min-height: 1px;
 }
 
 .banner-header{
@@ -80,7 +88,7 @@ text-decoration: underline;
 footer {
 }
   
-.sidebar{
+.sidebarGroup{
   font-family: Verdana, Geneva, sans-serif;
   text-align: left;
   margin-left: 150px;
@@ -91,26 +99,26 @@ footer {
   border-bottom: 2px solid black;
   }
   
-.sidebar p{
+.sidebarGroup p{
   font-size:16px;
   line-height:18px;
   }  
 
-.sidebar h2{
+.sidebarGroup h2{
   font-size:16px;
   line-height:18px;
   } 
 
-.sidebar h3{
+.sidebarGroup h3{
   font-size:16px;
   line-height:18px;
   } 
 
-.sidebar small{
+.sidebarGroup small{
   color:#404040;
 }
 
-.sidebar figure figcaption{
+.sidebarGroup figure figcaption{
     font-size:14px;
     text-align: center;
     font-style:normal;
@@ -118,12 +126,6 @@ footer {
     margin-bottom: 0;
     text-align: center;
     }
-    
-.sidebarLeft{
-  margin-top: 0px;
-  padding: 15px;
-  }  
-
 
 body{
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
