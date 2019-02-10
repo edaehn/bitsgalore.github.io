@@ -89,6 +89,27 @@ If anyone decides to have a go at this, I'd be very interested to see the result
 
 In response to this blog post, Euan Cochrane has done [some  additional tests with my Quattro Pro files](https://www.webarchive.org.uk/wayback/en/archive/20160105203022/http://openpreservation.org/blog/2014/10/29/opening-johans-quattro-pro-files-quattro-pro-6-win-311/) using Quattro Pro 6 running in an emulated environment. Euan's analysis is highly recommended for any readers of this post. Moreover, trying to open a Lotus 1-2-3 file that Euan created as part of his analysis made me realise that Lotus 1-2-3 spreadsheets may also be more problematic than I initially thought. See my [comment](https://www.webarchive.org.uk/wayback/en/archive/20160105203022mp_/http://openpreservation.org/blog/2014/10/29/opening-johans-quattro-pro-files-quattro-pro-6-win-311/#comment-354) under Euan's blog post.
 
+## Post script February 2019
+
+In the folder from which I recovered this blog post, I also found a note with what looks like a comment to either this post, or Euan's follow-up post (as these comments have disappeared from the OPF site there's no way to tell). As it contains some relevant additional information on the Lotus 1-2-3, I've included it below:
+
+>After I posted the above comment I also found out that IBM officially ceased its support for Lotus 123 on 30 September 2014. See the announcement here:
+>
+><http://www-01.ibm.com/common/ssi/cgi-bin/ssialias?subtype=ca&infotype=an&appname=iSource&supplier=897&letternum=ENUS913-091>
+>
+>Here's a recent feature on this from the Register:
+>
+><https://www.theregister.co.uk/2014/10/02/so_long_lotus_123_ibm_ceases_support_after_over_30_years_of_code/>
+>
+>This also applies to the Lotus SmartSuite and Organizer products (I'm not familiar with those products, so I have no idea if this has any additional format-related implications).
+>
+>### What will happen to the Lotus 1-2-3 codebase?
+>
+>This really makes me wonder what will happen to the old Lotus 1-2-3 codebase. Interestingly, in 2012 IBM discontinued its [IBM Lotus Symphony](http://en.wikipedia.org/wiki/IBM_Lotus_Symphony) suite, after which they donated the codebase of that product to the Apache Software Foundation, who then merged it into Apache OpenOffice.
+>
+>I'm not aware of any efforts to save the Lotus 1-2-3 codebase, but I think this would be immensely helpful to keep those old spreadsheet formats accessible. I don't know if this is something IBM would be willing to do (e.g. by releasing it as open source). This could also be interesting to of initiatives like the [Document Liberation Project](http://www.documentliberation.org/). If anyone has any info/additional thoughts on this please leave a comment!
+
+
 [^1]: I wasn't able to locate these converters anywhere on Microsoft's website.
 
 [^2]: Just in case anyone's wondering: these spreadsheets calculate a soil's saturated [hydraulic conductivity](http://en.wikipedia.org/wiki/Hydraulic_conductivity) from field measurement data using the [inverse auger hole method](http://www.samsamwater.com/library/DETERMINING_HYDRAULIC_CONDUCTIVITY_WITH_THE_INVERSED_AUGER_HOLE_AND_INFILTROMETER_METHODS.pdf).
