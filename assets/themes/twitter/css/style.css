@@ -35,6 +35,7 @@
     float:left;
     width:35%;
     min-width: 200px;
+    max-width: 500px;
 }
 
 #sidebarFooterLeft {
