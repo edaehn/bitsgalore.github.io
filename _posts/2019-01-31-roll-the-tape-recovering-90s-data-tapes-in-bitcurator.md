@@ -20,9 +20,10 @@ One of the first sample sets we received contains a collection of over 30 data t
 
 Obviously, to read these vintage tape formats you first need tape drives that support them. Luckily, our IT department turned out to have a working *DDS-2* drive (which also reads *DDS-1* tapes), as well as a *DLT-IV* drive tucked away on a shelf.
 
-![DLT-IV drive]({{ BASE_PATH }}/images/2019/01/dlt-insert.jpg)
-
-*DLT-IV drive with tape*
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2019/01/dlt-insert.jpg" alt="Photograph of DLT-IV drive with tape">
+  <figcaption>DLT-IV drive with tape</figcaption>
+</figure>
 
 ## SCSI madness
 
@@ -36,9 +37,10 @@ Another thing to keep in mind is that any unused *SCSI* buses on the tape drive 
 
 With the *SCSI* controller inserted into our *BitCurator* workstation, I hooked up one of the tape drives, and tried to read some test tapes[^2]. Since we want to read the tape data in a format-agnostic way that is independent of the software that was originally used to write the tapes, I used Unix [*dd*](https://en.wikipedia.org/wiki/Dd_%28Unix%29) (and the [*mt*](https://linux.die.net/man/1/mt) tool to issue tape transport commands). After some experimentation, I was able to write a simple Bash script that sequentially reads all files on the tape. I then rewrote the script into what was to become the [*tapeimgr*](https://github.com/KBNLresearch/tapeimgr) software. *Tapeimgr* (which was loosely inspired by the [*Guymager*](https://guymager.sourceforge.io/) software) allows one to read data from a tape using a simple and user-friendly graphical interface. Internally, *tapeimgr* just wraps around *dd* and *mt*, but the complexities of these tools are hidden from the user. For a given tape, the software reads all files; before reading a file, it first runs an iterative procedure to establish the block size that was used for writing it. Once the end of a tape is reached, *tapeimgr* computes *SHA512* checksums of all recovered files, and these are subsequently written to a .json file (alongside some basic descriptive and event metadata). A detailed extraction log with the full output of *dd* is also written for each tape.
 
-![Tapeimgr interface]({{ BASE_PATH }}/images/2019/01/tapeimgr-2.png)
-
-*Tapeimgr interface*
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2019/01/tapeimgr-2.png" alt="Screenshot of Tapeimgr interface">
+  <figcaption>Tapeimgr interface</figcaption>
+</figure>
 
 ## Post-processing
 

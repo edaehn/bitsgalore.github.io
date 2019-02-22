@@ -15,7 +15,7 @@ Details on how *Isolyzer* performs the calculations for estimating the expected 
 
 ## Changes to the output format
 
-The addition of multiple file system support required some changes to *Isolyzer*'s output format. The main change is the addition of a *fileSystems* element, which in turn holds one or more *fileSystem* elements that each contain information about a detected file system. The updated output format is [documented here](https://github.com/KBNLresearch/isolyzer#isolyzer-output), and some examples are [available here](https://github.com/KBNLresearch/isolyzer#examples). Note that these changes may break existing workflows that use *Isolyzer*. This is also the main reason for making this a major (1.x) release. It is still possible that the format will change somewhat in the final (stable) release; this will largely depend on any feedback we may get from users of the tool. 
+The addition of multiple file system support required some changes to *Isolyzer*'s output format. The main change is the addition of a *fileSystems* element, which in turn holds one or more *fileSystem* elements that each contain information about a detected file system. The updated output format is [documented here](https://github.com/KBNLresearch/isolyzer#isolyzer-output), and some examples are [available here](https://github.com/KBNLresearch/isolyzer#examples). Note that these changes may break existing workflows that use *Isolyzer*. This is also the main reason for making this a major (1.x) release. It is still possible that the format will change somewhat in the final (stable) release; this will largely depend on any feedback we may get from users of the tool.
 
 ## Documentation and test images
 

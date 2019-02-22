@@ -48,9 +48,10 @@ After confirming this, *Iromlab* prompts the operator to insert the disc into th
 
 This second prompt tries to enforce a fixed processing order (i.e. enter the data first, and then insert the disc), which reduces the risk of synchronisation errors between the jobs queue and the stack of physical discs in the disc robot. After pressing "OK", the job is added to the processing queue.
 
-![]({{ BASE_PATH }}/images/2017/06/workstationSmall.jpg)
-
-*Iromlab in action; disc robot on the left.*
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2017/06/workstationSmall.jpg" alt="Photograph of Iromlab with disc robot">
+  <figcaption>Iromlab in action; disc robot on the left.</figcaption>
+</figure>
 
 ## Processing a disc
 

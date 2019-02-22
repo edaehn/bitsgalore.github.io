@@ -68,7 +68,7 @@ An analysis of the completeness of the *wget* capture[^4] revealed that over 660
 - A file is only referenced through a *value* attribute of an *input* element.
 - A file is only referenced through a *src* attribute of a *frame* element.
 
-Thhis raises the obvious question: can we force *wget* to crawl *all* files in the source directory? Of course we can!
+This raises the obvious question: can we force *wget* to crawl *all* files in the source directory? Of course we can!
 
 ## Wget: use --input-file switch with URL list
 
