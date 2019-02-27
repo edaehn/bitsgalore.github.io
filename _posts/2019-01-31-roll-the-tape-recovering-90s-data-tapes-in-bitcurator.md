@@ -10,7 +10,7 @@ When the [KB web archive](https://www.kb.nl/en/organisation/research-expertise/l
 
 ## Physical carrier formats
 
-At this early stage of the web archaeology project, a few site creators have already loaned us sample sets of offline carriers. Even though these sets are limited in size, they already contain quite a wide range of physical formats: CD-ROMs, floppy disks, ZIP disks, USB thumb drives, (internal) hard disks, and a variety of tape formats. For reading the data on these carriers, we've set up a desktop workstation running the [*BitCurator*](https://bitcurator.net/) environment.
+At this early stage of the web archaeology project, a few site creators have already lended us sample sets of offline carriers. Even though these sets are limited in size, they already contain quite a wide range of physical formats: CD-ROMs, floppy disks, ZIP disks, USB thumb drives, (internal) hard disks, and a variety of tape formats. For reading the data on these carriers, we've set up a desktop workstation running the [*BitCurator*](https://bitcurator.net/) environment.
 
 ## Tapes
 
@@ -48,7 +48,7 @@ Since *tapeimgr* is format-agnostic, it's up to the user to figure out how to fu
 
 ## Recovering the first sample set
 
-After we were confident that our tape processing workflow worked correctly, we used it to process the sample set of *DDS* and *DLT-IV* tapes that were loaned to us. The majority of the 19 *DDS* tapes in the sample set could be read without problems. Only 3 tapes resulted in any issues. Two tapes could not be read at all; both of them turned out to be *DDS-3* tapes, which are not supported by the *DDS-2* tape drive we used. A *DDS-3* or *DDS-4* drive should be able to read these tapes. For one other tape the extraction resulted in a 10-kB file with only null bytes, which most likely means the tape is faulty. Of the 14 *DLT-IV* tapes, 7 could be read without problems. For the remaining 7, the reading procedure only resulted in a zero-length file. Interestingly, a common characteristic of all "failed" tapes is that they were written at 40.0 GB capacity, whereas the other tapes were written at 35.0 GB capacity. This is odd, as our *DLT-IV* drive *does* support 40.0 GB capacity tapes (which was confirmed by writing some data to a blank test tape at 40.0 GB capacity, which could subsequently be read without problems). This needs some further investigation.
+After we were confident that our tape processing workflow worked correctly, we used it to process the sample set of *DDS* and *DLT-IV* tapes that were lended to us. The majority of the 19 *DDS* tapes in the sample set could be read without problems. Only 3 tapes resulted in any issues. Two tapes could not be read at all; both of them turned out to be *DDS-3* tapes, which are not supported by the *DDS-2* tape drive we used. A *DDS-3* or *DDS-4* drive should be able to read these tapes. For one other tape the extraction resulted in a 10-kB file with only null bytes, which most likely means the tape is faulty. Of the 14 *DLT-IV* tapes, 7 could be read without problems. For the remaining 7, the reading procedure only resulted in a zero-length file. Interestingly, a common characteristic of all "failed" tapes is that they were written at 40.0 GB capacity, whereas the other tapes were written at 35.0 GB capacity. This is odd, as our *DLT-IV* drive *does* support 40.0 GB capacity tapes (which was confirmed by writing some data to a blank test tape at 40.0 GB capacity, which could subsequently be read without problems). This needs some further investigation.
 
 ## Next steps
 
@@ -68,7 +68,7 @@ Thanks are due to Peter Boel and René van Egdom for their help digging out the 
 
 [^1]: Also see [this useful diagram](https://upload.wikimedia.org/wikipedia/commons/1/15/PCI_Keying.svg) that shows different PCI card types.
 
-[^2]: Importantly, for the testing phase we only used some unimportant tapes that we still happened to have lying around. This was done to minimise any chance of accidental damage to the tapes that were loaned to us (we did not know in advance whether the tape drives were still working correctly!).
+[^2]: Importantly, for the testing phase we only used some unimportant tapes that we still happened to have lying around. This was done to minimise any chance of accidental damage to the tapes that were lended to us (we did not know in advance whether the tape drives were still working correctly!).
 
 <hr>
 Originally published at the [Open Preservation Foundation blog](https://openpreservation.org/blog/2019/01/31/roll-the-tape-recovering-90s-data-tapes-in-bitcurator/)
