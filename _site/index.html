@@ -66,6 +66,15 @@
 
 
    <div class="post-entry">
+   <h1><a href="/2019/03/22/a-simple-workflow-tool-for-imaging-optical-media-using-readom-and-ddrescue">A simple workflow tool for imaging optical media using readom and ddrescue</a> <small>22 Mar 2019</small></h1>
+   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
+   <p>In 2015 I wrote <a href="/2015/11/13/preserving-optical-media-from-the-command-line">a blog post on preserving optical media from the command-line</a>. Among other things, it suggested a rudimentary workflow for imaging CD-ROMs and DVDs using the <a href="http://linux.die.net/man/1/readom"><em>readom</em></a> and <a href="http://linux.die.net/man/1/ddrescue"><em>ddrescue</em></a> tools. Even though we now have a <a href="/2017/06/19/image-and-rip-optical-media-like-a-boss">highly automated workflow in place</a> for bulk processing optical media from our deposit collection, <em>readom</em> and <em>ddrescue</em> still prove to be useful for various special cases that don’t quite fit into this workflow. The materials that we are currently receiving as part of our web archaeology activities are a good example. These are typically small sets of recordable CD-ROMs that are often quite old, and such discs are highly likely to be in less than perfect condition. For these cases a highly automated, <a href="https://github.com/KBNLresearch/iromlab"><em>iromlab</em></a>-like workflow is unnecessary, and to some degree even impractical. Nevertheless, it would be useful to have <em>some</em> degree of automation, especially for things like the addition and packaging of associated metadata. This prompted the development of the <a href="https://github.com/KBNLresearch/omimgr"><em>omimgr</em></a> workflow tool. In the the remainder of this blog post I will give an overview of <em>omimgr</em>.</p>
+
+
+   <small><a href="/2019/03/22/a-simple-workflow-tool-for-imaging-optical-media-using-readom-and-ddrescue">More ...</a></small>
+   </div> 
+
+   <div class="post-entry">
    <h1><a href="/2019/01/31/roll-the-tape-recovering-90s-data-tapes-in-bitcurator">Roll the tape - recovering '90s data tapes in BitCurator</a> <small>31 Jan 2019</small></h1>
    <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
    <p>When the <a href="https://www.kb.nl/en/organisation/research-expertise/long-term-usability-of-digital-resources/web-archiving">KB web archive</a> was launched in 2007, many sites from the “early” Dutch web had already gone offline. As a result, the time period between (roughly) 1992 and 2000 is seriously under-represented in our web archive. To improve the coverage of web sites from this historically important era, we are now looking into <a href="https://hart.amsterdam/image/2016/11/28/20160730_redds_tjardadehaan.pdf">Web Archaeology</a> tools and methods. Over the last year our web archiving team has reached out to creators of “early” Dutch web sites that are no longer online. It’s not uncommon to find that these creators still have boxes of offline carriers with the original source data of those sites. Using these data, we would (in many cases) be able to reconstruct the sites, similarly to how we <a href="/2018/04/24/resurrecting-the-first-dutch-web-index-nl-menu-revisited">reconstructed the first Dutch web index</a> last year. Once reconstructed, they could then be ingested into our web archive.</p>
@@ -99,15 +108,6 @@
 
 
    <small><a href="/2017/07/12/update-on-isolyzer-udf-hfs-and-more">More ...</a></small>
-   </div> 
-
-   <div class="post-entry">
-   <h1><a href="/2017/06/19/image-and-rip-optical-media-like-a-boss">Image and Rip Optical Media Like A Boss!</a> <small>19 Jun 2017</small></h1>
-   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
-   <p>Over the last months we’ve been working on the development of a provisional workflow for preserving the content of  optical media in our collection. The main result thus far is <a href="https://github.com/KBNLresearch/iromlab"><em>Iromlab</em></a>, a custom workflow application that streamlines the imaging and ripping process. This blogpost gives an overview of <em>Iromlab</em>, as well as the reasons why we created it in the first place.</p>
-
-
-   <small><a href="/2017/06/19/image-and-rip-optical-media-like-a-boss">More ...</a></small>
    </div> 
 
 
@@ -269,7 +269,7 @@
      
     	<li><a href="/tags.html#VeraPDF-ref">VeraPDF <span>3</span></a></li>
      
-    	<li><a href="/tags.html#optical-media-ref">optical-media <span>7</span></a></li>
+    	<li><a href="/tags.html#optical-media-ref">optical-media <span>8</span></a></li>
      
     	<li><a href="/tags.html#ISO-9660-ref">ISO-9660 <span>4</span></a></li>
      
@@ -277,7 +277,7 @@
      
     	<li><a href="/tags.html#FLAC-ref">FLAC <span>1</span></a></li>
      
-    	<li><a href="/tags.html#isolyzer-ref">isolyzer <span>3</span></a></li>
+    	<li><a href="/tags.html#isolyzer-ref">isolyzer <span>4</span></a></li>
      
     	<li><a href="/tags.html#HFS-ref">HFS <span>2</span></a></li>
      
@@ -290,6 +290,8 @@
     	<li><a href="/tags.html#tapes-ref">tapes <span>1</span></a></li>
      
     	<li><a href="/tags.html#tapeimgr-ref">tapeimgr <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#omimgr-ref">omimgr <span>1</span></a></li>
     
   
 
