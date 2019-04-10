@@ -11,6 +11,8 @@ tags: [disk-imaging, diskimgr, web-archaeology, floppy-disks]
 
 As I explained in the introduction of [this earlier blog post]({{ BASE_PATH }}/2019/01/31/roll-the-tape-recovering-90s-data-tapes-in-bitcurator), as part of our ongoing web archaeology project we are currently developing workflows for reading data from a variety of physical carrier formats. After the earlier work on [data tapes]({{ BASE_PATH }}/2019/01/31/roll-the-tape-recovering-90s-data-tapes-in-bitcurator) and [optical media]({{ BASE_PATH }}/2019/03/22/a-simple-workflow-tool-for-imaging-optical-media-using-readom-and-ddrescue), the next job was to image a small box with 3.5" floppy disks. Easy enough, and my first thought was to fire up [*Guymager*](https://guymager.sourceforge.io/) and be done with it. This turned out to be less straightforward than expected, which led to the development of yet another workflow tool: [*diskimgr*](https://github.com/KBNLresearch/diskimgr). In the remainder of this post I will first show the issues I ran into with *Guymager*, and then demonstrate how these issues are remedied by *diskimgr*.
 
+<!-- more -->
+
 ## Guymager workflow
 
 As I tried to image some floppies with *Guymager*, I quickly ran into several problems, all of which involved the handling of user-added descriptive metadata. *Guymager* does in fact accommodate for this, but the way it is implemented introduces some practical issues. To illustrate this, here's *Guymager*'s default entry form: 
