@@ -76,33 +76,32 @@ Since *ddrescue* may need a *lot* of time to recover data from a faulty disc (12
 
 A the end of each session, *omimgr* writes a metadata file in *JSON* format. Here's an example:  
 
-```json
-{
-    "acquisitionEnd": "2019-03-22T13:38:51.969934+01:00",
-    "acquisitionStart": "2019-03-22T13:37:43.060185+01:00",
-    "autoRetry": false,
-    "checksumType": "SHA-512",
-    "checksums": {
-        "backupjrc.iso": "714426e7f965e4f6b33571ae4d60d945928dbee8c06f74225a138eaaa4ea4b2b7442620227e94920a0bc7ac17a6c7096fb310746cfff2c04b5c3e778ae8998ce"
-    },
-    "description": "Backup JRC 31-03-2000",
-    "extension": "iso",
-    "identifier": "e23f9158-4c9e-11e9-bbfc-dc4a3e413173",
-    "imageTruncated": false,
-    "interruptedFlag": false,
-    "isolyzerSuccess": true,
-    "maxRetries": "4",
-    "notes": "Outer edge of CD shows signs of corrosion",
-    "omDevice": "/dev/sr1",
-    "omimgrVersion": "0.1.0",
-    "prefix": "backupjrc",
-    "readCommandLine": "readom retries=4 dev=/dev/sr1 f=/home/johan/test/backupjrc.iso",
-    "readMethod": "readom",
-    "readMethodVersion": "readom 1.1.11 (Linux)",
-    "rescueDirectDiscMode": false,
-    "successFlag": true
-}
-```
+    {
+        "acquisitionEnd": "2019-03-22T13:38:51.969934+01:00",
+        "acquisitionStart": "2019-03-22T13:37:43.060185+01:00",
+        "autoRetry": false,
+        "checksumType": "SHA-512",
+        "checksums": {
+            "backupjrc.iso": "714426e7f965e4f6b33571ae4d60d945928dbee8c06f74225a138eaaa4ea4b2b7442620227e94920a0bc7ac17a6c7096fb310746cfff2c04b5c3e778ae8998ce"
+        },
+        "description": "Backup JRC 31-03-2000",
+        "extension": "iso",
+        "identifier": "e23f9158-4c9e-11e9-bbfc-dc4a3e413173",
+        "imageTruncated": false,
+        "interruptedFlag": false,
+        "isolyzerSuccess": true,
+        "maxRetries": "4",
+        "notes": "Outer edge of CD shows signs of corrosion",
+        "omDevice": "/dev/sr1",
+        "omimgrVersion": "0.1.0",
+        "prefix": "backupjrc",
+        "readCommandLine": "readom retries=4 dev=/dev/sr1 f=/home/johan/test/backupjrc.iso",
+        "readMethod": "readom",
+        "readMethodVersion": "readom 1.1.11 (Linux)",
+        "rescueDirectDiscMode": false,
+        "successFlag": true
+    }
+
 
 Note that the metadata file contains all of the entered descriptive metadata, a SHA-512 checksum of the ISO image, and a host of event metadata.
 
