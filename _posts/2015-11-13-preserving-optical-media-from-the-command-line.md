@@ -161,12 +161,12 @@ In the above example I used two different CD readers that were connected to the 
 
 ## Check integrity of ISO image against physical CD-ROM or DVD
 
-You can use check the integrity of the created ISO image by computing a checksum on both the ISO file and the physical carrier, and then comparing both:
+In theory you could use check the integrity of the created ISO image by computing a checksum on both the ISO file and the physical carrier, and then comparing both:
 
     md5sum mydisk.iso
     md5sum /dev/sr0
 
-Note that the aforementioned [Aaron Toponce article](https://pthree.org/2011/09/26/how-to-properly-create-and-burn-cddvd-iso-images-from-the-command-line/) claims that *readom* already does a checksum check. If true, the additional check would be overkill (especially given that computing a checksum on a physical CD or DVD is time consuming). However, I couldn't find any confirmation of this in either *readom*'s documentation nor its source code (although I found the source hard to read, so I may have simply overlooked it).
+However, in practice this comparison is not all that useful. Using dedicated data recovery tools like *readom* and particularly *ddrescue* often results in a more accurate capture of the data on a disc than accessing the corresponding device directly. Because of this, computing a checksum on the device using something like `md5sum /dev/sr0` can give unreliable results, resulting in a checksum mismatch that does not indicate any fault of the ISO image. It is worth noting that the aforementioned [Aaron Toponce article](https://pthree.org/2011/09/26/how-to-properly-create-and-burn-cddvd-iso-images-from-the-command-line/) claims that *readom* already does a checksum check. If true, the additional check would be overkill (especially given that computing a checksum on a physical CD or DVD is time consuming). However, I couldn't find any confirmation of this in either *readom*'s documentation nor its source code (although I found the source hard to read, so I may have simply overlooked it).
 
 ## Verify ISO image
 
