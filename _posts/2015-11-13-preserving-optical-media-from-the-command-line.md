@@ -429,11 +429,16 @@ One thing to watch out for is that in most cases ISO images from an enhanced CD 
 
 * The rough, unedited notes on which this blog post is based can be found [here](https://gist.github.com/bitsgalore/1bea8f015eca21a706e7#file-notescdimaging-md) (they contain some additional material that I left out here for readability). 
 
+* The [User Manual of *ddrescue*](https://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html#Optical-media) gives some useful additional examples of how this tool can be used to recover data from a faulty CD-ROM.  
+
 ## Update June 2019
 
+This blog post was updated June 2019. The main changes are:
 
+- Revised section on checksum verification, and added explanation that in practice this is not very useful.
+- Added references to *Isolyzer*
+- The section on mixed-mode and multisession discs confusingly mixed up both types of carriers. I have clarified the distinction between both types of carriers, the instructions for imaging them are now in separate sections.
 
-* The [User Manual of *ddrescue*](https://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html#Optical-media) gives some useful additional examples of how this tool can be used to recover data from a faulty CD-ROM.  
 
 [^1]: If you don't do this you will get the error message *ERROR: Unable to open SCSI device /dev/sr0: Device or resource busy*.
 
