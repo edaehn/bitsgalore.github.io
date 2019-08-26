@@ -66,6 +66,870 @@
 
 
    <div class="post-entry">
+   <h1><a href="/2019/08/16/recovering-90s-data-tapes-experiences-kb-web-archaeology">Recovering '90s Data Tapes - Experiences From the KB Web Archaeology project</a> <small>16 Aug 2019</small></h1>
+   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
+   <h1 id="abstract">Abstract</h1>
+
+<p>The recovery of digital data from tape formats from the mid
+to late ’90s is not well covered by existing digital preservation and
+forensics literature. This paper addresses this knowledge gap with a
+discussion of the hardware and software that can be used to read such
+tapes. It introduces <em>tapeimgr</em>, a user-friendly software application
+that allows one to read tapes in a format-agnostic manner. It also
+presents workflows that integrate the discussed hardware and software
+components. It then shows how these workflows were used to recover the
+contents of a set of DDS-1, DDS-3 and DLT-IV tapes from the mid to late
+’90s. These tapes contain the source data of a number of “lost” web
+sites that the National Library of the Netherlands (KB) is planning to
+reconstruct at a later stage as part of its ongoing Web Archaeology
+project. The paper also presents some first results of sites from 1995
+that have already been reconstructed from these tapes.</p>
+
+<p><strong>Keywords</strong> – tapes, digital forensics, web archaeology</p>
+
+<p><strong>Conference Topics</strong> – The Cutting Edge: Technical Infrastructure and
+Implementation</p>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>When the National Library of the Netherlands (hereafter: KB) launched
+its web archive in 2007, many sites from the “early” Dutch web had
+already gone offline. As a result, the time period between (roughly)
+1992 and 2000 is under-represented in the web archive. To improve the
+coverage of web sites from this historically important era, the KB has
+started to investigate the use of tools and methods from the emerging
+field of “web archaeology” . Analogous to how archaeologists study past
+cultures from excavated physical artefacts, web archaeology is about
+reconstructing “lost” web sites using data that are recovered from old
+(and often obsolete) physical carriers. It is worth noting that Ross and
+Gow introduced the concept of “digital archaeology” (of which web
+archaeology is a special case) as early as 1999 .</p>
+
+<p>Over the last year, the KB web archiving team has reached out to a
+number of creators of “early” Dutch web sites that are no longer online.
+Many of these creators still possess offline information carriers with
+the original source data of their sites. This would potentially allow us
+to reconstruct those sites, and then ingest them into the web archive.
+The overall approach would be similar to how we already reconstructed
+the first Dutch web index <em>NL-Menu</em> in 2018 , .</p>
+
+<p>A few of these creators have already provided us with sample sets of
+carriers which, though limited in size, comprise a range of physical
+formats, such as CD-ROMs, floppy disks, ZIP disks, USB thumb drives, and
+(internal) hard disks. One sample set was provided to us by the former
+owners of <em>xxLINK</em>, a web development and hosting company that was
+founded in 1994. It was the first Dutch company that provided these
+services, and throughout the ’90s <em>xxLINK</em> created web sites for a large
+number of well-known Dutch companies and institutions<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. A
+particularly interesting feature of the <em>xxLINK</em> sample set is that it
+includes 33 data tapes.</p>
+
+<p>There is a relative wealth of digital preservation and digital forensics
+literature on the recovery of data from physical carriers. Examples
+include Ross and Gow , Elford et al. , Woods and Brown , Woods et al. ,
+Lee et al. , John and Pennock et al. . For many carrier types published
+workflow descriptions are readily available (see e.g. Prael and Wickner
+, Salo and the workflows published by the <em>BitCurator Consortium</em> , to
+name but a few). Even though these cover a wide range of physical
+carrier types, the existing literature provides surprisingly little
+information on how to recover data from legacy tape formats. One of the
+few exceptions are De Haan and De Haan et al. , who describe how they
+rescued 11 GB worth of data from three DLT tapes. However, they do not
+provide much detail about the hardware and software setup they used for
+this.</p>
+
+<p>Reading these legacy tape formats presents a number of challenges.
+First, it requires specific hardware that is now largely obsolete. This
+includes not only the actual tape readers, but also host adapters that
+are needed to connect a tape reader to a modern forensic workstation,
+cables and adapter plugs. Because of this, finding the “right” hardware
+setup is often not straightforward. Furthermore, since the original
+software that was used to write (and read) legacy data tapes may not be
+available anymore (if it is known at all), the tapes should be read in a
+format-agnostic way at the block device level. This can be done with
+existing software tools, but these tools are not very user-friendly, and
+the resulting workflows can be quite unwieldy. Also, the logical
+interpretation of data files that have been recovered from tape requires
+some additional work. Finally, even though there are still various
+online resources that cover reading these tapes<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, the information
+they provide is often fragmentary, or geared towards specific backup
+software or hardware. This is especially true for older resources that
+date back to the time when these tape formats were in heavy use.</p>
+
+<p>Hence, there appears to be a knowledge gap. The overall aim of this
+paper is to fill this gap by discussing the hardware and software that
+can be used to read such tapes, and by presenting practical workflows
+that allowed us to recover the information from the <em>xxLINK</em> tapes.
+These workflows are largely based on current hard- and software. They
+are also fully open source, and can be easily integrated into
+Linux-based platforms, including the popular <em>BitCurator</em><sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>
+environment.</p>
+
+<h1 id="outline">Outline</h1>
+
+<p>This paper starts with a brief overview of the tape formats in the
+<em>xxLINK</em> sample set. This is followed by a discussion of the hardware
+that is needed for accessing tapes like these. This section also
+provides some suggestions that will hopefully be useful to others who
+are starting similar tape-related work. It then suggests a
+format-agnostic procedure for reading the data on the tapes, and
+presents a new software application that was developed specifically for
+reading tapes in a simple and user-friendly manner. Next follows a
+discussion of how this hardware and software setup were integrated into
+workflows, and how these workflows were used to recover the data on the
+<em>xxLINK</em> tapes. This is followed by two sections that explain the
+further processing of the recovered data: the extraction of the
+resulting container files, and the subsequent reconstruction of any
+“lost” web sites whose underlying data are enclosed in them. This
+section also shows some first results of sites that were recovered from
+a 1995 tape. The closing section summarizes the main conclusions.</p>
+
+<h1 id="tape-formats">Tape formats</h1>
+
+<p>The majority (19) of the tapes in the <em>xxLINK</em> sample set are DDS tapes,
+most of which were written in 1995. DDS (Digital Data Storage) is a
+family of tape formats that are based on Digital Audio Tape (DAT). Using
+the product codes I was able to identify the majority of these DDS tapes
+as DDS-1, which was the first generation of DDS. DDS-1 was introduced in
+1989, and has a maximum capacity of 2 GB (uncompressed), or 4 GB
+(compressed). Two tapes could be identified as DDS-3, a format which was
+introduced in 1996 with a maximum capacity of 12 GB (uncompressed), or
+24 GB (compressed). A total of 7 DDS generations have been released, the
+final one being DAT-320 in 2009<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>. Backward read compatibility of DDS
+drives is typically limited to 2 or 3 generations<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup>. The <em>xxLINK</em> set
+also contains 14 DLT-IV tapes which were mostly written in 1999. DLT-IV
+is a member of the Digital Linear Tape (DLT) family of tape formats,
+which dates back to 1984. DLT-IV was first introduced in 1994<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>, and
+has a capacity of up to 40 GB (uncompressed), or 80 GB (compressed)<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup>.
+Figure 1 shows what these tapes look like.</p>
+
+<figure class="image">
+  <img src="/images/2019/09/tapes-dds-dlt.jpg" alt="DDS-1 (left) and DLT-IV (right) tape" />
+  <figcaption>Figure 1: DDS-1 (left) and DLT-IV (right) tape</figcaption>
+</figure>
+
+<h1 id="hardware">Hardware</h1>
+
+<p>For all data recovery workflows that are part of the web archaeology
+project I set up a dedicated forensic workstation that is running the
+<em>BitCurator</em> environment. Reading the vintage tape formats in the
+<em>xxLINK</em> sample set requires some specific additional hardware, most of
+which can be bought used online at a low to moderate cost. Luckily, it
+turned out our IT department was still in the possession of an old
+(DDS-1-compatible) DDS-2 drive, as well as a DLT-IV drive. Both drives
+are shown in Figure 2.</p>
+
+<figure class="image">
+  <img src="/images/2019/09//tapedrives-dds-dlt.jpg" alt="DLT-IV (bottom) and DDS-2 (top) tape drives" />
+  <figcaption>Figure 2: DLT-IV (bottom) and DDS-2 (top) tape drives</figcaption>
+</figure>
+
+<p>In order to read the DDS-3 tapes, I purchased an additional used DAT-72
+drive that has backward-compatibility with DDS-3.</p>
+
+<h2 id="scsi-host-adapter">SCSI host adapter</h2>
+
+<p>As all three tape drives have parallel SCSI<sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup> connectors, I needed a
+SCSI host adapter (“SCSI card”) to connect them to the forensic
+workstation. Used SCSI cards can be easily found online, and they are
+usually sold cheaply. Nevertheless, finding a model that was compatible
+with both our workstation and the tape drives turned out to be somewhat
+complicated. This is due to a number of reasons.</p>
+
+<p>First, SCSI cards often have interfaces that are not compatible with
+current hardware. Many older models have a conventional PCI
+interface<sup id="fnref:9"><a href="#fn:9" class="footnote">9</a></sup>, but PCI has been largely replaced by PCI Express<sup id="fnref:10"><a href="#fn:10" class="footnote">10</a></sup> on
+modern motherboards and desktop machines. Some cards have a 64-bit PCI
+interface, which is only compatible with enterprise servers.</p>
+
+<p>Even if the interface is compatible, the physical dimensions of the card
+can cause further complications. Older “full-height” PCI Express cards
+will not fit into a “low-profile” (also known as “half-height”) slot,
+and vice versa (most modern machines only support “low-profile” cards).
+Many cards were originally sold with both a “full-height” and a
+“low-profile” bracket, which allows one to easily change the bracket to
+fit the target machine. Buying second-hand, it is not uncommon to find
+that either of the original brackets are missing.</p>
+
+<p>Online sellers do not always explicitly mention characteristics like
+these, and even if they do this information is not necessarily accurate.
+A useful resource in this regard is the web site of the Microsemi
+company, which has the technical specifications of the full range of
+Adaptec SCSI adapters<sup id="fnref:11"><a href="#fn:11" class="footnote">11</a></sup>. Figure 3 shows the PCI Express host adapter
+that we are using in our workstation.</p>
+
+<figure class="image">
+  <img src="/images/2019/09/scsi-controller.jpg" alt="PCI Express SCSI host adapter" />
+  <figcaption>Figure 3: PCI Express SCSI host adapter</figcaption>
+</figure>
+
+<h2 id="scsi-connectors-and-terminators">SCSI connectors and terminators</h2>
+
+<p>Rather than being one well-defined standard, parallel SCSI is actually a
+family of related standards that comprise a host of different
+interfaces, not all of which are mutually compatible<sup id="fnref:12"><a href="#fn:12" class="footnote">12</a></sup>, <sup id="fnref:13"><a href="#fn:13" class="footnote">13</a></sup>. None
+of these standards specify what connectors should be used to
+interconnect SCSI devices. Over time, this has resulted in a myriad of
+connector types that have been developed by different
+manufacturers<sup id="fnref:14"><a href="#fn:14" class="footnote">14</a></sup>. These are typically identified by multiple names. As
+an example, the commonly used 68-pin “DB68” connector is also referred
+to as “MD68”, “High-Density”, “HD 68”, “Half-Pitch” and “HP68”, whereas
+the “50-contact, Centronics-type” connector is alternatively known as a
+“SCSI-1” or “Alternative 2, A-cable connector”. This complicates both
+identifying the connector type on a particular device, as well as
+finding suitable adapter plugs and cables. For identifying a connector,
+the web site of Paralan provides a useful illustrated overview of the
+most common types<sup id="fnref:15"><a href="#fn:15" class="footnote">15</a></sup>.</p>
+
+<p>If the tape reader is the last device at either end of the SCSI chain,
+it must be fitted with a “terminator”<sup id="fnref:16"><a href="#fn:16" class="footnote">16</a></sup>, which is a resistor circuit
+that prevents the electrical signal from reflecting back from the ends
+of the bus. Without a terminator, the tape drive will not work properly,
+or, more likely, it will not work at all. External SCSI devices like our
+tape drives use terminator plugs, as shown in Figure 4. For
+internal devices, termination is often achieved through jumper settings,
+or by physically removing the terminating resistors from their
+sockets<sup id="fnref:17"><a href="#fn:17" class="footnote">17</a></sup>.</p>
+
+<figure class="image">
+  <img src="/images/2019/09/terminator.jpg" alt="SCSI terminator attached to DLT-IV drive" />
+  <figcaption>Figure 4: SCSI terminator attached to DLT-IV drive</figcaption>
+</figure>
+
+<h2 id="cleaning-cartridges">Cleaning cartridges</h2>
+
+<p>Over time, the heads of a tape drive will get dirty due to a gradual
+accumulation of dust, and sometimes also residue from the tapes that are
+used. As this ultimately results in read errors, it is important to
+periodically clean the drive with a dedicated cleaning cartridge. Most
+drives have an indicator that lights up when cleaning is needed. The
+cleaning procedure is usually very simple, and involves nothing more
+than inserting the cleaning cartridge into the machine, which then
+automatically starts the cleaning cycle. A single cleaning cartridge can
+be used multiple (typically about 50) times. Although I was able to
+purchase cleaning cartridges for both the DDS and the DLT-IV drives
+online, it is unclear whether new cartridges are still manufactured
+today. Since it is not easy or even recommended to clean these drives
+manually (in fact this is likely to result in damage), the availability
+of cleaning cartridges could be a concern for keeping older tape formats
+like these accessible in the long run.</p>
+
+<h1 id="software">Software</h1>
+
+<p>Once the hardware is set up, a number of options are available for
+reading the data from the tapes. Often, tapes contain backup archives
+that were written by backup utilities such as <em>tar</em>, <em>cpio</em>, <em>dump</em> or
+<em>NTBackup</em>, to name but a few. One approach would be to restore the
+contents of each tape using the original software that was used to write
+it. Even though many of these utilities are still available today
+(especially the Unix-based ones), this approach is not a practical one.
+First of all, it would require prior knowledge of the tape’s archive
+format. Although we may sometimes have this knowledge (e.g., the writing
+on a tape’s label may indicate it was created with the <em>tar</em> utility),
+in practice we often simply don’t know how a tape was written at all.
+Also, this approach would complicate things, because each format would
+require its own custom workflow. Finally, it would not work with formats
+for which the original software is not readily available on the forensic
+workstation (e.g. the Microsoft Tape Format that was used by Windows
+<em>NTBackup</em>).</p>
+
+<p>A better approach is to use tools like <em>dd</em><sup id="fnref:18"><a href="#fn:18" class="footnote">18</a></sup> which are able to read
+data directly at the block device level. This way, tapes can be read in
+a format-agnostic manner. The general idea here is that we use <em>dd</em> to
+read all archive files on a tape, irrespective of their format. We then
+use format identification tools such as <em>file(1)</em><sup id="fnref:19"><a href="#fn:19" class="footnote">19</a></sup>, <em>Apache
+Tika</em><sup id="fnref:20"><a href="#fn:20" class="footnote">20</a></sup>, <em>Fido</em><sup id="fnref:21"><a href="#fn:21" class="footnote">21</a></sup> or <em>Siegfried</em><sup id="fnref:22"><a href="#fn:22" class="footnote">22</a></sup> to establish the format of
+each archive file, and subsequently use dedicated, format-specific
+utilities to extract their contents. This is similar to existing
+forensic workflows that are used for other carrier types in e.g.
+<em>BitCurator</em>.</p>
+
+<h2 id="reading-a-tape-with-dd-and-mt">Reading a tape with dd and mt</h2>
+
+<p>In the simplest case, reading data from a tape involves nothing more
+than a <em>dd</em> command line such as this one:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>dd if=/dev/nst0 of=file0001.dd bs=16384
+</code></pre>
+</div>
+
+<p>Here, the “<code class="highlighter-rouge">if</code>” argument tells <em>dd</em> to read input from the non-rewind
+block device <code class="highlighter-rouge">/dev/nst0</code>, and the value of “<code class="highlighter-rouge">of</code>” defines the file where
+output is written. The “<code class="highlighter-rouge">bs</code>” argument defines a block size (here in
+bytes), and this is where the first complication arises. The actual
+value that must be used here depends on the software that was used to
+write the tape, and its settings. If <em>dd</em> is invoked with a value that
+is too small, it will fail with a “cannot allocate memory” error. After
+some experimentation I was able to establish the block size using the
+following iterative procedure:</p>
+
+<ol>
+  <li>
+    <p>Starting with a block size of 512 bytes, try to read one single
+record (and direct the output to the null device, as we don’t need
+it):</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> dd if=/dev/nst0 of=/dev/null bs=512 count=1
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Position the tape 1 record backward using the <em>mt</em><sup id="fnref:23"><a href="#fn:23" class="footnote">23</a></sup> tool (this
+resets the read position to the start of the current session):</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> mt -f /dev/nst0 bsr 1
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>If step 1 raised an error in <em>dd</em>, increase the block size value by
+512 bytes, and repeat from step 1.</p>
+  </li>
+</ol>
+
+<p>Repeating these steps until <em>dd</em> exits without errors will yield the
+correct block size. Re-running the <em>dd</em> command at the start of this
+section with this value will recover the first session on the tape to a
+single output file. This leads to a second complication: a tape may
+contain additional sessions. We can test for this by positioning the
+tape 1 record forward with the <em>mt</em> tool:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mt -f /dev/nst0 fsr 1
+</code></pre>
+</div>
+
+<p>If the <em>mt</em> call doesn’t result in an error (i.e. <em>mt</em>’ s exit code
+equals zero), at least one additional session exists. In that case we
+use <em>mt</em> again to position the tape 1 record backward (the start of the
+second session). We then repeat the block-estimation procedure for the
+second session, and read the data with <em>dd</em>.</p>
+
+<p>All of the above steps are repeated until <em>mt</em>’s <code class="highlighter-rouge">fsr</code> command results
+in a non-zero exit code, which means no additional sessions exist. The
+end result is that for each session on the tape we now have a
+corresponding output file.</p>
+
+<h2 id="tapeimgr">Tapeimgr</h2>
+
+<p>Even though the above procedure is not particularly complicated, having
+to go through all these steps by hand would be very cumbersome.
+Moreover, <em>dd</em>’s ability to overwrite entire block devices with one
+single command introduces a high risk of accidental data loss (hence its
+“destroy disk” nickname). Also, it would be useful to have a more
+user-friendly method for reading data tapes. Because of these reasons, I
+developed <em>tapeimgr</em><sup id="fnref:24"><a href="#fn:24" class="footnote">24</a></sup>, which is a software application that allows
+one to read data tapes using a simple, easy-to-use graphical user
+interface. Written in Python, it was loosely inspired by the popular
+<em>Guymager</em> forensic imaging software<sup id="fnref:25"><a href="#fn:25" class="footnote">25</a></sup>. Internally, <em>tapeimgr</em> just
+wraps around <em>dd</em> and <em>mt</em>, but it completely hides the complexities of
+these tools from the user. The software runs on any Linux distribution,
+and can be installed with <em>pip</em>, Python’s default package manager. Its
+only dependencies are a recent version of <em>Python</em> (3.2 or more recent),
+the <em>TkInter</em> package, and <em>dd</em> and <em>mt</em>. All of these are present by
+default on most modern Linux distros.</p>
+
+<p>Figure 5 shows <em>tapeimgr</em>’s interface.</p>
+
+<figure class="image">
+  <img src="/images/2019/09/tapeimgr.png" alt="The tapeimgr interface" />
+  <figcaption>Figure 5: The tapeimgr interface</figcaption>
+</figure>
+
+<p>At the very minimum, a user must select a
+directory to which all output for a given tape is written. If necessary,
+the read process can be further customized using a number of options
+that are described in detail in the <em>tapeimgr</em> documentation. There are
+also entry fields for descriptive metadata, and the values that are
+entered here are written to a metadata file in JSON format. This file
+also contains some basic event and technical metadata, including SHA-512
+checksums of each session (which is represented as a file) that is read
+from the tape. After the user presses the <em>Start</em> button, the progress
+of the tape reading procedure can be monitored from a widget at the
+bottom of the interface; the information displayed here is also written
+to a log file. When <em>tapeimgr</em> has finished reading a tape, it displays
+a prompt that tells the user whether the read process completed
+successfully. In case of any problems, the log file contains detailed
+information about all steps in the tape reading process. In addition to
+the graphical user interface, <em>tapeimgr</em> also has a command-line
+interface, which makes it possible to integrate it into other
+applications.</p>
+
+<h2 id="limitations-of-tapeimgr">Limitations of tapeimgr</h2>
+
+<p>At this stage, <em>tapeimgr</em> has two important limitations. First, it only
+supports tapes for which the block size is constant within each session.
+More recent tape drives are often capable of writing tapes in “variable
+block” mode, where the block size within a session varies. This is not
+supported, although a possible (but so far untested) workaround may be
+to set the Initial Block Size to some arbitrary large value that is
+equal to or larger than the overall largest block size on the tape<sup id="fnref:26"><a href="#fn:26" class="footnote">26</a></sup>.
+Variations in block size <em>between</em> sessions are no problem, and are
+fully supported. Also, <em>tapeimgr</em> is not able to recover data from tapes
+that were partially overwritten. As an example, suppose that a tape
+originally contained 3 sessions with a size of 200 MB each. If someone
+later overwrote part of the first session with a 10 MB session at the
+start of that tape, running the tape through <em>tapeimgr</em> will only
+recover the first 10 MB session, and ignore the remaining sessions. The
+reason for this is that each write action adds an “End Of Media” (EOM)
+marker just beyond the end of the written data, and once an EOM is
+written, any previously recorded data beyond that point are no longer
+accessible (reportedly workarounds exist, but these are specific to
+kernel drivers)<sup id="fnref:27"><a href="#fn:27" class="footnote">27</a></sup>.</p>
+
+<h1 id="reading-the-xxlink-tapes">Reading the xxLINK tapes</h1>
+
+<p>With all the hardware and software in place, I first experimented with
+reading some unimportant, disposable DDS-1 and DLT-IV test tapes. Based
+on these tests I designed processing workflows, which I then documented
+by creating detailed descriptions that cover all steps that have to be
+followed to read a tape<sup id="fnref:28"><a href="#fn:28" class="footnote">28</a></sup>. Once I was confident that the workflows
+were sufficiently robust, I applied them to the <em>xxLINK</em> tapes. All but
+one of the DDS-1 tapes could be read without problems. For one tape, the
+recovery resulted in a 10-kB file with only null bytes, which most
+likely means the tape is faulty. The two DDS-3 tapes could be read
+successfully as well. Most of these tapes contained multiple (up to 4)
+sessions. Of the 14 DLT-IV tapes, only 7 could be read without problems.
+For the remaining 7, the reading procedure resulted in a zero-length
+file, which means the tape drive interprets them as empty. A common
+characteristic of all “failed” DLT-IV tapes is that they were written at
+40 GB capacity, whereas the other tapes were written at 35 GB capacity.
+This is odd, as our DLT-IV drive does in fact support 40 GB capacity
+tapes (this was confirmed by writing some data to a blank test tape at
+40 GB capacity, which could subsequently be read without problems).
+Although the exact cause is unknown at this stage, it is possible that
+these tapes are simply faulty, or perhaps they were erased or
+overwritten at some point. Interestingly, the label on at least one of
+the problematic tapes contains some writing that suggests it was already
+faulty around the time it was written. Table 1 gives a
+brief summary of the above results.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"> </th>
+      <th style="text-align: center">DDS-1</th>
+      <th style="text-align: center">DDS-3</th>
+      <th style="text-align: center">DLT-IV</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"># tapes</td>
+      <td style="text-align: center">17</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">14</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"># read successfully</td>
+      <td style="text-align: center">16</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">7</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Table 1: Summary of xxLINK tapes read results</em></p>
+
+<h1 id="extraction-of-recovered-container-files">Extraction of recovered container files</h1>
+
+<p>It is important to stress that the above <em>tapeimgr</em>-based workflow only
+recovers the contents of the tapes at the bit level: for each session on
+the tape it results in one bitstream (file). Additional steps are needed
+to interpret the recovered bitstreams in a meaningful way. At the very
+the minimum two additional steps are necessary. First we need to
+identify the format of the container files that were recovered from the
+tapes. Once the container format is known, we can (hopefully) find some
+format-specific software that is capable of extracting the content of
+the container files. For format identification I ran the Unix <em>file(1)</em>
+command (v. 5.32)<sup id="fnref:29"><a href="#fn:29" class="footnote">29</a></sup> on all recovered files. The results are
+summarized in Table 2.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Format (file(1))</th>
+      <th style="text-align: center">Number of files</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">new-fs dump file (big endian)</td>
+      <td style="text-align: center">28</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">new-fs dump file (little endian)</td>
+      <td style="text-align: center">8</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">tar archive</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">POSIX tar archive</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">POSIX tar archive (GNU)</td>
+      <td style="text-align: center">5</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Table 2: Formats of recovered files according to file(1)</em></p>
+
+<p>Most files in the <em>xxLINK</em> data set are Unix <em>dump</em> archives<sup id="fnref:30"><a href="#fn:30" class="footnote">30</a></sup>.
+<em>Dump</em> is an old backup utility, and its archive files can be extracted
+using the <em>restore</em> tool<sup id="fnref:31"><a href="#fn:31" class="footnote">31</a></sup>. Even though <em>dump</em> and <em>restore</em> are
+largely obsolete today, the software is still available in the Debian
+repositories, and as a result these tools can be easily installed on
+most Linux-based platforms. A few words of caution: first, by default
+<em>restore</em> extracts the contents of a <em>dump</em> file to the system’s root
+directory, i.e. it tries to recover a full backup. For our purposes this
+behaviour is clearly unwanted, and could even wreak havoc on the
+forensic workstation’s file system. However, extraction to a
+user-defined directory is possible by running <em>restore</em> in “interactive”
+mode<sup id="fnref:32"><a href="#fn:32" class="footnote">32</a></sup>. A disadvantage of having to use the interactive mode is that
+it makes bulk processing of <em>dump</em> files virtually impossible. This
+could be a serious problem when one has to deal with very large numbers
+of these files. Second, it is important to check the file system of the
+disk to which the container file is extracted. I initially tried to
+extract the <em>dump</em> files to an <em>NTFS</em>-formatted<sup id="fnref:33"><a href="#fn:33" class="footnote">33</a></sup> external hard disk.
+However, it turned out that the names of some files and directories
+inside the archive were not compatible with <em>NTFS</em>, and as a result
+these files were not extracted. Since the <em>dump</em> archives were
+originally created from a Unix-based file system, this is not
+surprising. Also, any file attributes that are not supported by <em>NTFS</em>
+(e.g. access permissions and ownership) are lost when extracting to
+<em>NTFS</em>. Extraction to another disk that was formatted as <em>Ext4</em><sup id="fnref:34"><a href="#fn:34" class="footnote">34</a></sup>
+(which is the default file system for most Linux distributions) resolved
+this issue.</p>
+
+<p>The remaining files are all <em>tar</em> archives, a format that is still
+widely used today. These files can be extracted by simply running the
+<em>tar</em><sup id="fnref:35"><a href="#fn:35" class="footnote">35</a></sup> command like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>tar -xvf /path/to/file0001.dd &gt; /dev/null
+</code></pre>
+</div>
+
+<p>The earlier observations on the file system of the disk to which the
+container is extracted also apply to <em>tar</em> files.</p>
+
+<p>Using <em>restore</em> and <em>tar</em> I was able to successfully extract the
+contents of all container files. For a small number of <em>dump</em> files,
+<em>restore</em> reported errors about missing files that could not be found.
+Although the exact cause is unknown at this stage, a possible
+explanation could be that in these cases a single <em>dump</em> was stored as
+two volumes on separate physical tapes. This will need further
+investigation. Nevertheless, overall the interpretation of the <em>xxLINK</em>
+tapes at the container level is quite straightforward.</p>
+
+<p>It is worth noting that the extraction may be more complicated for other
+container formats. For example, a number of Microsoft backup tools for
+the Windows platform (e.g. <em>NTBackup</em>) used to write data to tape using
+the <em>Microsoft Tape Format</em><sup id="fnref:36"><a href="#fn:36" class="footnote">36</a></sup>. This is a proprietary format that is
+only officially supported by the original creator software, which is not
+freely available, and only runs under Windows (however, a few
+open-source tools exist that claim to support the format). As the
+<em>xxLINK</em> data set does not include this format, it was not investigated
+as part of this work.</p>
+
+<h1 id="reconstruction-of-sites">Reconstruction of sites</h1>
+
+<p>Once the contents of the container files are extracted, we can start
+reconstructing the web sites. At this stage of the Web Archaeology
+project we have only just made a start with this; however, it is
+possible to present some first results. As a first step we need to
+inspect the contents of the data that were extracted from the container
+files, and identify any files and directories that contain web site
+data. This includes not only any directories with the sites’ source
+data, but also server configuration files, which contain valuable
+information about the sites. For instance, from the configuration files
+it is possible to see at which domains and URLs they were originally
+hosted, and how internal forwards were handled. With this information it
+is possible to host any of the old sites on a locally running web server
+at their original domains. A detailed discussion of the technical
+details is beyond the scope of this paper, but the general approach is
+similar to the one we used earlier to reconstruct the <em>NL-Menu</em> web
+index in 2018 , . It comprises the following steps<sup id="fnref:37"><a href="#fn:37" class="footnote">37</a></sup>:</p>
+
+<ol>
+  <li>
+    <p>Set up a web server (typically <em>Apache</em>)<sup id="fnref:38"><a href="#fn:38" class="footnote">38</a></sup>, and restrict access
+to the server to <em>localhost</em> (this ensures that any hosted sites are
+only accessible locally on the machine on which the server is
+running).</p>
+  </li>
+  <li>
+    <p>Copy the contents of the site (i.e. its directory tree) to the
+default root folder used by the web server (typically <code class="highlighter-rouge">/var/www</code>),
+and update the file permissions.</p>
+  </li>
+  <li>
+    <p>Configure the site by creating a configuration file (or by adding an
+entry to an existing configuration file).</p>
+  </li>
+  <li>
+    <p>Activate the configuration file.</p>
+  </li>
+  <li>
+    <p>Add the site’s domain to the <em>hosts</em> file (<code class="highlighter-rouge">/etc/hosts</code>).</p>
+  </li>
+  <li>
+    <p>Restart the web server.</p>
+  </li>
+</ol>
+
+<p>After following these steps, the site is now locally accessible at its
+original URL, and it can be viewed in a browser, or archived with web
+crawler software such as <em>wget</em>. Since the directory structure of the
+web site data on the <em>xxLINK</em> tapes is quite uniform, it was possible to
+automate these steps to a large extent. Using this approach, I have so
+far reconstructed about 20 sites from one of the 1995 DDS-1 tapes by
+hosting them on an <em>Apache</em> web server instance. A few examples will
+illustrate the diversity of the sites in the <em>xxLINK</em> data set. Figure
+6 shows the home page of <em>xxLINK</em>’s web site.</p>
+
+<figure class="image">
+  <img src="/images/2019/09/xxlink.png" alt="xxLINK home page" />
+  <figcaption>Figure 6: xxLINK home page</figcaption>
+</figure>
+
+<p>Figure 7 shows a snapshot of the home page of the web site of Schiphol Airport, which
+pre-dates the earliest snapshot of this site in Internet Archive<sup id="fnref:39"><a href="#fn:39" class="footnote">39</a></sup> by
+several months.</p>
+
+<figure class="image">
+  <img src="/images/2019/09/schiphol.png" alt="Home page of Schiphol Airport" />
+  <figcaption>Figure 7: Home page of Schiphol Airport</figcaption>
+</figure>
+
+<p>Figure 8 shows a report on drugs policy in the Netherlands,
+which was published as part of the site of the Dutch Ministry of Health,
+Welfare and Sport.</p>
+
+<figure class="image">
+  <img src="/images/2019/09/vwsdrugs.png" alt="Report on Drugs policy in the Netherlands on web site of Dutch Ministry of Health, Welfare and Sport" />
+  <figcaption>Figure 8: Report on Drugs policy in the Netherlands on web site of Dutch Ministry of Health, Welfare and Sport</figcaption>
+</figure>
+
+<p>Finally, Figure 9 shows a
+contest published on the site of Dutch publisher Database Publications.
+The objective of the contest was to correctly identify the web addresses
+of the home pages shown in the image; free copies of <em>CorelDraw 5.0</em>
+were available to five lucky winners.</p>
+
+<figure class="image">
+  <img src="/images/2019/09/prijsvraag.png" alt="Home page identification contest on web site of Database Publications" />
+  <figcaption>Figure 9: Home page identification contest on web site of Database Publications</figcaption>
+</figure>
+
+<p>The site reconstruction procedure will most likely need further
+refinement. For instance, most of the sites on the 1995 tape are
+relatively simple static HTML sites, but a few include forms that use
+CGI scripts, which currently do not work. Also, it is possible that the
+sites on the more recent (1999) tapes are more complex, but this needs
+further investigation. Once the analysis and processing of the data from
+the remaining tapes is complete, a more in-depth report on the
+reconstruction procedure will be published separately.</p>
+
+<h1 id="conclusions">Conclusions</h1>
+
+<p>In this paper I showed how old DDS and DLT-IV tapes from the ’90s can be
+read on a modern desktop workstation running Linux (in this case the
+Ubuntu-based <em>BitCurator</em> environment). I also explained how I created
+workflows that allow one to recover data from these tapes in a
+format-agnostic way, using the user-friendly <em>tapeimgr</em> software.
+Finally I discussed how I then extracted the contents of the resulting
+files, and how I used this to reconstruct a number of “lost” web sites
+from 1995. The workflow descriptions are available on Github<sup id="fnref:40"><a href="#fn:40" class="footnote">40</a></sup>, and
+they will most likely evolve further over time. They are published under
+a permissive license that allows anyone to adapt them and create
+derivatives. They describe all aspects of the tape reading process in
+detail, including the hardware components used and their
+characteristics, links to relevant documentation, instructions on how to
+handle the tapes (e.g. how to write-protect them), how to operate the
+tape readers, and how to use them in conjunction with <em>tapeimgr</em>. The
+level of detail provided should be sufficient to allow others to
+reproduce these workflows, and adapt them to their needs if necessary.
+Since the process of reading data tapes on Linux-based systems is quite
+standardized, other tape formats that are not covered by this paper can
+probably be processed in a similar way.</p>
+
+<h1 id="acknowledgments">Acknowledgments</h1>
+
+<p>First of all thanks are due to Wendy van Dijk and Elizabeth Mattijsen
+for making the <em>xxLINK</em> tapes available to us, and to Kees Teszelszky,
+Peter de Bode and Jasper Faase for initiating the Web Archaeology
+project, and establishing the contact with <em>xxLINK</em>. Peter Boel and René
+van Egdom are thanked for their help digging out the tape drives and
+other obscure hardware peripherals, and Willem Jan Faber for various
+helpful hardware-related suggestions. Finally, thanks are due to the
+anonymous reviewers who provided valuable feedback to an earlier draft
+of this paper.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Elizabeth Mattijsen, old xxLINK-homepage:
+<a href="https://liz.nl/xxlink-homepage.htm">https://liz.nl/xxlink-homepage.htm</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>See e.g. the links in the “Tapes” section at
+<a href="https://github.com/KBNLresearch/forensicImagingResources/blob/master/doc/df-resources.md">https://github.com/KBNLresearch/forensicImagingResources/blob/master/doc/df-resources.md</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>BitCurator:<a href="https://bitcurator.net/">https://bitcurator.net/</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>“Digital Data Storage”, Wikipedia:
+<a href="https://en.wikipedia.org/wiki/Digital_Data_Storage">https://en.wikipedia.org/wiki/Digital_Data_Storage</a> <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>“HP StorageWorks DDS/DAT Media - DDS/DAT Media Compatibility
+Matrix”, Hewlett Packard:
+<a href="https://support.hpe.com/hpsc/doc/public/display?docId=emr_na-lpg50457">https://support.hpe.com/hpsc/doc/public/display?docId=emr_na-lpg50457</a> <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p>“Digital Linear Tape”, Wikipedia:
+<a href="https://en.wikipedia.org/wiki/Digital_Linear_Tape">https://en.wikipedia.org/wiki/Digital_Linear_Tape</a> <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p>“DLT Drive Media and Cleaning Tape Compatibility Guide”,
+TapeandMedia.com:
+<a href="https://www.tapeandmedia.com/dlt_capacity_info.asp">https://www.tapeandmedia.com/dlt_capacity_info.asp</a> <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:8">
+      <p>“Parallel SCSI”, Wikipedia:
+<a href="https://en.wikipedia.org/wiki/Parallel_SCSI">https://en.wikipedia.org/wiki/Parallel_SCSI</a> <a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:9">
+      <p>“Conventional PCI”, Wikipedia:
+<a href="https://en.wikipedia.org/wiki/Conventional_PCI">https://en.wikipedia.org/wiki/Conventional_PCI</a> <a href="#fnref:9" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:10">
+      <p>“PCI Express”, Wikipedia:
+<a href="https://en.wikipedia.org/wiki/PCI_Express">https://en.wikipedia.org/wiki/PCI_Express</a> <a href="#fnref:10" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:11">
+      <p>“Adaptec Support”, Microsemi:
+<a href="https://storage.microsemi.com/en-us/support/scsi/">https://storage.microsemi.com/en-us/support/scsi/</a> <a href="#fnref:11" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:12">
+      <p>“Parallel SCSI”, Wikipedia:
+<a href="https://en.wikipedia.org/wiki/Parallel_SCSI">https://en.wikipedia.org/wiki/Parallel_SCSI</a> <a href="#fnref:12" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:13">
+      <p>“LVD, SE, HVD, SCSI Compatibility - Or Not”, Paralan:
+<a href="http://www.paralan.com/scsiexpert.html">http://www.paralan.com/scsiexpert.html</a> <a href="#fnref:13" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:14">
+      <p>“SCSI connector”, Wikipedia:
+<a href="https://en.wikipedia.org/wiki/SCSI_connector">https://en.wikipedia.org/wiki/SCSI_connector</a> <a href="#fnref:14" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:15">
+      <p>“What kind of SCSI do I have?”, Paralan:
+<a href="http://www.paralan.com/sediff.html">http://www.paralan.com/sediff.html</a> <a href="#fnref:15" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:16">
+      <p>“Parallel SCSI”, Wikipedia:
+<a href="https://en.wikipedia.org/wiki/Parallel_SCSI">https://en.wikipedia.org/wiki/Parallel_SCSI</a> <a href="#fnref:16" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:17">
+      <p>“SCSI termination Q&amp;A”, Adaptec:
+<a href="https://storage.microsemi.com/en-us/support/scsi/3940/aha-3940uwd/hw_install/scsi_termination.htm">https://storage.microsemi.com/en-us/support/scsi/3940/aha-3940uwd/hw_install/scsi_termination.htm</a> <a href="#fnref:17" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:18">
+      <p>“dd (Unix)”, Wikipedia:
+<a href="https://en.wikipedia.org/wiki/Dd_%28Unix%29">https://en.wikipedia.org/wiki/Dd_%28Unix%29</a> <a href="#fnref:18" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:19">
+      <p>“file (command)”, Wikipedia:
+<a href="https://en.wikipedia.org/wiki/File_(command)">https://en.wikipedia.org/wiki/File_(command)</a> <a href="#fnref:19" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:20">
+      <p>Apache Tika: <a href="https://tika.apache.org/">https://tika.apache.org/</a> <a href="#fnref:20" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:21">
+      <p>Fido: <a href="http://fido.openpreservation.org/">http://fido.openpreservation.org/</a> <a href="#fnref:21" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:22">
+      <p>Siegfried: <a href="https://www.itforarchivists.com/siegfried/">https://www.itforarchivists.com/siegfried/</a> <a href="#fnref:22" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:23">
+      <p>“mt(1) - Linux man page”, die.net:
+<a href="https://linux.die.net/man/1/mt">https://linux.die.net/man/1/mt</a> <a href="#fnref:23" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:24">
+      <p>“Tapeimgr”: <a href="https://github.com/KBNLresearch/tapeimgr">https://github.com/KBNLresearch/tapeimgr</a> <a href="#fnref:24" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:25">
+      <p>“Guymager homepage”: <a href="https://guymager.sourceforge.io/">https://guymager.sourceforge.io/</a> <a href="#fnref:25" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:26">
+      <p>“ “Cannot allocate memory” when reading from SCSI tape”, Unix
+Stack Exchange: <a href="https://unix.stackexchange.com/a/366217">https://unix.stackexchange.com/a/366217</a> <a href="#fnref:26" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:27">
+      <p>“Tape Driver Semantics”, Amanda Wiki:
+<a href="https://wiki.zmanda.com/index.php/Tape_Driver_Semantics">https://wiki.zmanda.com/index.php/Tape_Driver_Semantics</a> <a href="#fnref:27" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:28">
+      <p>“KB Forensic Imaging Resources”:
+<a href="https://github.com/KBNLresearch/forensicImagingResources/tree/master/doc">https://github.com/KBNLresearch/forensicImagingResources/tree/master/doc</a> <a href="#fnref:28" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:29">
+      <p>“file (command)”, Wikipedia:
+<a href="https://en.wikipedia.org/wiki/File_(command)">https://en.wikipedia.org/wiki/File_(command)</a> <a href="#fnref:29" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:30">
+      <p>“Unix dump”, ArchiveTeam File Formats Wiki:
+<a href="http://fileformats.archiveteam.org/wiki/Unix_dump">http://fileformats.archiveteam.org/wiki/Unix_dump</a> <a href="#fnref:30" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:31">
+      <p>“restore(8) - Linux man page”,
+die.net:<a href="https://linux.die.net/man/8/restore">https://linux.die.net/man/8/restore</a> <a href="#fnref:31" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:32">
+      <p>A step-by-step description can be found here:
+<a href="https://github.com/KBNLresearch/forensicImagingResources/blob/master/doc/extract-dumpfile.md">https://github.com/KBNLresearch/forensicImagingResources/blob/master/doc/extract-dumpfile.md</a> <a href="#fnref:32" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:33">
+      <p>“NTFS”, Wikipedia: <a href="https://en.wikipedia.org/wiki/NTFS">https://en.wikipedia.org/wiki/NTFS</a> <a href="#fnref:33" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:34">
+      <p>“Ext4”, Wikipedia:<a href="https://en.wikipedia.org/wiki/Ext4">https://en.wikipedia.org/wiki/Ext4</a> <a href="#fnref:34" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:35">
+      <p>“tar(1) - Linux man page”,
+die.net:<a href="https://linux.die.net/man/1/tar">https://linux.die.net/man/1/tar</a> <a href="#fnref:35" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:36">
+      <p>Microsoft Tape Format Specification Version 1.00a:
+<a href="http://laytongraphics.com/mtf/MTF_100a.PDF">http://laytongraphics.com/mtf/MTF_100a.PDF</a> <a href="#fnref:36" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:37">
+      <p>These steps are described in more detail here:
+<a href="https://github.com/KBNLresearch/nl-menu-resources/blob/master/doc/serving-static-website-with-Apache.md">https://github.com/KBNLresearch/nl-menu-resources/blob/master/doc/serving-static-website-with-Apache.md</a> <a href="#fnref:37" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:38">
+      <p>The Apache HTTP Server Project: <a href="https://httpd.apache.org/">https://httpd.apache.org/</a> <a href="#fnref:38" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:39">
+      <p>Link:
+<a href="https://web.archive.org/web/19961018155616/http://www.schiphol.nl/">https://web.archive.org/web/19961018155616/http://www.schiphol.nl/</a> <a href="#fnref:39" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:40">
+      <p>“KB Forensic Imaging Resources”:
+<a href="https://github.com/KBNLresearch/forensicImagingResources/tree/master/doc">https://github.com/KBNLresearch/forensicImagingResources/tree/master/doc</a> <a href="#fnref:40" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+   <small><a href="/2019/08/16/recovering-90s-data-tapes-experiences-kb-web-archaeology">More ...</a></small>
+   </div> 
+
+   <div class="post-entry">
    <h1><a href="/2019/04/10/a-simple-disk-imaging-workflow-tool">A simple disk imaging workflow tool</a> <small>10 Apr 2019</small></h1>
    <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
    <figure class="image">
@@ -104,15 +968,6 @@
 
 
    <small><a href="/2018/07/11/crawling-offline-web-content-the-nl-menu-case">More ...</a></small>
-   </div> 
-
-   <div class="post-entry">
-   <h1><a href="/2018/04/24/resurrecting-the-first-dutch-web-index-nl-menu-revisited">Resurrecting the first Dutch web index&#58; NL-menu revisited</a> <small>24 Apr 2018</small></h1>
-   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
-   <p><em>NL-menu</em> was the first Dutch web index. The site was originally founded by a consortium of <a href="https://en.wikipedia.org/wiki/SURFnet">SURFnet</a>, Dutch universities and the  KB. From the mid-nineties onwards it was maintained solely by the KB. <em>NL-menu</em> was <a href="https://www.robcoers.nl/nl-menu-is-straks-niet-meer-leve-nl-menu/">discontinued in 2004</a>, after which the site was taken offline. In 2006 the domain name was sold to a private company that used it for hosting a web index that was partially based on the original <em>NL-menu</em> site.</p>
-
-
-   <small><a href="/2018/04/24/resurrecting-the-first-dutch-web-index-nl-menu-revisited">More ...</a></small>
    </div> 
 
 
@@ -290,11 +1145,11 @@
      
     	<li><a href="/tags.html#iromlab-ref">iromlab <span>1</span></a></li>
      
-    	<li><a href="/tags.html#web-archaeology-ref">web-archaeology <span>4</span></a></li>
+    	<li><a href="/tags.html#web-archaeology-ref">web-archaeology <span>5</span></a></li>
      
-    	<li><a href="/tags.html#tapes-ref">tapes <span>1</span></a></li>
+    	<li><a href="/tags.html#tapes-ref">tapes <span>2</span></a></li>
      
-    	<li><a href="/tags.html#tapeimgr-ref">tapeimgr <span>1</span></a></li>
+    	<li><a href="/tags.html#tapeimgr-ref">tapeimgr <span>2</span></a></li>
      
     	<li><a href="/tags.html#omimgr-ref">omimgr <span>1</span></a></li>
      
