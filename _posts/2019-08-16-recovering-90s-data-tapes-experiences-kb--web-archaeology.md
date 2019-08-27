@@ -4,6 +4,14 @@ title: Recovering '90s Data Tapes - Experiences From the KB Web Archaeology proj
 tags: [tapes, tapeimgr, web-archaeology]
 ---
 
+Earlier this year I published [this blog post]({{ BASE_PATH }}/2019/01/31/roll-the-tape-recovering-90s-data-tapes-in-bitcurator) on the recovery of data from '90s data tapes. I gave a presentation on this during [this year's *iPress* conference](https://ipres2019.org/) conference, and wrote a paper that discusses this work in more detail than my earlier blog post. The original paper (in PDF format) can be found in the [conference proceedings](add-link-here). The paper references a wealth of useful resources, but these are not easily accessible because the [*LaTeX*](https://en.wikipedia.org/wiki/LaTeX) software that I used to typeset the paper has a tendency to break URLs in a variety of ways. So, below is a more web-friendly version of the paper that fixes this issue.
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2019/09/tapes-dds-dlt.jpg" alt="DDS-1 (left) and DLT-IV (right) tape">
+</figure>
+
+<!-- more -->
+
 Abstract {#abstract}
 ============
 
@@ -36,12 +44,13 @@ already gone offline. As a result, the time period between (roughly)
 1992 and 2000 is under-represented in the web archive. To improve the
 coverage of web sites from this historically important era, the KB has
 started to investigate the use of tools and methods from the emerging
-field of “web archaeology” . Analogous to how archaeologists study past
+field of “web archaeology” [\[1\]](https://doi.org/10.1177/0955749017725930).
+Analogous to how archaeologists study past
 cultures from excavated physical artefacts, web archaeology is about
 reconstructing “lost” web sites using data that are recovered from old
 (and often obsolete) physical carriers. It is worth noting that Ross and
 Gow introduced the concept of “digital archaeology” (of which web
-archaeology is a special case) as early as 1999 .
+archaeology is a special case) as early as 1999 [\[2\]](http://www.ukoln.ac.uk/services/elib/papers/supporting/pdf/p2.pdf).
 
 Over the last year, the KB web archiving team has reached out to a
 number of creators of “early” Dutch web sites that are no longer online.
@@ -49,7 +58,8 @@ Many of these creators still possess offline information carriers with
 the original source data of their sites. This would potentially allow us
 to reconstruct those sites, and then ingest them into the web archive.
 The overall approach would be similar to how we already reconstructed
-the first Dutch web index *NL-Menu* in 2018 , .
+the first Dutch web index *NL-Menu* in 2018 [\[3\]](https://www.bitsgalore.org/2018/04/24/resurrecting-the-first-dutch-web-index-nl-menu-revisited),
+[\[4\]](https://www.bitsgalore.org/2018/07/11/crawling-offline-web-content-the-nl-menu-case).
 
 A few of these creators have already provided us with sample sets of
 carriers which, though limited in size, comprise a range of physical
@@ -64,17 +74,25 @@ includes 33 data tapes.
 
 There is a relative wealth of digital preservation and digital forensics
 literature on the recovery of data from physical carriers. Examples
-include Ross and Gow , Elford et al. , Woods and Brown , Woods et al. ,
-Lee et al. , John and Pennock et al. . For many carrier types published
-workflow descriptions are readily available (see e.g. Prael and Wickner
-, Salo and the workflows published by the *BitCurator Consortium* , to
-name but a few). Even though these cover a wide range of physical
+include Ross and Gow [\[2\]](http://www.ukoln.ac.uk/services/elib/papers/supporting/pdf/p2.pdf),
+Elford et al. [\[5\]](http://archive.ifla.org/IV/ifla74/papers/084-Webb-en.pdf),
+Woods and Brown [\[6\]](https://kamwoods.net/publications/woodsbrownarch09.pdf),
+Woods et al. [\[7\]](http://doi.acm.org/10.1145/1998076.1998088),
+Lee et al. [\[8\]](http://www.dlib.org/dlib/may12/lee/05lee.html),
+John [\[9\]](http://dx.doi.org/10.7207/twr12-03)
+and Pennock et al. [\[10\]](https://doi.org/10.5281/zenodo.1321629).
+For many carrier types published workflow descriptions are readily available
+(see e.g. Prael and Wickner [\[11\]](https://practicaltechnologyforarchives.org/issue4_prael_wickner/),
+Salo [\[12\]](https://radd.dsalo.info/wp-content/uploads/2017/10/BuildDocumentation.pdf)
+and the workflows published by the *BitCurator Consortium* [\[13\]](https://bitcuratorconsortium.org/workflows),
+to name but a few). Even though these cover a wide range of physical
 carrier types, the existing literature provides surprisingly little
 information on how to recover data from legacy tape formats. One of the
-few exceptions are De Haan and De Haan et al. , who describe how they
-rescued 11 GB worth of data from three DLT tapes. However, they do not
-provide much detail about the hardware and software setup they used for
-this.
+few exceptions are De Haan [\[14\]](https://doi.org/10.5281/zenodo.1255965)
+and De Haan et al. [\[15\]](https://hart.amsterdam/image/2017/11/17/20171116_freeze_diy_handboek.pdf),
+who describe how they rescued 11 GB worth of data from three DLT tapes.
+However, they do not provide much detail about the hardware and software setup
+they used for this.
 
 Reading these legacy tape formats presents a number of challenges.
 First, it requires specific hardware that is now largely obsolete. This
@@ -544,7 +562,9 @@ is possible to host any of the old sites on a locally running web server
 at their original domains. A detailed discussion of the technical
 details is beyond the scope of this paper, but the general approach is
 similar to the one we used earlier to reconstruct the *NL-Menu* web
-index in 2018 , . It comprises the following steps[^37]:
+index in 2018 [\[3\]](https://www.bitsgalore.org/2018/04/24/resurrecting-the-first-dutch-web-index-nl-menu-revisited),
+[\[4\]](https://www.bitsgalore.org/2018/07/11/crawling-offline-web-content-the-nl-menu-case).
+It comprises the following steps[^37]:
 
 1.  Set up a web server (typically *Apache*)[^38], and restrict access
     to the server to *localhost* (this ensures that any hosted sites are
@@ -654,6 +674,7 @@ helpful hardware-related suggestions. Finally, thanks are due to the
 anonymous reviewers who provided valuable feedback to an earlier draft
 of this paper.
 
+
 References {#references}
 ===============
 
@@ -733,7 +754,7 @@ References {#references}
 [^2]: See e.g. the links in the “Tapes” section at
     <https://github.com/KBNLresearch/forensicImagingResources/blob/master/doc/df-resources.md>
 
-[^3]: BitCurator:<https://bitcurator.net/>
+[^3]: BitCurator: <https://bitcurator.net/>
 
 [^4]: “Digital Data Storage”, Wikipedia:
     <https://en.wikipedia.org/wiki/Digital_Data_Storage>
@@ -814,17 +835,17 @@ References {#references}
     <http://fileformats.archiveteam.org/wiki/Unix_dump>
 
 [^31]: “restore(8) - Linux man page”,
-    die.net:<https://linux.die.net/man/8/restore>
+    die.net: <https://linux.die.net/man/8/restore>
 
 [^32]: A step-by-step description can be found here:
     <https://github.com/KBNLresearch/forensicImagingResources/blob/master/doc/extract-dumpfile.md>
 
 [^33]: “NTFS”, Wikipedia: <https://en.wikipedia.org/wiki/NTFS>
 
-[^34]: “Ext4”, Wikipedia:<https://en.wikipedia.org/wiki/Ext4>
+[^34]: “Ext4”, Wikipedia: <https://en.wikipedia.org/wiki/Ext4>
 
 [^35]: “tar(1) - Linux man page”,
-    die.net:<https://linux.die.net/man/1/tar>
+    die.net: <https://linux.die.net/man/1/tar>
 
 [^36]: Microsoft Tape Format Specification Version 1.00a:
     <http://laytongraphics.com/mtf/MTF_100a.PDF>
@@ -834,8 +855,7 @@ References {#references}
 
 [^38]: The Apache HTTP Server Project: <https://httpd.apache.org/>
 
-[^39]: Link:
-    <https://web.archive.org/web/19961018155616/http://www.schiphol.nl/>
+[^39]: Link: <https://web.archive.org/web/19961018155616/http://www.schiphol.nl/>
 
 [^40]: “KB Forensic Imaging Resources”:
     <https://github.com/KBNLresearch/forensicImagingResources/tree/master/doc>
