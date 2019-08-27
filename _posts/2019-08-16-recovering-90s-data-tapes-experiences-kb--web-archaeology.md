@@ -657,75 +657,74 @@ of this paper.
 References {#references}
 ===============
 
-1.  B. Sierman and K. Teszelszky, "How can we improve our web
+\[1\]  B. Sierman and K. Teszelszky, "How can we improve our web
     collection? an evaluation of webarchiving at the KB National
     Library of the Netherlands (2007-2017)," *Alexandria: The Journal
     of National and International Library and Information
     Issues*, Aug. 2017. DOI: 10.1177/0955749017725930. \[Online\]. Available: <https://doi.org/10.1177/0955749017725930>.
 
-2.  S. Ross and A. Gow, "Digital archaeology: Rescuing neglected and
+\[2\]  S. Ross and A. Gow, "Digital archaeology: Rescuing neglected and
     damaged data resources. a jisc/npo study within the electronic
-    libraries (elib) programme on the preservation of electronic materials.," University of Glasgow, 1999. \[Online\]. Avail-
-    able: <http://www.ukoln.ac.uk/services/elib/papers/supporting/pdf/p2.pdf>.
+    libraries (elib) programme on the preservation of electronic materials.," University of Glasgow, 1999. \[Online\]. 
+    Available: <http://www.ukoln.ac.uk/services/elib/papers/supporting/pdf/p2.pdf>.
 
-3.  J. van der Knijff, *Resurrecting the first Dutch web
+\[3\]  J. van der Knijff, *Resurrecting the first Dutch web
     index: NL-menu revisited*, 2018. \[Online\]. Available: <https://www.bitsgalore.org/2018/04/24/resurrecting-the-first-dutch-web-index-nl-menu-revisited>.
 
-4.  ------, *Crawling offline web content: The NL-menu
+\[4\]  ------, *Crawling offline web content: The NL-menu
     case*, 2018. \[Online\]. Available: <https://www.bitsgalore.org/2018/07/11/crawling-offline-web-content-the-nl-menu-case>.
 
-5.  D. Elford, N. Del Pozo, S. Mihajlovic, D. Pearson, G. Clifton,
+\[5\]  D. Elford, N. Del Pozo, S. Mihajlovic, D. Pearson, G. Clifton,
     and C. Webb, "Media matters: Developing processes for preserving
     digital objects on physical carriers at the national library of
     Australia," in *Proceedings, 74th IFLA General
     Conference and Council*, 2008. \[Online\].
     Available: <http://archive.ifla.org/IV/ifla74/papers/084-Webb-en.pdf>.
 
-6.  K. Woods and G. Brown, "From imaging to access - effective
+\[6\]  K. Woods and G. Brown, "From imaging to access - effective
     preservation of legacy removable media," in *Proceedings, Archiving
     2009*, 2009. \[Online\]. Available: <https://kamwoods.net/publications/woodsbrownarch09.pdf>.
 
-7.  K. Woods, C. Lee, and S. Garfinkel, "Extending digital repository
+\[7\]  K. Woods, C. Lee, and S. Garfinkel, "Extending digital repository
     architectures to support disk image preservation and access," in
     *Proceedings of the 11th Annual International ACM/IEEE Joint Conference on Digital Libraries*,
     ser. JCDL '11, Ottawa, Ontario, Canada: ACM, 2011, pp. 57-66,
     ISBN: 978-1-4503- 0744-4. DOI: 10.1145/1998076.1998088. \[Online\].
     Available: <http://doi.acm.org/10.1145/1998076.1998088>.
 
-8.  C. Lee, M. Kirschenbaum, A. Chassanoff, P. Olsen, and K. Woods,
+\[8\]  C. Lee, M. Kirschenbaum, A. Chassanoff, P. Olsen, and K. Woods,
     "BitCurator: Tools and techniques for digital forensics in
     collecting institutions," *D-Lib Magazine*, vol. 18, 5/6 2012.
     \[Online\]. Available: <http://www.dlib.org/dlib/may12/lee/05lee.html>.
 
-9.  [J. John, "Digital forensics and preservation," Digital
+\[9\]  J. John, "Digital forensics and preservation," Digital
     Preservation Coalition, 2012. \[Online\].
     Available: <http://dx.doi.org/10.7207/twr12-03>.
 
-
-10. M. Pennock, P. May, M. Day, K. Davies, S. Whibley, A. Kimura, and E.
+\[10\] M. Pennock, P. May, M. Day, K. Davies, S. Whibley, A. Kimura, and E.
     Halvarsson, "The flashback project: Rescuing disk-based content from
     the 1980's to the current day," in *Proceedings, 11th
     Digital Curation Conference*, 2016. \[Online\]. Available:
     <https://doi.org/10.5281/zenodo.1321629>.
 
-11. A. Prael and A. Wickner, "Getting to know FRED: Introducing
+\[11\] A. Prael and A. Wickner, "Getting to know FRED: Introducing
     workflows for born-digital content," *Practical Technology for
     Archives*, vol. 4, 2015. \[Online\]. Available: <https://practicaltechnologyforarchives.org/issue4_prael_wickner/>.
 
-12. D. Salo, *Building audio, video and data-rescue kits*, 2017.
+\[12\] D. Salo, *Building audio, video and data-rescue kits*, 2017.
     \[Online\]. Available: <https://radd.dsalo.info/wp-content/uploads/2017/10/BuildDocumentation.pdf>.
 
-13. BitCurator Consortium, *Workflows*. \[Online\].
+\[13\] BitCurator Consortium, *Workflows*. \[Online\].
     Available: <https://bitcuratorconsortium.org/workflows>.
 
-14. T. De Haan, "Project the digital city revives, a case study of web
+\[14\] T. De Haan, "Project the digital city revives, a case study of web
     archaeology," *Proceedings of the 13th
     International Conference on Digital Preservation*, 2016.
     \[Online\]. Available: <https://doi.org/10.5281/zenodo.1255965>.
 
-15. T. De Haan, R. Jansma, and P. Vogel, *Do it yourself handboek voor
+\[15\] T. De Haan, R. Jansma, and P. Vogel, *Do it yourself handboek voor
     webarcheologie*, 2017. \[Online\]. Available:
-    <https://hart.amsterdam/image/2017/11/17/20171116\_freeze\_diy\_handboek.pdf>.
+    <https://hart.amsterdam/image/2017/11/17/20171116_freeze_diy_handboek.pdf>.
 
 
 [^1]: Elizabeth Mattijsen, old xxLINK-homepage:
