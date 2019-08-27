@@ -1,16 +1,17 @@
 ---
 layout: post
-title: Recovering '90s Data Tapes - Experiences From the KB Web Archaeology project
+title: Recovering '90s Data Tapes - Experiences From the KB Web Archaeology project (iPres 2019 paper)
 tags: [tapes, tapeimgr, web-archaeology]
 ---
 
-Earlier this year I published [this blog post]({{ BASE_PATH }}/2019/01/31/roll-the-tape-recovering-90s-data-tapes-in-bitcurator) on the recovery of data from '90s data tapes. I gave a presentation on this during [this year's *iPress* conference](https://ipres2019.org/) conference, and wrote a paper that discusses this work in more detail than my earlier blog post. The original paper (in PDF format) can be found in the [conference proceedings](add-link-here). The paper references a wealth of useful resources, but these are not easily accessible because the [*LaTeX*](https://en.wikipedia.org/wiki/LaTeX) software that I used to typeset the paper has a tendency to break URLs in a variety of ways. So, below is a more web-friendly version of the paper that fixes this issue.
+Earlier this year I published [this blog post]({{ BASE_PATH }}/2019/01/31/roll-the-tape-recovering-90s-data-tapes-in-bitcurator) on the recovery of data from '90s data tapes. I gave a presentation on this during [this year's *iPress* conference](https://ipres2019.org/), and wrote a paper that discusses this work in more detail than my earlier blog post. The original paper (in PDF format) can be found in the [conference proceedings](add-link-here). The paper references a wealth of useful resources, but these are not easily accessible because the [*LaTeX*](https://en.wikipedia.org/wiki/LaTeX) software that I used to typeset the paper has a tendency to break URLs in a variety of ways. So, below is a more web-friendly version of the paper that fixes this issue.
 
 <figure class="image">
   <img src="{{ BASE_PATH }}/images/2019/09/tapes-dds-dlt.jpg" alt="DDS-1 (left) and DLT-IV (right) tape">
 </figure>
 
 <!-- more -->
+<hr>
 
 Abstract {#abstract}
 ============
