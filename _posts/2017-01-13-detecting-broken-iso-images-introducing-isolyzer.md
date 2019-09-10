@@ -23,7 +23,7 @@ The popular [*cdrtools*](https://en.wikipedia.org/wiki/Cdrtools) library include
 
 > isovfy is a utility to verify the integrity of an iso9660 image. Most of the tests in isovfy were added after bugs were discovered in early versions of mkisofs. It isn't all that clear how useful this is anymore, but it doesn't hurt to have this around. 
 
-I already commented on this tool in an [earlier blog post](http://blog.kbresearch.nl/2015/11/13/preserving-optical-media-from-the-command-line/):
+I already commented on this tool in an [earlier blog post]({{ BASE_PATH }}/2015/11/13/preserving-optical-media-from-the-command-line/):
 
 > The documentation of the tool isn’t very clear about what specific checks it performs. In one of my tests I fed it an ISO image that had its last 50 MB missing (truncated). This did not result in any error or warning message! Most of the reported isovfy errors that I came across in my tests simply reflected the file system on the physical CD not conforming to ISO 9660 (this seems to be pretty common).
 
