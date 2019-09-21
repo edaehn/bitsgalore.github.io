@@ -521,7 +521,7 @@ The remaining files are all *tar* archives, a format that is still
 widely used today. These files can be extracted by simply running the
 *tar*[^35] command like this:
 
-    tar -xvf /path/to/file0001.dd > /dev/null
+`tar -xvf /path/to/file0001.dd > /dev/null`
 
 The earlier observations on the file system of the disk to which the
 container is extracted also apply to *tar* files.
