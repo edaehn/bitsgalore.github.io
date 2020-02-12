@@ -66,6 +66,29 @@
 
 
    <div class="post-entry">
+   <h1><a href="/2020/02/11/web-domain-geolocation-and-spatial-analysis">Web domain geolocation and spatial analysis with QGIS</a></h1>
+   <div class="date">
+    <span>11 February 2020</span>
+   </div>
+   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
+   <figure class="image">
+  <img src="/images/2020/02/domains-provinces-map.png" alt="Map of domain locations" />
+</figure>
+
+<p>A few weeks ago one of my web archiving colleagues approached me with an interesting question. From a list of Dutch web domains, he wanted to identify the (Dutch) province in which each domain is hosted. He was particularly interested in domains hosted in the province of <a href="https://en.wikipedia.org/wiki/Friesland">Friesland</a>. After some experimentation I was able to answer this question using a two-step procedure:</p>
+
+<ol>
+  <li>Geo-locate the web domains using a custom Python script.</li>
+  <li>Combine the results of the geolocation exercise with openly available geographical data using <a href="https://en.wikipedia.org/wiki/QGIS"><em>QGIS</em></a>, an open-source geographical information system (GIS).</li>
+</ol>
+
+<p>Even though the outcome of the analysis is not particularly interesting, I imagine both the geolocation methodology and the GIS analysis steps might be useful to others. So, this blog post is primarily intended as a tutorial that gives a walkthrough of the steps I followed.</p>
+
+
+   <small><a href="/2020/02/11/web-domain-geolocation-and-spatial-analysis">More ...</a></small>
+   </div> 
+
+   <div class="post-entry">
    <h1><a href="/2019/09/09/recovering-90s-data-tapes-experiences-kb-web-archaeology">Recovering '90s Data Tapes - Experiences From the KB Web Archaeology project (iPres 2019 paper)</a></h1>
    <div class="date">
     <span>09 September 2019</span>
@@ -120,18 +143,6 @@
 
 
    <small><a href="/2019/01/31/roll-the-tape-recovering-90s-data-tapes-in-bitcurator">More ...</a></small>
-   </div> 
-
-   <div class="post-entry">
-   <h1><a href="/2018/07/11/crawling-offline-web-content-the-nl-menu-case">Crawling offline web content&#58; the NL-menu case</a></h1>
-   <div class="date">
-    <span>11 July 2018</span>
-   </div>
-   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
-   <p>In a <a href="/2018/04/24/resurrecting-the-first-dutch-web-index-nl-menu-revisited">previous blog post</a> I showed how we resurrected <em>NL-menu</em>, the first Dutch web index. It explains how we recovered the site’s data from an old CD-ROM, and how we subsequently created a local copy of the site by <a href="https://github.com/KBNLresearch/nl-menu-resources/blob/master/doc/serving-static-website-with-Apache.md">serving the CD-ROM’s contents on the <em>Apache</em> web server</a>. This follow-up post covers the final step: crawling the resurrected site to a <a href="https://en.wikipedia.org/wiki/Web_ARChive">WARC</a> file that can be ingested into our web archive.</p>
-
-
-   <small><a href="/2018/07/11/crawling-offline-web-content-the-nl-menu-case">More ...</a></small>
    </div> 
 
 
@@ -275,7 +286,7 @@
      
     	<li><a href="/tags.html#rant-ref">rant <span>1</span></a></li>
      
-    	<li><a href="/tags.html#web-archiving-ref">web-archiving <span>6</span></a></li>
+    	<li><a href="/tags.html#web-archiving-ref">web-archiving <span>7</span></a></li>
      
     	<li><a href="/tags.html#Android-ref">Android <span>1</span></a></li>
      
@@ -322,6 +333,8 @@
     	<li><a href="/tags.html#diskimgr-ref">diskimgr <span>1</span></a></li>
      
     	<li><a href="/tags.html#floppy-disks-ref">floppy-disks <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#geodata-ref">geodata <span>1</span></a></li>
     
   
 

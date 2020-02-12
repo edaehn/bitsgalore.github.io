@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Web domain geolocation and spatial analysis 
-tags: [web-archiving, GIS]
+title: Web domain geolocation and spatial analysis with QGIS
+tags: [web-archiving, geodata]
 ---
 
 <figure class="image">
@@ -11,15 +11,15 @@ tags: [web-archiving, GIS]
 A few weeks ago one of my web archiving colleagues approached me with an interesting question. From a list of Dutch web domains, he wanted to identify the (Dutch) province in which each domain is hosted. He was particularly interested in domains hosted in the province of [Friesland](https://en.wikipedia.org/wiki/Friesland). After some experimentation I was able to answer this question using a two-step procedure:
 
 1. Geo-locate the web domains using a custom Python script.
-2. Combine the results of the geolocation exercise with openly available geographical data using [*QGIS*](https://en.wikipedia.org/wiki/QGIS), an open-source geographical information system.
+2. Combine the results of the geolocation exercise with openly available geographical data using [*QGIS*](https://en.wikipedia.org/wiki/QGIS), an open-source geographical information system (GIS).
 
-Even though the outcome of the analysis is not particularly interesting, I imagine that both the geolocation methodology and the GIS analysis steps might be useful to others. Also, as I'm originally a geographer by training, this was a nice opportunity to go back back to my roots and muck around with geographical data for a bit. So, in this blog post I'll give a walkthrough of the steps that I followed.
+Even though the outcome of the analysis is not particularly interesting, I imagine both the geolocation methodology and the GIS analysis steps might be useful to others. So, this blog post is primarily intended as a tutorial that gives a walkthrough of the steps I followed.
 
 <!-- more -->
 
 ## Web domain geolocation
 
-In Python, the [*GeoIP2*](https://github.com/maxmind/GeoIP2-python) module can be used to get geolocation data (latitude, longitude, but also country and city names) for any IP address. IP addresses can be queried through either a web service, or using a local database. I went for the local database option, which requires you to download an up-to-date version of the *GeoLite2* City database, which can downloaded from [the *MaxMind* developer site](https://dev.maxmind.com/geoip/geoip2/geolite2). Note that the database is only accessible after signing up for an account (which is free).
+In Python, the [*GeoIP2*](https://github.com/maxmind/GeoIP2-python) module can be used to get geolocation data (latitude, longitude, but also country and city names) for any IP address. IP addresses can be queried through either a web service, or using a local database. I went for the local database option, which requires you to download an up-to-date version of the *GeoLite2* City database, which can downloaded from [the *MaxMind* developer site](https://dev.maxmind.com/geoip/geoip2/geolite2). To download the database you first need to create an account (which is free). Note that this database is widely used; for example, the British Library used it for geo-locating their 2014 domain crawl[^5].
 
 ## IP lookup
 
@@ -29,33 +29,31 @@ Since the *GeoIP2* module expects IP addresses as input, we first need to establ
 
 The [complete geolocation script is available here](https://gist.github.com/bitsgalore/b05c73934aece90e5a1b2a53fcce6f5b). It takes three command-line arguments:
 
-1. An input file. This is a text file, with each line containing one web domain. It has the following format:
-
-  ```
-  kruisbandkliniek.nl
-  anima-communicatie.nl
-  nieuwebrabander.nl
-  isisschuurman.nl
-  wamail.nl
-  kopenzonderklussen.nl
-  muziekles-laren.nl
-  ```
-
+1. An input file. This is a text file, with each line containing one web domain. It has the following format (note that these are not valid URLs because they don't include a leading scheme/protocol component):
+   ```
+   kruisbandkliniek.nl
+   anima-communicatie.nl
+   nieuwebrabander.nl
+   isisschuurman.nl
+   wamail.nl
+   kopenzonderklussen.nl
+   muziekles-laren.nl
+   ```
 2. An output file.
 3. The location of the database file.
 
-The output file is a comma-delimited text file. For each domain, it contains the following fields:
+The output file is a comma-delimited text file. For each domain, it reports:
 
-1. A *Boolean* flag that indicates whether the domain could be mapped to an IP address.
-2. A country ISO code (if available)
-3. A city name (if available)
-4. Latitude and longitude (if available)
+1. A *Boolean* flag that indicates whether the domain can be mapped to an IP address.
+2. A country ISO code (if available).
+3. A city name (if available).
+4. Latitude and longitude (if available).
 
 ## QGIS
 
-After I ran the script on the list of Dutch domain names, I noticed that city name values were often missing. However, latitude and longitude were always available, so that's what we'll work with here. In order to answer the question that started this whole exercise ("which domains are hosted in the province of Friesland"), we need to do some additional spatial analysis. [Geographic Information Systems](https://en.wikipedia.org/wiki/Geographic_information_system) (GIS) are a class of software that are specifically suited to this. So, I downloaded and installed the free and open-source [QGIS](https://qgis.org/en/site/) software.
+After I ran the script on the list of Dutch domain names, I noticed that city name values were often missing. However, latitude and longitude were always available (provided that a domain can be mapped to an IP address), so that's what we'll work with here. In order to answer the question that started this whole exercise ("which domains are hosted in the province of Friesland"), we need to do some additional spatial analysis. [Geographic Information Systems](https://en.wikipedia.org/wiki/Geographic_information_system) (GIS) are a class of software that are specifically suited to this. So, I downloaded and installed the free and open-source [QGIS](https://qgis.org/en/site/) software.
 
-A general discussion of QGIS is beyond the scope of this blog post; however the *Programming Historian* website has [a good introduction to QGIS](https://programminghistorian.org/en/lessons/qgis-layers)[^1]. For the analyses covered in this blog post I used QGIS 2.8.6.
+A general discussion of QGIS is beyond the scope of this blog post; however the *Programming Historian* website has [a good introduction to QGIS](https://programminghistorian.org/en/lessons/qgis-layers)[^1]. For the analyses covered in this blog post I used QGIS 2.8.6 (which is the slightly outdated version that is in the default Ubuntu software repositories).
 
 ## Visualise the point data
 
@@ -67,16 +65,16 @@ This opens up a dialog window where you can select the output file of the geoloc
 
 ![]({{ BASE_PATH }}/images/2020/02/textlayer-dialog.png)
 
-Under *Geometry definition* you can select the columns with  the X- and Y-co-ordinates; as it turns out QGIS is clever enough to figure these out by itself from the column headings in the file. Click *OK* to start importing the file. Note that if any records in the file don't have any latitude/longitude values, you will see an error message like this:
+Under *Geometry definition* you can select the columns with  the X- and Y-co-ordinates. As it turns out, QGIS is clever enough to figure these out by itself from the column headings in the file. Click *OK* to start importing the file. Note that if any records in the file don't contain latitude/longitude values, you will see an error message like this:
 
     Errors in file /home/johan/test-geolocatDomains/out_NL_geo_Johan.csv
     594 records discarded due to missing geometry definitions
 
-It is safe to ignore this, as any remaining records are imported correctly. After closing the error message, you need to specify the coordinate reference system in the following dialog:
+It is safe to ignore this, as any remaining records are imported correctly. After closing the error message, you need to specify the coordinate reference system in the following dialog[^4]:
 
 ![]({{ BASE_PATH }}/images/2020/02/crs-points.png)
 
-Select *WGS 84* (which is also the default) and press *OK*. If all goes well you will now see the imported points:
+Since the point data file uses geographic coordinates (latitude/longitude pairs), select *WGS 84* (which is also the default) and press *OK*. If all goes well you will now see the imported points:
 
 ![]({{ BASE_PATH }}/images/2020/02/points-imported.png)
 
@@ -88,7 +86,7 @@ The objective of this exercise was to link web domains to provinces. A free, gen
 
 ![]({{ BASE_PATH }}/images/2020/02/add-vector.png)
 
-Then open the downloaded GeoPackage file in the dialog that appears: 
+Then open the downloaded GeoPackage[^6] file in the dialog that appears: 
 
 ![]({{ BASE_PATH }}/images/2020/02/add-vector-2.png)
 
@@ -134,7 +132,7 @@ Which is pretty decent! You can use the *Save as Image ...* item in the *Project
 
 ## Spatial analysis
 
-Having a pretty-looking map is nice, but in order to know which domains are hosted in the province of Friesland we need to do some actual analysis. More specifically, for each web domain (point) we need to extract the corresponding attributes from the provinces vector layer. This is one of the most basic functionalities of QGIS. However, most of the analysis tools of QGIS require that all input layers have the same coordinate reference system. This is not the case here: the geographical coordinates of our point data are defined as latitude/longitude pairs, whereas the provinces vector layer uses the [Amersfoort / RD New](https://www.spatialreference.org/ref/epsg/amersfoort-rd-new/) coordinate system (which is commonly used for maps of the Netherlands)!
+Having a pretty-looking map is nice, but in order to know which domains are hosted in which provinces we need to do some actual analysis. More specifically, for each web domain (point) we need to extract the corresponding attributes from the provinces vector layer. This is one of the most basic functionalities of QGIS. However, most of the analysis tools of QGIS require that all input layers have the same coordinate reference system. This is not the case here: the geographical coordinates of our point data are defined as latitude/longitude pairs, whereas the provinces vector layer uses the [Amersfoort / RD New](https://www.spatialreference.org/ref/epsg/amersfoort-rd-new/) coordinate system (which is commonly used for maps of the Netherlands)!
 
 ## Transform point data to coordinate system of provinces layer 
 
@@ -148,9 +146,17 @@ Set *Format* to *Geography Markup Language \[GML\]* and specify a file name and 
 
 After pressing *OK* the new layer is automatically added to the map view.
 
+While at it, let's also change the project coordinate system to *Amersfoort / RD New*[^3]: in the *Project* menu, click on *Project Properties ...*. In the dialog that now appears, click on *Amersfoort / RD New* in the *Recently used coordinate reference systems* pane, and then press *Apply*:
+
+![]({{ BASE_PATH }}/images/2020/02/set-project-crs.png)
+
+Now press *OK*, and you should view something like this:
+
+![]({{ BASE_PATH }}/images/2020/02/mapview-amersfoort.png)
+
 ## Join attributes of point and province layers
 
-Now we're ready to combine the attributes of the point and vector layers. From the *Vector* menu, select *Data Management Tools*, and then *Join Attributes by Location ...*: 
+We're now ready to combine the attributes of the point and vector layers. From the *Vector* menu, select *Data Management Tools*, and then *Join Attributes by Location ...*: 
 
 ![]({{ BASE_PATH }}/images/2020/02/join-attributes-1.png)
 
@@ -182,14 +188,26 @@ As you can see here, each domain record now contains a column with the correspon
 
 ![]({{ BASE_PATH }}/images/2020/02/domains-fryslan.png)
 
+## Final thoughts
+
+As I'm originally a geographer by training, this was a nice opportunity to go back back to my roots a bit and muck around with geographical data. The last time I did any serious work with geographic information systems was around 2007; back then even simple analyses like this one needed expensive proprietary software. I hadn't used QGIS before, and even though I've only scratched the surface here it looks like a really useful addition to the toolbox of anyone working with geodata.
+
 ## Further resources
 
-- [Geolocation of web domains script](https://gist.github.com/bitsgalore/b05c73934aece90e5a1b2a53fcce6f5b)
-
-- [Geo-location in the 2014 UK Domain Crawl](https://blogs.bl.uk/webarchive/2015/07/geo-location-in-the-2014-uk-domain-crawl.html)
+- [Python script for geolocation of web domains](https://gist.github.com/bitsgalore/b05c73934aece90e5a1b2a53fcce6f5b)
 
 - [Installing QGIS 2.0 and Adding Layers (the Programming Historian)](https://programminghistorian.org/en/lessons/qgis-layers)
+
+- [Coordinate Reference Systems (QGIS Wiki)](https://docs.qgis.org/3.4/en/docs/gentle_gis_introduction/coordinate_reference_systems.html)
 
 [^1]: Note that this is based on a pretty old version of QGIS, so some things may have changed since then.
 
 [^2]: Or the other way round.
+
+[^3]: This step is not necessary for the analysis, but I just did this because I don't really like the way the map view looks in the WGS 84 coordinate system.
+
+[^4]: A good introduction to coordinate reference systems can be found here: <https://docs.qgis.org/3.4/en/docs/gentle_gis_introduction/coordinate_reference_systems.html>
+
+[^5]: Geo-location in the 2014 UK Domain Crawl: <https://blogs.bl.uk/webarchive/2015/07/geo-location-in-the-2014-uk-domain-crawl.html>
+
+[^6]: The other formats will most likely work fine as well, but I just selected GeoPackage, as unlike the Shapefile format it's an open standard.
