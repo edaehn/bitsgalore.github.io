@@ -264,6 +264,8 @@ code{
     list-style-type: none;
     border-top: 1px solid black;
     margin-left: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .github-comments li{
