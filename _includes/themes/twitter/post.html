@@ -25,7 +25,11 @@
       {% assign tags_list = page.tags %}
       {% include JB/tags_list %}
     </ul>
-  {% endunless %}  
+  {% endunless %}
+
+  {% if page.comment_id %}
+    {% include comments.html %}
+  {% endif %}
 
     <hr>
     <div class="pagination">
