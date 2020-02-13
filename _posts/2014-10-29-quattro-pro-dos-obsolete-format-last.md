@@ -2,6 +2,7 @@
 layout: post
 title: Quattro Pro for DOS&#58; an obsolete format at last?
 tags: [Quattro-Pro,spreadsheets]
+comment_id: 40
 ---
 
 While browsing [ArchiveTeam's File Formats Wiki](http://fileformats.archiveteam.org/wiki/Main_Page) earlier this week, I came across some entries I created there on [Quattro Pro spreadsheets](http://fileformats.archiveteam.org/wiki/Quattro_Pro) two years ago. At the time I had also contributed some old Quattro Pro for DOS spreadsheets ([here](http://opf-labs.org/format-corpus/office/spreadsheet/wq1/) and [here](http://opf-labs.org/format-corpus/office/spreadsheet/wq2/)) from my personal archives to the [OPF format corpus](https://github.com/openplanets/format-corpus). Seeing those files again, I decided to spend an afternoon trying to access them using modern-day software. This turned out to be more challenging than expected. It even made me wonder whether, at long last, I had finally run into a case of the much discussed (but rarely observed) phenomenon of [format obsolescence](https://openpreservation.org/blog/2010/12/22/obsolescence-overrated/). Yes, big words indeed, and if anyone would like to prove me wrong, the comments section below is your friend!

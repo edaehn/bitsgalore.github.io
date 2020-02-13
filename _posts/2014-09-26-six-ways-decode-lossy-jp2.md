@@ -2,6 +2,7 @@
 layout: post
 title: Six ways to decode a lossy JP2
 tags: [jpeg-2000,JP2]
+comment_id: 42
 ---
 
 Some time ago Will Palmer, Peter May and Peter Cliff of the British Library published a really interesting [paper that investigated three different JPEG 2000 codecs](http://www.scape-project.eu/publication/palmer-ipres2013), and their effects on image quality in response to lossy compression. Most remarkably, their analysis revealed differences not only in the way these codecs *encode* (compress) an image, but also in the *decoding* phase. In other words: reading the same lossy JP2 produced different results depending on which implementation was used to decode it.

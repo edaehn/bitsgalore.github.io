@@ -2,6 +2,7 @@
 layout: post
 title: Jpylyzer software finalist voor digitale duurzaamheidsprijs
 tags: [jpeg-2000,JP2,jpylyzer]
+comment_id: 43
 ---
 
 Vandaag maakte de Britse [*Digital Preservation

@@ -2,6 +2,7 @@
 layout: post
 title: Perdiep Ramesar in het Internet Archive
 tags: [web-archiving]
+comment_id: 38
 ---
 Eerder deze week [verwijderde dagblad *Trouw* 126](http://www.nrc.nl/nieuws/2014/12/20/trouw-trekt-126-artikelen-van-perdiep-ramesar-in/) artikelen van haar website die geschreven waren door ontslagen journalist Perdiep Ramesar. Aanleiding hiervoor was het [onderzoek](http://static1.trouw.nl/static/asset/2014/Onderzoeksrapport_bronnengebruik_Trouw_19122014_7707.pdf) naar door Ramesar opgevoerde "niet traceerbare" bronnen. De beslissing van *Trouw* om de onbetrouwbare artikelen van de site af te halen stuitte op nogal wat kritiek. Sommigen noemden het [geschiedvervalsing](http://www.journalismlab.nl/2014/12/perdiep-gewist-gaan-trouw-en-ad-gaan-voor-geschiedvervalsing/). Historicus Jan Dirk Snel [merkte terecht op](http://jandirksnel.wordpress.com/2014/12/24/geschiedvervalsing-het-echte-schandaal-bij-trouw-is-nu-pas-begonnen/) dat nu de stukken zijn verwijderd, niemand meer kan controleren wat er eventueel wel of niet aan deugt.
 

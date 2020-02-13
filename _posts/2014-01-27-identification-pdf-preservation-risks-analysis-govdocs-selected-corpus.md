@@ -2,6 +2,7 @@
 layout: post
 title: Identification of PDF preservation risks&#58; analysis of Govdocs selected corpus
 tags: [PDF,Apache-Preflight]
+comment_id: 47
 ---
 
 This blog follows up on three earlier posts about detecting  preservation risks in *PDF* files. In  [part 1]({{ BASE_PATH }}/2012/12/19/identification-pdf-preservation-risks-apache-preflight-first-impression) I explored to what extent the [*Preflight*](http://pdfbox.apache.org/cookbook/pdfavalidation.html) component of the [*Apache PDFBox*](http://pdfbox.apache.org/) library can be used to detect specific preservation risks in *PDF* documents. This was followed up by some work during the *SPRUCE* Hackathon in Leeds, which is covered by [this blog post by Peter Cliff](http://www.openplanetsfoundation.org/blogs/2013-03-15-pdf-eh-another-hackathon-tale). Then last summer I did a series of [additional tests]({{ BASE_PATH }}/2013/07/25/identification-pdf-preservation-risks-sequel) using files from the [*Adobe Acrobat Engineering* website](http://acroeng.adobe.com/wp/). The main outcome of this more recent work was that, although showing great promise, *Preflight* was struggling with many more complex *PDF*s. Fast-forward another six months and, thanks to the excellent response of the *Preflight* developers to our bug reports, the most serious of these problems are now largely solved[^1]. So, time to move on to the next step!

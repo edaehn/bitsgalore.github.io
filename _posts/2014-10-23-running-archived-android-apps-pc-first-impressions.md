@@ -2,6 +2,7 @@
 layout: post
 title: Running archived Android apps on a PC&#58; first impressions
 tags: [Android,emulation,virtualization]
+comment_id: 41
 ---
 
 Earlier this week I had a discussion with some colleagues about the archiving of mobile phone and tablet apps (iPhone/Android), and, equally important, ways to provide long-term access. The immediate incentive for this was an announcement by a Dutch publisher, who recently published a children's book that is accompanied by its own app. Also, there are already several examples of Ebooks that are published exclusively as mobile apps. So, even though we're not receiving any apps in our collections yet, we'll have to address this at some point, and it's useful to have an initial idea of the challenges that may lie ahead.

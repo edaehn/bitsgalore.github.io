@@ -2,6 +2,7 @@
 layout: post
 title: When (not) to migrate a PDF to PDF/A
 tags: [PDF]
+comment_id: 44
 ---
 
 It is well-known that PDF documents can contain features that are preservation risks (e.g. see [here](https://web.archive.org/web/20130515073645/http://libraries.stackexchange.com/questions/964/what-preservation-risks-are-associated-with-the-pdf-file-format) and [here](http://wiki.opf-labs.org/display/TR/Portable+Document+Format)). Migration of existing *PDF*s to *PDF/A* is sometimes advocated as a strategy for mitigating these risks. However, the benefits of this approach are often questionable, and the migration process can also be quite risky in itself. As I often get questions on this subject, I thought it might be worthwhile to do a short write-up on this.
