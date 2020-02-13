@@ -2,6 +2,7 @@
 layout: post
 title: Optimising archival JP2s for the derivation of access copies
 tags: [jpeg-2000,JP2]
+comment_id: 50
 --- 
 
 Like many other organisations that are using JPEG 2000, the KB produces two representations of most of its digitised content (newspapers, books, periodicals):

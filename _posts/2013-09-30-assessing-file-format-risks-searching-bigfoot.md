@@ -2,6 +2,7 @@
 layout: post
 title: Assessing file format risks&#58; searching for Bigfoot?
 tags: [preservation-risks]
+comment_id: 49
 ---
 
 Last week someone pointed my attention to a recent *iPres* paper by Roman Graf and Sergiu Gordea titled "[A Risk Analysis of File Formats for Preservation Planning](http://purl.pt/24107/1/iPres2013_PDF/A%20Risk%20Analysis%20of%20File%20Formats%20for%20Preservation%20Planning.pdf)". The authors propose a methodology for assessing preservation risks for file formats using information in publicly available information sources. In short, their approach involves two stages:

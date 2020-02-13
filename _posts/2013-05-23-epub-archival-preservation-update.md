@@ -2,6 +2,7 @@
 layout: post
 title: EPUB for archival preservation&#58; an update
 tags: [EPUB,EPUBCheck]
+comment_id: 53
 ---
 
 ## Introduction

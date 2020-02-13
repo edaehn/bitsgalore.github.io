@@ -2,6 +2,7 @@
 layout: post
 title: Adventures in Debian packaging
 tags: [packaging,Debian,jpylyzer]
+comment_id: 54
 ---
 
 About a year ago, work started on [packaging SCAPE tools](http://www.openplanetsfoundation.org/blogs/2012-02-20-summary-outputs-and-roadmap-feb-2012). *Jpylyzer* was the first SCAPE tool that was [turned into a Debian package](http://www.openplanetsfoundation.org/blogs/2012-02-15-sustainability-and-adoption-preservation-tools). Some time later, the OPF set up a couple of machine images at Amazon Web Services, which can be used to [create packages repeatedly using a virtual machine](http://www.openplanetsfoundation.org/blogs/2012-03-08-turning-github-code-debian-packages-opf-way). Even though I've used the Amazon service a couple of times myself, I really know next to nothing about Debian packages, and it's safe to say that the underlying build process has been more or less a complete mystery to me.

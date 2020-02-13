@@ -2,6 +2,7 @@
 layout: post
 title: Measuring Bigfoot
 tags: [preservation-risks]
+comment_id: 48
 ---
 
 My previous blog [*Assessing file format risks: searching for Bigfoot?*]({{ BASE_PATH }}/2013/09/30/assessing-file-format-risks-searching-bigfoot) resulted in some interesting feedback from a number of people. There was a particularly elaborate response from Ross Spencer, and I originally wanted to reply to that directly using the comment fields. However, my reply turned out to be a bit more lengthy than I meant to, so I decided to turn it into a separate blog entry.

@@ -2,6 +2,7 @@
 layout: post
 title: What do we mean by "embedded" files in PDF?
 tags: [PDF]
+comment_id: 55
 ---
 
 The most important new feature of the recently released [PDF/A-3](http://www.iso.org/iso/catalogue_detail.htm?csnumber=57229) standard is that, unlike *PDF/A-2* and *PDF/A-1*, it allows you to embed *any* file you like. Whether this is a good thing or not is the subject of some [heated on-line discussions](http://blogs.loc.gov/digitalpreservation/2012/11/all-in-embedded-files-in-pdfa/). But what do we actually mean by *embedded files*? As it turns out, the answer to this question isn't as straightforward as you might think. One of the reasons for this is that in colloquial use we often talk about "embedded files" to describe the inclusion of *any* "non-text" element in a *PDF* (e.g. an image, a video or a file attachment). On the other hand, the word "embedded files" in the *PDF* standards (including *PDF/A*) refers to something much more specific, which is closely tied to *PDF*'s internal structure.

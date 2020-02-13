@@ -2,6 +2,7 @@
 layout: post
 title: ICC profiles and resolution in JP2&#58; update on 2011 D-Lib paper
 tags: [jpeg-2000,JP2]
+comment_id: 52
 ---
 
 It's been more than two years now since I wrote my D-Lib paper [*JPEG 2000 for Long-term Preservation: JP2 as a Preservation Format*](http://www.dlib.org/dlib/may11/vanderknijff/05vanderknijff.html). From time to time people ask me about the status of the issues that are mentioned in that paper, so here's a long overdue update.
