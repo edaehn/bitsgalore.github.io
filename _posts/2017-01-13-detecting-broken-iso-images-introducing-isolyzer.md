@@ -2,6 +2,7 @@
 layout: post
 title: Detecting broken ISO images&#58; introducing Isolyzer
 tags: [isolyzer,optical-media,ISO-9660]
+comment_id: 25
 ---
 
 In my [previous blog post]({{ BASE_PATH }}/2017/01/04/breaking-waves-and-some-flacs) I addressed the detection of broken audio files in an automated workflow for ripping audio CDs. For (data) CD-ROMs and DVDs that are imaged to an ISO image, a similar problem exists: how can we be reasonably sure that the created image is complete? In this blog post I will discuss some possible ways of doing this using existing tools, along with their limitations. I then introduce *Isolyzer*, a new tool that might be a useful addition to the existing methods.

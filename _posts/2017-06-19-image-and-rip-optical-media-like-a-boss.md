@@ -2,6 +2,7 @@
 layout: post
 title: Image and Rip Optical Media Like A Boss!
 tags: [optical-media,iromlab]
+comment_id: 22
 ---
 
 Over the last months we've been working on the development of a provisional workflow for preserving the content of  optical media in our collection. The main result thus far is [*Iromlab*](https://github.com/KBNLresearch/iromlab), a custom workflow application that streamlines the imaging and ripping process. This blogpost gives an overview of *Iromlab*, as well as the reasons why we created it in the first place.

@@ -2,6 +2,7 @@
 layout: post
 title: A simple workflow tool for imaging optical media using readom and ddrescue
 tags: [optical-media, omimgr, isolyzer]
+comment_id: 17
 ---
 
 In 2015 I wrote [a blog post on preserving optical media from the command-line]({{ BASE_PATH }}/2015/11/13/preserving-optical-media-from-the-command-line). Among other things, it suggested a rudimentary workflow for imaging CD-ROMs and DVDs using the [*readom*](http://linux.die.net/man/1/readom) and [*ddrescue*](http://linux.die.net/man/1/ddrescue) tools. Even though we now have a [highly automated workflow in place]({{ BASE_PATH }}/2017/06/19/image-and-rip-optical-media-like-a-boss) for bulk processing optical media from our deposit collection, *readom* and *ddrescue* still prove to be useful for various special cases that don't quite fit into this workflow. The materials that we are currently receiving as part of our web archaeology activities are a good example. These are typically small sets of recordable CD-ROMs that are often quite old, and such discs are highly likely to be in less than perfect condition. For these cases a highly automated, [*iromlab*](https://github.com/KBNLresearch/iromlab)-like workflow is unnecessary, and to some degree even impractical. Nevertheless, it would be useful to have *some* degree of automation, especially for things like the addition and packaging of associated metadata. This prompted the development of the [*omimgr*](https://github.com/KBNLresearch/omimgr) workflow tool. In the the remainder of this blog post I will give an overview of *omimgr*.

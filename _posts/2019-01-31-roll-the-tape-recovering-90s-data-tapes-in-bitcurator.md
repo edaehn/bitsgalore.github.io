@@ -2,6 +2,7 @@
 layout: post
 title: Roll the tape - recovering '90s data tapes in BitCurator
 tags: [tapes,tapeimgr,web-archaeology]
+comment_id: 18
 ---
 
 When the [KB web archive](https://www.kb.nl/en/organisation/research-expertise/long-term-usability-of-digital-resources/web-archiving) was launched in 2007, many sites from the "early" Dutch web had already gone offline. As a result, the time period between (roughly) 1992 and 2000 is seriously under-represented in our web archive. To improve the coverage of web sites from this historically important era, we are now looking into [Web Archaeology](https://hart.amsterdam/image/2016/11/28/20160730_redds_tjardadehaan.pdf) tools and methods. Over the last year our web archiving team has reached out to creators of "early" Dutch web sites that are no longer online. It's not uncommon to find that these creators still have boxes of offline carriers with the original source data of those sites. Using these data, we would (in many cases) be able to reconstruct the sites, similarly to how we [reconstructed the first Dutch web index]({{ BASE_PATH }}/2018/04/24/resurrecting-the-first-dutch-web-index-nl-menu-revisited) last year. Once reconstructed, they could then be ingested into our web archive.

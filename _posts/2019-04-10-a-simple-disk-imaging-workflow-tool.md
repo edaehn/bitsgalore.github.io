@@ -2,6 +2,7 @@
 layout: post
 title: A simple disk imaging workflow tool
 tags: [disk-imaging, diskimgr, web-archaeology, floppy-disks]
+comment_id: 16
 ---
 
 <figure class="image">

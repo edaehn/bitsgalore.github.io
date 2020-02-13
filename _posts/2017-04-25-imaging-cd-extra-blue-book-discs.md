@@ -2,6 +2,7 @@
 layout: post
 title: Imaging CD-Extra / Blue Book discs
 tags: [isolyzer,optical-media,ISO-9660,HFS,UDF]
+comment_id: 24
 ---
 
 The development work on an imaging/ripping workflow for optical media is shaping up steadily, and you can expect a write-up with more information about our software and hardware setup here in the near future (you can get a sneak peek [here](https://github.com/KBNLresearch/iromlab)). However, this blog is about a very specific problem that we ran into while testing the workflow with a selection of discs from our collection. This selection included a few discs that follow the [*Blue Book*](https://en.wikipedia.org/wiki/Blue_Book_(CD_standard)) standard (also known as *CD-Extra*). This standard defines a method for combining audio and data tracks on one disc. A *CD-Extra* disc contains two sessions, where the first session holds all audio tracks, and the second session holds a data track. *Blue Book* was (and still is) widely used for audio CD's with bonus videos or software.
