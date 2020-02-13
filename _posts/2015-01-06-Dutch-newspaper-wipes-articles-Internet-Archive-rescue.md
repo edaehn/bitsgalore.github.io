@@ -2,6 +2,7 @@
 layout: post
 title: Dutch newspaper wipes out articles citing fabricated sources - Internet Archive to the rescue!
 tags: [web-archiving]
+comment_id: 37
 ---
 
 Shortly before Christmas, Dutch daily newspaper *Trouw* [removed 126 articles](http://www.nrc.nl/nieuws/2014/12/20/trouw-trekt-126-artikelen-van-perdiep-ramesar-in/) from its website. These articles were all authored by Perdiep Ramesar, a former journalist of the newspaper. Ramesar had been fired by *Trouw* in November, after it turned out that many of the sources that are cited in his articles were [fabricated](http://static1.trouw.nl/static/asset/2014/Onderzoeksrapport_bronnengebruik_Trouw_19122014_7707.pdf). The most notorious example was a series of pieces about the so-called "Sharia Triangle", a neighbourhood in the city of The Hague, which Ramesar claimed was being ruled  by Sharia law. As it turned out, this story was largely based on fabricated sources. Nevertheless, it was taken at face value by most major Dutch news outlets at the time, and even prompted a [parliamentary debate](http://www.tweedekamer.nl/kamerstukken/detail?id=2013D34540&did=2013D34540).

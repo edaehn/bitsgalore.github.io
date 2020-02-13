@@ -2,6 +2,7 @@
 layout: post
 title: The future of EPUB? A first look at the EPUB 3.1 Editor’s draft
 tags: [EPUB]
+comment_id: 29
 ---
 
 About a month ago the [International Digital Publishing Forum](http://idpf.org/), the standards body behind the *EPUB* format, published an 

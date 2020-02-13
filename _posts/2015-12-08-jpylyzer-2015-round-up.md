@@ -2,6 +2,7 @@
 layout: post
 title: Jpylyzer 2015 round-up
 tags: [jpeg-2000,JP2,jpylyzer]
+comment_id: 30
 ---
 
 Yesterday (7 December)  we released [version 1.16.0](http://jpylyzer.openpreservation.org//2015/12/07/Release-of-jpylyzer-1-16-0) of the [*jpylyzer*](http://jpylyzer.openpreservation.org/) tool, which is this year's third release of the software (excluding bugfix releases). This blog post gives a brief overview of the main *jpylyzer* improvements that have been implemented over this year. 

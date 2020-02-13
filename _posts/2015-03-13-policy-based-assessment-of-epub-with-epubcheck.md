@@ -2,6 +2,7 @@
 layout: post
 title: Policy-based assessment of EPUB with Epubcheck
 tags: [EPUB,EPUBCheck,schematron]
+comment_id: 36
 ---
 
 Back in 2012 the KB conducted a first [investigation](https://zenodo.org/record/839711) of the suitability of the *EPUB* format for long-term preservation. The KB will soon start receiving publications in this format, and in anticipation of this, our Collection Care department has formulated a policy on the minimum requirements an *EPUB* must meet to ensure long-term accessibility. The policy largely follows the recommendations from the 2012 report. This blog explores to what extent it is possible to automatically assess the *EPUB*s that we receive against our policy using a combination of the [*Epubcheck*](https://github.com/idpf/epubcheck) tool and [*Schematron*](http://www.schematron.com/) rules.

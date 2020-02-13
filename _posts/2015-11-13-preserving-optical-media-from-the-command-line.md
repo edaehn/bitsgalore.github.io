@@ -2,6 +2,7 @@
 layout: post
 title: Preserving optical media from the command-line
 tags: [optical-media,ISO-9660]
+comment_id: 31
 ---
 
 The KB has quite a large collection of offline optical media, such as CD-ROMs, DVDs and audio CDs. We're currently investigating how to stabilise the contents of these materials using disk imaging. During the initial phase of this work I did a number of tests with various open-source tools. It's doubtful whether we'll end up using these same tools in our actual workflows. The main reason for this is the sheer size of the collection, which we estimated at some 15,000 physical carriers; possibly even more. At those volumes we will need a solution that involves the use of a disk robot, and these often require dedicated software (we still need to investigate this more in-depth).

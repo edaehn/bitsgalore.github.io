@@ -2,6 +2,7 @@
 layout: post
 title: Top 50 file formats in the KB e-Depot
 tags: [e-depot,format-identification,Apache-Tika]
+comment_id: 35
 ---
 
 The current version of the KB's digital repository system ([e-Depot](https://www.kb.nl/en/organisation/research-expertise/long-term-usability-of-digital-resources/the-e-depot-project-cycle)) doesn't include any tools for automated [file format identification](http://www.forensicswiki.org/wiki/File_Format_Identification) yet. Our previous [DIAS](https://www.kb.nl/en/organisation/research-expertise/long-term-usability-of-digital-resources/history-the-kb-and-digital-preservation) system didn't have identification functionality either. As a result, information on file formats in digital our collections is largely based on publisher metadata and file extensions. Neither are necessarily correct. Moreover, previous analyses revealed a number of prevalent file extensions that could not be easily linked to a specific format. One result of this situation was that we couldn't even reliably tell to what extent patrons were able to view e-Depot content on the PCs in our reading rooms (the obviously common formats aside).

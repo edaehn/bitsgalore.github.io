@@ -2,6 +2,7 @@
 layout: post
 title: Why PDF/A validation matters, even if you don't have PDF/A
 tags: [PDF,VeraPDF,preservation-risks]
+comment_id: 34
 ---
 
 This is the first instalment of a 2-part blog. It was prompted by the upcoming Digital Preservation Coalition briefing [*When is a PDF not a PDF?*](http://www.dpconline.org/events/details/95-preserving-pdfs-jul15), for which I was asked to prepare a presentation. My initial idea was to give an overview of the work we did on PDF preservation risk assessment using a PDF/A validator in the [SCAPE](http://www.scape-project.eu/) project. Most of this has already been [covered]({{ BASE_PATH }}/2012/12/19/identification-pdf-preservation-risks-apache-preflight-first-impression) by a [series]({{ BASE_PATH }}/2013/07/25/identification-pdf-preservation-risks-sequel) of [earlier blog posts]({{ BASE_PATH }}/2014/01/27/identification-pdf-preservation-risks-analysis-govdocs-selected-corpus). Those blogs very much represent different stages of a work in progress, and I think this makes them somewhat challenging for readers who are new to the subject.
