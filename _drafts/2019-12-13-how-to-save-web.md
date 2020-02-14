@@ -4,6 +4,8 @@ title: Archiving web pages -
 tags: [web-archiving]
 ---
 
+<!-- NOTE: images for this post are in images/2019/12 folder, change this! -->
+
 <figure class="image">
   <img src="{{ BASE_PATH }}/images/2019/09/tapes-dds-dlt.jpg" alt="DDS-1 (left) and DLT-IV (right) tape">
 </figure>
