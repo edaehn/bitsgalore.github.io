@@ -2,6 +2,7 @@
 layout: post
 title: A prototype JP2 validator and properties extractor
 tags: [jpeg-2000,JP2,jpylyzer,GW-BASIC]
+comment_id: 63
 ---
 
 A few months ago I wrote a [blog

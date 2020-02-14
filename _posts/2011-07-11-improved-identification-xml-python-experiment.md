@@ -2,6 +2,7 @@
 layout: post
 title: Improved identification of XML&#58; a Python experiment
 tags: [format-identification,unix-file,DROID,Fido]
+comment_id: 66
 ---
 
 As a part of the [SCAPE](http://www.scape-project.eu) project, I'm

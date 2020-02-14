@@ -2,6 +2,7 @@
 layout: post
 title: PDF – Inventory of long-term preservation risks
 tags: [PDF,preservation-risks]
+comment_id: 59
 ---
 
 In this blog post I'll be dusting off some old stuff for a change. The occasion for this is the following question,  posted by Paul Wheatley on the [Libraries and Information Science Stack Exchange website][LibStack] a few days ago:

@@ -2,6 +2,7 @@
 layout: post
 title: Identification of PDF preservation risks with Apache Preflight&#58; a first impression
 tags: [PDF,Apache-Preflight]
+comment_id: 56
 ---
 
 The *PDF* format contains various features that may make it difficult to

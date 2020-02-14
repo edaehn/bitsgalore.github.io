@@ -2,6 +2,7 @@
 layout: post
 title: EPUB for archival preservation
 tags: [EPUB,preservation-risks]
+comment_id: 60
 ---
 
 Over the last few years, the [*EPUB*][EPUB] format has gained widespread popularity in the consumer market. The [KB] has been approached by a number of publishers that wish to use *EPUB* for delivering some of  their electronic publications. Surprisingly little information is available on the format's suitability for archival preservation, apart from Library of Congress' [*Sustainability of Digital Formats*] [formatsLOC] web pages, which contain entries on [*EPUB* 2][epub2LOC] and [*EPUB* 3][epub3LOC].

@@ -2,6 +2,7 @@
 layout: post
 title: A simple JP2 file structure checker
 tags: [jpeg-2000,JP2,JHOVE,jpylyzer]
+comment_id: 65
 ---
 
 Over the last few weeks I've been working on the design of a workflow

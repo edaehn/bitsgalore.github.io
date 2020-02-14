@@ -2,6 +2,7 @@
 layout: post
 title: Paper on JPEG 2000 for preservation
 tags: [jpeg-2000,JP2]
+comment_id: 67
 ---
 
 The JPEG 2000 compression standard is steadily becoming more and more

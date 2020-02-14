@@ -2,6 +2,7 @@
 layout: post
 title: Automated assessment of JP2 against a technical profile
 tags: [jpeg-2000,JP2,jpylyzer,schematron]
+comment_id: 57
 ---
 
 I've already written a number of blog posts on format validation of *JP2* files. Format validation is only a one aspect of a quality assessment workflow. Digitisation guidelines typically impose various constraints on the technical characteristics of preservation and access images. For example, they may state that a preservation master must be losslessly compressed, and that its progression order must be *RPCL*. A *format profile* is a set of such technical constraints. The process that compares the technical characteristics of a file against a format profile is sometimes called [*Policy Driven Validation*][6]. This corresponds to what *JHOVE2* refers to as [*Assessment*][7] (which I think is a better description).

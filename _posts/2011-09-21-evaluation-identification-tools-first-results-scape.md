@@ -2,6 +2,7 @@
 layout: post
 title: Evaluation of identification tools&#58; first results from SCAPE
 tags: [format-identification,unix-file,DROID,Fido,FITS,JHOVE2]
+comment_id: 64
 ---
 
 As I already briefly mentioned in a [previous blog
