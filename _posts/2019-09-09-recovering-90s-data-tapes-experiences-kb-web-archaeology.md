@@ -315,7 +315,9 @@ Reading a tape with dd and mt {#reading-a-tape-with-dd-and-mt}
 In the simplest case, reading data from a tape involves nothing more
 than a *dd* command line such as this one:
 
-`dd if=/dev/nst0 of=file0001.dd bs=16384`
+```
+dd if=/dev/nst0 of=file0001.dd bs=16384
+```
 
 Here, the “`if`” argument tells *dd* to read input from the non-rewind
 block device `/dev/nst0`, and the value of “`of`” defines the file where
@@ -331,12 +333,16 @@ following iterative procedure:
     record (and direct the output to the null device, as we don’t need
     it):
 
-    `dd if=/dev/nst0 of=/dev/null bs=512 count=1`
+    ```
+    dd if=/dev/nst0 of=/dev/null bs=512 count=1
+    ```
 
 2.  Position the tape 1 record backward using the *mt*[^23] tool (this
     resets the read position to the start of the current session):
 
-    `mt -f /dev/nst0 bsr 1`
+    ```
+    mt -f /dev/nst0 bsr 1
+    ```
 
 3.  If step 1 raised an error in *dd*, increase the block size value by
     512 bytes, and repeat from step 1.
@@ -348,7 +354,9 @@ single output file. This leads to a second complication: a tape may
 contain additional sessions. We can test for this by positioning the
 tape 1 record forward with the *mt* tool:
 
-`mt -f /dev/nst0 fsr 1`
+```
+mt -f /dev/nst0 fsr 1
+```
 
 If the *mt* call doesn’t result in an error (i.e. *mt*’ s exit code
 equals zero), at least one additional session exists. In that case we
@@ -522,7 +530,9 @@ The remaining files are all *tar* archives, a format that is still
 widely used today. These files can be extracted by simply running the
 *tar*[^35] command like this:
 
-`tar -xvf /path/to/file0001.dd > /dev/null`
+```
+tar -xvf /path/to/file0001.dd > /dev/null
+```
 
 The earlier observations on the file system of the disk to which the
 container is extracted also apply to *tar* files.
