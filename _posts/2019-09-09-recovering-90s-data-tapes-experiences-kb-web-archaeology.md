@@ -14,8 +14,7 @@ Earlier this year I published [this blog post]({{ BASE_PATH }}/2019/01/31/roll-t
 <!-- more -->
 <hr>
 
-Abstract {#abstract}
-============
+## Abstract {#abstract}
 
 The recovery of digital data from tape formats from the mid
 to late ’90s is not well covered by existing digital preservation and
@@ -37,8 +36,7 @@ that have already been reconstructed from these tapes.
 **Conference Topics** – The Cutting Edge: Technical Infrastructure and
 Implementation
 
-Introduction {#introduction}
-============
+## Introduction {#introduction}
 
 When the National Library of the Netherlands (hereafter: KB) launched
 its web archive in 2007, many sites from the “early” Dutch web had
@@ -123,8 +121,7 @@ are also fully open source, and can be easily integrated into
 Linux-based platforms, including the popular *BitCurator*[^3]
 environment.
 
-Outline {#outline}
-=======
+## Outline {#outline}
 
 This paper starts with a brief overview of the tape formats in the
 *xxLINK* sample set. This is followed by a discussion of the hardware
@@ -143,8 +140,7 @@ resulting container files, and the subsequent reconstruction of any
 section also shows some first results of sites that were recovered from
 a 1995 tape. The closing section summarizes the main conclusions.
 
-Tape formats {#tape-formats}
-============
+## Tape formats {#tape-formats}
 
 The majority (19) of the tapes in the *xxLINK* sample set are DDS tapes,
 most of which were written in 1995. DDS (Digital Data Storage) is a
@@ -168,8 +164,7 @@ Figure 1 shows what these tapes look like.
   <figcaption>Figure 1: DDS-1 (left) and DLT-IV (right) tape</figcaption>
 </figure>
 
-Hardware {#hardware}
-========
+## Hardware {#hardware}
 
 For all data recovery workflows that are part of the web archaeology
 project I set up a dedicated forensic workstation that is running the
@@ -188,8 +183,7 @@ are shown in Figure 2.
 In order to read the DDS-3 tapes, I purchased an additional used DAT-72
 drive that has backward-compatibility with DDS-3.
 
-SCSI host adapter {#scsi-host-adapter}
------------------
+### SCSI host adapter {#scsi-host-adapter}
 
 As all three tape drives have parallel SCSI[^8] connectors, I needed a
 SCSI host adapter (“SCSI card”) to connect them to the forensic
@@ -225,8 +219,7 @@ that we are using in our workstation.
   <figcaption>Figure 3: PCI Express SCSI host adapter</figcaption>
 </figure>
 
-SCSI connectors and terminators {#scsi-connectors-and-terminators}
--------------------------------
+### SCSI connectors and terminators {#scsi-connectors-and-terminators}
 
 Rather than being one well-defined standard, parallel SCSI is actually a
 family of related standards that comprise a host of different
@@ -259,8 +252,7 @@ sockets[^17].
   <figcaption>Figure 4: SCSI terminator attached to DLT-IV drive</figcaption>
 </figure>
 
-Cleaning cartridges {#cleaning-cartridges}
--------------------
+### Cleaning cartridges {#cleaning-cartridges}
 
 Over time, the heads of a tape drive will get dirty due to a gradual
 accumulation of dust, and sometimes also residue from the tapes that are
@@ -278,8 +270,7 @@ manually (in fact this is likely to result in damage), the availability
 of cleaning cartridges could be a concern for keeping older tape formats
 like these accessible in the long run.
 
-Software {#software}
-========
+## Software {#software}
 
 Once the hardware is set up, a number of options are available for
 reading the data from the tapes. Often, tapes contain backup archives
@@ -309,8 +300,7 @@ utilities to extract their contents. This is similar to existing
 forensic workflows that are used for other carrier types in e.g.
 *BitCurator*.
 
-Reading a tape with dd and mt {#reading-a-tape-with-dd-and-mt}
------------------------------
+### Reading a tape with dd and mt {#reading-a-tape-with-dd-and-mt}
 
 In the simplest case, reading data from a tape involves nothing more
 than a *dd* command line such as this one:
@@ -369,8 +359,7 @@ in a non-zero exit code, which means no additional sessions exist. The
 end result is that for each session on the tape we now have a
 corresponding output file.
 
-Tapeimgr {#tapeimgr}
---------
+### Tapeimgr {#tapeimgr}
 
 Even though the above procedure is not particularly complicated, having
 to go through all these steps by hand would be very cumbersome.
@@ -415,8 +404,7 @@ the graphical user interface, *tapeimgr* also has a command-line
 interface, which makes it possible to integrate it into other
 applications.
 
-Limitations of tapeimgr {#limitations-of-tapeimgr}
------------------------
+### Limitations of tapeimgr {#limitations-of-tapeimgr}
 
 At this stage, *tapeimgr* has two important limitations. First, it only
 supports tapes for which the block size is constant within each session.
@@ -438,8 +426,7 @@ written, any previously recorded data beyond that point are no longer
 accessible (reportedly workarounds exist, but these are specific to
 kernel drivers)[^27].
 
-Reading the xxLINK tapes {#reading-the-xxlink-tapes}
-========================
+## Reading the xxLINK tapes {#reading-the-xxlink-tapes}
 
 With all the hardware and software in place, I first experimented with
 reading some unimportant, disposable DDS-1 and DLT-IV test tapes. Based
@@ -474,8 +461,7 @@ brief summary of the above results.
 *Table 1: Summary of xxLINK tapes read results*
 
 
-Extraction of recovered container files {#extraction-of-recovered-container-files}
-=======================================
+## Extraction of recovered container files {#extraction-of-recovered-container-files}
 
 It is important to stress that the above *tapeimgr*-based workflow only
 recovers the contents of the tapes at the bit level: for each session on
@@ -556,8 +542,7 @@ open-source tools exist that claim to support the format). As the
 *xxLINK* data set does not include this format, it was not investigated
 as part of this work.
 
-Reconstruction of sites {#reconstruction-of-sites}
-=======================
+## Reconstruction of sites {#reconstruction-of-sites}
 
 Once the contents of the container files are extracted, we can start
 reconstructing the web sites. At this stage of the Web Archaeology
@@ -649,8 +634,7 @@ further investigation. Once the analysis and processing of the data from
 the remaining tapes is complete, a more in-depth report on the
 reconstruction procedure will be published separately.
 
-Conclusions {#conclusions}
-===========
+## Conclusions {#conclusions}
 
 In this paper I showed how old DDS and DLT-IV tapes from the ’90s can be
 read on a modern desktop workstation running Linux (in this case the
@@ -673,8 +657,7 @@ Since the process of reading data tapes on Linux-based systems is quite
 standardized, other tape formats that are not covered by this paper can
 probably be processed in a similar way.
 
-Acknowledgments {#acknowledgments}
-===============
+## Acknowledgments {#acknowledgments}
 
 First of all thanks are due to Wendy van Dijk and Elizabeth Mattijsen
 for making the *xxLINK* tapes available to us, and to Kees Teszelszky,
@@ -687,8 +670,7 @@ anonymous reviewers who provided valuable feedback to an earlier draft
 of this paper.
 
 
-References {#references}
-===============
+## References {#references}
 
 \[1\]  B. Sierman and K. Teszelszky, "How can we improve our web
     collection? an evaluation of webarchiving at the KB National
