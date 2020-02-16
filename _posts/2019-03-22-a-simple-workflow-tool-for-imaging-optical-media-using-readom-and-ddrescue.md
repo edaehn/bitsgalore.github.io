@@ -14,32 +14,44 @@ In 2015 I wrote [a blog post on preserving optical media from the command-line](
 In [my 2015 blog post]({{ BASE_PATH }}/2015/11/13/preserving-optical-media-from-the-command-line) I reviewed a number of command-line imaging tools for optical media. For CD-ROMs and DVDs I recommended to first try imaging the disc with *readom*, and use *ddrescue* in case *readom* fails. The logic behind this is that *readom* was specifically designed for reading optical media, which makes it preferable over generic block device recovery tools such as [*Guymager*](https://guymager.sourceforge.io/), [*dd*](http://linux.die.net/man/1/dd) or *ddrescue*. However, *readom* gives up rather easily on discs that are damaged or otherwise degraded, and for these cases *ddrescue* is often capable of recovering surprising amounts of data. For example, our earlier success at [resurrecting the first Dutch web index]({{ BASE_PATH }}/2018/04/24/resurrecting-the-first-dutch-web-index-nl-menu-revisited) was largely thanks to *ddrescue*'s ability to work its magic on the degraded CD-recordable that contained the source data. So, a basic command-line workflow that is based on *readom* and *ddrescue* would look like this:
 
 1. Unmount the disc:
-
-        umount /dev/sr0
+   
+   ```
+   umount /dev/sr0
+   ```
 
 2. Try to create an ISO image of the disc with *readom*:
 
-        readom retries=4 dev=/dev/sr0 f=disc.iso
+   ```
+   readom retries=4 dev=/dev/sr0 f=disc.iso
+   ```
 
 3. If *readom* fails, try to image the disc with *ddrescue*:
 
-        ddrescue -b 2048 -r4 -v /dev/sr0 disc.iso disc.map
+   ```
+   ddrescue -b 2048 -r4 -v /dev/sr0 disc.iso disc.map
+   ```
 
 4. If *ddrescue* was unable to recover all the data on the disc, try to improve the result by re-running *ddrescue* in direct disc mode:
 
-        ddrescue -d -b 2048 -r4 -v /dev/sr0 disc.iso disc.map
+   ```
+   ddrescue -d -b 2048 -r4 -v /dev/sr0 disc.iso disc.map
+   ```
 
 5. If there are still read errors after the above command, try to improve the result by re-running *ddrescue* with another optical drive (e.g. an external USB-drive):
 
-        ddrescue -b 2048 -r4 -v /dev/sr1 disc.iso disc.map
+   ```
+   ddrescue -b 2048 -r4 -v /dev/sr1 disc.iso disc.map
+   ```
 
-    (Note that steps 4 and 5 can be repeated for mutiple optical drives, if needed).
+   (Note that steps 4 and 5 can be repeated for mutiple optical drives, if needed).
 
 6. Check the extracted ISO image for completeness with [*isolyzer*](https://github.com/KBNLresearch/isolyzer):
 
-        isolyzer disc.iso
+   ```
+   isolyzer disc.iso
+   ```
 
-    If the value of the *smallerThanExpected* element equals *False*, this is an indication that the ISO image is probably intact.
+   If the value of the *smallerThanExpected* element equals *False*, this is an indication that the ISO image is probably intact.
 
 However, this is only part of the story. In most cases we will also want to record various types of metadata about the created disc image. A pretty minimal set includes:
 
@@ -77,32 +89,33 @@ Since *ddrescue* may need a *lot* of time to recover data from a faulty disc (12
 
 A the end of each session, *omimgr* writes a metadata file in *JSON* format. Here's an example:  
 
-    {
-        "acquisitionEnd": "2019-03-22T13:38:51.969934+01:00",
-        "acquisitionStart": "2019-03-22T13:37:43.060185+01:00",
-        "autoRetry": false,
-        "checksumType": "SHA-512",
-        "checksums": {
-            "backupjrc.iso": "714426e7f965e4f6b33571ae4d60d945928dbee8c06f74225a138eaaa4ea4b2b7442620227e94920a0bc7ac17a6c7096fb310746cfff2c04b5c3e778ae8998ce"
-        },
-        "description": "Backup JRC 31-03-2000",
-        "extension": "iso",
-        "identifier": "e23f9158-4c9e-11e9-bbfc-dc4a3e413173",
-        "imageTruncated": false,
-        "interruptedFlag": false,
-        "isolyzerSuccess": true,
-        "maxRetries": "4",
-        "notes": "Outer edge of CD shows signs of corrosion",
-        "omDevice": "/dev/sr1",
-        "omimgrVersion": "0.1.0",
-        "prefix": "backupjrc",
-        "readCommandLine": "readom retries=4 dev=/dev/sr1 f=/home/johan/test/backupjrc.iso",
-        "readMethod": "readom",
-        "readMethodVersion": "readom 1.1.11 (Linux)",
-        "rescueDirectDiscMode": false,
-        "successFlag": true
-    }
-
+```
+{
+    "acquisitionEnd": "2019-03-22T13:38:51.969934+01:00",
+    "acquisitionStart": "2019-03-22T13:37:43.060185+01:00",
+    "autoRetry": false,
+    "checksumType": "SHA-512",
+    "checksums": {
+        "backupjrc.iso": "714426e7f965e4f6b33571ae4d60d945928dbee8c06f74225a138eaaa4ea4b2b7442620227e94920a0bc7ac17a6c7096fb310746cfff2c04b5c3e778ae8998ce"
+    },
+    "description": "Backup JRC 31-03-2000",
+    "extension": "iso",
+    "identifier": "e23f9158-4c9e-11e9-bbfc-dc4a3e413173",
+    "imageTruncated": false,
+    "interruptedFlag": false,
+    "isolyzerSuccess": true,
+    "maxRetries": "4",
+    "notes": "Outer edge of CD shows signs of corrosion",
+    "omDevice": "/dev/sr1",
+    "omimgrVersion": "0.1.0",
+    "prefix": "backupjrc",
+    "readCommandLine": "readom retries=4 dev=/dev/sr1 f=/home/johan/test/backupjrc.iso",
+    "readMethod": "readom",
+    "readMethodVersion": "readom 1.1.11 (Linux)",
+    "rescueDirectDiscMode": false,
+    "successFlag": true
+}
+```
 
 Note that the metadata file contains all of the entered descriptive metadata, a SHA-512 checksum of the ISO image, and a host of event metadata.
 
