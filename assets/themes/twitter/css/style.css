@@ -149,7 +149,8 @@ blockquote p{
 
 h1{
     font-family: 'Lato';
-    font-size:30px;
+    font-size:48px;
+    line-height: 54px;
     font-weight: bold;
     text-align:left;
     /*padding-bottom:20px;*/
