@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ensuring the sustainability of JPEG 2000 for preservation
+title: Ensuring the suitability of JPEG 2000 for preservation
 tags: [jpeg-2000,JP2]
 comment_id: 68
 ---
