@@ -67,99 +67,15 @@
 
 
    <div class="post-entry">
-   <h1><a href="/2020/02/19/textIndex"></a></h1>
+   <h1><a href="/2020/02/19/offline-digital-carriers-kb-deposit-collection">Offline digital data carriers in the KB deposit collection</a></h1>
    <div class="date">
     <span>19 February 2020</span>
    </div>
    <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
-   <h1 id="about-jpylyzer">About jpylyzer</h1>
-<p><em>Jpylyzer</em> is a validator and feature extractor for <em>JP2</em> images. <em>JP2</em> is the still image format that is defined by <a href="http://www.jpeg.org/public/15444-1annexi.pdf">Part 1</a> of the <a href="http://www.jpeg.org/jpeg2000/">JPEG 2000</a> image compression standard (ISO/IEC 15444-1).</p>
+   <p>Following earlier work on the preservation of optical media and data tapes, I recently got a request to make an inventory of offline digital data carriers in the KB’s deposit collection. The goal was to obtain approximate figures on the various carrier types in the collection. This was partially prompted by <a href="https://www.netwerkdigitaalerfgoed.nl/activiteiten/digitaal-erfgoed-houdbaar/bedreigd-digitaal-erfgoed-op-fysieke-dragers/">a project on at-risk digital heritage on physical carriers</a> by the <a href="https://www.netwerkdigitaalerfgoed.nl/en/">Dutch Digital Heritage Network</a> (NDE) that the KB is participating in. In this blog post I will share the results.</p>
 
-<p>This tool was specifically created to answer the following questions that you might have about a <em>JP2</em> file:</p>
 
-<ol>
-  <li>Is this really a <em>JP2</em>, and does it conform to the format’s specifications (validation)?</li>
-  <li>What are the technical characteristics of the image (feature extraction)?</li>
-</ol>
-
-<h1 id="installation">Installation</h1>
-<p>The easiest option is to use the binary builds that exist for both <em>Windows</em>- and <em>Linux</em>-based systems. These are completely stand-alone, without any dependencies on other software (i.e. you don’t need <em>Python</em> to use them).</p>
-
-<h2 id="windows">Windows</h2>
-<p>Download the Windows binaries using the link in the right-hand bar. Then extract the contents of the <em>ZIP</em> file to any directory you like. You should now be able to run <em>jpylyzer</em> from your command prompt. For example, assuming that you installed the contents  of the <em>ZIP</em> file to the directory <em>C:\jpylyzer\</em>, type or paste the following line into a command prompt window:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>C:\jpylyzer\jpylyzer
-</code></pre>
-</div>
-
-<p>This should give you the <em>jpylyzer</em> helper message.</p>
-
-<h3 id="running-jpylyzer-without-typing-the-full-path">Running jpylyzer without typing the full path</h3>
-<p>Optionally, you may also want to add the full path of the jpylyzer installation directory to the Windows <em>Path</em> environment variable. Doing so allows you to run jpylyzer from any directory on your PC, without having to type the full path. In Windows 7 you can do this by selecting <em>settings</em> from the <em>Start</em> menu; then go to <em>control panel</em>/<em>system</em> and click on  <em>advanced system settings</em>. Then click on the <em>environment variables</em> button. Finally, locate the <em>Path</em> variable in the <em>system variables</em> window, click on <em>Edit</em> and add the full <em>jpylyzer</em> path (this requires local Administrator privileges). The settings take effect once you open a new command prompt.</p>
-
-<h2 id="linux">Linux</h2>
-<p>Debian packages of jpylyzer exist for <em>AMD6</em> and <em>i386</em> Linux architectures. To install, simply download the Debian package using the link in the right-hand bar, double-click on it and select <em>Install Package</em>. Alternatively you can also do this in the command terminal by typing:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo dpkg -i jpylyzer_1.10.1_amd64.deb
-</code></pre>
-</div>
-
-<p>In both cases you need to have superuser privileges.</p>
-
-<h2 id="python-any-system">Python (any system)</h2>
-<p>Instead of using the binary builds, you can also download <em>jpylyzer</em>’s source code to run <em>jpylyzer</em> as a <a href="http://www.python.org/"><em>Python</em></a> script. This should work on any platform, but note that this requires either <em>Python</em> 2.7 (earlier versions won’t work), or <em>Python</em> 3.2 or later (3.0 and 3.1 won’t work either!).</p>
-
-<h1 id="basic-usage">Basic usage</h1>
-<div class="highlighter-rouge"><pre class="highlight"><code>usage: jpylyzer [-h] [--verbose] [--wrapper] [--version] ...
-</code></pre>
-</div>
-
-<h2 id="positional-arguments">Positional arguments</h2>
-
-<p><code class="highlighter-rouge">...</code> : input JP2 image(s), may be one or more (whitespace-separated) path expressions; prefix wildcard (*) with backslash (\) in Linux..</p>
-
-<h2 id="optional-arguments">Optional arguments</h2>
-
-<p><code class="highlighter-rouge">-h, --help</code> : show this help message and exit;</p>
-
-<p><code class="highlighter-rouge">-v, --version</code> : show program’s version number and exit;</p>
-
-<p><code class="highlighter-rouge">--verbose</code> : report test results in verbose format;</p>
-
-<p><code class="highlighter-rouge">--wrapper, -w</code> : wrap the output for individual image(s) in ‘results’ XML element.</p>
-
-<h2 id="output">Output</h2>
-<p>Output is directed to the standard output device (<em>stdout</em>).</p>
-
-<h2 id="example">Example</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>jpylyzer rubbish.jp2 &gt; rubbish.xml
-</code></pre>
-</div>
-
-<p>In the above example, output is redirected to the file ‘rubbish.xml’.</p>
-
-<h1 id="license">License</h1>
-<p><em>Jpylyzer</em> is free software: you can redistribute it and/or modify
-it under the terms of the <a href="https://www.gnu.org/licenses/lgpl.html">GNU Lesser General Public License</a> as published by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.</p>
-
-<h1 id="funding">Funding</h1>
-<p>The development of jpylyzer was partially funded by the EU FP 7 project <a href="http://www.scape-project.eu/"><em>SCAPE</em> (SCAlabable Preservation Environments)</a>.</p>
-
-   <small><a href="/2020/02/19/textIndex">More ...</a></small>
-   </div> 
-
-   <div class="post-entry">
-   <h1><a href="/lessons/2020/02/19/jekyll-introduction-draft"></a></h1>
-   <div class="date">
-    <span>19 February 2020</span>
-   </div>
-   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
-   
-<p>This is an example of a draft. Read more here: <a href="http://jekyllrb.com/docs/drafts/">http://jekyllrb.com/docs/drafts/</a></p>
-
-   <small><a href="/lessons/2020/02/19/jekyll-introduction-draft">More ...</a></small>
+   <small><a href="/2020/02/19/offline-digital-carriers-kb-deposit-collection">More ...</a></small>
    </div> 
 
    <div class="post-entry">
@@ -219,6 +135,23 @@ it under the terms of the <a href="https://www.gnu.org/licenses/lgpl.html">GNU L
 
 
    <small><a href="/2019/09/09/recovering-90s-data-tapes-experiences-kb-web-archaeology">More ...</a></small>
+   </div> 
+
+   <div class="post-entry">
+   <h1><a href="/2019/04/10/a-simple-disk-imaging-workflow-tool">A simple disk imaging workflow tool</a></h1>
+   <div class="date">
+    <span>10 April 2019</span>
+   </div>
+   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
+   <figure class="image">
+  <img src="/images/2019/04/floppies.jpg" alt="Photograph of SATA hard disk, USB Flash drive and 3.5 floppy disks" />
+  <figcaption>SATA hard disk, USB Flash drive and 3.5" floppy disks</figcaption>
+</figure>
+
+<p>As I explained in the introduction of <a href="/2019/01/31/roll-the-tape-recovering-90s-data-tapes-in-bitcurator">this earlier blog post</a>, as part of our ongoing web archaeology project we are currently developing workflows for reading data from a variety of physical carrier formats. After the earlier work on <a href="/2019/01/31/roll-the-tape-recovering-90s-data-tapes-in-bitcurator">data tapes</a> and <a href="/2019/03/22/a-simple-workflow-tool-for-imaging-optical-media-using-readom-and-ddrescue">optical media</a>, the next job was to image a small box with 3.5” floppy disks. Easy enough, and my first thought was to fire up <a href="https://guymager.sourceforge.io/"><em>Guymager</em></a> and be done with it. This turned out to be less straightforward than expected, which led to the development of yet another workflow tool: <a href="https://github.com/KBNLresearch/diskimgr"><em>diskimgr</em></a>. In the remainder of this post I will first show the issues I ran into with <em>Guymager</em>, and then demonstrate how these issues are remedied by <em>diskimgr</em>.</p>
+
+
+   <small><a href="/2019/04/10/a-simple-disk-imaging-workflow-tool">More ...</a></small>
    </div> 
 
 
@@ -384,7 +317,7 @@ it under the terms of the <a href="https://www.gnu.org/licenses/lgpl.html">GNU L
      
     	<li><a href="/tags.html#VeraPDF-ref">VeraPDF <span>3</span></a></li>
      
-    	<li><a href="/tags.html#optical-media-ref">optical-media <span>8</span></a></li>
+    	<li><a href="/tags.html#optical-media-ref">optical-media <span>9</span></a></li>
      
     	<li><a href="/tags.html#ISO-9660-ref">ISO-9660 <span>4</span></a></li>
      
@@ -402,7 +335,7 @@ it under the terms of the <a href="https://www.gnu.org/licenses/lgpl.html">GNU L
      
     	<li><a href="/tags.html#web-archaeology-ref">web-archaeology <span>5</span></a></li>
      
-    	<li><a href="/tags.html#tapes-ref">tapes <span>2</span></a></li>
+    	<li><a href="/tags.html#tapes-ref">tapes <span>3</span></a></li>
      
     	<li><a href="/tags.html#tapeimgr-ref">tapeimgr <span>2</span></a></li>
      
@@ -412,17 +345,9 @@ it under the terms of the <a href="https://www.gnu.org/licenses/lgpl.html">GNU L
      
     	<li><a href="/tags.html#diskimgr-ref">diskimgr <span>1</span></a></li>
      
-    	<li><a href="/tags.html#floppy-disks-ref">floppy-disks <span>1</span></a></li>
+    	<li><a href="/tags.html#floppy-disks-ref">floppy-disks <span>2</span></a></li>
      
     	<li><a href="/tags.html#geodata-ref">geodata <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#intro-ref">intro <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#beginner-ref">beginner <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#jekyll-ref">jekyll <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#tutorial-ref">tutorial <span>1</span></a></li>
     
   
 

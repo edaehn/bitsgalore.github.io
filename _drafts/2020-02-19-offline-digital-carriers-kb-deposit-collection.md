@@ -29,9 +29,9 @@ For 5.25" floppy disks I came across:
 
 This lack of consistency makes searching for specific carrier types rather difficult, and as a result most of the queries I used for this inventory are the result of trial and error.
 
-## Each catalog record may represent multiple carriers
+## Catalog record can represent multiple carriers
 
-In the examples above you may have noticed how in some cases the value represents multiple carriers (e.g. "2 cd-roms"). This is because our catalog provides access at the level of publications, but not at the level of individual carriers that are part of a publication! A typical example to illustrate this, is a physical book with 2 supplemental CD-ROMs. In this case, the catalog record represents the whole publication, and the *extent* field will have a value like "2 cd-roms". As a result, the catalog cannot be readily used to get precise figures on carrier types. In most cases the number of carriers for a specific carrier type will be considerably greater than the number of matching records, since an individual may include multiple carriers. This is not really a problem for the current exercise, as its objective is limited to getting approximate figures only. 
+In the examples above you may have noticed how in some cases the value represents multiple carriers (e.g. "2 cd-roms"). This is because our catalog provides access at the level of publications, but not at the level of individual carriers that are part of a publication! A typical example to illustrate this, is a physical book with 2 supplemental CD-ROMs. In this case, the catalog record represents the whole publication, and the *extent* field will have a value like "2 cd-roms". As a result, the catalog cannot be readily used to get precise figures on carrier types. In most cases the number of carriers for a specific carrier type will be considerably greater than the number of matching records, since an individual may include multiple carriers. This is not really a problem for the current exercise, as its objective is limited to getting approximate figures only.
 
 ## Results
 
@@ -49,7 +49,7 @@ I summarised the results in 3 tables. Here I made a subdivision between optical,
 |:--|:--|:--|
 |CD-ROM|[extent any "cdrom\* cd-rom\*"](http://jsru.kb.nl/sru/sru?query=extent%20any%20"cdrom*%20cd-rom*&x-collection=GGC&maximumRecords=10)|8109|
 |DVD|[extent any "dvd\*"](http://jsru.kb.nl/sru/sru?query=extent%20any%20"dvd*"&x-collection=GGC&maximumRecords=10)|711|
-|BluRay|[extent any "bluray\* blu-ray\*"](http://jsru.kb.nl/sru/sru?query=extent%20any%20"bluray*%20blu-ray*"&x-collection=GGC&maximumRecords=10)|4|
+|Blu-Ray|[extent any "bluray\* blu-ray\*"](http://jsru.kb.nl/sru/sru?query=extent%20any%20"bluray*%20blu-ray*"&x-collection=GGC&maximumRecords=10)|4|
 |Audio CD|[type any "geluidsdrager" and extent any "cd\* compact"](http://jsru.kb.nl/sru/sru?query=type%20any%20"geluidsdrager"%20and%20extent%20any%20"cd*%20compact"&x-collection=GGC&maximumRecords=10)|4605|
 |CD-i|[extent any "cdi\* cd-i\*"](http://jsru.kb.nl/sru/sru?query=extent%20any%20"cdi*%20cd-i*"&x-collection=GGC&maximumRecords=10)|44|
 |Optical carrier, unspecified|[extent any "optisch\* schijf"](http://jsru.kb.nl/sru/sru?query=extent%20any%20"optisch*%20schijf"&x-collection=GGC&maximumRecords=10)|23|
@@ -83,19 +83,33 @@ Since I had already queried the catalog for optical carriers [as part of an inve
 
 !["Optical carrier types, 2015 vs 2020"]({{ BASE_PATH }}/images/2020/02/optical-2015-2020.png)
 
-The increase of the number of DVD records (157, 28%) is particularly noteworthy. In absolute terms the number of audio CD records has increased even more (540, 13%). The growth of the CD-ROM collection has clearly levelled of at an increase of only 129 records (1.6%).
+And here in table form:
+
+|Carrier type|Matching records (2015)|Matching records (2020)|Increase|
+|:--|:--|:--|:--|
+|CD-ROM|7980|8109|129|
+|Audio CD|4065|4605|540|
+|DVD|554|711|157|
+
+The increase of the number of DVD records (an 28% increase) is particularly noteworthy. In absolute terms the number of audio CD records has increased even more. The growth of the CD-ROM collection has clearly levelled off at an increase of only 129 records over 5 years.
 
 ## Conclusions
 
-Unsurprisingly, optical carriers make up the majority of offline digital carriers in the KB deposit collection. An effort to preserve the contents of these carriers (using the [*Iromlab*]({{ BASE_PATH }}/2017/06/19/image-and-rip-optical-media-like-a-boss) software) is currently ongoing. The comparison against the 2015 figures shows that this collection is still growing, in particular audio CDs and DVDs.
+### Optical carriers
 
-Noteworthy is the number of publications with floppy disks. Assuming each of these publications contains between 1 and 2 disks on average, the total number of floppy disks would be in the range 2200 - 4400. The majority of these are 3.5" disks, but for about 38% the exact type cannot be established from the catalog alone.
+Unsurprisingly, optical carriers make up the majority of offline digital carriers in the KB deposit collection. An effort to preserve the contents of these carriers using the [*Iromlab*]({{ BASE_PATH }}/2017/06/19/image-and-rip-optical-media-like-a-boss) software is currently ongoing, but this does not cover Blu-Ray discs. At the current numbers we could probably just image them manually. The comparison against the 2015 figures shows that this collection is still growing, in particular audio CDs and DVDs.
+
+### Magnetic carriers
+
+In this category the number of publications with floppy disks is noteworthy. Assuming each of these publications contains between 1 and 2 disks on average, the total number of floppy disks would be in the range 2200 - 4400. The majority of these are 3.5" disks, but for about 38% the exact type cannot be established from the catalog alone. In any case the preservation of these won't be trivial at numbers like these.
 
 An interesting curiosity is a handful of compact cassettes with software for the [*ZX Spectrum*](https://en.wikipedia.org/wiki/ZX_Spectrum) home computer.
 
-In the magnetic carriers category we also appear to have 2 tapes of unknown format, and 2 hard disks. These need further investigation.
+We also appear to have 2 tapes of unknown format, and 2 hard disks. These need further investigation.
 
-In the electronic carriers category the 44 USB thumb drives are of interest.
+### Electronic carriers
 
+In this category we have 44 USB thumb drives, and we should probably consider imaging them sooner rather than later. We don't appear to have any of the other carrier types in this category.
 
 [^1]: Oddly, this field is meant to record ["The size or duration of the resource"](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/extent/) as per the Dublin Core specification.
+
