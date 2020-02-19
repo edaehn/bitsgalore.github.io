@@ -67,6 +67,102 @@
 
 
    <div class="post-entry">
+   <h1><a href="/2020/02/19/textIndex"></a></h1>
+   <div class="date">
+    <span>19 February 2020</span>
+   </div>
+   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
+   <h1 id="about-jpylyzer">About jpylyzer</h1>
+<p><em>Jpylyzer</em> is a validator and feature extractor for <em>JP2</em> images. <em>JP2</em> is the still image format that is defined by <a href="http://www.jpeg.org/public/15444-1annexi.pdf">Part 1</a> of the <a href="http://www.jpeg.org/jpeg2000/">JPEG 2000</a> image compression standard (ISO/IEC 15444-1).</p>
+
+<p>This tool was specifically created to answer the following questions that you might have about a <em>JP2</em> file:</p>
+
+<ol>
+  <li>Is this really a <em>JP2</em>, and does it conform to the format’s specifications (validation)?</li>
+  <li>What are the technical characteristics of the image (feature extraction)?</li>
+</ol>
+
+<h1 id="installation">Installation</h1>
+<p>The easiest option is to use the binary builds that exist for both <em>Windows</em>- and <em>Linux</em>-based systems. These are completely stand-alone, without any dependencies on other software (i.e. you don’t need <em>Python</em> to use them).</p>
+
+<h2 id="windows">Windows</h2>
+<p>Download the Windows binaries using the link in the right-hand bar. Then extract the contents of the <em>ZIP</em> file to any directory you like. You should now be able to run <em>jpylyzer</em> from your command prompt. For example, assuming that you installed the contents  of the <em>ZIP</em> file to the directory <em>C:\jpylyzer\</em>, type or paste the following line into a command prompt window:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>C:\jpylyzer\jpylyzer
+</code></pre>
+</div>
+
+<p>This should give you the <em>jpylyzer</em> helper message.</p>
+
+<h3 id="running-jpylyzer-without-typing-the-full-path">Running jpylyzer without typing the full path</h3>
+<p>Optionally, you may also want to add the full path of the jpylyzer installation directory to the Windows <em>Path</em> environment variable. Doing so allows you to run jpylyzer from any directory on your PC, without having to type the full path. In Windows 7 you can do this by selecting <em>settings</em> from the <em>Start</em> menu; then go to <em>control panel</em>/<em>system</em> and click on  <em>advanced system settings</em>. Then click on the <em>environment variables</em> button. Finally, locate the <em>Path</em> variable in the <em>system variables</em> window, click on <em>Edit</em> and add the full <em>jpylyzer</em> path (this requires local Administrator privileges). The settings take effect once you open a new command prompt.</p>
+
+<h2 id="linux">Linux</h2>
+<p>Debian packages of jpylyzer exist for <em>AMD6</em> and <em>i386</em> Linux architectures. To install, simply download the Debian package using the link in the right-hand bar, double-click on it and select <em>Install Package</em>. Alternatively you can also do this in the command terminal by typing:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo dpkg -i jpylyzer_1.10.1_amd64.deb
+</code></pre>
+</div>
+
+<p>In both cases you need to have superuser privileges.</p>
+
+<h2 id="python-any-system">Python (any system)</h2>
+<p>Instead of using the binary builds, you can also download <em>jpylyzer</em>’s source code to run <em>jpylyzer</em> as a <a href="http://www.python.org/"><em>Python</em></a> script. This should work on any platform, but note that this requires either <em>Python</em> 2.7 (earlier versions won’t work), or <em>Python</em> 3.2 or later (3.0 and 3.1 won’t work either!).</p>
+
+<h1 id="basic-usage">Basic usage</h1>
+<div class="highlighter-rouge"><pre class="highlight"><code>usage: jpylyzer [-h] [--verbose] [--wrapper] [--version] ...
+</code></pre>
+</div>
+
+<h2 id="positional-arguments">Positional arguments</h2>
+
+<p><code class="highlighter-rouge">...</code> : input JP2 image(s), may be one or more (whitespace-separated) path expressions; prefix wildcard (*) with backslash (\) in Linux..</p>
+
+<h2 id="optional-arguments">Optional arguments</h2>
+
+<p><code class="highlighter-rouge">-h, --help</code> : show this help message and exit;</p>
+
+<p><code class="highlighter-rouge">-v, --version</code> : show program’s version number and exit;</p>
+
+<p><code class="highlighter-rouge">--verbose</code> : report test results in verbose format;</p>
+
+<p><code class="highlighter-rouge">--wrapper, -w</code> : wrap the output for individual image(s) in ‘results’ XML element.</p>
+
+<h2 id="output">Output</h2>
+<p>Output is directed to the standard output device (<em>stdout</em>).</p>
+
+<h2 id="example">Example</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>jpylyzer rubbish.jp2 &gt; rubbish.xml
+</code></pre>
+</div>
+
+<p>In the above example, output is redirected to the file ‘rubbish.xml’.</p>
+
+<h1 id="license">License</h1>
+<p><em>Jpylyzer</em> is free software: you can redistribute it and/or modify
+it under the terms of the <a href="https://www.gnu.org/licenses/lgpl.html">GNU Lesser General Public License</a> as published by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+
+<h1 id="funding">Funding</h1>
+<p>The development of jpylyzer was partially funded by the EU FP 7 project <a href="http://www.scape-project.eu/"><em>SCAPE</em> (SCAlabable Preservation Environments)</a>.</p>
+
+   <small><a href="/2020/02/19/textIndex">More ...</a></small>
+   </div> 
+
+   <div class="post-entry">
+   <h1><a href="/lessons/2020/02/19/jekyll-introduction-draft"></a></h1>
+   <div class="date">
+    <span>19 February 2020</span>
+   </div>
+   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
+   
+<p>This is an example of a draft. Read more here: <a href="http://jekyllrb.com/docs/drafts/">http://jekyllrb.com/docs/drafts/</a></p>
+
+   <small><a href="/lessons/2020/02/19/jekyll-introduction-draft">More ...</a></small>
+   </div> 
+
+   <div class="post-entry">
    <h1><a href="/2020/02/11/web-domain-geolocation-and-spatial-analysis">Web domain geolocation and spatial analysis with QGIS</a></h1>
    <div class="date">
     <span>11 February 2020</span>
@@ -90,6 +186,26 @@
    </div> 
 
    <div class="post-entry">
+   <h1><a href="/2019/12/13/how-to-save-web">Archiving web pages -</a></h1>
+   <div class="date">
+    <span>13 December 2019</span>
+   </div>
+   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
+   <!-- NOTE: images for this post are in images/2019/12 folder, change this! -->
+
+<figure class="image">
+  <img src="/images/2019/09/tapes-dds-dlt.jpg" alt="DDS-1 (left) and DLT-IV (right) tape" />
+</figure>
+
+<p>There are various situations where you might want to save a copy of a web page, and add it to a web archive like <a href="https://archive.org/"><em>Internet Archive</em></a> or <a href="https://archive.today/"><em>archive.today</em></a>. In 2014 I wrote <a href="/2014/08/02/How-to-save-a-web-page-to-the-Internet-Archive">a short tutorial on how to save web pages to <em>Internet Archive</em></a>. Most of the information there is now outdated, and it also doesn’t mention <em>archive.today</em>. What’s more, over the last few years some new tools have emerged that are highly effective for saving types of web content that are difficult or even impossible to archive with <em>Internet Archive</em> or <em>archive.today</em>. Because of this, an up-to-date version of the tutorial was long overdue.</p>
+
+<p>Like the 2014 post, this tutorial is meant to be an accessible introduction to a non-technical audience that is not familiar with web archiving tools. Also, it only covers saving <em>single web pages</em>, not <em>entire sites</em>!<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+
+   <small><a href="/2019/12/13/how-to-save-web">More ...</a></small>
+   </div> 
+
+   <div class="post-entry">
    <h1><a href="/2019/09/09/recovering-90s-data-tapes-experiences-kb-web-archaeology">Recovering '90s Data Tapes - Experiences From the KB Web Archaeology project<br>(iPres 2019 paper)</a></h1>
    <div class="date">
     <span>09 September 2019</span>
@@ -103,47 +219,6 @@
 
 
    <small><a href="/2019/09/09/recovering-90s-data-tapes-experiences-kb-web-archaeology">More ...</a></small>
-   </div> 
-
-   <div class="post-entry">
-   <h1><a href="/2019/04/10/a-simple-disk-imaging-workflow-tool">A simple disk imaging workflow tool</a></h1>
-   <div class="date">
-    <span>10 April 2019</span>
-   </div>
-   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
-   <figure class="image">
-  <img src="/images/2019/04/floppies.jpg" alt="Photograph of SATA hard disk, USB Flash drive and 3.5 floppy disks" />
-  <figcaption>SATA hard disk, USB Flash drive and 3.5" floppy disks</figcaption>
-</figure>
-
-<p>As I explained in the introduction of <a href="/2019/01/31/roll-the-tape-recovering-90s-data-tapes-in-bitcurator">this earlier blog post</a>, as part of our ongoing web archaeology project we are currently developing workflows for reading data from a variety of physical carrier formats. After the earlier work on <a href="/2019/01/31/roll-the-tape-recovering-90s-data-tapes-in-bitcurator">data tapes</a> and <a href="/2019/03/22/a-simple-workflow-tool-for-imaging-optical-media-using-readom-and-ddrescue">optical media</a>, the next job was to image a small box with 3.5” floppy disks. Easy enough, and my first thought was to fire up <a href="https://guymager.sourceforge.io/"><em>Guymager</em></a> and be done with it. This turned out to be less straightforward than expected, which led to the development of yet another workflow tool: <a href="https://github.com/KBNLresearch/diskimgr"><em>diskimgr</em></a>. In the remainder of this post I will first show the issues I ran into with <em>Guymager</em>, and then demonstrate how these issues are remedied by <em>diskimgr</em>.</p>
-
-
-   <small><a href="/2019/04/10/a-simple-disk-imaging-workflow-tool">More ...</a></small>
-   </div> 
-
-   <div class="post-entry">
-   <h1><a href="/2019/03/22/a-simple-workflow-tool-for-imaging-optical-media-using-readom-and-ddrescue">A simple workflow tool for imaging optical media using readom and ddrescue</a></h1>
-   <div class="date">
-    <span>22 March 2019</span>
-   </div>
-   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
-   <p>In 2015 I wrote <a href="/2015/11/13/preserving-optical-media-from-the-command-line">a blog post on preserving optical media from the command-line</a>. Among other things, it suggested a rudimentary workflow for imaging CD-ROMs and DVDs using the <a href="http://linux.die.net/man/1/readom"><em>readom</em></a> and <a href="http://linux.die.net/man/1/ddrescue"><em>ddrescue</em></a> tools. Even though we now have a <a href="/2017/06/19/image-and-rip-optical-media-like-a-boss">highly automated workflow in place</a> for bulk processing optical media from our deposit collection, <em>readom</em> and <em>ddrescue</em> still prove to be useful for various special cases that don’t quite fit into this workflow. The materials that we are currently receiving as part of our web archaeology activities are a good example. These are typically small sets of recordable CD-ROMs that are often quite old, and such discs are highly likely to be in less than perfect condition. For these cases a highly automated, <a href="https://github.com/KBNLresearch/iromlab"><em>iromlab</em></a>-like workflow is unnecessary, and to some degree even impractical. Nevertheless, it would be useful to have <em>some</em> degree of automation, especially for things like the addition and packaging of associated metadata. This prompted the development of the <a href="https://github.com/KBNLresearch/omimgr"><em>omimgr</em></a> workflow tool. In the the remainder of this blog post I will give an overview of <em>omimgr</em>.</p>
-
-
-   <small><a href="/2019/03/22/a-simple-workflow-tool-for-imaging-optical-media-using-readom-and-ddrescue">More ...</a></small>
-   </div> 
-
-   <div class="post-entry">
-   <h1><a href="/2019/01/31/roll-the-tape-recovering-90s-data-tapes-in-bitcurator">Roll the tape - recovering '90s data tapes in BitCurator</a></h1>
-   <div class="date">
-    <span>31 January 2019</span>
-   </div>
-   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
-   <p>When the <a href="https://www.kb.nl/en/organisation/research-expertise/long-term-usability-of-digital-resources/web-archiving">KB web archive</a> was launched in 2007, many sites from the “early” Dutch web had already gone offline. As a result, the time period between (roughly) 1992 and 2000 is seriously under-represented in our web archive. To improve the coverage of web sites from this historically important era, we are now looking into <a href="https://hart.amsterdam/image/2016/11/28/20160730_redds_tjardadehaan.pdf">Web Archaeology</a> tools and methods. Over the last year our web archiving team has reached out to creators of “early” Dutch web sites that are no longer online. It’s not uncommon to find that these creators still have boxes of offline carriers with the original source data of those sites. Using these data, we would (in many cases) be able to reconstruct the sites, similarly to how we <a href="/2018/04/24/resurrecting-the-first-dutch-web-index-nl-menu-revisited">reconstructed the first Dutch web index</a> last year. Once reconstructed, they could then be ingested into our web archive.</p>
-
-
-   <small><a href="/2019/01/31/roll-the-tape-recovering-90s-data-tapes-in-bitcurator">More ...</a></small>
    </div> 
 
 
@@ -198,6 +273,10 @@
   
     
       <a href="/page11">11</a>
+    
+  
+    
+      <a href="/page12">12</a>
     
   
 
@@ -287,7 +366,7 @@
      
     	<li><a href="/tags.html#rant-ref">rant <span>1</span></a></li>
      
-    	<li><a href="/tags.html#web-archiving-ref">web-archiving <span>7</span></a></li>
+    	<li><a href="/tags.html#web-archiving-ref">web-archiving <span>8</span></a></li>
      
     	<li><a href="/tags.html#Android-ref">Android <span>1</span></a></li>
      
@@ -336,6 +415,14 @@
     	<li><a href="/tags.html#floppy-disks-ref">floppy-disks <span>1</span></a></li>
      
     	<li><a href="/tags.html#geodata-ref">geodata <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#intro-ref">intro <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#beginner-ref">beginner <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#jekyll-ref">jekyll <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#tutorial-ref">tutorial <span>1</span></a></li>
     
   
 
