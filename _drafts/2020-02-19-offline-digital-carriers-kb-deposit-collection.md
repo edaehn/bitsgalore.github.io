@@ -14,7 +14,7 @@ The KB catalog is the primary source of information about carriers in our collec
 
 ## Carrier type codes not based on controlled vocabulary
 
-The main piece of information to go by here is the value of the Dublin Core *extent* field. However, in our catalog the values of this field are not set from a controlled vocabulary, which means that one particular carrier type can be represented by different values. For example, here are some variations I found for CD-ROMs:
+The main piece of information to go by here is the value of the Dublin Core *extent* field[^1]. However, in our catalog the values of this field are not set from a controlled vocabulary, which means that one particular carrier type can be represented by different values. For example, here are some variations I found for CD-ROMs:
 
 - cdrom
 - cd-rom
