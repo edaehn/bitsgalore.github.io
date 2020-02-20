@@ -40,7 +40,7 @@ In the examples above you may have noticed how in some cases the value represent
 
 ## Results
 
-I summarised the results in the table below. Here I made a subdivision between optical, magnetic and electronic carrier types. The table contains 3 columns:
+I summarised the results in the table below. Here I made a subdivision between optical, magnetic and electronic carrier types. The table contains 4 columns:
 
 - **Carrier type:** the types listed here largely follow those proposed for an upcoming survey that will be launched as part of the NDE project on at-risk digital heritage on physical carriers (with some additions).
 
