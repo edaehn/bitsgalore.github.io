@@ -180,6 +180,9 @@ All example files, scripts and raw tool output are available here:
 
 <https://github.com/KBNLresearch/detectDamagedAudio>
 
+## Post scriptum: update on MediaInfo and MediaConch
+
+In response to this post the developers of MediaInfo [added support for detecting truncated *WAVE* files](https://github.com/MediaArea/MediaInfoLib/pull/352). This should cover all of the damaged *WAVE* files presented here. Moreover, their Twitter account announced that [detection of *FLAC* flaws](https://twitter.com/MediaArea_Net/status/817303297786867712) is planned for the [MediaConch tool](https://mediaarea.net/MediaConch/), but that they are looking for sponsors for this.
 
 [^1]: On a side note, I noticed that the error stream of the Flac tool sometimes contained a sequence of 21 non-printable '0x08' (backspace0 characters. This is probably a bug. 
 [^2]: Also, [this thread on *superuser.com*](http://superuser.com/a/100290/681049) recommends Ffmpeg for checking the integrity of video files.
