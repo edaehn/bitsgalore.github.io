@@ -4,6 +4,10 @@ title: Offline digital data carriers in the KB deposit collection
 tags: [optical-media, floppy-disks, tapes]
 ---
 
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2020/02/carriers-stillife.jpg" alt="Still life of assorted data carriers">
+</figure>
+
 Following earlier work on the preservation of optical media and data tapes, I recently got a request to make an inventory of offline digital data carriers in the KB's deposit collection. The goal was to obtain approximate figures on the various carrier types in the collection. This was partially prompted by [a project on at-risk digital heritage on physical carriers](https://www.netwerkdigitaalerfgoed.nl/activiteiten/digitaal-erfgoed-houdbaar/bedreigd-digitaal-erfgoed-op-fysieke-dragers/) by the [Dutch Digital Heritage Network](https://www.netwerkdigitaalerfgoed.nl/en/) (NDE) that the KB is participating in. In this blog post I will share the results.
 
 <!-- more -->
