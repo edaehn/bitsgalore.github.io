@@ -112,6 +112,7 @@ footer {
   font-weight: bold;
   font-size:20px;
   line-height:22px;
+  padding-top: 0px;
   } 
 
 .sidebarGroup h3{
@@ -119,6 +120,7 @@ footer {
   font-weight: bold;
   font-size:20px;
   line-height:22px;
+  padding-top: 0px;
   } 
 
 .sidebarGroup small{
@@ -157,6 +159,7 @@ h2{
     font-size:30px;
     font-weight: bold;
     text-align:left;
+    padding-top: 20px;
 }
 
 h3{
@@ -164,6 +167,7 @@ h3{
     font-size:26px;
     font-weight: bold;
     text-align:left;
+    padding-top: 20px;
 }
 .img-center{
   display: block;
