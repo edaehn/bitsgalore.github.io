@@ -213,6 +213,7 @@ code{
 .button {
   background-color: #595959;
   border: none;
+  border-radius: 4px;
   color: white;
   padding-left: 20px;
   padding-right: 20px;
@@ -224,6 +225,11 @@ code{
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
+}
+
+.button:hover {
+  background-color: #e5e5e5;
+  color: #595959;
 }
 
 .moreButton {
