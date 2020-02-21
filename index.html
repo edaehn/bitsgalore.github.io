@@ -13,7 +13,7 @@ title: bitsgalore.org
    </div>
    <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
    {{ post.content | split: '<!-- more -->' | first }}
-   <div class="moreButtonArea">
+   <div class="buttonArea">
    <a href="{{ BASE_PATH }}{{ post.url }}" class="button">Read more ...</a>
   </div>
    {% unless post.tags == empty %}
