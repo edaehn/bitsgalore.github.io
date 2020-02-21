@@ -251,6 +251,7 @@ code{
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
+  font-weight: bold;
 }
 
 .button:hover {
