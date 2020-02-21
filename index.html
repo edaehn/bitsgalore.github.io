@@ -34,12 +34,12 @@ title: bitsgalore.org
   {% if paginator.previous_page %}
     <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Newer</a>
   {% else %}
-    <span>&laquo; Newer</span>
+    <a href="#" class="active">&laquo; Newer</a>
   {% endif %}
 
   {% for page in (1..paginator.total_pages) %}
     {% if page == paginator.page %}
-      <em>{{ page }}</em>
+      <a href="#" class="active">{{ page }}</a>
     {% elsif page == 1 %}
       <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
     {% else %}
@@ -50,7 +50,7 @@ title: bitsgalore.org
   {% if paginator.next_page %}
     <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older &raquo;</a>
   {% else %}
-    <span>Older &raquo;</span>
+    <a href="#" class="active">Older &raquo;</a>
   {% endif %}
 </div>
 {% endif %}
