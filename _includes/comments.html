@@ -52,9 +52,12 @@ function createCommentEl( response ) {
 	comment.setAttribute( 'data-author-avatar', response.user.avatar_url );
 	comment.setAttribute( 'data-user-url', response.user.url );
 
+	let commentDivider = document.createElement( 'hr' );
+
 	comment.appendChild( user );
 	comment.appendChild( commentContents );
 	comment.appendChild( commentLink );
+	comment.appendChild( commentDivider );
 
 	return comment;
 }
