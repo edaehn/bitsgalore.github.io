@@ -104,8 +104,9 @@
   border-radius: 4px;
 }
 
-*/
-.post-entry{padding-bottom:25px;}
+.post-entry{
+  padding-bottom: 80px;
+}
 
 .post-entry .date {
   margin-bottom: 20px;
@@ -282,7 +283,12 @@ code{
   margin: 10px 0;
   text-align: left; }
 
-/* post-full*/
+/* post-full
+.post-full{
+  padding-top: 20px;
+}
+*/
+
 .post-full .date {
   margin-bottom: 20px;
   font-weight: bold;
