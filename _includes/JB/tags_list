@@ -17,7 +17,14 @@ Usage:
   This helper can be seen in use at: ../_layouts/default.html
 -->{% endcomment %}
 
-{% assign tags_list = tags_list | sort %}
+{% assign tags_list = "" | split:"" %}
+
+{% for t in site.tags %}
+  {% assign tags_list = tags_list | push: t[0] %}
+{% endfor %}
+
+
+{% assign tags_list = tags_list | sort_natural %}
 
 {% if site.JB.tags_list.provider == "custom" %}
   {% include custom/tags_list %}
