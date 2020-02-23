@@ -77,7 +77,10 @@
           <h2><a href="{{ site.url }}/tags.html">Tags</a></h2>
           {% include JB/setup %}
           <ul class="tag_box inline">
-            {% assign tags_list = site.tags %}  
+            {% assign tags_list = "" | split:"" %}
+            {% for t in site.tags %}
+              {% assign tags_list = tags_list | push: t[0] %}
+            {% endfor %}
             {% include JB/tags_list %}
           </ul>
         </div>
