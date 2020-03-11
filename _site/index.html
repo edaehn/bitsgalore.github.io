@@ -61,6 +61,50 @@
 
 
    <div class="post-entry">
+   <h1><a href="/2020/03/11/does-microsoft-onedrive-export-large-ZIP-files-that-are-corrupt">Does Microsoft OneDrive export large ZIP files that are corrupt?</a></h1>
+   <div class="date">
+    <span>11 March 2020</span>
+   </div>
+   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
+   <figure class="image">
+  <img src="/images/2020/03/archive-manager-onedrive.png" alt="Screenshot of opening a large OneDrive ZIP file in Linux Mint archive manager" />
+</figure>
+
+<p>We recently started using <a href="https://en.wikipedia.org/wiki/OneDrive">Microsoft OneDrive</a> at work. The other day a colleague used OneDrive to share a folder with a large number of ISO images with me. Since I wanted to work with these files on my Linux machine at home, and no official OneDrive client for Linux exists a this point, I used OneDrive’s web client to download the contents of the folder. Doing so resulted in a 6 GB <a href="https://en.wikipedia.org/wiki/Zip_(file_format)">ZIP</a> archive. When I tried to extract this ZIP file with my operating system’s (Linux Mint 19.3 MATE) archive manager, this resulted in an error dialog, saying that “An error occurred while loading the archive”. The output from the underlying extraction tool (<a href="https://en.wikipedia.org/wiki/7-Zip"><em>7-zip</em></a>) reported a “Headers Error”, with an “Unconfirmed start of archive”. It also reported a warning that “There are data after the end of archive”. No actual data were extracted whatsoever. This all looked a bit worrying, so I decided to have a more in-depth look at this problem.</p>
+
+
+   <div class="buttonArea">
+   <a href="/2020/03/11/does-microsoft-onedrive-export-large-ZIP-files-that-are-corrupt" class="button">Read more ...</a>
+  </div>
+   
+   <ul class="tag_box inline">
+     <li><i class="icon-tags"></i></li>
+     
+     
+
+
+
+
+  
+     
+    	<li><a href="/tags.html#Microsoft-ref">Microsoft <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#OneDrive-ref">OneDrive <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#preservation-risks-ref">preservation-risks <span>7</span></a></li>
+     
+    	<li><a href="/tags.html#ZIP-ref">ZIP <span>1</span></a></li>
+    
+  
+
+
+
+   </ul>
+  
+   </div>
+   <hr>
+
+   <div class="post-entry">
    <h1><a href="/2020/02/20/offline-digital-carriers-kb-deposit-collection">Offline digital data carriers in the KB deposit collection</a></h1>
    <div class="date">
     <span>20 February 2020</span>
@@ -138,7 +182,49 @@
      
     	<li><a href="/tags.html#geodata-ref">geodata <span>1</span></a></li>
      
-    	<li><a href="/tags.html#web-archiving-ref">web-archiving <span>7</span></a></li>
+    	<li><a href="/tags.html#web-archiving-ref">web-archiving <span>8</span></a></li>
+    
+  
+
+
+
+   </ul>
+  
+   </div>
+   <hr>
+
+   <div class="post-entry">
+   <h1><a href="/2019/12/13/how-to-save-web">Archiving web pages -</a></h1>
+   <div class="date">
+    <span>13 December 2019</span>
+   </div>
+   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
+   <!-- NOTE: images for this post are in images/2019/12 folder, change this! -->
+
+<figure class="image">
+  <img src="/images/2019/09/tapes-dds-dlt.jpg" alt="DDS-1 (left) and DLT-IV (right) tape" />
+</figure>
+
+<p>There are various situations where you might want to save a copy of a web page, and add it to a web archive like <a href="https://archive.org/"><em>Internet Archive</em></a> or <a href="https://archive.today/"><em>archive.today</em></a>. In 2014 I wrote <a href="/2014/08/02/How-to-save-a-web-page-to-the-Internet-Archive">a short tutorial on how to save web pages to <em>Internet Archive</em></a>. Most of the information there is now outdated, and it also doesn’t mention <em>archive.today</em>. What’s more, over the last few years some new tools have emerged that are highly effective for saving types of web content that are difficult or even impossible to archive with <em>Internet Archive</em> or <em>archive.today</em>. Because of this, an up-to-date version of the tutorial was long overdue.</p>
+
+<p>Like the 2014 post, this tutorial is meant to be an accessible introduction to a non-technical audience that is not familiar with web archiving tools. Also, it only covers saving <em>single web pages</em>, not <em>entire sites</em>!<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+
+   <div class="buttonArea">
+   <a href="/2019/12/13/how-to-save-web" class="button">Read more ...</a>
+  </div>
+   
+   <ul class="tag_box inline">
+     <li><i class="icon-tags"></i></li>
+     
+     
+
+
+
+
+  
+     
+    	<li><a href="/tags.html#web-archiving-ref">web-archiving <span>8</span></a></li>
     
   
 
@@ -181,89 +267,6 @@
     	<li><a href="/tags.html#tapes-ref">tapes <span>3</span></a></li>
      
     	<li><a href="/tags.html#web-archaeology-ref">web-archaeology <span>5</span></a></li>
-    
-  
-
-
-
-   </ul>
-  
-   </div>
-   <hr>
-
-   <div class="post-entry">
-   <h1><a href="/2019/04/10/a-simple-disk-imaging-workflow-tool">A simple disk imaging workflow tool</a></h1>
-   <div class="date">
-    <span>10 April 2019</span>
-   </div>
-   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
-   <figure class="image">
-  <img src="/images/2019/04/floppies.jpg" alt="Photograph of SATA hard disk, USB Flash drive and 3.5 floppy disks" />
-  <figcaption>SATA hard disk, USB Flash drive and 3.5" floppy disks</figcaption>
-</figure>
-
-<p>As I explained in the introduction of <a href="/2019/01/31/roll-the-tape-recovering-90s-data-tapes-in-bitcurator">this earlier blog post</a>, as part of our ongoing web archaeology project we are currently developing workflows for reading data from a variety of physical carrier formats. After the earlier work on <a href="/2019/01/31/roll-the-tape-recovering-90s-data-tapes-in-bitcurator">data tapes</a> and <a href="/2019/03/22/a-simple-workflow-tool-for-imaging-optical-media-using-readom-and-ddrescue">optical media</a>, the next job was to image a small box with 3.5” floppy disks. Easy enough, and my first thought was to fire up <a href="https://guymager.sourceforge.io/"><em>Guymager</em></a> and be done with it. This turned out to be less straightforward than expected, which led to the development of yet another workflow tool: <a href="https://github.com/KBNLresearch/diskimgr"><em>diskimgr</em></a>. In the remainder of this post I will first show the issues I ran into with <em>Guymager</em>, and then demonstrate how these issues are remedied by <em>diskimgr</em>.</p>
-
-
-   <div class="buttonArea">
-   <a href="/2019/04/10/a-simple-disk-imaging-workflow-tool" class="button">Read more ...</a>
-  </div>
-   
-   <ul class="tag_box inline">
-     <li><i class="icon-tags"></i></li>
-     
-     
-
-
-
-
-  
-     
-    	<li><a href="/tags.html#disk-imaging-ref">disk-imaging <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#diskimgr-ref">diskimgr <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#floppy-disks-ref">floppy-disks <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#web-archaeology-ref">web-archaeology <span>5</span></a></li>
-    
-  
-
-
-
-   </ul>
-  
-   </div>
-   <hr>
-
-   <div class="post-entry">
-   <h1><a href="/2019/03/22/a-simple-workflow-tool-for-imaging-optical-media-using-readom-and-ddrescue">A simple workflow tool for imaging optical media using readom and ddrescue</a></h1>
-   <div class="date">
-    <span>22 March 2019</span>
-   </div>
-   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
-   <p>In 2015 I wrote <a href="/2015/11/13/preserving-optical-media-from-the-command-line">a blog post on preserving optical media from the command-line</a>. Among other things, it suggested a rudimentary workflow for imaging CD-ROMs and DVDs using the <a href="http://linux.die.net/man/1/readom"><em>readom</em></a> and <a href="http://linux.die.net/man/1/ddrescue"><em>ddrescue</em></a> tools. Even though we now have a <a href="/2017/06/19/image-and-rip-optical-media-like-a-boss">highly automated workflow in place</a> for bulk processing optical media from our deposit collection, <em>readom</em> and <em>ddrescue</em> still prove to be useful for various special cases that don’t quite fit into this workflow. The materials that we are currently receiving as part of our web archaeology activities are a good example. These are typically small sets of recordable CD-ROMs that are often quite old, and such discs are highly likely to be in less than perfect condition. For these cases a highly automated, <a href="https://github.com/KBNLresearch/iromlab"><em>iromlab</em></a>-like workflow is unnecessary, and to some degree even impractical. Nevertheless, it would be useful to have <em>some</em> degree of automation, especially for things like the addition and packaging of associated metadata. This prompted the development of the <a href="https://github.com/KBNLresearch/omimgr"><em>omimgr</em></a> workflow tool. In the the remainder of this blog post I will give an overview of <em>omimgr</em>.</p>
-
-
-   <div class="buttonArea">
-   <a href="/2019/03/22/a-simple-workflow-tool-for-imaging-optical-media-using-readom-and-ddrescue" class="button">Read more ...</a>
-  </div>
-   
-   <ul class="tag_box inline">
-     <li><i class="icon-tags"></i></li>
-     
-     
-
-
-
-
-  
-     
-    	<li><a href="/tags.html#isolyzer-ref">isolyzer <span>4</span></a></li>
-     
-    	<li><a href="/tags.html#omimgr-ref">omimgr <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#optical-media-ref">optical-media <span>9</span></a></li>
     
   
 
@@ -434,7 +437,11 @@
      
     	<li><a href="/tags.html#magic-ref">magic <span>1</span></a></li>
      
+    	<li><a href="/tags.html#Microsoft-ref">Microsoft <span>1</span></a></li>
+     
     	<li><a href="/tags.html#omimgr-ref">omimgr <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#OneDrive-ref">OneDrive <span>1</span></a></li>
      
     	<li><a href="/tags.html#optical-media-ref">optical-media <span>9</span></a></li>
      
@@ -442,7 +449,7 @@
      
     	<li><a href="/tags.html#PDF-ref">PDF <span>10</span></a></li>
      
-    	<li><a href="/tags.html#preservation-risks-ref">preservation-risks <span>6</span></a></li>
+    	<li><a href="/tags.html#preservation-risks-ref">preservation-risks <span>7</span></a></li>
      
     	<li><a href="/tags.html#Quattro-Pro-ref">Quattro-Pro <span>1</span></a></li>
      
@@ -468,7 +475,9 @@
      
     	<li><a href="/tags.html#web-archaeology-ref">web-archaeology <span>5</span></a></li>
      
-    	<li><a href="/tags.html#web-archiving-ref">web-archiving <span>7</span></a></li>
+    	<li><a href="/tags.html#web-archiving-ref">web-archiving <span>8</span></a></li>
+     
+    	<li><a href="/tags.html#ZIP-ref">ZIP <span>1</span></a></li>
     
   
 
