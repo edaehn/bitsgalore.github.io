@@ -127,7 +127,7 @@ The problem looks eerily similar to an older issue with Apple's Archive utility,
 
 > Mac OS Sierra's Archive Utility notably does not support ZIP64, and can create corrupt archives when ZIP64 would be required.
 
-More details about this are available [here](https://web.archive.org/web/20140331005235/http://www.springyarchiver.com/blog/topic/topic/203) and [here](https://github.com/thejoshwolfe/yauzl/issues/69). Interestingly a [Twitter thread by Kieran O'Leary](https://twitter.com/kieranjol/status/1200118816686137344) put me on track of this issue (which I hadn't heard of before). It's not clear to me if the OneDrive problem is identical or even related, but because of the similarities I thought it was worth a mention here.
+More details about this are available [here](https://web.archive.org/web/20140331005235/http://www.springyarchiver.com/blog/topic/topic/203), [here](https://apple.stackexchange.com/questions/221020/large-zip-files-created-in-os-x-cannot-be-opened-in-windows) and [here](https://github.com/thejoshwolfe/yauzl/issues/69). Interestingly a [Twitter thread by Kieran O'Leary](https://twitter.com/kieranjol/status/1200118816686137344) put me on track of this issue (which I hadn't heard of before). It's not clear to me if the OneDrive problem is identical or even related, but because of the similarities I thought it was worth a mention here.
 
 ## Conclusion
 
