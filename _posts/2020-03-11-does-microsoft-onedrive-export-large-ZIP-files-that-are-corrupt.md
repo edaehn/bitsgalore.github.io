@@ -189,7 +189,7 @@ To put this to the test, I first made a copy of the OneDrive ZIP file. Then I op
 
 ![]({{ BASE_PATH }}/images/2020/03/onedrive-hex-fixed.png)
 
-This effectively sets the "total number of disks" value to 1 (unsigned little-endian 32-bit value). After saving the file, I repeated all my previous tests with *unzip*, *7-zip*, as well as *zip*'s integrity check. The modified ZIP file passed all these tests without sny problems! The contents of the file could be extracted normally, and the extraction is also complete. The file can also be opened normally in Linux Mint's archive manager, as this screenshot shows:
+This effectively sets the "total number of disks" value to 1 (unsigned little-endian 32-bit value). After saving the file, I repeated all my previous tests with *unzip*, *7-zip*, as well as *zip*'s integrity check. The modified ZIP file passed all these tests without any problems! The contents of the file could be extracted normally, and the extraction is also complete. The file can also be opened normally in Linux Mint's archive manager, as this screenshot shows:
 
 ![]({{ BASE_PATH }}/images/2020/03/onedrive-fixed-archive-manager.png)
 
