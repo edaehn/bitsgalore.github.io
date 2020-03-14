@@ -166,7 +166,7 @@ Python's *zipfile* raises the error if either the value of the "number of the di
 
 ![]({{ BASE_PATH }}/images/2020/03/onedrive-hex.png)
 
-Here, the highlighted bytes (`0x504b0607`) make up the signature of the "zip64 end of central dir locator"[^2]. The 4 bytes inside the blue rectangle contain the "number of the disk" value. Here, its value is 0, which is the correct and expected value. The 4 bytes inside the red rectangle contain the "total number of disks" value, which is also 0. But this is really odd, since neither value should trigger the "zipfiles that span multiple disks are not supported" error! So what's going on here?
+Here, the highlighted bytes (`0x504b0607`) make up the signature of the "zip64 end of central dir locator"[^2]. The 4 bytes inside the blue rectangle contain the "number of the disk" value. Here, its value is 0, which is the correct and expected value. The 4 bytes inside the red rectangle contain the "total number of disks" value, which is also 0. But this is really odd, since neither value should trigger the "zipfiles that span multiple disks are not supported" error! Also, a check on the 8 GB ZIP files that I had created myself with *zip* and *7-zip* showed both to have a value of 1 for this field. So what's going on here?
 
 ## Digging into zipfile's history
 
@@ -181,7 +181,7 @@ Note that in the old situation the test would fail if *disks* was any value othe
 
 > Added support for ZIP files with disks set to 0. Such files are commonly created by builtin tools on Windows when use ZIP64 extension.
 
-So could this be the vital clue we need to solve this little file format mystery? Re-running my Python test script with the latest version of the *zipfile* module did not result in any reported errors, so this looked hopeful for a start. But is the 0 value of "total number of disks" also the thing that makes unzip and 7-zip choke? 
+So could this be the vital clue we need to solve this little file format mystery? Re-running my Python test script with the latest version of the *zipfile* module did not result in any reported errors, so this looked hopeful for a start. But is the 0 value of "total number of disks" also the thing that makes unzip and 7-zip choke?
 
 ## Hacking into the OneDrive ZIP file
 
