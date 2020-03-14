@@ -193,7 +193,7 @@ This effectively sets the "total number of disks" value to 1 (unsigned little-en
 
 ![]({{ BASE_PATH }}/images/2020/03/onedrive-fixed-archive-manager.png)
 
-So, it turns out that the cause of the problem is the value of one field in "zip64 end of central dir locator", which can be provisionally fixed by nothing more than changing one single bit!
+So, it turns out that the cause of the problem is the value of one field in the "zip64 end of central dir locator", which can be provisionally fixed by nothing more than changing one single bit!
 
 ## Other reports on this problem
 
