@@ -211,6 +211,9 @@ More details about this are available [here](https://web.archive.org/web/2014033
 
 The tests presented here demonstrate how large ZIP files exported from the Microsoft OneDrive web client cannot be read by widely-used tools such as *unzip* and *7-zip*. The problem only occurs for large (> 4 GiB) files that use the ZIP64 extension. The cause of this interoperability problem is the value of the "total number of disks" field in the "zip64 end of central dir locator". In the OneDrive files, this value is set to 0 (zero), whereas most reader tools expect a value of 1. It is debatable whether the OneDrive files violate the [ZIP format specification](https://pkware.cachefly.net/webdocs/APPNOTE/APPNOTE-6.3.6.TXT), since the spec doesn't say anything about the permitted values of this field. Affected files can be provisionally "fixed" by changing the first byte of the "total number of disks" field in a hex editor. However, to ensure that existing files that are affected by this issue remain accessible in the long term, we need a more structural and sustainable solution. It is probably fairly trivial to modify existing ZIP reader tools and libraries such as *unzip* and *7-zip* to deal with these files. I'll try to get in touch with the developers of some of these tools about this issue. Ideally things should also be fixed on Microsoft's end. If any readers have contacts there, please bring this post to their attention!
 
+## Revision history
+
+- 14 March 2020: added analysis with Python *zipfile*, and updated conclusions accordingly
 
 [^1]: For unzip you can check this this by running it with the `--version` switch. If the output includes `ZIP64_SUPPORT` this means ZIP64 is supported.
 
