@@ -213,7 +213,7 @@ The tests presented here demonstrate how large ZIP files exported from the Micro
 
 ## Revision history
 
-- 14 March 2020: added analysis with Python *zipfile*, and updated conclusions accordingly
+- 14 March 2020: added analysis with Python *zipfile*, and updated conclusions accordingly.
 
 [^1]: For unzip you can check this this by running it with the `--version` switch. If the output includes `ZIP64_SUPPORT` this means ZIP64 is supported.
 
