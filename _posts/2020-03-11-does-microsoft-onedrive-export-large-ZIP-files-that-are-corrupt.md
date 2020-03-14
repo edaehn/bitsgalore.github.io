@@ -92,7 +92,7 @@ Here we see the familiar "Headers Error" and "Unconfirmed start of archive" erro
 
 At this point I started wondering if these issues could be related to the *size* of this particular ZIP file, especially since I have been able to process zipped OneDrive folders before without any problems. The [Wikipedia entry on *ZIP*](https://en.wikipedia.org/wiki/Zip_(file_format)#ZIP64) states that originally the format had a 4 GiB limit on the total size of the archive (as well as both the uncompressed and compressed size of a file). To overcome these limitations, a "ZIP64" extension was added to the format in [version 4.5 of the ZIP specification](https://web.archive.org/web/20011203085830/http://www.pkware.com/support/appnote.txt) (which was published in 2001). To be sure, I verified that both *unzip* and *7-zip* on my machine support ZIP64[^1].
 
-## Some more tests
+## Small OneDrive ZIP and home-rolled large ZIP
 
 I did some additional tests to verify if my problem could be a ZIP64-related issue. First I downloaded a smaller (<4 GB) folder from OneDrive, and tried to extract the resulting ZIP file with *unzip* and *7-zip*. Both were able to extract the file without any issues. Next I created two 8 GB ZIP files from data on my local machine with both the *zip* and *7-zip* tools. I then tried to extract both files with both *unzip* and *7-zip* (i.e. I extracted each file with both tools). Again, both extracted these files without any problems. Since these tests demonstrate that both *unzip* and *7-zip* are able to handle both large ZIP files (which by definition use ZIP64) as well as smaller OneDrive ZIP files, this suggests that something odd is going on with OneDrive's implementation of ZIP64.
 
