@@ -6,10 +6,15 @@ comment_id: 70
 ---
 
 <figure class="image">
-  <img src="{{ BASE_PATH }}/images/2020/03/archive-manager-onedrive.png" alt="Screenshot of opening a large OneDrive ZIP file in Linux Mint archive manager">
+  <img src="{{ BASE_PATH }}/images/2020/03/broken-zip.jpg" alt="Broken zip £12.50">
+  <figcaption><a href="https://www.flickr.com/photos/dichohecho/3810699621/">“Broken zip £12.50”</a> by <a href="https://www.flickr.com/photos/dichohecho/">dichoecho</a>, used under <a href="https://creativecommons.org/licenses/by/2.0/">CC BY</a> / Cropped from original.</figcaption>
 </figure>
 
-We recently started using [Microsoft OneDrive](https://en.wikipedia.org/wiki/OneDrive) at work. The other day a colleague used OneDrive to share a folder with a large number of ISO images with me. Since I wanted to work with these files on my Linux machine at home, and no official OneDrive client for Linux exists a this point, I used OneDrive's web client to download the contents of the folder. Doing so resulted in a 6 GB [ZIP](https://en.wikipedia.org/wiki/Zip_(file_format)) archive. When I tried to extract this ZIP file with my operating system's (Linux Mint 19.3 MATE) archive manager, this resulted in an error dialog, saying that "An error occurred while loading the archive". The output from the underlying extraction tool ([*7-zip*](https://en.wikipedia.org/wiki/7-Zip)) reported a "Headers Error", with an "Unconfirmed start of archive". It also reported a warning that "There are data after the end of archive". No actual data were extracted whatsoever. This all looked a bit worrying, so I decided to have a more in-depth look at this problem. 
+We recently started using [Microsoft OneDrive](https://en.wikipedia.org/wiki/OneDrive) at work. The other day a colleague used OneDrive to share a folder with a large number of ISO images with me. Since I wanted to work with these files on my Linux machine at home, and no official OneDrive client for Linux exists a this point, I used OneDrive's web client to download the contents of the folder. Doing so resulted in a 6 GB [ZIP](https://en.wikipedia.org/wiki/Zip_(file_format)) archive. When I tried to extract this ZIP file with my operating system's (Linux Mint 19.3 MATE) archive manager, this resulted in an error dialog, saying that "An error occurred while loading the archive":
+
+![]({{ BASE_PATH }}/images/2020/03/archive-manager-onedrive.png)
+
+The output from the underlying extraction tool ([*7-zip*](https://en.wikipedia.org/wiki/7-Zip)) reported a "Headers Error", with an "Unconfirmed start of archive". It also reported a warning that "There are data after the end of archive". No actual data were extracted whatsoever. This all looked a bit worrying, so I decided to have a more in-depth look at this problem. 
 
 <!-- more -->
 
