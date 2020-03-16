@@ -190,7 +190,7 @@ So could this be the vital clue we need to solve this little file format mystery
 
 ## Hacking into the OneDrive ZIP file
 
-To put this to the test, I first made a copy of the OneDrive ZIP file. Then I opened it in a Hex editor, located the "zip64 end of central dir locator", and then changed the first byte of the "total number of disks" value (inside the red rectangle) from `0x00` to `0x01`:
+To put this to the test, I first made a copy of the OneDrive ZIP file. I opened this file in a Hex editor, and did a search on the hexadecimal string `0x504b0607`, which is the signature that indicates the start of the "zip64 end of central dir locator"[^3]. I then changed the first byte of the "total number of disks" value (this is the 13th byte after the signature, indicated by the red rectangle in the screenshot) from `0x00` to `0x01`:
 
 ![]({{ BASE_PATH }}/images/2020/03/onedrive-hex-fixed.png)
 
@@ -223,3 +223,5 @@ The tests presented here demonstrate how large ZIP files exported from the Micro
 [^1]: For unzip you can check this this by running it with the `--version` switch. If the output includes `ZIP64_SUPPORT` this means ZIP64 is supported.
 
 [^2]: Note that this is the big-endian representation of the signature, whereas the ZIP formation specification uses little-endian representations. See more on endianness [here](https://en.wikipedia.org/wiki/Endianness).
+
+[^3]: Since the "zip64 end of central dir locator" is located near the end of the file, the quickest way to find it is to scroll to the very end of the file in the Hex editor, and then do a reverse search ("Find Previous") from there.
