@@ -216,9 +216,18 @@ More details about this are available [here](https://web.archive.org/web/2014033
 
 The tests presented here demonstrate how large ZIP files exported from the Microsoft OneDrive web client cannot be read by widely-used tools such as *unzip* and *7-zip*. The problem only occurs for large (> 4 GiB) files that use the ZIP64 extension. The cause of this interoperability problem is the value of the "total number of disks" field in the "zip64 end of central dir locator". In the OneDrive files, this value is set to 0 (zero), whereas most reader tools expect a value of 1. It is debatable whether the OneDrive files violate the [ZIP format specification](https://pkware.cachefly.net/webdocs/APPNOTE/APPNOTE-6.3.6.TXT), since the spec doesn't say anything about the permitted values of this field. Affected files can be provisionally "fixed" by changing the first byte of the "total number of disks" field in a hex editor. However, to ensure that existing files that are affected by this issue remain accessible in the long term, we need a more structural and sustainable solution. It is probably fairly trivial to modify existing ZIP reader tools and libraries such as *unzip* and *7-zip* to deal with these files. I'll try to get in touch with the developers of some of these tools about this issue. Ideally things should also be fixed on Microsoft's end. If any readers have contacts there, please bring this post to their attention!
 
+## Update (17 March 2020)
+
+For *unzip* I found [this ticket](https://sourceforge.net/p/infozip/bugs/42/) on the *Info-Zip* issue tracker, which looks identical to the problem discussed in this post. The ticket was already created in 2013, but its current status is not entirely clear.
+
+For *7-zip*, things are slightly complicated by the fact that for Unix [a separate *p7zip* port](https://sourceforge.net/projects/p7zip/) exists, which currently is 3 major releases behind the [main 7-zip](https://sourceforge.net/projects/sevenzip/) project. In any case, I've just opened [this feature request](https://sourceforge.net/p/p7zip/feature-requests/46/) in the *p7zip* issue tracker.
+
+Meanwhile Andy Jackson has been trying to [get this issue to the attention of Microsoft](https://twitter.com/anjacks0n/status/1238852027045883904), so let's see what happens from here.
+
 ## Revision history
 
 - 14 March 2020: added analysis with Python *zipfile*, and updated conclusions accordingly.
+- 17 March 2020: added update with links to Info-Zip and p7zip issue trackers.
 
 [^1]: For unzip you can check this this by running it with the `--version` switch. If the output includes `ZIP64_SUPPORT` this means ZIP64 is supported.
 
