@@ -25,13 +25,17 @@ function createCommentEl(response) {
 	let user = document.createElement('p');
 	user.classList.add('user');
 
-	let userAvatar = document.createElement('img');
-	userAvatar.classList.add('avatar');
-	userAvatar.setAttribute('src', response.user.avatar_url);
+	let avatar = document.createElement('a');
+	avatar.setAttribute( 'href', response.user.url );
 
-	user.appendChild(userAvatar)
+	let avatarImage = document.createElement('img');
+	avatarImage.classList.add('avatar');
+	avatarImage.setAttribute('src', response.user.avatar_url);
 
-	let userName = document.createElement('a' );
+	avatar.appendChild(avatarImage)
+	user.appendChild(avatar)
+
+	let userName = document.createElement('a');
 	userName.setAttribute('href', response.user.html_url);
 	userName.innerHTML = response.user.login;
 	let t = document.createTextNode(' wrote:');
@@ -62,7 +66,6 @@ function createCommentEl(response) {
 	let commentDivider = document.createElement('hr');
 
 	comment.appendChild(user);
-	/*comment.appendChild(t);*/
 	comment.appendChild(commentContents);
 	comment.appendChild(commentLink);
 	comment.appendChild(commentDivider);
