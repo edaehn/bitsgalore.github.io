@@ -26,11 +26,18 @@ function createCommentEl( response ) {
 	user.setAttribute( 'href', response.user.url );
 	user.classList.add( 'user' );
 
-	let userAvatar = document.createElement( 'img' );
+	/*let userAvatar = document.createElement( 'img' );
 	userAvatar.classList.add( 'avatar' );
 	userAvatar.setAttribute( 'src', response.user.avatar_url );
 
-	user.appendChild( userAvatar );
+	user.appendChild( userAvatar );*/
+
+	let userName = document.createElement( 'a' );
+	userName.setAttribute( 'href', response.user.html_url );
+	userName.classList.add( 'comment-url' );
+	userName.innerHTML = response.user.login;
+
+	user.appendChild( userName );
 
 	let commentLink = document.createElement( 'a' );
 	commentLink.setAttribute( 'href', response.html_url );
