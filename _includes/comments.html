@@ -26,7 +26,7 @@ function createCommentEl(response) {
 	user.classList.add('user');
 
 	let avatar = document.createElement('a');
-	avatar.setAttribute( 'href', response.user.url );
+	avatar.setAttribute( 'href', response.user.html_url );
 
 	let avatarImage = document.createElement('img');
 	avatarImage.classList.add('avatar');
