@@ -21,50 +21,51 @@ request.onload = function() {
 	}
 };
 
-function createCommentEl( response ) {
-	let user = document.createElement( 'a' );
-	user.setAttribute( 'href', response.user.url );
-	user.classList.add( 'user' );
+function createCommentEl(response) {
+	let user = document.createElement('p');
+	user.classList.add('user');
 
-	/*let userAvatar = document.createElement( 'img' );
-	userAvatar.classList.add( 'avatar' );
-	userAvatar.setAttribute( 'src', response.user.avatar_url );
+	let userAvatar = document.createElement('img');
+	userAvatar.classList.add('avatar');
+	userAvatar.setAttribute('src', response.user.avatar_url);
 
-	user.appendChild( userAvatar );*/
+	user.appendChild(userAvatar)
 
-	let userName = document.createElement( 'a' );
-	userName.setAttribute( 'href', response.user.html_url );
-	userName.classList.add( 'comment-url' );
+	let userName = document.createElement('a' );
+	userName.setAttribute('href', response.user.html_url);
 	userName.innerHTML = response.user.login;
+	let t = document.createTextNode(' wrote:');
 
-	user.appendChild( userName );
+	user.appendChild(userName);
+	user.appendChild(t);
 
-	let commentLink = document.createElement( 'a' );
-	commentLink.setAttribute( 'href', response.html_url );
-	commentLink.classList.add( 'comment-url' );
-	commentLink.innerHTML = '#' + response.id + ' - ' + response.created_at;
+	let commentLink = document.createElement('a');
+	commentLink.setAttribute('href', response.html_url);
+	commentLink.classList.add('comment-url');
+	commentLink.innerHTML = response.created_at;
 
-	let commentContents = document.createElement( 'div' );
-	commentContents.classList.add( 'comment-content' );
+	let commentContents = document.createElement('div');
+	commentContents.classList.add('comment-content');
 	commentContents.innerHTML = response.body;
 
 	// Progressive enhancement.
-	if ( window.showdown ) {
+	if (window.showdown) {
 		let converter = new showdown.Converter();
-		commentContents.innerHTML = converter.makeHtml( response.body );
+		commentContents.innerHTML = converter.makeHtml(response.body);
 	}
 
-	let comment = document.createElement( 'li' );
-	comment.setAttribute( 'data-created', response.created_at );
-	comment.setAttribute( 'data-author-avatar', response.user.avatar_url );
-	comment.setAttribute( 'data-user-url', response.user.url );
+	let comment = document.createElement('li');
+	comment.setAttribute('data-created', response.created_at);
+	comment.setAttribute('data-author-avatar', response.user.avatar_url);
+	comment.setAttribute('data-user-url', response.user.url);
 
-	let commentDivider = document.createElement( 'hr' );
+	let commentDivider = document.createElement('hr');
 
-	comment.appendChild( user );
-	comment.appendChild( commentContents );
-	comment.appendChild( commentLink );
-	comment.appendChild( commentDivider );
+	comment.appendChild(user);
+	/*comment.appendChild(t);*/
+	comment.appendChild(commentContents);
+	comment.appendChild(commentLink);
+	comment.appendChild(commentDivider);
 
 	return comment;
 }

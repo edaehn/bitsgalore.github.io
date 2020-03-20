@@ -369,3 +369,14 @@ code{
   padding-left: 20px;
   padding-top: 20px
 }
+
+.github-comments .user{
+  font-weight: bold;
+}
+
+.github-comments .avatar{
+  margin-left: 0px;
+  margin-right: 20px;
+  max-width: 64px;
+  max-height: 64px;
+}
