@@ -364,11 +364,12 @@ code{
 }
 
 .github-comments li{
-  padding-left: 0px;
-  margin-left: 0px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding-top: 20px
+  border: 1px solid black;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .github-comments .user{
