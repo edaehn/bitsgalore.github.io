@@ -49,7 +49,7 @@ They then write that "packaging is covered in ISO/IEC TS 22424-2" (Part 2 of the
 
 Imagine my surprise then when I found the two main chapters of Part 1 to be titled "Packaging standards" (with a discussion of [OAIS Information Packages](https://wiki.dpconline.org/index.php?title=2.2.3_INFORMATION_PACKAGE_VARIANTS)), and "Construction of OAIS information packages". The latter chapter contains an exhaustive list of requirements and recommendations on how EPUB documents should be packaged in an OAIS Submission Information Package (SIP). So, on the surface it looks like the content that is supposed to be in Part 2 of the standard (packaging) somehow ended up in Part 1 instead!
 
-However, a more in-depth look reveals that the generic packaging requirements (which are unrelated to EPUB) are mixed with requirements that actually *are* specific to EPUB. For example, section 6.2.1 ("EPUB publications SHALL be sent to a repository system as well‐formed and complete Submission Information Packages") lists requirements on validity against the EPUB specification, font embedding, multimedia content, remote resources and encryption. Confusingly, these are interspersed with other requirements on descriptive metadata and submission agreements (which are not EPUB-specific). Moreover, most of the packaging-related requirements and recommendations mentioned here are totally unrelated to EPUB, and would apply generically to any given format. This makes me wonder why these are even part of this standard.
+However, a more in-depth look reveals that the generic packaging requirements (which are unrelated to EPUB) are mixed with requirements that actually *are* specific to EPUB. For example, section 6.2.1 ("EPUB publications SHALL be sent to a repository system as well‐formed and complete Submission Information Packages") lists requirements on validity against the EPUB specification, font embedding, multimedia content, remote resources and encryption. Confusingly, these are interspersed with other requirements on descriptive metadata and submission agreements (which are not EPUB-specific). Moreover, most of the packaging-related requirements and recommendations mentioned here are totally unrelated to EPUB, and would apply generically to any given format. This makes me wonder why these are part of this standard at all.
 
 ### Some requirements already covered by EPUB specification
 
@@ -87,11 +87,11 @@ Since 'version' is a mandatory attribute of an EPUB 3 Package Document, the incl
 
 > EPUB Open Container Format (OCF) SHALL be used to describe the structure of \[sic\] EPUB publication.
 
-Again, this is true for *any* valid EPUB file, so why is this even included in this standard?
+Again, this is true for *any* valid EPUB file, so why is this included in this standard?
 
 ### OAIS packages (again!)
 
-The final two chapters of Part 2 are about the structure and content of OAIS Submission Information Packages. But OAIS information packages are already discussed at length in Part 1 (even though that discussion probably shouldn't be there to begin with!), so why is this subject even revisited here?
+The final two chapters of Part 2 are about the structure and content of OAIS Submission Information Packages. But OAIS information packages are already discussed at length in Part 1 (even though that discussion probably shouldn't be there to begin with!), so why is this subject revisited here?
 
 ## Summary and discussion
 
