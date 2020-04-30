@@ -53,7 +53,7 @@ However, a more in-depth look reveals that the generic packaging requirements (w
 
 ### Some requirements already covered by EPUB specification
 
-In addition, some of the EPUB-specific requirements are already covered by the EPUB format specification. For example, section 6.4 ("Structure of information packages") lists requirements on the presence of a manifest file inside an EPUB, the use of the EPUB Open Container Format, the presence of a "container.xml" file, and metadata inside the EPUB package and navigation documents. Any EPUB file that is valid against the EPUB format specification (which is required as per section 6.2.1) already satisfies these requirements, so the inclusion of these requirements is unnecessary.
+In addition, some of the EPUB-specific requirements are already covered by the EPUB format specification. For example, section 6.4 ("Structure of information packages") lists requirements on the presence of a manifest file inside an EPUB, the use of the EPUB Open Container Format, the presence of a "container.xml" file, and metadata inside the EPUB package and navigation documents. Any EPUB file that is valid against the EPUB format specification (which is required as per section 6.2.1) already satisfies these requirements, so their inclusion here is unnecessary.
 
 ## Part 2 - Metadata requirements
 
