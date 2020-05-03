@@ -12,7 +12,7 @@ comment_id: 71
 
 Earlier this week Library of Congress added [a new entry on the standard "Digital publishing — EPUB3 preservation" (ISO/IEC TS 22424)](https://www.loc.gov/preservation/digital/formats/fdd/fdd000519.shtml) to its excellent Digital Formats web site. This standard was developed by the [ISO Technical Committee on Document description and processing languages](https://www.iso.org/committee/45374.html), and was published in January this year (2020).
 
-According to its authors, "the ISO/IEC TS 22424 series supports long-term reservation of EPUB publications via a dual strategy". The standard is made up of 2 parts, which are sold as separate documents on the ISO website:
+According to its authors, "the ISO/IEC TS 22424 series supports long-term preservation of EPUB publications via a dual strategy". The standard is made up of 2 parts, which are sold as separate documents on the ISO website:
 
 1. [Part 1: Principles (ISO/IEC TS 22424-1:2020)](https://www.iso.org/standard/73163.html)
 
