@@ -249,7 +249,7 @@ After running the script, the file was indeed perfectly readable. Thanks Paul!
 - 14 March 2020: added analysis with Python *zipfile*, and updated conclusions accordingly.
 - 17 March 2020: added update with links to Info-Zip and p7zip issue trackers.
 - 18 March 2020: added link to test file.
-- 8 June 2020: added reference to *Fix-OneDrive-Zip* script by Paul Marquess
+- 8 June 2020: added reference to *Fix-OneDrive-Zip* script by Paul Marquess.
 
 [^1]: For unzip you can check this this by running it with the `--version` switch. If the output includes `ZIP64_SUPPORT` this means ZIP64 is supported.
 
