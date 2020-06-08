@@ -230,11 +230,26 @@ For *7-zip*, things are slightly complicated by the fact that for Unix [a separa
 
 Meanwhile Andy Jackson has been trying to [get this issue to the attention of Microsoft](https://twitter.com/anjacks0n/status/1238852027045883904), so let's see what happens from here.
 
+## Fix-OneDrive-Zip script (update 8 June 2020)
+
+In the comments section, Paul Marquess posted a link to a small Perl script he wrote that automatically updates the "total number of disks" field of a problematic OneDrive ZIP file. The script is available here:
+
+<https://github.com/pmqs/Fix-OneDrive-Zip>
+
+I ran a quick test with my openly-licensed test file, using the following command:
+
+```
+fix-onedrive-zip onedrive-zip-test-zeros.zip
+```
+
+After running the script, the file was indeed perfectly readable. Thanks Paul!
+
 ## Revision history
 
 - 14 March 2020: added analysis with Python *zipfile*, and updated conclusions accordingly.
 - 17 March 2020: added update with links to Info-Zip and p7zip issue trackers.
 - 18 March 2020: added link to test file.
+- 8 June 2020: added reference to *Fix-OneDrive-Zip* script by Paul Marquess
 
 [^1]: For unzip you can check this this by running it with the `--version` switch. If the output includes `ZIP64_SUPPORT` this means ZIP64 is supported.
 
