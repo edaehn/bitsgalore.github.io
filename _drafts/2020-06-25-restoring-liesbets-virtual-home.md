@@ -7,6 +7,7 @@ comment_id: 72
 
 <figure class="image">
   <img src="{{ BASE_PATH }}/images/2020/06/liesbet-door.png" alt="Liesbet door">
+  <figcaption>Original Artwork Copyright &copy;Liesbet Zikkenheimer</figcaption>
 </figure>
 
 Introduction here ...
