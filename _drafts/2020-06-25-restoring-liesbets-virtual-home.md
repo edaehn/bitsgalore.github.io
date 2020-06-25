@@ -46,7 +46,7 @@ This raised the question whether it would be possible to create a "restored" ver
 
 After my colleague Kees Teszelszky got in contact with Zikkenheimer, she sent us a ZIP file with a locally stored copy of the site's directory structure. However, that local copy had several issues as well, and it quickly became obvious that it couldn't be used as a basis for a restored version of the site. However, the ZIP file did contain both the image map files as well as the scripts that were missing from the live site.
 
-## Crawl live site, start in the toilet
+## Crawl the toilet
 
 I started out by crawling the live site with [this simple Bash script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrapesite.sh) that uses the [wget](https://www.gnu.org/software/wget/) tool. This worked reasonably well, but on closer inspection the [toilet](https://ziklies.home.xs4all.nl/e-toilet.html) pages of the site turned out to be missing from the result. Digging a bit deeper revealed the cause: these pages are simply not referenced from their [parent pages](https://ziklies.home.xs4all.nl/e-start.html). The solution was to repeat the crawl, using the toilet pages (both the Dutch and English-language version) as seed URLs. I did this by creating a text file (seed-urls.txt) with both URLs:
 
@@ -68,18 +68,6 @@ diff -r ./wget-site/ziklies.home.xs4all.nl/ ./wget-toilet/ziklies.home.xs4all.nl
 ```
 
 This confirmed that the "toilet" crawl contained everything that is also in the original crawl. So, I used the result of this "toilet" crawl as a basis for all subsequent restoration steps.
-
-<!--
-## Lightweight web server for testing
-
-For testing I also made extensive use of Python's built-in [http.server](https://docs.python.org/3/library/http.server.html). It can be started by simply running the following command from the directory that contains the local site data:
-
-```
-python3 -m http.server
-```
-
-Subsequently the contents of the directory can be accessed from <http://127.0.0.1:8000/>[^1]. Note that http.server is  a lightweight web server that is not suitable for production use (for that use [Apache](https://httpd.apache.org/) instead), but it is really useful for fast and easy testing[^1].
--->
 
 ## Fix links to toilet
 
