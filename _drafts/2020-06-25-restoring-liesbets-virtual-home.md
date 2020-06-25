@@ -15,21 +15,21 @@ Introduction here ...
 
 ## XS4ALL
 
-[XS4ALL](https://en.wikipedia.org/wiki/XS4ALL) is one of the oldest internet service providers in the Netherlands. The company was founded in 1993, and has its roots in the Dutch hacker scene. Since its inception, many pioneers of the Dutch internet hosted their home pages under the XS4ALL web domain. Some of these home pages have been online for more than 25 years, and as such they rank among the oldest born-digital publications of the Dutch web.
+[XS4ALL](https://en.wikipedia.org/wiki/XS4ALL) is one of the oldest internet service providers in the Netherlands. The company was founded in 1993, and has its roots in the Dutch hacker scene. Since its inception, many pioneers of the Dutch internet hosted their homepages under the XS4ALL web domain. Some of these homepages have been online for more than 25 years, and as such they rank among the oldest born-digital publications of the Dutch web.
 
-In 2019, parent company KPN (which bought XS4ALL in 1998) announced their intention to phase out the XS4ALL brand. Eventually, all of the company's services will continue under the KPN brand. This poses an acute threat to much of the (often unique) digital heritage that is hosted on the XS4ALL domain, as in the past a similar situation with provider [Euronet](https://nl.wikipedia.org/wiki/EuroNet) resulted in [the loss of thousands of early Dutch home pages](https://www.tandfonline.com/doi/full/10.1080/24701475.2019.1603951).
+In 2019, parent company KPN (which bought XS4ALL in 1998) announced their intention to phase out the XS4ALL brand. Eventually, all of the company's services will continue under the KPN brand. This poses an acute threat to much of the (often unique) digital heritage that is hosted on the XS4ALL domain, as in the past a similar situation with provider [Euronet](https://nl.wikipedia.org/wiki/EuroNet) resulted in [the loss of thousands of early Dutch homepages](https://www.tandfonline.com/doi/full/10.1080/24701475.2019.1603951).
 
-## Rescuing the XS4ALL home pages
+## Rescuing the XS4ALL homepages
 
-So, the KB's [web archiving team](https://www.kb.nl/en/organisation/research-expertise/long-term-usability-of-digital-resources/web-archiving) started an initiative to rescue a selection of the XS4ALL home pages, and add them to the web archive in a special XS4ALL collection. This initiative is supported financially by the [SIDN Fund](https://www.sidnfonds.nl/excerpt) and [stichting Internet4all](https://www.stichtinginternet4all.nl/).
+So, the KB's [web archiving team](https://www.kb.nl/en/organisation/research-expertise/long-term-usability-of-digital-resources/web-archiving) started an initiative to rescue a selection of the XS4ALL homepages, and add them to the web archive in a special XS4ALL collection. This initiative is supported financially by the [SIDN Fund](https://www.sidnfonds.nl/excerpt) and [stichting Internet4all](https://www.stichtinginternet4all.nl/).
 
 ## Digital treasures
 
-As of May 2020, the KB has selected [3370 home pages](https://www.kb.nl/blogs/duurzame-toegang/bewaren-voor-iedereen-de-opbouw-van-de-webcollectie-xs4all-homepages) for inclusion in XS4ALL collection. Out of the home pages that have been archived so far, 404 are marked as "digital treasures". These home pages are remarkable because of their age, or because of characteristics that are either unique, or, on the other hand, typical of a particular era or trend.
+As of May 2020, the KB has selected [3370 homepages](https://www.kb.nl/blogs/duurzame-toegang/bewaren-voor-iedereen-de-opbouw-van-de-webcollectie-xs4all-homepages) for inclusion in XS4ALL collection. Out of the homepages that have been archived so far, 404 are marked as "digital treasures". These homepages are remarkable because of their age, or because of characteristics that are either unique, or, on the other hand, typical of a particular era or trend.
 
 ## Liesbet's Virtual Home
 
-One of these "treasures" is [Liesbet's Virtual Home](https://ziklies.home.xs4all.nl/) (in Dutch: Liesbet's Atelier). This is the old home page of [Liesbet Zikkenheimer](http://zicnet.nl/), a Dutch Internet pioneer with a background in industrial and graphic design. Her home page is a "treasure" for several reasons. First of all, it has a history that goes back to 1995, which makes it one of the oldest Dutch home pages that are still available today. Second, Zikkenheimer is an important figure in the history of the Dutch internet. To mention a few examples, in 1997 she developed and published [the online version of popular women's magazine Libelle](https://web.archive.org/web/19980526231446/http://www.libelle.nl/libelle/dezeweek/dezeweek.html). She also created web sites for the Margriet and Viva magazines, and developed, published and managed several well-known web portals that were specifically targeted at women. Finally, Liesbet's Virtual Home is unique because of its structure and design. The site is literally structured like a physical house. Each page represents a particular room, and to get from, say, the living room to the loft, one needs to navigate through a hallway and two flights of stairs. It also has some interactive features that were quite unique at the time of is creation. So, the site meets every possible "digital treasure" criterion.
+One of these "treasures" is [Liesbet's Virtual Home](https://ziklies.home.xs4all.nl/) (in Dutch: Liesbet's Atelier). This is the old homepage of [Liesbet Zikkenheimer](http://zicnet.nl/), a Dutch Internet pioneer with a background in industrial and graphic design. Her homepage is a "treasure" for several reasons. First of all, it has a history that goes back to 1995, which makes it one of the oldest Dutch homepages that are still available today. Second, Zikkenheimer is an important figure in the history of the Dutch internet. To mention a few examples, in 1997 she developed and published [the online version of popular women's magazine Libelle](https://web.archive.org/web/19980526231446/http://www.libelle.nl/libelle/dezeweek/dezeweek.html). She also created web sites for the Margriet and Viva magazines, and developed, published and managed several well-known web portals that were specifically targeted at women. Finally, Liesbet's Virtual Home is unique because of its structure and design. The site is literally structured like a physical house. Each page represents a particular room, and to get from, say, the living room to the loft, one needs to navigate through a hallway and two flights of stairs. It also has some interactive features that were quite unique at the time of is creation. So, the site meets every possible "digital treasure" criterion.
 
 ## Problems with the live site
 
@@ -110,7 +110,7 @@ Since a restoration like this involves making changes to a unique digital herita
 
 This way, the commit history provides a complete audit trail of all changes.
 
-## Image maps
+## Restore image maps
 
 A number of pages on the site use HTML [image maps](https://en.wikipedia.org/wiki/Image_map). An example is the door image on the [front page](https://ziklies.home.xs4all.nl/). This is the corresponding HTML source:
 
@@ -144,16 +144,17 @@ Note that the values of the "coords" attributes are identical to the area defini
   Your browser does not support the video tag.
 </video>
 
-The site contains 4 more broken server-side image maps, all of which I replaced with client-side image maps in the restored version.
+The site contains 4 more broken server-side image maps. I replaced all of these with client-side image maps in the restored version, which makes the image map navigation fully functional again.
 
-## Replace links to old website domain
+## Fix links to old website domain
 
-Like all XS4ALL home pages, Liesbet's Virtual Home was originally hosted as a directory under XS4ALL's root domain (<http://www.xs4all.nl/~ziklies/>). At some point XS4ALL gave its customers their own sub-domain (in this case the current address at <https://ziklies.home.xs4all.nl/>), and redirected any URLS pointing to the "old" location to this sub-domain. Internally, Liesbet's Virtual Home uses a mixture of relative URLs and absolute ones that still use the old location. This causes several issues if the site is hosted locally on a web server. Although it may be possible to remedy these issues using some clever server configuration, I couldn't quite get this working. I ended up writing a [simple Bash script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/rewriteurls.sh) that replaces all references to the "old" location with relative links (which always work, irrespective of the domain). This had an unintentional side-effect for the [statistics page](https://ziklies.home.xs4all.nl/statistics.html), so I subsequently undid the change for this single page (which can be done with 1 single Git command).
+Like all XS4ALL homepages, Liesbet's Virtual Home was originally hosted as a directory under XS4ALL's root domain (<http://www.xs4all.nl/~ziklies/>). At some point XS4ALL gave its customers their own sub-domain (in this case the current address at <https://ziklies.home.xs4all.nl/>), and redirected any URLS pointing to the "old" location to this sub-domain. Internally, Liesbet's Virtual Home uses a mixture of relative URLs and absolute ones that still use the old location. This causes several issues if the site is hosted locally on a web server. Although it may be possible to remedy these issues using some clever server configuration, I couldn't quite get this working. I ended up writing a [simple Bash script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/rewriteurls.sh) that replaces all references to the "old" location with relative links (which always work, irrespective of the domain). This had an unintentional side-effect for the [statistics page](https://ziklies.home.xs4all.nl/statistics.html), so I subsequently undid the change for this single page (which can be done with 1 single Git command).
 
+## Restore interactive bedroom mirror
 
-## Interactive bedroom mirror
+The [bedroom](https://ziklies.home.xs4all.nl/slaapk/e-slaap1.html) of Liesbet's Virtual Home features an "interactive mirror". It is a web form where the visitor can select combinations of clothing, hairstyle and earrings. After clicking on the "have a look into the mirror" button, the selected combination is shown as an image[^3]. However, as the underlying scripts are missing from the live site, it now gives a [Page Not Found](https://en.wikipedia.org/wiki/HTTP_404) error. As with the image maps before, the missing (Perl) scripts could be recovered from the ZIP file provided by Zikkenheimer. I added these to a (newly created) "cgi-bin" directory. I also had to make the scripts executable[^5], and adjust their [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) strings to a valid interpreter location on my local machine (which, in my case, was different from the location used by the original web server). In addition, an inspection of the scripts showed them to rely on a set of 21 GIF images that were not included in the crawl. Again, I used the local ZIP file to fill this gap[^4].
 
-Perhaps also mention Apache web server here, and give overview of "Enable cgi scripts" section from notes.
+The main challenge was then to make the scripts play nicely with a web server. This is beyond the scope of this post, but I created an [Apache setup notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-apache-notes.md) document that describes how I made this all work with a local instance of the Apache web server. The following video gives a brief glimpse into how the resurrected interactive mirror works.
 
  <video width="100%" height="100%" controls>
   <source src="{{ BASE_PATH }}/images/2020/06/mirror.mp4" type="video/mp4" alt="Mirror video">
@@ -163,6 +164,8 @@ Perhaps also mention Apache web server here, and give overview of "Enable cgi sc
 ## Remaining issues
 
 Toilet door, midi files, Shockwave file, QuickTime movies (toilet page, can be played by external players, so could be fixed by migrating).
+
+## Serve with web server
 
 ## Crawl restored site to warc
 
@@ -184,10 +187,22 @@ Liesbet Zikkenheimer, Jak Boumans, Ilya Kreymer, SIDN Fund, Stichting Internet4a
 
 ## Additional resources
 
+The following notes provide more details on the restoration steps, the Apache server setup and the WARC capture process, respectively:
+
+- [Liesbet's atelier restoration notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-restoration-notes.md)
+- [Liesbet's Atelier Apache setup notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-apache-notes.md)
+- [Liesbet's atelier WARC capture and rendering notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-warc-notes.md)
+
+Below posts (both in Dutch) give some additional background information about the XS4ALL homepages rescue initiative:
+
 - [Bewaren voor iedereen: de opbouw van de webcollectie XS4ALL-homepages](https://www.kb.nl/blogs/duurzame-toegang/bewaren-voor-iedereen-de-opbouw-van-de-webcollectie-xs4all-homepages)
 - [Redden wat van waarde is: webarchivering homepages XS4ALL](https://www.sidnfonds.nl/nieuws/redden-wat-van-waarde-is-webarchivering-homepages-xs4all)
 
 
-[^1]: For more info see: [How do you set up a local testing server?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server)
-
 [^2]: Some purists may consider this a technological anachronism. Client-side image maps were first introduced in HTML 3.2, which was published in 1997, whereas Liesbet's ["what's new" page](https://ziklies.home.xs4all.nl/new.html) shows that most of the site's development activity took place between early 1995 and late 1997. This could be a problem for users who want to view the site in a period browser (e.g. inside an emulated environment), which may not support client-side image maps.
+
+[^3]: Actually as a composite of 3 images.
+
+[^4]: I later found out these images are still present on the live site (but since they are not referenced by any of its pages they aren't picked up by a web crawl).
+
+[^5]: Under Linux this is simply a matter of issuing a command like `chmod 755 barbie.cgi`.
