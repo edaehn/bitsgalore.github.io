@@ -118,9 +118,7 @@ A number of pages on the site use HTML [image maps](https://en.wikipedia.org/wik
 <A HREF="/cgi-bin/imagemap/~ziklies/deurtje1.map"><img src="deurtje1.gif" Border=0 ISMAP></A>
 ```
 
-This is a *server-side* image map, where the URL points to a file (deurtje1.map). However, this file is not available anymore, which results in a [Page Not Found](https://en.wikipedia.org/wiki/HTTP_404) error.
-
-Fortunately, I was able to find this file (along with the other image maps that the site uses) in the ZIP archive provided by Zikkenheimer. Here's what it looks like:
+This is a *server-side* image map, where the URL points to a file (deurtje1.map). However, this file is not available anymore, which results in a [Page Not Found](https://en.wikipedia.org/wiki/HTTP_404) error. Fortunately, I was able to find this file in the ZIP archive provided by Zikkenheimer. Here's what it looks like:
 
 ```
 default http://www.xs4all.nl/~ziklies/start.html
@@ -128,7 +126,7 @@ poly http://www.xs4all.nl/~ziklies/start.html 0,56 76,40 91,43 89,67 76,62 6,77 
 poly http://www.xs4all.nl/~ziklies/e-start.html 53,72 80,76 81,81 91,85 89,107 76,106 69,137 42,130 51,77
 ```
 
-The file simply defines areas within the image that are linked to URLs. Since *server-side* image maps [come with some caveats](https://eager.io/blog/a-quick-history-of-image-maps/), I took the liberty of re-implementing all server-side image maps in Liesbet's Virtual Home with *client-side* image maps. These are functionally identical, but simpler and less likely to break[^2]. Instead of using an external file, a client-side image map is simply an embedded element inside the page, which means we can replace the `<A>` element in the previous HTML snippet by this:
+The file simply defines areas within the image that are linked to URLs. Since *server-side* image maps [come with some caveats](https://eager.io/blog/a-quick-history-of-image-maps/), I took the liberty of re-implementing the server-side image map with a *client-side* image maps. These are functionally identical, but simpler and less likely to break[^2]. Instead of using an external file, a client-side image map is simply an embedded element inside the page, which means we can replace the `<A>` element in the previous HTML snippet by this:
 
 ```HTML
 <img src="deurtje1.gif" usemap="#deurtje1Map" alt="deurtje 1" border="0">
@@ -139,17 +137,19 @@ The file simply defines areas within the image that are linked to URLs. Since *s
 </map>
 ```
 
-Note that the values of the "coords" attributes are identical to the area definitions in the server-side image map.
-
-The 
+Note that the values of the "coords" attributes are identical to the area definitions in the server-side image map. Below is a short video that shows how the restored image map works. Ringing the upper doorbell leads to the Dutch version of the site, whereas the lower doorbell opens the English version.
 
  <video width="100%" height="100%" controls>
   <source src="{{ BASE_PATH }}/images/2020/06/imagemap.mp4" type="video/mp4" alt="Image map video">
   Your browser does not support the video tag.
 </video>
 
+The site contains 4 more broken server-side image maps, all of which I replaced with client-side image maps in the restored version.
 
-## Replace links to old website root
+## Replace links to old website domain
+
+Like all XS4ALL home pages, Liesbet's Virtual Home was originally hosted as a directory under XS4ALL's root domain (<http://www.xs4all.nl/~ziklies/>). At some point XS4ALL gave its customers their own sub-domain (in this case the current address at <https://ziklies.home.xs4all.nl/>), and redirected any URLS pointing to the "old" location to this sub-domain. Internally, Liesbet's Virtual Home uses a mixture of relative URLs and absolute ones that still use the old location. This causes several issues if the site is hosted locally on a web server. Although it may be possible to remedy these issues using some clever server configuration, I couldn't quite get this working. I ended up writing a [simple Bash script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/rewriteurls.sh) that replaces all references to the "old" location with relative links (which always work, irrespective of the domain). This had an unintentional side-effect for the [statistics page](https://ziklies.home.xs4all.nl/statistics.html), so I subsequently undid the change for this single page (which can be done with 1 single Git command).
+
 
 ## Interactive bedroom mirror
 
