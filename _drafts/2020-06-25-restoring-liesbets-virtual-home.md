@@ -143,16 +143,58 @@ Like all XS4ALL homepages, Liesbet's Virtual Home was originally hosted as a dir
 
 The [bedroom](https://ziklies.home.xs4all.nl/slaapk/e-slaap1.html) of Liesbet's Virtual Home features an "interactive mirror". It is a web form where the visitor can select combinations of clothing, hairstyle and earrings. After clicking on the "have a look into the mirror" button, the selected combination is shown as an image[^3]. However, as the underlying scripts are missing from the live site, it now gives a [Page Not Found](https://en.wikipedia.org/wiki/HTTP_404) error. As with the image maps before, the missing (Perl) scripts could be recovered from the ZIP file provided by Zikkenheimer. I added these to a (newly created) "cgi-bin" directory. I also had to make the scripts executable[^5], and adjust their [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) strings to a valid interpreter location on my local machine (which, in my case, was different from the location used by the original web server). In addition, an inspection of the scripts showed them to rely on a set of 21 GIF images that were not included in the crawl. Again, I used the local ZIP file to fill this gap[^4].
 
-The main challenge was then to make the scripts play nicely with a web server. This is beyond the scope of this post, but I created an [Apache setup notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-apache-notes.md) document that describes how I made this all work with a local instance of the Apache web server. The following video gives a brief glimpse into how the resurrected interactive mirror works.
+The main challenge was then to make the scripts play nicely with a web server. This is beyond the scope of this post, but I created an [Apache setup notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-apache-notes.md) document that describes how I made this all work with a local instance of the Apache web server. The following video gives a brief glimpse of the restored interactive mirror:
 
  <video width="100%" height="100%" controls>
   <source src="{{ BASE_PATH }}/images/2020/06/mirror.mp4" type="video/mp4" alt="Mirror video">
   Your browser does not support the video tag.
 </video>
 
+## Add missing items
+
+On a number of occasions the site uses Javascript to open items in a popup window. [Here's](https://ziklies.home.xs4all.nl/woonk/woon03.html) an example:
+
+```HTML
+<A HREF="javascript:openit('tvplus.mov')">
+```
+
+These items are not picked up by wget, which means they are missing from the crawl. I identified these cases using this command:
+
+```
+grep -r "javascript:openit" ~/kb/liesbets-atelier/liesbets-atelier/ > javascript-open.txt
+```
+
+This identified 2 missing Quicktime movies, and an HTML file. The latter in turn contained a link to a Shockwave file, which was missing as well. I used wget to download these missing items:
+
+```
+wget https://ziklies.home.xs4all.nl/woonk/tvplus.mov
+```
+
 ## Remaining issues
 
-Toilet door, midi files, Shockwave file, QuickTime movies (toilet page, can be played by external players, so could be fixed by migrating).
+Although the above modifications restore most of the broken features, there are still an number of unresolved issues.
+
+### Interactive toilet door still not working
+
+The [toilet page](https://ziklies.home.xs4all.nl/e-toilet.html) has an interactive feature where visitors can scratch a message onto a virtual toilet door. This works by way of an external form[^6] that sends the entered message by e-mail. The ZIP file that Zikkenheimer sent us contains a Python script that generates a GIF image of the toilet door with the received message added to it, but it isn't entirely clear how this script interfaces with the e-mail component[^7]. For now, I left this unchanged.
+
+### Unsupported file formats
+
+The site also uses a number of file formats that are not supported by modern browser. Some examples:
+
+- The [living room](https://ziklies.home.xs4all.nl/woonk/e-woon03.html) features a clickable TV-set that is supposed to open a [Quicktime video](http://fileformats.archiveteam.org/wiki/Quicktime) in a pop-up window. In the latest (77.0.1) version of the Firefox browser, it triggers the following message:
+
+  ![No video with supported format and MIME type found]({{ BASE_PATH }}/images/2020/06/quicktime-ff.png)
+
+In Chromium (83.0.4103.61), the pop-up window is empty, but it does download the file, so it can be played with external media player software.
+
+- The clickable stereo on the same page links to a [Sun Audio](http://fileformats.archiveteam.org/wiki/AU) file. Depending on the browser used, clicking the link either activates a prompt to play the file in a external player (Firefox), or it is simply downloaded (Chromium)[^8].
+
+- [This page](https://ziklies.home.xs4all.nl/slaapk/e-slaapa.html) features an embedded alarm clock in MIDI format, which is also not natively supported by modern web browsers. Chromium does download the file, whereas Firefox appears to ignore it altogether.
+
+- Last but not least, the bedroom page links to [this](https://ziklies.home.xs4all.nl/slaapk/gspot/index.html), which in turn [links](https://ziklies.home.xs4all.nl/slaapk/gspot/gspot.dcr) to an embedded [Adobe Shockwave file](https://en.wikipedia.org/wiki/Adobe_Shockwave). Adobe [stopped supporting this format in 2019](https://helpx.adobe.com/shockwave/shockwave-end-of-life-faq.html). As a result, the format is no longer supported in web browsers. With no alternative rendering software available, the format is now functionally obsolete.
+
+I haven't addressed any of these issues in the current restoration attempt. A possible solution would be to use emulation or virtualization to view the site in a late-'90s web browser[^9]. This may be worth further investigation.
 
 ## Serve with web server
 
@@ -195,3 +237,11 @@ Below posts (both in Dutch) give some additional background information about th
 [^4]: I later found out these images are still present on the live site (but since they are not referenced by any of its pages they aren't picked up by a web crawl).
 
 [^5]: Under Linux this is simply a matter of issuing a command like `chmod 755 barbie.cgi`.
+
+[^6]: Documented here: <https://www.xs4all.nl/service/installeren/hosting/mail-a-form-toevoegen/>.
+
+[^7]: The script is also written for Python 1.4, and some of the code is incompatible with modern (Python 3) interpreters. It would probably be possible to update it to Python 3 pretty easily.
+
+[^8]: I'm not actually sure if this behavior was any different on late-'90s browsers.
+
+[^9] See e.g. [oldweb.today](http://oldweb.today/).
