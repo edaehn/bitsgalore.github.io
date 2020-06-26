@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Restoring Liesbet's Virtual Home, a digital treasure from the early Dutch web  
-tags: [web-archaeology, web-archiving, xs4all]
+tags: [web-archaeology, web-archiving, XS4ALL]
 comment_id: 72
 ---
 
