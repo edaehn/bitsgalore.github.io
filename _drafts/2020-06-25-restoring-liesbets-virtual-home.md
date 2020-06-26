@@ -67,7 +67,8 @@ I then ran a recursive diff on the output directories of both the original crawl
 diff -r ./wget-site/ziklies.home.xs4all.nl/ ./wget-toilet/ziklies.home.xs4all.nl/ > diff-site-toilet.txt
 ```
 
-This confirmed that the "toilet" crawl contained everything that is also in the original crawl. So, I used the result of this "toilet" crawl as a basis for all subsequent restoration steps.
+This confirmed that the "toilet" crawl contained everything that is also in the original crawl. So, I used the result of this "toilet" crawl as a basis for all subsequent restoration steps. In the following sections I will go through the whole restoration process. More details are available in a separate, minimally edited [Restoration notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-restoration-notes.md) document.
+
 
 ## Fix links to toilet
 
@@ -186,7 +187,7 @@ The site also uses a number of file formats that are not supported by modern bro
 
   ![No video with supported format and MIME type found]({{ BASE_PATH }}/images/2020/06/quicktime-ff.png)
 
-In Chromium (83.0.4103.61), the pop-up window is empty, but it does download the file, so it can be played with external media player software.
+  In Chromium (83.0.4103.61), the pop-up window is empty, but it does download the file, so it can be played with external media player software.
 
 - The clickable stereo on the same page links to a [Sun Audio](http://fileformats.archiveteam.org/wiki/AU) file. Depending on the browser used, clicking the link either activates a prompt to play the file in a external player (Firefox), or it is simply downloaded (Chromium)[^8].
 
@@ -198,48 +199,46 @@ I haven't addressed any of these issues in the current restoration attempt. A po
 
 ## Serve with Apache web server
 
-Throughout the restoration process I mostly used Python's built-in [http.server](https://docs.python.org/3/library/http.server.html) to test any changes I made. This is a lightweight web server that doesn't require any elaborate configuration, with no the need to copy files to reserved locations on the file system. It does have some limitations that make it unsuitable for production use, so for serving the "completed" site I set up and configured an [Apache](https://httpd.apache.org/) web server instance. This allowed me to have the restored version of Liesbet's Virtual Home running on my local machine, accessible from its original URL:
+Throughout the restoration process I mostly used Python's built-in [http.server](https://docs.python.org/3/library/http.server.html) to test any changes I made. This is a lightweight web server that doesn't require any elaborate configuration, with no need to copy files to reserved locations on the file system. It does have some limitations that make it unsuitable for production use, so for serving the "completed" site I set up and configured an [Apache](https://httpd.apache.org/) web server instance. This allowed me to have the restored version of Liesbet's Virtual Home running on my local machine, accessible from its original URL:
 
 ![Screenshot of Liesbet's Virtual Home, served with local Apache instance]({{ BASE_PATH }}/images/2020/06/atelier-local-apache.png)
 
-The installation and configuration process I followed is described in detail by this separate [Apache setup notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-apache-notes.md) document.
+The installation and configuration process I followed is described in detail in this separate [Apache setup notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-apache-notes.md) document.
 
-## Crawl restored site to WARC
+## Capture restored site to WARC
 
-Like most web archives, the KB uses the [WARC](https://en.wikipedia.org/wiki/Web_ARChive) format for storing archived web sites. Since crawling offline web content is a subject I'd been [working on earlier as part of the NL-menu rescue operation]({{ BASE_PATH }}/2018/07/11/crawling-offline-web-content-the-nl-menu-case), I started with [this wget-based script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-local-site.sh), which is a modified version of the script I uses for NL-menu. However, the wget crawl didn't adequately capture the script behind the [interactive bedroom mirror](https://ziklies.home.xs4all.nl/slaapk/e-slaap1.html). Some tests with the [Webrecorder Desktop App](https://github.com/webrecorder/webrecorder-desktop) showed that Webrecorder was able to capture individual input combinations of the form linked to the script, but this required manual selection of each combination. With 512 possible combinations, this was not a viable solution, and I needed some way to automate this. Happily, several people responded to [my request for help on Twitter](https://twitter.com/bitsgalore/status/1275405890947108866). Webrecorder author Ilya Kreymer responded that the [warcio library](https://github.com/webrecorder/warcio) (of which is he is also the lead developer) is able to do this sort of thing, and he also[provided some example code](https://twitter.com/IlyaKreymer/status/1275440674687471617). A quick test confirmed Ilya's approach worked,  after which I re-wrote my existing wget-based Bash script into a Python script that uses only warcio. The script is [available here](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-ziklies-local.py).
+Like most web archives, the KB uses the [WARC](https://en.wikipedia.org/wiki/Web_ARChive) format for storing archived web sites. Since capturing offline web content is a subject I'd been [working on earlier as part of the NL-menu rescue operation]({{ BASE_PATH }}/2018/07/11/crawling-offline-web-content-the-nl-menu-case), I started with [this wget-based script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-local-site.sh), which is a modified version of the script I used for NL-menu. However, the wget crawl didn't adequately capture the script behind the [interactive bedroom mirror](https://ziklies.home.xs4all.nl/slaapk/e-slaap1.html). Some tests with the [Webrecorder Desktop App](https://github.com/webrecorder/webrecorder-desktop) showed that Webrecorder was able to capture individual input combinations of the form linked to the script, but this required manual input for each combination. With 512 possible combinations, this was not a viable solution, and I needed some way to automate this. Happily, several people responded to [my request for help on Twitter](https://twitter.com/bitsgalore/status/1275405890947108866). Webrecorder author Ilya Kreymer responded I might want to have a look at the [warcio library](https://github.com/webrecorder/warcio) (of which is he is also the lead developer), and even better he [provided some example code](https://twitter.com/IlyaKreymer/status/1275440674687471617) that showed how to do this. A quick test confirmed Ilya's approach worked, after which I re-wrote my existing wget-based Bash script into a Python script that uses only warcio. The script is [available here](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-ziklies-local.py).
 
 ## Render WARC with Pywb
 
+I finally verified the WARC capture by importing it in [Pywb](https://github.com/webrecorder/pywb). More details on this can be found in my separate [WARC capture and rendering notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-warc-notes.md). Rendering the WARC did not result in any problems, and to illustrate this below screenshot shows one output combination of the interactive bedroom mirror:
 
-[](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-warc-notes.md)
+![Output of interactive bedroom mirror script, rendered from WARC capture]({{ BASE_PATH }}/images/2020/06/mirror-pywb.png)
 
-Wget, doesn't capture behavior of mirror script, asked on Twitter, Ilya, warcio.
+## Conclusions
 
-<!--
-
-Eerste contact met Liesbet via Jak Boumans:
-
-[Twitter](https://twitter.com/DigiVerleden/status/1131885560908406784). Noemen in dankwoord.
-
-Noem ook financiële bijdragen van het [SIDN Fonds](https://www.sidnfonds.nl) en [Stichting Internet4all](https://www.stichtinginternet4all.nl/).
-
--->
+Restoring Liesbet's Virtual Home has been quite a laborious process, and the very length of this blog post is probably an indication of that. Nevertheless, this effort is justified given the value and historical significance of this homepage. It also involved some choices that, from an authenticity point of view, are somewhat ambiguous. An example is the replacement of the missing server-side image maps by the more modern client-side variety. The experience gained from this project will also be useful for an upcoming attempt to restore a collection of old corporate websites from source data [that we recovered from data tapes last year]({{ BASE_PATH }}/2019/09/09/recovering-90s-data-tapes-experiences-kb-web-archaeology).
 
 ## Acknowledgments
 
-Liesbet Zikkenheimer, Jak Boumans, Ilya Kreymer, SIDN Fund, Stichting Internet4all, Kees Teszelszky.
+I would like to thank Liesbet Zikkenheimer for making the offline data of Liesbet's Virtual Home available to us for this project. Jak Boumans is thanked for alerting us to this unique homepage, and for establishing the contact with its creator. Ilya Kreymer is thanked for his suggestion on warcio, and more generally for creating the Webrecorder software suite, without which much of this work would simply be impossible. Thanks are also due to Kees Teszelszky. Finally, this work was financially supported by the [SIDN Fund](https://www.sidn.nl/en) and [Stichting Internet4all](https://www.stichtinginternet4all.nl/).
 
 ## Additional resources
 
 The following notes provide more details on the restoration steps, the Apache server setup and the WARC capture process, respectively:
 
 - [Liesbet's atelier restoration notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-restoration-notes.md)
+
 - [Liesbet's Atelier Apache setup notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-apache-notes.md)
+
 - [Liesbet's atelier WARC capture and rendering notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-warc-notes.md)
+
+- [Processing scripts](https://github.com/KBNLresearch/xs4all-resources/tree/master/scripts)
 
 Below posts (both in Dutch) give some additional background information about the XS4ALL homepages rescue initiative:
 
 - [Bewaren voor iedereen: de opbouw van de webcollectie XS4ALL-homepages](https://www.kb.nl/blogs/duurzame-toegang/bewaren-voor-iedereen-de-opbouw-van-de-webcollectie-xs4all-homepages)
+
 - [Redden wat van waarde is: webarchivering homepages XS4ALL](https://www.sidnfonds.nl/nieuws/redden-wat-van-waarde-is-webarchivering-homepages-xs4all)
 
 
