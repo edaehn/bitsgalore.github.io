@@ -16,7 +16,7 @@ Introduction here ...
 
 ## XS4ALL
 
-[XS4ALL](https://en.wikipedia.org/wiki/XS4ALL) is one of the oldest internet service providers in the Netherlands. The company was founded in 1993, and has its roots in the Dutch hacker scene. Since its inception, many pioneers of the Dutch internet hosted their homepages under the XS4ALL web domain. Some of these homepages have been online for more than 25 years, and as such they rank among the oldest born-digital publications of the Dutch web.
+[XS4ALL](https://en.wikipedia.org/wiki/XS4ALL) is one of the oldest internet service providers in the Netherlands, and even one of the oldest providers in the whole world. The company was founded in 1993, and has its roots in the Dutch hacker scene. Since its inception, many pioneers of the Dutch internet hosted their homepages under the XS4ALL web domain. Some of these homepages have been online for more than 25 years, and as such they rank among the oldest born-digital publications of the Dutch web.
 
 In 2019, parent company KPN (which bought XS4ALL in 1998) announced their intention to phase out the XS4ALL brand. Eventually, all of the company's services will continue under the KPN brand. This poses an acute threat to much of the (often unique) digital heritage that is hosted on the XS4ALL domain, as in the past a similar situation with provider [Euronet](https://nl.wikipedia.org/wiki/EuroNet) resulted in [the loss of thousands of early Dutch homepages](https://www.tandfonline.com/doi/full/10.1080/24701475.2019.1603951).
 
