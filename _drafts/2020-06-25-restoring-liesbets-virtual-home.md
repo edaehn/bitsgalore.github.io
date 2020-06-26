@@ -133,7 +133,7 @@ Note that the values of the "coords" attributes are identical to the area defini
   Your browser does not support the video tag.
 </video>
 
-The site contains 4 more broken server-side image maps. I replaced all of these with client-side image maps in the restored version, which makes the image map navigation fully functional again.
+The site contains 4 more broken server-side image maps. I replaced all of these with client-side image maps in the restored version. For [one page](https://ziklies.home.xs4all.nl/start.html) the corresponding image map from the ZIP file contained some odd errors, so here I took the liberty of using the image map of the page's [English-language counterpart](https://ziklies.home.xs4all.nl/e-start.html), and then updated all links accordingly. After these changes the image map navigation is fully functional again.
 
 ## Fix links to old website domain
 
@@ -196,9 +196,22 @@ In Chromium (83.0.4103.61), the pop-up window is empty, but it does download the
 
 I haven't addressed any of these issues in the current restoration attempt. A possible solution would be to use emulation or virtualization to view the site in a late-'90s web browser[^9]. This may be worth further investigation.
 
-## Serve with web server
+## Serve with Apache web server
 
-## Crawl restored site to warc
+Throughout the restoration process I mostly used Python's built-in [http.server](https://docs.python.org/3/library/http.server.html) to test any changes I made. This is a lightweight web server that doesn't require any elaborate configuration, with no the need to copy files to reserved locations on the file system. It does have some limitations that make it unsuitable for production use, so for serving the "completed" site I set up and configured an [Apache](https://httpd.apache.org/) web server instance. This allowed me to have the restored version of Liesbet's Virtual Home running on my local machine, accessible from its original URL:
+
+![Screenshot of Liesbet's Virtual Home, served with local Apache instance]({{ BASE_PATH }}/images/2020/06/atelier-local-apache.png)
+
+The installation and configuration process I followed is described in detail by this separate [Apache setup notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-apache-notes.md) document.
+
+## Crawl restored site to WARC
+
+Like most web archives, the KB uses the [WARC](https://en.wikipedia.org/wiki/Web_ARChive) format for storing archived web sites. Since crawling offline web content is a subject I'd been [working on earlier as part of the NL-menu rescue operation]({{ BASE_PATH }}/2018/07/11/crawling-offline-web-content-the-nl-menu-case), I started with [this wget-based script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-local-site.sh), which is a modified version of the script I uses for NL-menu. However, the wget crawl didn't adequately capture the script behind the [interactive bedroom mirror](https://ziklies.home.xs4all.nl/slaapk/e-slaap1.html). Some tests with the [Webrecorder Desktop App](https://github.com/webrecorder/webrecorder-desktop) showed that Webrecorder was able to capture individual input combinations of the form linked to the script, but this required manual selection of each combination. With 512 possible combinations, this was not a viable solution, and I needed some way to automate this. Happily, several people responded to [my request for help on Twitter](https://twitter.com/bitsgalore/status/1275405890947108866). Webrecorder author Ilya Kreymer responded that the [warcio library](https://github.com/webrecorder/warcio) (of which is he is also the lead developer) is able to do this sort of thing, and he also[provided some example code](https://twitter.com/IlyaKreymer/status/1275440674687471617). A quick test confirmed Ilya's approach worked,  after which I re-wrote my existing wget-based Bash script into a Python script that uses only warcio. The script is [available here](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-ziklies-local.py).
+
+## Render WARC with Pywb
+
+
+[](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-warc-notes.md)
 
 Wget, doesn't capture behavior of mirror script, asked on Twitter, Ilya, warcio.
 
@@ -244,4 +257,4 @@ Below posts (both in Dutch) give some additional background information about th
 
 [^8]: I'm not actually sure if this behavior was any different on late-'90s browsers.
 
-[^9] See e.g. [oldweb.today](http://oldweb.today/).
+[^9]: See e.g. [oldweb.today](http://oldweb.today/).
