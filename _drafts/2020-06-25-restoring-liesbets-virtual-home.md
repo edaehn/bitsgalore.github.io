@@ -46,7 +46,7 @@ This raised the question whether it would be possible to create a "restored" ver
 
 After my colleague Kees Teszelszky got in contact with Zikkenheimer, she sent us a ZIP file with a locally stored copy of the site's directory structure. However, that local copy had several issues as well, and it quickly became obvious that it couldn't be used as a basis for a restored version of the site. However, the ZIP file did contain both the image map files as well as the scripts that were missing from the live site.
 
-## Crawl the toilet
+## Crawling the toilet
 
 I started out by crawling the live site with [this simple Bash script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrapesite.sh) that uses the [wget](https://www.gnu.org/software/wget/) tool. This worked reasonably well, but on closer inspection the [toilet](https://ziklies.home.xs4all.nl/e-toilet.html) pages of the site turned out to be missing from the result. Digging a bit deeper revealed the cause: these pages are simply not referenced from their [parent pages](https://ziklies.home.xs4all.nl/e-start.html). The solution was to repeat the crawl, using the toilet pages (both the Dutch and English-language version) as seed URLs. I did this by creating a text file (seed-urls.txt) with both URLs:
 
@@ -70,7 +70,7 @@ diff -r ./wget-site/ziklies.home.xs4all.nl/ ./wget-toilet/ziklies.home.xs4all.nl
 This confirmed that the "toilet" crawl contained everything that is also in the original crawl. So, I used the result of this "toilet" crawl as a basis for all subsequent restoration steps. In the following sections I will go through the whole restoration process. More details are available in a separate, minimally edited [Restoration notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-restoration-notes.md) document.
 
 
-## Fix links to toilet
+## Missing links to toilet
 
 As a first modification, I changed the erroneous "toilet" links on the [start.html](https://ziklies.home.xs4all.nl/start.html) and [e-start.html](https://ziklies.home.xs4all.nl/e-start.html) pages. Looking at the English-language page:
 
@@ -100,7 +100,7 @@ Since a restoration like this involves making changes to a unique digital herita
 
 This way, the commit history provides a complete audit trail of all changes.
 
-## Restore image maps
+## Image maps
 
 A number of pages on the site use HTML [image maps](https://en.wikipedia.org/wiki/Image_map). An example is the door image on the [front page](https://ziklies.home.xs4all.nl/). This is the corresponding HTML source:
 
@@ -136,11 +136,11 @@ Note that the values of the "coords" attributes are identical to the area defini
 
 The site contains 4 more broken server-side image maps. I replaced all of these with client-side image maps in the restored version. For [one page](https://ziklies.home.xs4all.nl/start.html) the corresponding image map from the ZIP file contained some odd errors, so here I took the liberty of using the image map of the page's [English-language counterpart](https://ziklies.home.xs4all.nl/e-start.html), and then updated all links accordingly. After these changes the image map navigation is fully functional again.
 
-## Fix links to old website domain
+## Links to old website domain
 
 Like all XS4ALL homepages, Liesbet's Virtual Home was originally hosted as a directory under XS4ALL's root domain (<http://www.xs4all.nl/~ziklies/>). At some point XS4ALL gave its customers their own sub-domain (in this case the current address at <https://ziklies.home.xs4all.nl/>), and redirected any URLs pointing to the "old" location to this sub-domain. Internally, Liesbet's Virtual Home uses a mixture of relative URLs and absolute ones that still use the old location. This causes several issues if the site is hosted locally on a web server. Although it may be possible to remedy these issues using some clever server configuration, I couldn't quite get this working. I ended up writing a [simple Bash script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/rewriteurls.sh) that replaces all references to the "old" location with relative links (which always work, irrespective of the domain). This had an unintentional side-effect for the [statistics page](https://ziklies.home.xs4all.nl/statistics.html), so I subsequently undid the change for this single page (which can be done with 1 single Git command).
 
-## Restore interactive bedroom mirror
+## Interactive bedroom mirror
 
 The [bedroom](https://ziklies.home.xs4all.nl/slaapk/e-slaap1.html) of Liesbet's Virtual Home features an "interactive mirror". It is a web form where the visitor can select combinations of clothing, hairstyle and earrings. After clicking on the "have a look into the mirror" button, the selected combination is shown as an image[^3]. However, as the underlying scripts are missing from the live site, it now gives a [Page Not Found](https://en.wikipedia.org/wiki/HTTP_404) error. As with the image maps before, the missing (Perl) scripts could be recovered from the ZIP file provided by Zikkenheimer. I added these to a (newly created) "cgi-bin" directory. I also had to make the scripts executable[^5], and adjust their [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) strings to a valid interpreter location on my local machine (which, in my case, was different from the location used by the original web server). In addition, an inspection of the scripts showed them to rely on a set of 21 GIF images that were not included in the crawl. Again, I used the local ZIP file to fill this gap[^4].
 
@@ -151,7 +151,7 @@ The main challenge was then to make the scripts play nicely with a web server. T
   Your browser does not support the video tag.
 </video>
 
-## Add missing items
+## Missing items
 
 On a number of occasions the site uses Javascript to open items in a popup window. [Here's](https://ziklies.home.xs4all.nl/woonk/woon03.html) an example:
 
@@ -175,7 +175,7 @@ wget https://ziklies.home.xs4all.nl/woonk/tvplus.mov
 
 Although the above modifications restore most of the broken features, there are still an number of unresolved issues.
 
-### Interactive toilet door still not working
+### Interactive toilet door
 
 The [toilet page](https://ziklies.home.xs4all.nl/e-toilet.html) has an interactive feature where visitors can scratch a message onto a virtual toilet door. This works by way of an external form[^6] that sends the entered message by e-mail. The ZIP file that Zikkenheimer sent us contains a Python script that generates a GIF image of the toilet door with the received message added to it, but it isn't entirely clear how this script interfaces with the e-mail component[^7]. For now, I left this unchanged.
 
@@ -197,7 +197,7 @@ The site also uses a number of file formats that are not supported by modern bro
 
 I haven't addressed any of these issues in the current restoration attempt. A possible solution would be to use emulation or virtualization to view the site in a late-'90s web browser[^9]. This may be worth further investigation.
 
-## Serve with Apache web server
+## Serving the site
 
 Throughout the restoration process I mostly used Python's built-in [http.server](https://docs.python.org/3/library/http.server.html) to test any changes I made. This is a lightweight web server that doesn't require any elaborate configuration, with no need to copy files to reserved locations on the file system. It does have some limitations that make it unsuitable for production use, so for serving the "completed" site I set up and configured an [Apache](https://httpd.apache.org/) web server instance. This allowed me to have the restored version of Liesbet's Virtual Home running on my local machine, accessible from its original URL:
 
@@ -205,11 +205,11 @@ Throughout the restoration process I mostly used Python's built-in [http.server]
 
 The installation and configuration process I followed is described in detail in this separate [Apache setup notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-apache-notes.md) document.
 
-## Capture restored site to WARC
+## WARC capture
 
 Like most web archives, the KB uses the [WARC](https://en.wikipedia.org/wiki/Web_ARChive) format for storing archived web sites. Since capturing offline web content is a subject I'd been [working on earlier as part of the NL-menu rescue operation]({{ BASE_PATH }}/2018/07/11/crawling-offline-web-content-the-nl-menu-case), I started with [this wget-based script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-local-site.sh), which is a modified version of the script I used for NL-menu. However, the wget crawl didn't adequately capture the script behind the [interactive bedroom mirror](https://ziklies.home.xs4all.nl/slaapk/e-slaap1.html). Some tests with the [Webrecorder Desktop App](https://github.com/webrecorder/webrecorder-desktop) showed that Webrecorder was able to capture individual input combinations of the form linked to the script, but this required manual input for each combination. With 512 possible combinations, this was not a viable solution, and I needed some way to automate this. Happily, several people responded to [my request for help on Twitter](https://twitter.com/bitsgalore/status/1275405890947108866). Webrecorder author Ilya Kreymer responded I might want to have a look at the [warcio library](https://github.com/webrecorder/warcio) (of which is he is also the lead developer), and even better he [provided some example code](https://twitter.com/IlyaKreymer/status/1275440674687471617) that showed how to do this. A quick test confirmed Ilya's approach worked, after which I re-wrote my existing wget-based Bash script into a Python script that uses only warcio. The script is [available here](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-ziklies-local.py).
 
-## Render WARC with Pywb
+## Rendering the WARC with Pywb
 
 I finally verified the WARC capture by importing it in [Pywb](https://github.com/webrecorder/pywb). More details on this can be found in my separate [WARC capture and rendering notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-warc-notes.md). Rendering the WARC did not result in any problems, and to illustrate this below screenshot shows one output combination of the interactive bedroom mirror:
 
