@@ -219,7 +219,7 @@ I finally verified the WARC capture by importing it in [Pywb](https://github.com
 
 Restoring Liesbet's Virtual Home has been quite a laborious process, and the very length of this blog post is probably an indication of that. Nevertheless, this effort is justified given the value and historical significance of this homepage. It also involved some choices that, from an authenticity point of view, are somewhat ambiguous. An example is the replacement of the missing server-side image maps by the more modern client-side variety. The experience gained from this project will also be useful for an upcoming attempt to restore a collection of old corporate websites from source data [that we recovered from data tapes last year]({{ BASE_PATH }}/2019/09/09/recovering-90s-data-tapes-experiences-kb-web-archaeology).
 
-## Acknowledgments
+## Acknowledgements
 
 I would like to thank Liesbet Zikkenheimer for making the offline data of Liesbet's Virtual Home available to us for this project. Jak Boumans is thanked for alerting us to this unique homepage, and for establishing the contact with its creator. Ilya Kreymer is thanked for his suggestion on warcio, and more generally for creating the Webrecorder software suite, without which much of this work would simply be impossible. Thanks are also due to Kees Teszelszky. Finally, this work was financially supported by the [SIDN Fund](https://www.sidn.nl/en) and [Stichting Internet4all](https://www.stichtinginternet4all.nl/).
 
