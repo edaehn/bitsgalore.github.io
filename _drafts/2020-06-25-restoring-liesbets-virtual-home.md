@@ -207,7 +207,7 @@ Throughout the restoration process I mostly used Python's built-in [http.server]
 
 ![Screenshot of Liesbet's Virtual Home, served with local Apache instance]({{ BASE_PATH }}/images/2020/06/atelier-local-apache.png)
 
-The installation and configuration process I followed is described in detail in this separate [Apache setup notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-apache-notes.md) document.
+The installation and configuration process I followed is described in detail in a separate [Apache setup notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-apache-notes.md) document.
 
 ## WARC capture
 
