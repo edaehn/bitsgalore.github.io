@@ -329,4 +329,4 @@ Below posts (both in Dutch) give some additional background information about th
 
 [^8]: I'm not actually sure if this behavior was any different on late-'90s browsers.
 
-[^9]: I did try to open the page using [oldweb.today](http://oldweb.today/), but none of the browser environments I tried had the necessary plugin installed.
+[^9]: I did try to open the page using [oldweb.today](http://oldweb.today/), but none of the browser environments I tried had the necessary Shockwave plugin installed.
