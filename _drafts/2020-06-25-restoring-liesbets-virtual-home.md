@@ -207,7 +207,66 @@ The installation and configuration process I followed is described in detail in 
 
 ## WARC capture
 
-Like most web archives, the KB uses the [WARC](https://en.wikipedia.org/wiki/Web_ARChive) format for storing archived web sites. Since capturing offline web content is a subject I'd been [working on earlier as part of the NL-menu rescue operation]({{ BASE_PATH }}/2018/07/11/crawling-offline-web-content-the-nl-menu-case), I started with [this wget-based script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-local-site.sh), which is a modified version of the script I used for NL-menu. However, the wget crawl didn't adequately capture the script behind the [interactive bedroom mirror](https://ziklies.home.xs4all.nl/slaapk/e-slaap1.html). Some tests with the [Webrecorder Desktop App](https://github.com/webrecorder/webrecorder-desktop) showed that Webrecorder was able to capture individual input combinations of the form linked to the script, but this required manual input for each combination. With 512 possible combinations, this was not a viable solution, and I needed some way to automate this. Happily, several people responded to [my request for help on Twitter](https://twitter.com/bitsgalore/status/1275405890947108866). Webrecorder author Ilya Kreymer responded I might want to have a look at the [warcio library](https://github.com/webrecorder/warcio) (of which is he is also the lead developer), and even better he [provided some example code](https://twitter.com/IlyaKreymer/status/1275440674687471617) that showed how to do this. A quick test confirmed Ilya's approach worked, after which I re-wrote my existing wget-based Bash script into a Python script that uses only warcio. The script is [available here](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-ziklies-local.py).
+Like most web archives, the KB uses the [WARC](https://en.wikipedia.org/wiki/Web_ARChive) format for storing archived web sites. Since capturing offline web content is a subject I'd been [working on earlier as part of the NL-menu rescue operation]({{ BASE_PATH }}/2018/07/11/crawling-offline-web-content-the-nl-menu-case), I started with [this wget-based script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-local-site.sh), which is a modified version of the script I used for NL-menu. However, the wget crawl didn't adequately capture the form (and script) behind the [interactive bedroom mirror](https://ziklies.home.xs4all.nl/slaapk/e-slaap1.html). Some tests with the [Webrecorder Desktop App](https://github.com/webrecorder/webrecorder-desktop) showed that Webrecorder was able to capture individual input combinations, but this required manual input for each combination. With 512 possible combinations, this was not a viable solution, so I needed some way to automate this. Happily, several people responded to [my request for help on Twitter](https://twitter.com/bitsgalore/status/1275405890947108866). Webrecorder author Ilya Kreymer responded I might want to have a look at the [warcio library](https://github.com/webrecorder/warcio) (of which is he is also the lead developer), and even better he [provided some example code](https://twitter.com/IlyaKreymer/status/1275440674687471617) that showed how to do this. A quick test confirmed Ilya's approach worked, after which I re-wrote my existing wget-based Bash script into a Python script that uses only warcio. For a brief explanation of how this works, have a look at the input form below (for brevity I edited out some of the input choices):
+
+```HTML
+<FORM METHOD="POST"
+ACTION="/cgi-bin/barbie1.cgi">
+
+<DL>
+<DD><b> First: wich pants or skirt? </b><br>
+<INPUT TYPE="radio" NAME="onder" VALUE="1a" > A1
+<INPUT TYPE="radio" NAME="onder" VALUE="2a" > A2
+ ::
+ ::
+<INPUT TYPE="radio" NAME="onder" VALUE="7a" > A7<br>
+</DL>
+<br>
+<DL>
+<DD><b>Second: wich top, sweater or blouse fits? </b><br>
+<INPUT TYPE="radio" NAME="midden" VALUE="1b" > B1
+<INPUT TYPE="radio" NAME="midden" VALUE="2b" > B2
+ ::
+ ::
+<INPUT TYPE="radio" NAME="midden" VALUE="7b" > B7<br>
+</DL>
+<br>
+<DL>
+<DD><b>Last: wich earrings and what to do with her hair? </b><br>
+<INPUT TYPE="radio" NAME="top" VALUE="1c" > C1
+<INPUT TYPE="radio" NAME="top" VALUE="2c" > C2
+ ::
+ ::
+<INPUT TYPE="radio" NAME="top" VALUE="7c" > C7<br>
+</DL><br>
+<center>
+<INPUT TYPE="submit" VALUE="have a look into the mirror">
+<br></center>
+</FORM>
+```
+
+Some key points:
+
+- The form sets three variables: "onder", "midden" and "top". Each of these can have 7 pre-defined values (with ranges [1a, 7a], [1b, 7b] and [1c, 7c], respectively).
+
+- The data that are entered in the form are sent to the server using a [POST](https://en.wikipedia.org/wiki/POST_(HTTP)) request.
+
+With warcio, an individual set of input combinations can be captured like this:
+
+
+```python
+from warcio.capture_http import capture_http
+import requests
+
+url = 'http://ziklies.home.xs4all.nl'
+warcFile = 'ziklies.home.xs4all.nl.gz'
+
+with capture_http(warcFile):
+    requests.post(url, data={'onder': '1a', 'midden': '1b', 'top': '1c'})
+
+```
+
+Note how the *data* parameter holds a dictionary with the three variables and their associated values. To capture the form's full behavior, we can simply iterate over all input combinations, and then capture each of them. This can be seen in the full script, which is [available here](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-ziklies-local.py).
 
 ## Rendering the WARC with Pywb
 
