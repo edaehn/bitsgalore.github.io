@@ -292,6 +292,8 @@ I would like to thank Liesbet Zikkenheimer for making the offline data of Liesbe
 
 ## Additional resources
 
+### Detailed working notes
+
 The following notes provide more details on the restoration steps, the Apache server setup and the WARC capture process, respectively:
 
 - [Liesbet's atelier restoration notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-restoration-notes.md)
@@ -300,7 +302,11 @@ The following notes provide more details on the restoration steps, the Apache se
 
 - [Liesbet's atelier WARC capture and rendering notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-warc-notes.md)
 
-- [Processing scripts](https://github.com/KBNLresearch/xs4all-resources/tree/master/scripts)
+### Processing scripts
+
+All processing scripts used as part of this work are [available here](https://github.com/KBNLresearch/xs4all-resources/tree/master/scripts).
+
+### More information about the XS4ALL homepages rescue initiative
 
 Below posts (both in Dutch) give some additional background information about the XS4ALL homepages rescue initiative:
 
