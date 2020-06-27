@@ -116,7 +116,11 @@ poly http://www.xs4all.nl/~ziklies/start.html 0,56 76,40 91,43 89,67 76,62 6,77 
 poly http://www.xs4all.nl/~ziklies/e-start.html 53,72 80,76 81,81 91,85 89,107 76,106 69,137 42,130 51,77
 ```
 
-The file simply defines areas within the image that are linked to URLs. Since *server-side* image maps [come with some caveats](https://eager.io/blog/a-quick-history-of-image-maps/), I took the liberty of re-implementing the server-side image map with a *client-side* image maps. These are functionally identical, but simpler and less likely to break[^2]. Instead of using an external file, a client-side image map is simply an embedded element inside the page, which means we can replace the `<A>` element in the previous HTML snippet by this:
+The file simply defines areas within the image that are linked to URLs.
+
+## From server-side to client-side image maps
+
+Since *server-side* image maps [come with some caveats](https://eager.io/blog/a-quick-history-of-image-maps/), I took the liberty of re-implementing the server-side image map with a *client-side* image maps. These are functionally identical, but simpler and less likely to break[^2]. Instead of using an external file, a client-side image map is simply an embedded element inside the page, which means we can replace the `<A>` element in the previous HTML snippet by this:
 
 ```HTML
 <img src="deurtje1.gif" usemap="#deurtje1Map" alt="deurtje 1" border="0">
