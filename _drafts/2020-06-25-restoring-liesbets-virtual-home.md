@@ -10,15 +10,13 @@ comment_id: 72
   <figcaption>Original artwork copyright &copy;Liesbet Zikkenheimer</figcaption>
 </figure>
 
-Introduction here ...
+In 2019, Dutch telecommunications company [KPN](https://en.wikipedia.org/wiki/KPN) announced its plans to phase out its subsidiary [XS4ALL](https://en.wikipedia.org/wiki/XS4ALL), which is one of the oldest internet service providers in the Netherlands. With this decision, thousands of homepages and personal web sites that are hosted under the XS4ALL domain are at risk of disappearing forever. The web archiving team of the National Library of the Netherlands (KB) has started an initiative to rescue a selection of these homepages, which includes some of the oldest born-digital publications of the Dutch web. This blog post describes an attempt to rescue and restore one of the oldest and most unique homepages from this collection: Liesbet's Virtual Home (Liesbet's Atelier), the personal web site of Dutch Internet pioneer Liesbet Zikkenheimer, which has a history that goes back to 1995. First I give some background information about XS4ALL, and the KB-led rescue initiative. Then I move on to the various (mostly technical) challenges involved in restoring Liesbet's Virtual Home. Finally, I address the challenges of capturing the restored site to an ingest-ready [WARC](https://en.wikipedia.org/wiki/Web_ARChive) file.
 
 <!-- more -->
 
 ## XS4ALL
 
-[XS4ALL](https://en.wikipedia.org/wiki/XS4ALL) is one of the oldest internet service providers in the Netherlands, and even one of the oldest providers in the whole world. The company was founded in 1993, and has its roots in the Dutch hacker scene. Since its inception, many pioneers of the Dutch internet hosted their homepages under the XS4ALL web domain. Some of these homepages have been online for more than 25 years, and as such they rank among the oldest born-digital publications of the Dutch web.
-
-In 2019, parent company KPN (which bought XS4ALL in 1998) announced their intention to phase out the XS4ALL brand. Eventually, all of the company's services will continue under the KPN brand. This poses an acute threat to much of the (often unique) digital heritage that is hosted on the XS4ALL domain, as in the past a similar situation with provider [Euronet](https://nl.wikipedia.org/wiki/EuroNet) resulted in [the loss of thousands of early Dutch homepages](https://www.tandfonline.com/doi/full/10.1080/24701475.2019.1603951).
+[XS4ALL](https://en.wikipedia.org/wiki/XS4ALL) is one of the oldest internet service providers in the Netherlands, and even one of the oldest providers in the whole world. The company was founded in 1993, and has its roots in the Dutch hacker scene. Since its inception, many pioneers of the Dutch internet hosted their homepages under the XS4ALL web domain. Some of these homepages have been online for more than 25 years, and as such they rank among the oldest born-digital publications of the Dutch web. In 2019, parent company KPN (which bought XS4ALL in 1998) announced their intention to phase out the XS4ALL brand. Eventually, all of the company's services will continue under the KPN brand. This poses an acute threat to much of the (often unique) digital heritage that is hosted under the XS4ALL domain, as in the past a similar situation with provider [Euronet](https://nl.wikipedia.org/wiki/EuroNet) resulted in [the loss of thousands of early Dutch homepages](https://www.tandfonline.com/doi/full/10.1080/24701475.2019.1603951).
 
 ## Rescuing the XS4ALL homepages
 
@@ -30,7 +28,7 @@ As of May 2020, the KB has selected [3370 homepages](https://www.kb.nl/blogs/duu
 
 ## Liesbet's Virtual Home
 
-One of these "treasures" is [Liesbet's Virtual Home](https://ziklies.home.xs4all.nl/) (in Dutch: Liesbet's Atelier). This is the old homepage of [Liesbet Zikkenheimer](http://zicnet.nl/), a Dutch Internet pioneer with a background in industrial and graphic design. Her homepage is a "treasure" for several reasons. First of all, it has a history that goes back to 1995, which makes it one of the oldest Dutch homepages that are still available today. Second, Zikkenheimer is an important figure in the history of the Dutch internet. To mention a few examples, in 1997 she developed and published [the online version of popular women's magazine Libelle](https://web.archive.org/web/19980526231446/http://www.libelle.nl/libelle/dezeweek/dezeweek.html). She also created web sites for the Margriet and Viva magazines, and developed, published and managed several well-known web portals that were specifically targeted at women. Finally, Liesbet's Virtual Home is unique because of its structure and design. The site is literally structured like a physical house. Each page represents a particular room, and to get from, say, the living room to the loft, one needs to navigate through a hallway and two flights of stairs. It also has some interactive features that were quite unique at the time of is creation. So, the site meets every possible "digital treasure" criterion.
+One of these "treasures" is [Liesbet's Virtual Home](https://ziklies.home.xs4all.nl/) (in Dutch: Liesbet's Atelier). This is the old homepage of [Liesbet Zikkenheimer](http://zicnet.nl/), a Dutch Internet pioneer with a background in industrial and graphic design. Her homepage is a "treasure" for several reasons. First of all, it has a history that goes back to 1995, which makes it one of the oldest Dutch homepages that are still available today. Second, Zikkenheimer is an important figure in the history of the Dutch internet. To mention a few examples, in 1997 she developed and published [the online version of popular women's magazine Libelle](https://web.archive.org/web/19980526231446/http://www.libelle.nl/libelle/dezeweek/dezeweek.html). She also created web sites for the Margriet and Viva magazines, and developed, published and managed several well-known web portals, most of which were primarily targeted at women. Finally, Liesbet's Virtual Home is unique because of its structure and design. The site is literally structured like a physical house. Each page represents a particular room, and to get from, say, the living room to the loft, one needs to navigate through a hallway and two flights of stairs. It also has some interactive features that were quite unique at the time of is creation. So, the site meets every possible "digital treasure" criterion.
 
 ## Problems with the live site
 
@@ -40,11 +38,11 @@ Even though Liesbet's Virtual Home [is still online](https://ziklies.home.xs4all
 
 - Some interactive features like [this bedroom mirror](https://ziklies.home.xs4all.nl/slaapk/e-slaap1.html) don't work anymore, because the underlying scripts are missing.
 
-This raised the question whether it would be possible to create a "restored" version of Liesbet's Virtual Home.
+This raised the question whether it would be possible to create a "restored" version of Liesbet's Virtual Home that has these features working again.
 
 ## Local copy of site data
 
-After my colleague Kees Teszelszky got in contact with Zikkenheimer, she sent us a ZIP file with a locally stored copy of the site's directory structure. However, that local copy had several issues as well, and it quickly became obvious that it couldn't be used as a basis for a restored version of the site. However, the ZIP file did contain both the image map files as well as the scripts that were missing from the live site.
+After my colleague Kees Teszelszky got in contact with Zikkenheimer, she sent us a ZIP file with a locally stored copy of the site's directory structure. However, that local copy had several issues as well, and it quickly became obvious it couldn't be used as a basis for a restored version of the site. However, the ZIP file did contain both the image map files as well as the scripts that are missing from the live site.
 
 ## Crawling the toilet
 
@@ -163,7 +161,7 @@ On a number of occasions the site uses Javascript to open items in a popup windo
 <A HREF="javascript:openit('tvplus.mov')">
 ```
 
-These items are not picked up by wget, which means they are missing from the crawl. I identified these cases using this command:
+These items are not picked up by wget, which means they were missing from the crawl. I identified these cases using this command:
 
 ```
 grep -r "javascript:openit" ~/kb/liesbets-atelier/liesbets-atelier/ > javascript-open.txt
@@ -185,7 +183,7 @@ The [toilet page](https://ziklies.home.xs4all.nl/e-toilet.html) has an interacti
 
 ### Unsupported file formats
 
-The site also uses a number of file formats that are not supported by modern browser. Some examples:
+The site also uses a number of file formats that are not supported by modern browsers. Some examples:
 
 - The [living room](https://ziklies.home.xs4all.nl/woonk/e-woon03.html) features a clickable TV-set that is supposed to open a [Quicktime video](http://fileformats.archiveteam.org/wiki/Quicktime) in a pop-up window. In the latest (77.0.1) version of the Firefox browser, it triggers the following message:
 
