@@ -284,7 +284,6 @@ warcFile = 'ziklies.home.xs4all.nl.gz'
 
 with capture_http(warcFile):
     requests.post(url, data={'onder': '1a', 'midden': '1b', 'top': '1c'})
-
 ```
 
 Note how the *data* parameter holds a dictionary with the three variables and their associated values. To capture the form's full behavior, we can simply iterate over all input combinations, and then capture each of them. Having confirmed that this worked, I re-wrote my existing wget-based Bash script into a Python script that only uses warcio. The script is [available here](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-ziklies-local.py).
@@ -293,7 +292,10 @@ Note how the *data* parameter holds a dictionary with the three variables and th
 
 I finally verified the WARC capture by importing it in [Pywb](https://github.com/webrecorder/pywb). More details on this can be found in my separate [WARC capture and rendering notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-warc-notes.md). Rendering the WARC did not result in any problems, and to illustrate this below screenshot shows one output combination of the interactive bedroom mirror:
 
-![Output of interactive bedroom mirror script, rendered from WARC capture]({{ BASE_PATH }}/images/2020/06/mirror-pywb.png)
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2020/06/mirror-pywb.png" alt="Mirror script screenshot">
+  <figcaption>Output of interactive bedroom mirror script, rendered from WARC capture.</figcaption>
+</figure>
 
 ## Conclusions
 
