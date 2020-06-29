@@ -7,7 +7,7 @@ comment_id: 72
 
 <figure class="image">
   <img src="{{ BASE_PATH }}/images/2020/06/liesbet-door.png" alt="Liesbet door">
-  <figcaption>Original artwork copyright &copy;Liesbet Zikkenheimer</figcaption>
+  <figcaption>Original artwork copyright &copy;Liesbet Zikkenheimer.</figcaption>
 </figure>
 
 In 2019, Dutch telecommunications company [KPN](https://en.wikipedia.org/wiki/KPN) announced its plans to phase out its subsidiary [XS4ALL](https://en.wikipedia.org/wiki/XS4ALL), which is one of the oldest internet service providers in the Netherlands. With this decision, thousands of homepages and personal web sites that are hosted under the XS4ALL domain are at risk of disappearing forever. The web archiving team of the National Library of the Netherlands (KB) has started an initiative to rescue a selection of these homepages, which includes some of the oldest born-digital publications of the Dutch web. This blog post describes an attempt to rescue and restore one of the oldest and most unique homepages from this collection: Liesbet's Virtual Home (Liesbet's Atelier), the personal web site of Dutch Internet pioneer Liesbet Zikkenheimer, which has a history that goes back to 1995. First I give some background information about XS4ALL, and the KB-led rescue initiative. Then I move on to the various (mostly technical) aspects of restoring Liesbet's Virtual Home. Finally, I address the challenges of capturing the restored site to an ingest-ready [WARC](https://en.wikipedia.org/wiki/Web_ARChive) file.
@@ -88,7 +88,10 @@ I applied a similar fix to the Dutch-language page.
 
 Since a restoration like this involves making changes to a unique digital heritage work, it's a good idea to record these changes in a verifiable audit trail. To achieve this I simply set up the directory with the "toilet" crawl as a [Git](https://en.wikipedia.org/wiki/Git) repository, and then created a snapshot (Git commit) for each change. The following screenshot (from the [gitk](https://git-scm.com/docs/gitk) Git repository browser) illustrates this:
 
-![Gitk screenshot]({{ BASE_PATH }}/images/2020/06/liesbet-git.png)
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2020/06/liesbet-git.png" alt="Gitk screenshot">
+  <figcaption>Screenshot of Gitk Git repository browser.</figcaption>
+</figure>
 
 - The upper-left pane lists all snapshots/commits (newest at the top, oldest at the bottom).
 
@@ -131,10 +134,13 @@ Since *server-side* image maps [come with some caveats](https://eager.io/blog/a-
 
 Note that the values of the "coords" attributes are identical to the area definitions in the server-side image map. Below is a short video that shows how the restored image map works. Ringing the upper doorbell leads to the Dutch version of the site, whereas the lower doorbell opens the English version.
 
- <video width="100%" height="100%" controls>
-  <source src="{{ BASE_PATH }}/images/2020/06/imagemap.mp4" type="video/mp4" alt="Image map video">
-  Your browser does not support the video tag.
-</video>
+<figure class="image">
+  <video width="100%" height="100%" title="Image map demo" controls>
+    <source src="{{ BASE_PATH }}/images/2020/06/imagemap.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <figcaption>Demonstration of image map.</figcaption>
+</figure>
 
 The site contains 4 more broken server-side image maps. I replaced all of these with client-side image maps in the restored version. For [one page](https://ziklies.home.xs4all.nl/start.html) the corresponding image map from the ZIP file contained some odd errors, so here I took the liberty of using the image map of the page's [English-language counterpart](https://ziklies.home.xs4all.nl/e-start.html), and then updated all links accordingly. After these changes the image map navigation is fully functional again.
 
@@ -148,10 +154,13 @@ The [bedroom](https://ziklies.home.xs4all.nl/slaapk/e-slaap1.html) of Liesbet's 
 
 The main challenge was then to make the scripts play nicely with a web server. This is beyond the scope of this post, but I created an [Apache setup notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-apache-notes.md) document that describes how I made this all work with a local instance of the Apache web server. Amazingly, the script, which is nearly 25 years old, still works perfectly with a modern version of Perl (here Perl 5). The following video gives a brief glimpse of the restored interactive mirror:
 
- <video width="100%" height="100%" controls>
-  <source src="{{ BASE_PATH }}/images/2020/06/mirror.mp4" type="video/mp4" alt="Mirror video">
-  Your browser does not support the video tag.
-</video>
+<figure class="image">
+  <video width="100%" height="100%" title="Interactive bedroom mirror demo" controls>
+    <source src="{{ BASE_PATH }}/images/2020/06/mirror.mp4" type="video/mp4>
+    Your browser does not support the video tag.
+  </video>
+  <figcaption>Demonstration of interactive bedroom mirror.</figcaption>
+</figure>
 
 ## Missing items
 
@@ -187,7 +196,10 @@ The site also uses a number of file formats that are not supported by modern bro
 
 - The [living room](https://ziklies.home.xs4all.nl/woonk/e-woon03.html) features a clickable TV-set that is supposed to open a [Quicktime video](http://fileformats.archiveteam.org/wiki/Quicktime) in a pop-up window. In the latest (77.0.1) version of the Firefox browser, it triggers the following message:
 
-  ![No video with supported format and MIME type found]({{ BASE_PATH }}/images/2020/06/quicktime-ff.png)
+  <figure class="image">
+  <img src="{{ BASE_PATH }}/images/2020/06/quicktime-ff.png" alt="No video with supported format and MIME type found">
+  <figcaption>Firefox error message on Quicktime video.</figcaption>
+  </figure>
 
   In Chromium (83.0.4103.61), the pop-up window is empty, but it does download the file, so it can be played with external media player software.
 
@@ -203,7 +215,10 @@ I haven't addressed any of these issues in the current restoration attempt. A po
 
 Throughout the restoration process I mostly used Python's built-in [http.server](https://docs.python.org/3/library/http.server.html) to test any changes I made. This is a lightweight web server that doesn't require any elaborate configuration, with no need to copy files to reserved locations on the file system. It does have some limitations that make it unsuitable for production use, so for serving the "completed" site I set up and configured an [Apache](https://httpd.apache.org/) web server instance. This allowed me to have the restored version of Liesbet's Virtual Home running on my local machine, accessible from its original URL:
 
-![Screenshot of Liesbet's Virtual Home, served with local Apache instance]({{ BASE_PATH }}/images/2020/06/atelier-local-apache.png)
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2020/06/atelier-local-apache.png" alt="Liesbet's Virtual Home screenshot">
+  <figcaption>Screenshot of Liesbet's Virtual Home, served with local Apache instance.</figcaption>
+</figure>
 
 The installation and configuration process I followed is described in detail in a separate [Apache setup notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-apache-notes.md) document.
 
