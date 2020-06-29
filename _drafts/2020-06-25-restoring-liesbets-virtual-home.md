@@ -156,7 +156,7 @@ The main challenge was then to make the scripts play nicely with a web server. T
 
 <figure class="image">
   <video width="100%" height="100%" title="Interactive bedroom mirror demo" controls>
-    <source src="{{ BASE_PATH }}/images/2020/06/mirror.mp4" type="video/mp4>
+    <source src="{{ BASE_PATH }}/images/2020/06/mirror.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <figcaption>Demonstration of interactive bedroom mirror.</figcaption>
