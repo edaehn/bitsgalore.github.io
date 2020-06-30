@@ -301,7 +301,7 @@ I finally verified the WARC capture by importing it in [Pywb](https://github.com
 
 ## Conclusions
 
-Restoring Liesbet's Virtual Home has been quite a laborious process, and the very length of this blog post is probably an indication of that. Nevertheless, this effort is justified given the value and historical significance of this homepage. It also involved some choices that, from an authenticity point of view, are somewhat ambiguous. An example is the replacement of the missing server-side image maps by the more modern client-side variety. The experience gained from this project will also be useful for an upcoming attempt to restore a collection of old corporate websites from source data [that we recovered from data tapes last year]({{ BASE_PATH }}/2019/09/09/recovering-90s-data-tapes-experiences-kb-web-archaeology).
+Although none of the procedures described in this blog post are particularly complex, the restoration of Liesbet's Virtual Home involved a lot of trial and error, which ultimately made it a fairly laborious process. Nevertheless, this effort is justified given the value and historical significance of this homepage. It also involved some decisions that, from an authenticity point of view, are open to criticism. An example is the replacement of the missing server-side image maps by the more modern client-side variety. In any case, the experience gained from this project will also be useful for an upcoming attempt to restore a collection of old corporate websites from source data [that we recovered from data tapes last year]({{ BASE_PATH }}/2019/09/09/recovering-90s-data-tapes-experiences-kb-web-archaeology).
 
 ## Acknowledgements
 
