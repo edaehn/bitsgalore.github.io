@@ -44,62 +44,88 @@ This raised the question whether it would be possible to create a "restored" ver
 
 After my colleague Kees Teszelszky got in contact with Zikkenheimer, she sent us a ZIP file with a locally stored copy of the site's directory structure. However, that local copy had several issues as well, and it quickly became obvious it couldn't be used as a basis for a restored version of the site. However, the ZIP file did contain both the image map files as well as the scripts that are missing from the live site.
 
-## Crawling the toilet
+## Crawling the live site
 
-I started out by crawling the live site with [this simple Bash script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrapesite.sh) that uses the [wget](https://www.gnu.org/software/wget/) tool. This worked reasonably well, but on closer inspection the [toilet](https://ziklies.home.xs4all.nl/e-toilet.html) pages of the site turned out to be missing from the result. Digging a bit deeper revealed the cause: these pages are simply not referenced from their [parent pages](https://ziklies.home.xs4all.nl/e-start.html). The solution was to repeat the crawl, using the toilet pages (both the Dutch and English-language version) as seed URLs. I did this by creating a text file (seed-urls.txt) with both URLs:
+So, I decided to take the current live site as a starting point. I first tried to crawl and capture the site with [this simple Bash script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrapesite.sh) that uses the [wget](https://www.gnu.org/software/wget/) tool. At first sight this seemed to work reasonably well, but a closer inspection revealed that various components of the site were missing. A few examples:
+
+- The [toilet](https://ziklies.home.xs4all.nl/e-toilet.html) pages are not referenced from their [parent pages](https://ziklies.home.xs4all.nl/e-start.html). This has the result that wget never finds them.
+
+- Some components are only referenced through Javascript. For example, [this page](https://ziklies.home.xs4all.nl/woonk/woon03.html) contains the following code that opens a video in a popup window:
+
+  ```HTML
+  <A HREF="javascript:openit('tvplus.mov')">
+  ```
+
+  Such items are not picked up by wget, which means they end up missing from the crawl.
+
+After some experimentation, I was able to improve the crawl by using multiple seed URLs. This means that instead from traversing the site from its index page only, I included both the unreferenced "toilet" pages, as well as a list of all the site's visible directories and sub-directories (which I could identify from the initial crawl). First I put all of these in a text file (seed-urls.txt):
 
 ```
 https://ziklies.home.xs4all.nl/toilet.html
 https://ziklies.home.xs4all.nl/e-toilet.html
+https://ziklies.home.xs4all.nl/atelier/
+https://ziklies.home.xs4all.nl/bad/
+https://ziklies.home.xs4all.nl/cas/
+https://ziklies.home.xs4all.nl/gambia/
+https://ziklies.home.xs4all.nl/keuken/
+https://ziklies.home.xs4all.nl/slaapk/
+https://ziklies.home.xs4all.nl/slaapk/gspot/
+https://ziklies.home.xs4all.nl/toilet/
+https://ziklies.home.xs4all.nl/woonk/
+https://ziklies.home.xs4all.nl/woonk/agenda/
+https://ziklies.home.xs4all.nl/zolder/
 ```
 
-Then I ran [this Bash script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-toilet.sh), using the above text file as a command-line argument:
+Then I ran [this Bash script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-seeds.sh), using the above text file as a command-line argument:
 
 ```
-scrape-toilet.sh seed-urls.txt
+scrape-seeds.sh seed-urls.txt
 ```
 
 I then ran a recursive diff on the output directories of both the original crawl and the "toilet" crawl:
 
 ```
-diff -r ./wget-site/ziklies.home.xs4all.nl/ ./wget-toilet/ziklies.home.xs4all.nl/ > diff-site-toilet.txt
+diff -r ./wget-original/ziklies.home.xs4all.nl/ ./wget-improved/ziklies.home.xs4all.nl/ > diff-site-toilet.txt
 ```
 
-This confirmed that the "toilet" crawl contained everything that is also in the original crawl. So, I used the result of this "toilet" crawl as a basis for all subsequent restoration steps. In the following sections I will go through the whole restoration process. More details are available in a separate, minimally edited [Restoration notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-restoration-notes.md) document.
+This showed that the improved crawl contained over 60 files that were not in the original crawl. So, I used the result of this "improved" crawl as a basis for all subsequent restoration steps. In the following sections I will go through the whole restoration process. More details are available in a separate, minimally edited [Restoration notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-restoration-notes.md) document.
 
+## Links to old website domain
+
+Like all XS4ALL homepages, Liesbet's Virtual Home was originally hosted as a directory under XS4ALL's root domain (<http://www.xs4all.nl/~ziklies/>). At some point XS4ALL gave its customers their own sub-domain (in this case the current address at <https://ziklies.home.xs4all.nl/>), and redirected any URLs pointing to the "old" location to this sub-domain. Internally, Liesbet's Virtual Home uses a mixture of relative URLs and absolute ones that still use the old location. This causes several issues if the site is hosted locally on a web server. Although it may be possible to remedy these issues using some clever server configuration, I couldn't quite get this working. I ended up writing a [simple Bash script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/rewriteurls.sh) that replaces all references to the "old" location with relative links (which always work, irrespective of the domain).
+
+## Audit trail
+
+Since a restoration like this involves making changes to a unique digital heritage work, it's a good idea to record these changes in a verifiable audit trail. To achieve this I simply set up the directory with the crawl as a [Git](https://en.wikipedia.org/wiki/Git) repository, and then created a snapshot (Git commit) for each change. The following screenshot (from the [gitk](https://git-scm.com/docs/gitk) Git repository browser) illustrates this:
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2020/06/liesbet-gitk.png" alt="Gitk screenshot">
+  <figcaption>Screenshot of Gitk Git repository browser.</figcaption>
+</figure>
+
+- The upper-left pane lists all snapshots/commits (newest at the top, oldest at the bottom).
+
+- The lower-left pane shows all changes between the currently selected snapshot and the previous one. In this example, we can that in file "kaart01.htm" three absolute page references (highlighted in red) were replaced by relative references (highlighted in green).
+
+- The lower-right pane lists all files that were changed in this snapshot.
+
+This way, the commit history provides a complete audit trail of all changes. It also has the advantage that any changes can be easily undone, if needed. For example, the URL rewriting operation discussed in the previous section had an unintentional side-effect for the [statistics page](https://ziklies.home.xs4all.nl/statistics.html). I could easily revert to the original URLs for this page with 1 single Git command.
 
 ## Missing links to toilet
 
-As a first modification, I changed the erroneous "toilet" links on the [start.html](https://ziklies.home.xs4all.nl/start.html) and [e-start.html](https://ziklies.home.xs4all.nl/e-start.html) pages. Looking at the English-language page:
+As mentioned before, the [start.html](https://ziklies.home.xs4all.nl/start.html) and [e-start.html](https://ziklies.home.xs4all.nl/e-start.html) pages contain erroneous links to the "toilet" pages. Looking at the English-language page:
 
 ```HTML
 <B><A HREF="http://imagine.xs4all.nl/ziklies/"> Go to the toilet</a></B>
 ```
 
-Here, the URL points to an external domain that doesn't exist anymore. So, I changed this to the local file:
+Here, the URL points to an external domain that doesn't exist anymore. So, I changed this to this:
 
 ```HTML
 <B><A HREF="e-toilet.html"> Go to the toilet</a></B>
 ```
 
 I applied a similar fix to the Dutch-language page.
-
-## Audit trail
-
-Since a restoration like this involves making changes to a unique digital heritage work, it's a good idea to record these changes in a verifiable audit trail. To achieve this I simply set up the directory with the "toilet" crawl as a [Git](https://en.wikipedia.org/wiki/Git) repository, and then created a snapshot (Git commit) for each change. The following screenshot (from the [gitk](https://git-scm.com/docs/gitk) Git repository browser) illustrates this:
-
-<figure class="image">
-  <img src="{{ BASE_PATH }}/images/2020/06/liesbet-git.png" alt="Gitk screenshot">
-  <figcaption>Screenshot of Gitk Git repository browser.</figcaption>
-</figure>
-
-- The upper-left pane lists all snapshots/commits (newest at the top, oldest at the bottom).
-
-- The lower-left pane shows all changes between the currently selected snapshot and the previous one. In this example, we can that in file "e-start.html" one line was removed (highlighted in red), and another was added (highlighted in green).
-
-- The lower-right pane lists all files that were changed in this snapshot.
-
-This way, the commit history provides a complete audit trail of all changes.
 
 ## Image maps
 
@@ -142,15 +168,11 @@ Note that the values of the "coords" attributes are identical to the area defini
   <figcaption>Demonstration of image map.</figcaption>
 </figure>
 
-The site contains 4 more broken server-side image maps. I replaced all of these with client-side image maps in the restored version. For [one page](https://ziklies.home.xs4all.nl/start.html) the corresponding image map from the ZIP file contained some odd errors, so here I took the liberty of using the image map of the page's [English-language counterpart](https://ziklies.home.xs4all.nl/e-start.html), and then updated all links accordingly. After these changes the image map navigation is fully functional again.
-
-## Links to old website domain
-
-Like all XS4ALL homepages, Liesbet's Virtual Home was originally hosted as a directory under XS4ALL's root domain (<http://www.xs4all.nl/~ziklies/>). At some point XS4ALL gave its customers their own sub-domain (in this case the current address at <https://ziklies.home.xs4all.nl/>), and redirected any URLs pointing to the "old" location to this sub-domain. Internally, Liesbet's Virtual Home uses a mixture of relative URLs and absolute ones that still use the old location. This causes several issues if the site is hosted locally on a web server. Although it may be possible to remedy these issues using some clever server configuration, I couldn't quite get this working. I ended up writing a [simple Bash script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/rewriteurls.sh) that replaces all references to the "old" location with relative links (which always work, irrespective of the domain). This had an unintentional side-effect for the [statistics page](https://ziklies.home.xs4all.nl/statistics.html), so I subsequently undid the change for this single page (which can be done with 1 single Git command).
+The site contains 4 more broken server-side image maps. I replaced all of these with client-side image maps in the restored version. For [one page](https://ziklies.home.xs4all.nl/start.html) the corresponding image map from the ZIP file contained some odd errors, so here I took the image map of the page's [English-language counterpart](https://ziklies.home.xs4all.nl/e-start.html), and then updated all links accordingly. After these changes the image map navigation is fully functional again.
 
 ## Interactive bedroom mirror
 
-The [bedroom](https://ziklies.home.xs4all.nl/slaapk/e-slaap1.html) of Liesbet's Virtual Home features an "interactive mirror". It is a web form where the visitor can select combinations of clothing, hairstyle and earrings. After clicking on the "have a look into the mirror" button, the selected combination is shown as an image[^3]. However, as the underlying scripts are missing from the live site, it now gives a [Page Not Found](https://en.wikipedia.org/wiki/HTTP_404) error. As with the image maps before, the missing (Perl) scripts could be recovered from the ZIP file provided by Zikkenheimer. I added these to a (newly created) "cgi-bin" directory. I also had to make the scripts executable[^5], and adjust their [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) strings to a valid interpreter location on my local machine (which, in my case, was different from the location used by the original web server). In addition, an inspection of the scripts showed them to rely on a set of 21 GIF images that were not included in the crawl. Again, I used the local ZIP file to fill this gap[^4].
+The [bedroom](https://ziklies.home.xs4all.nl/slaapk/e-slaap1.html) of Liesbet's Virtual Home features an "interactive mirror". It is a web form where the visitor can select combinations of clothing, hairstyle and earrings. After clicking on the "have a look into the mirror" button, the selected combination is shown as an image[^3]. However, as the underlying scripts are missing from the live site, it now gives a [Page Not Found](https://en.wikipedia.org/wiki/HTTP_404) error. As with the image maps before, the missing (Perl) scripts could be recovered from the ZIP file provided by Zikkenheimer. I added these to a (newly created) "cgi-bin" directory. I also had to make the scripts executable[^5], and adjust their [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) strings to a valid interpreter location on my local machine (which, in my case, was different from the location used by the original web server).
 
 The main challenge was then to make the scripts play nicely with a web server. This is beyond the scope of this post, but I created an [Apache setup notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-apache-notes.md) document that describes how I made this all work with a local instance of the Apache web server. Amazingly, the script, which is nearly 25 years old, still works perfectly with a modern version of Perl (here Perl 5). The following video gives a brief glimpse of the restored interactive mirror:
 
@@ -161,26 +183,6 @@ The main challenge was then to make the scripts play nicely with a web server. T
   </video>
   <figcaption>Demonstration of interactive bedroom mirror.</figcaption>
 </figure>
-
-## Missing items
-
-On a number of occasions the site uses Javascript to open items in a popup window. [Here's](https://ziklies.home.xs4all.nl/woonk/woon03.html) an example:
-
-```HTML
-<A HREF="javascript:openit('tvplus.mov')">
-```
-
-These items are not picked up by wget, which means they were missing from the crawl. I identified these cases using this command:
-
-```
-grep -r "javascript:openit" ~/kb/liesbets-atelier/liesbets-atelier/ > javascript-open.txt
-```
-
-This identified 2 missing Quicktime movies, and an HTML file. The latter in turn contained a link to a Shockwave file, which was missing as well. I used wget to download these missing items:
-
-```
-wget https://ziklies.home.xs4all.nl/woonk/tvplus.mov
-```
 
 ## Remaining issues
 
@@ -333,8 +335,6 @@ Below posts (both in Dutch) give some additional background information about th
 [^2]: Some purists may consider this a technological anachronism. Client-side image maps were first introduced in HTML 3.2, which was published in 1997, whereas Liesbet's ["what's new" page](https://ziklies.home.xs4all.nl/new.html) shows that most of the site's development activity took place between early 1995 and late 1997. This could be a problem for users who want to view the site in a period browser (e.g. inside an emulated environment), which may not support client-side image maps.
 
 [^3]: Actually as a composite of 3 images.
-
-[^4]: I later found out these images are still present on the live site (but since they are not referenced by any of its pages they aren't picked up by a web crawl).
 
 [^5]: Under Linux this is simply a matter of issuing a command like `chmod 755 barbie.cgi`.
 
