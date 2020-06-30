@@ -52,7 +52,7 @@ So, I decided to take the current live site as a starting point. I first tried t
 
 - Some components are only referenced through Javascript. For example, [this page](https://ziklies.home.xs4all.nl/woonk/woon03.html) contains the following code that opens a video in a popup window:
 
-  ```HTML
+  ```html
   <A HREF="javascript:openit('tvplus.mov')">
   ```
 
@@ -118,13 +118,13 @@ This way, the commit history provides a complete audit trail of all changes. It 
 
 As mentioned before, the [start.html](https://ziklies.home.xs4all.nl/start.html) and [e-start.html](https://ziklies.home.xs4all.nl/e-start.html) pages contain erroneous links to the "toilet" pages. Looking at the English-language page:
 
-```HTML
+```html
 <B><A HREF="http://imagine.xs4all.nl/ziklies/"> Go to the toilet</a></B>
 ```
 
 Here, the URL points to an external domain that doesn't exist anymore. So, I changed this to this:
 
-```HTML
+```html
 <B><A HREF="e-toilet.html"> Go to the toilet</a></B>
 ```
 
@@ -134,7 +134,7 @@ I applied a similar fix to the Dutch-language page.
 
 A number of pages on the site use HTML [image maps](https://en.wikipedia.org/wiki/Image_map). An example is the door image on the [front page](https://ziklies.home.xs4all.nl/). This is the corresponding HTML source:
 
-```HTML
+```html
 <A HREF="/cgi-bin/imagemap/~ziklies/deurtje1.map"><img src="deurtje1.gif" Border=0 ISMAP></A>
 ```
 
@@ -152,7 +152,7 @@ This show that the file simply defines areas within the image that are linked to
 
 Since *server-side* image maps [come with some caveats](https://eager.io/blog/a-quick-history-of-image-maps/), I took the liberty of re-implementing the server-side image map with a *client-side* image map. Both are functionally identical, but client-side image maps are simpler to implement and less likely to break[^2]. Instead of using an external file, a client-side image map is simply an embedded element inside the page, which means we can replace the `<A>` element in the previous HTML snippet by this:
 
-```HTML
+```html
 <img src="deurtje1.gif" usemap="#deurtje1Map" alt="deurtje 1" border="0">
 <map name="deurtje1Map">
     <area shape="poly" coords="0,56 76,40 91,43 89,67 76,62 6,77 0,60 1,55" href="http://www.xs4all.nl/~ziklies/start.html">
@@ -235,7 +235,7 @@ Like most web archives, the KB uses the [WARC](https://en.wikipedia.org/wiki/Web
 
 Happily, several people responded to [my request for help on Twitter](https://twitter.com/bitsgalore/status/1275405890947108866). Webrecorder author Ilya Kreymer responded I might want to have a look at the [warcio library](https://github.com/webrecorder/warcio) (of which is he is also the lead developer), and, even better, he [provided some example code](https://twitter.com/IlyaKreymer/status/1275440674687471617) that showed how to do this. For a brief explanation of how this works, have a look at the input form below (for brevity I edited out some of the input choices):
 
-```HTML
+```html
 <FORM METHOD="POST"
 ACTION="/cgi-bin/barbie1.cgi">
 
