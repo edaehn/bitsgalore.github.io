@@ -122,7 +122,7 @@ As mentioned before, the [start.html](https://ziklies.home.xs4all.nl/start.html)
 <B><A HREF="http://imagine.xs4all.nl/ziklies/"> Go to the toilet</a></B>
 ```
 
-Here, the URL points to an external domain that doesn't exist anymore. So, I changed this to this:
+Here, the URL points to an external domain that doesn't exist anymore. So, I changed this to:
 
 ```html
 <B><A HREF="e-toilet.html"> Go to the toilet</a></B>
