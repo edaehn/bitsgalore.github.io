@@ -108,7 +108,7 @@ Since a restoration like this involves making changes to a unique digital herita
 
 - The upper-left pane lists all snapshots/commits (newest at the top, oldest at the bottom).
 
-- The lower-left pane shows all changes between the currently selected snapshot and the previous one. In this example, we can that in file "kaart01.htm" three absolute page references (highlighted in red) were replaced by relative references (highlighted in green).
+- The lower-left pane shows all changes between the currently selected snapshot and the previous one. In this example, we can see that in file "kaart01.htm" three absolute page references (highlighted in red) were replaced by relative references (highlighted in green).
 
 - The lower-right pane lists all files that were changed in this snapshot.
 
