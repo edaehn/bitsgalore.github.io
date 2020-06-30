@@ -146,7 +146,7 @@ poly http://www.xs4all.nl/~ziklies/start.html 0,56 76,40 91,43 89,67 76,62 6,77 
 poly http://www.xs4all.nl/~ziklies/e-start.html 53,72 80,76 81,81 91,85 89,107 76,106 69,137 42,130 51,77
 ```
 
-This show that the file simply defines areas within the image that are linked to URLs.
+This shows that the file simply defines areas within the image that are linked to URLs.
 
 ## From server-side to client-side image maps
 
