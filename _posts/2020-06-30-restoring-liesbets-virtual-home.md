@@ -58,9 +58,12 @@ So, I decided to take the current live site as a starting point. I first tried t
 
   Such items are not picked up by wget, which means they end up missing from the crawl.
 
-After some experimentation, I was able to improve the crawl by using multiple seed URLs. This means that instead from traversing the site from its index page only, I included both the unreferenced "toilet" pages, as well as a list of all the site's visible directories and sub-directories (which I could identify from the initial crawl). First I put all of these in a text file (seed-urls.txt):
+## Improved crawl
+
+After some experimentation, I was able to improve the crawl by using multiple seed URLs. This means that instead of traversing the site from its index page only, I included both the unreferenced "toilet" pages, as well as a list of all the site's visible directories and sub-directories (which I could identify from the initial crawl). First I put all of these in a text file (seed-urls.txt):
 
 ```
+https://ziklies.home.xs4all.nl/
 https://ziklies.home.xs4all.nl/toilet.html
 https://ziklies.home.xs4all.nl/e-toilet.html
 https://ziklies.home.xs4all.nl/atelier/
@@ -76,13 +79,13 @@ https://ziklies.home.xs4all.nl/woonk/agenda/
 https://ziklies.home.xs4all.nl/zolder/
 ```
 
-Then I ran [this Bash script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-seeds.sh), using the above text file as a command-line argument:
+I then ran [this Bash script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-seeds.sh), using the above text file as a command-line argument:
 
 ```
 scrape-seeds.sh seed-urls.txt
 ```
 
-I then ran a recursive diff on the output directories of both the original crawl and the "toilet" crawl:
+As a check I subsequently did a recursive diff on the output directories of both the original crawl and the improved crawl:
 
 ```
 diff -r ./wget-original/ziklies.home.xs4all.nl/ ./wget-improved/ziklies.home.xs4all.nl/ > diff-site-toilet.txt
@@ -92,7 +95,7 @@ This showed that the improved crawl contained over 60 files that were not in the
 
 ## Links to old website domain
 
-Like all XS4ALL homepages, Liesbet's Virtual Home was originally hosted as a directory under XS4ALL's root domain (<http://www.xs4all.nl/~ziklies/>). At some point XS4ALL gave its customers their own sub-domain (in this case the current address at <https://ziklies.home.xs4all.nl/>), and redirected any URLs pointing to the "old" location to this sub-domain. Internally, Liesbet's Virtual Home uses a mixture of relative URLs and absolute ones that still use the old location. This causes several issues if the site is hosted locally on a web server. Although it may be possible to remedy these issues using some clever server configuration, I couldn't quite get this working. I ended up writing a [simple Bash script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/rewriteurls.sh) that replaces all references to the "old" location with relative links (which always work, irrespective of the domain).
+Like all old XS4ALL homepages, Liesbet's Virtual Home was originally hosted as a directory under XS4ALL's root domain (<http://www.xs4all.nl/~ziklies/>). At some point XS4ALL gave its customers their own sub-domain (in this case the current address at <https://ziklies.home.xs4all.nl/>), and redirected any URLs pointing to the "old" location to this sub-domain. Internally, Liesbet's Virtual Home uses a mixture of relative URLs and absolute ones that still refer to the old location. This causes several issues if the site is hosted locally on a web server. Although it may be possible to remedy these issues using some clever server configuration, I couldn't quite get this working. I ended up writing a [simple Bash script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/rewriteurls.sh) that replaces all references to the "old" location with relative links (which always work, irrespective of the domain).
 
 ## Audit trail
 
@@ -135,7 +138,7 @@ A number of pages on the site use HTML [image maps](https://en.wikipedia.org/wik
 <A HREF="/cgi-bin/imagemap/~ziklies/deurtje1.map"><img src="deurtje1.gif" Border=0 ISMAP></A>
 ```
 
-This is a *server-side* image map, where the URL points to a file (deurtje1.map). However, this file is not available anymore, which results in a [Page Not Found](https://en.wikipedia.org/wiki/HTTP_404) error. Fortunately, I was able to find this file in the ZIP archive provided by Zikkenheimer. Here's what it looks like:
+This is a *server-side* image map, where the URL points to an external file (deurtje1.map). However, this file is not available anymore on the live site, which results in a [Page Not Found](https://en.wikipedia.org/wiki/HTTP_404) error. Fortunately, I was able to find this file in the ZIP archive provided by Zikkenheimer. Here's what it looks like:
 
 ```
 default http://www.xs4all.nl/~ziklies/start.html
@@ -143,11 +146,11 @@ poly http://www.xs4all.nl/~ziklies/start.html 0,56 76,40 91,43 89,67 76,62 6,77 
 poly http://www.xs4all.nl/~ziklies/e-start.html 53,72 80,76 81,81 91,85 89,107 76,106 69,137 42,130 51,77
 ```
 
-The file simply defines areas within the image that are linked to URLs.
+This show that the file simply defines areas within the image that are linked to URLs.
 
 ## From server-side to client-side image maps
 
-Since *server-side* image maps [come with some caveats](https://eager.io/blog/a-quick-history-of-image-maps/), I took the liberty of re-implementing the server-side image map with a *client-side* image maps. These are functionally identical, but simpler and less likely to break[^2]. Instead of using an external file, a client-side image map is simply an embedded element inside the page, which means we can replace the `<A>` element in the previous HTML snippet by this:
+Since *server-side* image maps [come with some caveats](https://eager.io/blog/a-quick-history-of-image-maps/), I took the liberty of re-implementing the server-side image map with a *client-side* image map. Both are functionally identical, but client-side image maps are simpler to implement and less likely to break[^2]. Instead of using an external file, a client-side image map is simply an embedded element inside the page, which means we can replace the `<A>` element in the previous HTML snippet by this:
 
 ```HTML
 <img src="deurtje1.gif" usemap="#deurtje1Map" alt="deurtje 1" border="0">
