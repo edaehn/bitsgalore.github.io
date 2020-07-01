@@ -17,7 +17,7 @@ Ross overall point is that [we need the numbers first](http://www.openplanetsfou
 
 Graf & Gordea define institutional obsolescence in terms of "the additional effort required to render a file beyond the capability of a regular PC setup in particular institution". Let's call this effort *E*. Now the aim is to arrive at an index that has some predictive power of *E*. Let's call this index *R<sub>E</sub>*. For the sake of the argument it doesn't matter how *R<sub>E</sub>* is defined precisely, but it's reasonable to assume it will be proportional to *E* (i.e. as the effort to render a file increases, so does the risk):
 
-*R<sub>E</sub>* &prop; *E* 
+*R<sub>E</sub>* &prop; *E*
 
 The next step is to find a way to estimate *R<sub>E</sub>* (the dependent variable) as a function of a set of potential predictor variables:
 

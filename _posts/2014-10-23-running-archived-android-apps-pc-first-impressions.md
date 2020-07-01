@@ -20,7 +20,7 @@ I spent a few afternoons running some preliminary tests. Since I'm pretty sure o
 
 First of all it is helpful to know a bit more about the Android app format. Basically, an app (*.apk*) file is just a ZIP archive with a specific file and directory structure. It is based on Java's [Jar](http://fileformats.archiveteam.org/wiki/Jar) format. For more information see this entry on Archive Team's file format wiki:
 
-<http://fileformats.archiveteam.org/wiki/APK> 
+<http://fileformats.archiveteam.org/wiki/APK>
 
 Here you can also find how to download local copies of Android app files (e.g. to a PC), which is something that is not possible directly from the  [Google Play store](https://play.google.com/store/apps?hl=en).
 

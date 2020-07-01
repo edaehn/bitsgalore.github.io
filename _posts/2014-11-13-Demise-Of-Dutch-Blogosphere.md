@@ -5,9 +5,9 @@ tags: [web-archiving]
 comment_id: 39
 ---
 
-Back in 2006, Dutch weblog [Sargasso](http://sargasso.nl/) started following the activity of about 260 Dutch blogs that were active at the time, mainly by looking at the frequency of new postings. <!-- more --> Earlier this week Sargasso [published an update of the the status of these blogs in 2014](http://sargasso.nl/battle-blogs-war-lost/). They summarised the results of their analysis with this fascinating visualisation: 
+Back in 2006, Dutch weblog [Sargasso](http://sargasso.nl/) started following the activity of about 260 Dutch blogs that were active at the time, mainly by looking at the frequency of new postings. <!-- more --> Earlier this week Sargasso [published an update of the the status of these blogs in 2014](http://sargasso.nl/battle-blogs-war-lost/). They summarised the results of their analysis with this fascinating visualisation[^1]:
 
-<iframe width="435" height="670" src="http://sargasso.nl/wp-content/uploads/2014/11/botb2014b.htm"></iframe>
+<iframe width="415" scrolling="no" height="620" frameborder="0" src="https://sargasso.nl/wp-content/uploads/2014/11/botb2014b.htm"></iframe>
 
 Each block in the figure represents one blog, where the color and the number of dots indicate how often new postings appear. Here's the legend:
 
@@ -25,3 +25,5 @@ The really outstanding feature here is that most of these blogs are now in the "
 ## Link to original feature on Sargasso
 
 [Battle of the Blogs - The war is lost](http://sargasso.nl/battle-blogs-war-lost/) (in Dutch)
+
+[^1]: If the visualisation doesn't show, you may have a browser extension installed that blocks the "sargasso.nl" domain from which it is loaded.

@@ -13,53 +13,57 @@ This is the second and final instalment of a 2-part blog on the use of PDF/A val
 
 During the [SCAPE](http://www.scape-project.eu/) project we did a number of experiments with the PDF/A validator that is part of the open-source [Apache PDFBox](https://pdfbox.apache.org/) library (incidentally it is also called Preflight). Throwing the PDF of our last example at Apache Preflight results in the following output[^1]: 
 
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-    <preflight name="Jpeg_linked.pdf">
-      <executionTimeMS>9792</executionTimeMS>
-      <isValid type="PDF/A1-b">false</isValid>
-      <errors count="96">
-        <error count="1">
-          <code>3.1.3</code>
-          <details>Invalid Font definition, CourierNewPSMT: FontFile entry is missing from FontDescriptor</details>
-        </error>
-        <error count="1">
-          <code>7.11</code>
-          <details>Error on MetaData, PDF/A identification schema http://www.aiim.org/pdfa/ns/id/ is missing</details>
-        </error>
-        <error count="3">
-          <code>6.2.1</code>
-          <details>Action is forbidden, GoToPage isn't authorized as named action</details>
-          <page>0</page>
-        </error>
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<preflight name="Jpeg_linked.pdf">
+  <executionTimeMS>9792</executionTimeMS>
+  <isValid type="PDF/A1-b">false</isValid>
+  <errors count="96">
+    <error count="1">
+      <code>3.1.3</code>
+      <details>Invalid Font definition, CourierNewPSMT: FontFile entry is missing from FontDescriptor</details>
+    </error>
+    <error count="1">
+      <code>7.11</code>
+      <details>Error on MetaData, PDF/A identification schema http://www.aiim.org/pdfa/ns/id/ is missing</details>
+    </error>
+    <error count="3">
+      <code>6.2.1</code>
+      <details>Action is forbidden, GoToPage isn't authorized as named action</details>
+      <page>0</page>
+    </error>
 
-        ::
-        ::
+    ::
+    ::
 
-        <error count="1">
-          <code>1.4.2</code>
-          <details>Trailer Syntax error, The trailer dictionary contains Encrypt</details>
-        </error>
-      </errors>
-    </preflight>
+    <error count="1">
+      <code>1.4.2</code>
+      <details>Trailer Syntax error, The trailer dictionary contains Encrypt</details>
+    </error>
+  </errors>
+</preflight>
+```
 
 ## Assessment against a technical profile / policy
 
 By post-processing Preflight's XML output further, it is possible to automatically evaluate PDFs against a user-defined set of features (i.e. a technical profile, equivalent to what was known as a [*control policy*](http://openpreservation.org/blog/2013/09/04/control-policies-scape-project/) in the SCAPE project). This is pretty straightforward if you express all features (or policy elements) as [Schematron](https://en.wikipedia.org/wiki/Schematron) rules. Here's an example of a Schematron rule that checks for encryption:  
 
-    <?xml version="1.0"?>
-    <!--
-    Schematron rules for policy-based  validation of PDF, based on output of Apache Preflight.
-    -->
-    <s:schema xmlns:s="http://purl.oclc.org/dsdl/schematron">
-      
-      <s:pattern name="Checks for encryption">        
-        <s:rule context="/preflight/errors/error">
-          <s:assert test="not(code = '1.0' and contains(details,'password'))">Open password</s:assert>
-          <s:assert test="not(code = '1.4.2')">Encryption</s:assert>
-        </s:rule>
-      </s:pattern>
+```xml
+<?xml version="1.0"?>
+<!--
+Schematron rules for policy-based  validation of PDF, based on output of Apache Preflight.
+-->
+<s:schema xmlns:s="http://purl.oclc.org/dsdl/schematron">
+  
+  <s:pattern name="Checks for encryption">        
+    <s:rule context="/preflight/errors/error">
+      <s:assert test="not(code = '1.0' and contains(details,'password'))">Open password</s:assert>
+      <s:assert test="not(code = '1.4.2')">Encryption</s:assert>
+    </s:rule>
+  </s:pattern>
 
-    </s:schema>
+</s:schema>
+```
 
 Rules can be defined for other features as well (e.g. multimedia, fonts), which makes it possible to test against custom policies. The figure below illustrates the general procedure:
 
@@ -90,29 +94,31 @@ Earlier this year work started on [VeraPDF](http://verapdf.org/), an open-source
 
 ### Font issues
 
-As I'm writing this, font checks haven't been implemented yet in the VeraPDF code. Nevertheless, [validation profiles](https://github.com/veraPDF/veraPDF-validation-profiles) already exist for a number of aspects of PDF/A. These profiles contain one or more validation rules, and each rule explicitly references its corresponding clause in the PDF/A standard. For example, have a look at [this rule on images](https://github.com/veraPDF/veraPDF-validation-profiles/blob/master/PDF_A/1b/6.2%20Graphics/6.2.4%20Images/verapdf-profile-6-2-4-t01.xml):   
+As I'm writing this, font checks haven't been implemented yet in the VeraPDF code. Nevertheless, [validation profiles](https://github.com/veraPDF/veraPDF-validation-profiles) already exist for a number of aspects of PDF/A. These profiles contain one or more validation rules, and each rule explicitly references its corresponding clause in the PDF/A standard. For example, have a look at [this rule on images](https://github.com/veraPDF/veraPDF-validation-profiles/blob/master/PDF_A/1b/6.2%20Graphics/6.2.4%20Images/verapdf-profile-6-2-4-t01.xml):
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <profile xmlns="http://www.verapdf.org/ValidationProfile" model="org.verapdf.model.PDFA1a">
-        <name>ISO 19005-1:2005 - 6.2.4 Images - Alternates</name>
-        <description></description>
-        <creator>veraPDF Consortium</creator>
-        <created>2015-06-16T22:22:45Z</created>
-        <hash>sha-1 hash code</hash>
-        <rules>
-            <rule id="6-2-4-t01" object="PDXImage">
-                <description>An Image dictionary shall not contain the Alternates key</description>
-                <test>Alternates_size == 0</test>
-                <error>
-                    <message>Alternates key is present in the Image dictionary(</message>
-                </error>
-                <reference>
-                    <specification>ISO19005-1</specification>
-                    <clause>6.2.4</clause>
-                </reference>
-            </rule>
-        </rules>
-    </profile>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<profile xmlns="http://www.verapdf.org/ValidationProfile" model="org.verapdf.model.PDFA1a">
+    <name>ISO 19005-1:2005 - 6.2.4 Images - Alternates</name>
+    <description></description>
+    <creator>veraPDF Consortium</creator>
+    <created>2015-06-16T22:22:45Z</created>
+    <hash>sha-1 hash code</hash>
+    <rules>
+        <rule id="6-2-4-t01" object="PDXImage">
+            <description>An Image dictionary shall not contain the Alternates key</description>
+            <test>Alternates_size == 0</test>
+            <error>
+                <message>Alternates key is present in the Image dictionary(</message>
+            </error>
+            <reference>
+                <specification>ISO19005-1</specification>
+                <clause>6.2.4</clause>
+            </reference>
+        </rule>
+    </rules>
+</profile>
+```
 
 Here, the fields in the *clause* field in the *reference* element refers to a specific clause in the PDF/A-1 (ISO 19005-1) specification. This makes the errors much easier to interpret, since they are directly linked to the standard. I expect that this will make the interpretation of font-related errors much clearer as well.
 

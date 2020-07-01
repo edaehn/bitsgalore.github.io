@@ -31,40 +31,46 @@ However, I wasn't able to change the font size.
 
 ## Analysis
 
-The file [passes validation in *EpubCheck* 4.0.1](https://github.com/KBNLresearch/epubPolicyTests/blob/master/epubcheckout/4.0.1/epub20_crazy_fixed_layout.xml) without errors. However, the output does contain a series of warnings about the use of absolute positions in a stylesheet: 
+The file [passes validation in *EpubCheck* 4.0.1](https://github.com/KBNLresearch/epubPolicyTests/blob/master/epubcheckout/4.0.1/epub20_crazy_fixed_layout.xml) without errors. However, the output does contain a series of warnings about the use of absolute positions in a stylesheet:
 
-    CSS-017, WARN, [CSS selector specifies absolute position.], OEBPS/Styles/styles.css (6-2)
-    CSS-017, WARN, [CSS selector specifies absolute position.], OEBPS/Styles/styles.css (24-1)
-    CSS-017, WARN, [CSS selector specifies absolute position.], OEBPS/Styles/styles.css (43-1)
-    ::
+```data
+CSS-017, WARN, [CSS selector specifies absolute position.], OEBPS/Styles/styles.css (6-2)
+CSS-017, WARN, [CSS selector specifies absolute position.], OEBPS/Styles/styles.css (24-1)
+CSS-017, WARN, [CSS selector specifies absolute position.], OEBPS/Styles/styles.css (43-1)
+::
+```
 
 To really understand what causes the problem, we need to look inside the file's *HTML* and *CSS* resources. Here's some of the [*HTML* that underlies the text](https://github.com/KBNLresearch/epubPolicyTests/blob/master/content/epub20_crazy_fixed_layout/OEBPS/Text/Section0001.xhtml):
 
-    <p id="p01" class="para">This is an <em>EPUB</em> 2 file that uses a fixed layout.</p>
-    <p id="p02" class="para">This is achieved by placing each line inside a</p>
-    <p id="p03" class="para"><em>paragraph</em> element. Each <em>paragraph</em> element</p>
-    <p id="p04" class="para">is placed at a fixed position on the page. Even</p>
-    <p id="p05" class="para">though this file is valid <em>EPUB</em>, this is a pretty</p>
-    <p id="p06" class="para"> terrible idea, because in most readers the text</p>
-    <p id="p07" class="para">will not reflow after resizing the viewer window.</p>
+```html
+<p id="p01" class="para">This is an <em>EPUB</em> 2 file that uses a fixed layout.</p>
+<p id="p02" class="para">This is achieved by placing each line inside a</p>
+<p id="p03" class="para"><em>paragraph</em> element. Each <em>paragraph</em> element</p>
+<p id="p04" class="para">is placed at a fixed position on the page. Even</p>
+<p id="p05" class="para">though this file is valid <em>EPUB</em>, this is a pretty</p>
+<p id="p06" class="para"> terrible idea, because in most readers the text</p>
+<p id="p07" class="para">will not reflow after resizing the viewer window.</p>
+```
 
 So, every line is wrapped inside a *paragraph* element, each of which has a unique *id* selector. These refer to style definitions in the [*EPUB*'s stylesheet](https://github.com/KBNLresearch/epubPolicyTests/blob/master/content/epub20_crazy_fixed_layout/OEBPS/Styles/styles.css). Here are the definitions for the first two lines:
 
-    #p01
-    {
-    position:absolute;
-    left:40px;
-    top:80px;
-    letter-spacing:0.42px;
-    word-spacing:0.1em;
-    }
-    #p02
-    {
-    position:absolute;
-    left:40px;
-    top:120px;
-    letter-spacing:0.42px;
-    word-spacing:0.1em;
+```css
+#p01
+{
+position:absolute;
+left:40px;
+top:80px;
+letter-spacing:0.42px;
+word-spacing:0.1em;
+}
+#p02
+{
+position:absolute;
+left:40px;
+top:120px;
+letter-spacing:0.42px;
+word-spacing:0.1em;
+```
 
 Each style definition specifies a line's position on the canvas (*left*, *top*); moreover, these co-ordinates are defined as *absolute* positions. This means that each line is placed at a fixed position, regardless of whether this makes any sense given the actual dimensions of the viewer window (or device), or the user's preferred font size. It seems that the intention of the producer of the original *EPUB* (from which I derived my example) was to create some sort of ["fixed layout"](http://www.idpf.org/epub/fxl/) document. However, this doesn't make much sense for books with simple, text-only layouts (as in this case). Worse, depending on the viewing device and the user the file may be effectively inaccessible. For example, someone with a visual impairment may only be able to read an *EPUB* using very large font sizes, which in this case results in garbled text. 
 
@@ -96,19 +102,24 @@ Ouch!
 
 Again, throwing this file at *EpubCheck* 4 [doesn't result in any validation errors](https://github.com/KBNLresearch/epubPolicyTests/blob/master/epubcheckout/4.0.1/epub20_crazy_columns.xml), although just like the previous file there are some warnings about the use of absolute positions in the stylesheet:
 
-    CSS-017, WARN, [CSS selector specifies absolute position.], OEBPS/Styles/styles.css (13-1)
-
+```data
+CSS-017, WARN, [CSS selector specifies absolute position.], OEBPS/Styles/styles.css (13-1)
+```
 A peek [inside the *HTML*](https://github.com/KBNLresearch/epubPolicyTests/blob/master/content/epub20_crazy_columns/OEBPS/Text/Section0001.xhtml) reveals the true horrors of this *EPUB*. This is how the text is encoded:
 
-    <div class="pos" style="left: 40px; top: 100px;">This is an <em>EPUB</em> file<div>
-    <div class="pos" style="left: 260px; top: 100px;">page. Even though this</div>
-    <div class="pos" style="left: 40px; top: 140px;">that uses a two-column</div>
-    <div class="pos" style="left: 260px; top: 140px;">file is valid <em>EPUB</em>, there's</div>
-    
+```html
+<div class="pos" style="left: 40px; top: 100px;">This is an <em>EPUB</em> file<div>
+<div class="pos" style="left: 260px; top: 100px;">page. Even though this</div>
+<div class="pos" style="left: 40px; top: 140px;">that uses a two-column</div>
+<div class="pos" style="left: 260px; top: 140px;">file is valid <em>EPUB</em>, there's</div>
+```
+
 So, every line of each column is wrapped in a division element that has a fixed position. The class *pos* in the [stylesheet](https://github.com/KBNLresearch/epubPolicyTests/blob/master/content/epub20_crazy_columns/OEBPS/Styles/styles.css) defines the general layout of each division element. In this case, it specifies that all positions are (again) absolute:
 
-    .pos {position:absolute;
-    } 
+```css
+.pos {position:absolute;
+}
+```
     
 Technically this is pretty similar to the first example. Note that the above *HTML* doesn't contain any semantic information on the fact that there are two separate columns. Worse, the order of the text in the HTML doesn't even follow the actual reading order! This also explains the results after copying and pasting. [Screen reader](https://en.wikipedia.org/wiki/Screen_reader) applications will not be able to handle this either, which makes books like these inaccessible to many visually impaired users. All of this could have been avoided if the book's producer had followed the [W3C multi-column layout specification](https://www.w3.org/TR/css3-multicol/).
 

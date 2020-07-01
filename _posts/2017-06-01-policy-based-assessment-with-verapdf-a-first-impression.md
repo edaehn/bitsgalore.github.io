@@ -41,23 +41,27 @@ The full *Schematron* file can be found [here](https://github.com/KBNLresearch/p
 
 It is important to note that, unlike in my earlier *Apache Preflight* experiments, the *Schematron* rules do not rely on the *PDF/A* validation output! Instead, *VeraPDF* can be instructed to include a 'features report' in its output, which directly points to technical features such as font properties, annotation types, security features, and so on. Most of the features that are needed for a policy-based assessment are disabled by default. So, we first need to activate these in the configuration (file *features.xml* in *VeraPDF*'s *config* directory). I edited it as below:
 
-    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-    <featuresConfig>
-        <enabledFeatures>
-            <feature>ANNOTATION</feature>
-            <feature>DOCUMENT_SECURITY</feature>
-            <feature>EMBEDDED_FILE</feature>
-            <feature>FONT</feature>
-            <feature>INFORMATION_DICTIONARY</feature>
-        </enabledFeatures>
-    </featuresConfig>
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<featuresConfig>
+    <enabledFeatures>
+        <feature>ANNOTATION</feature>
+        <feature>DOCUMENT_SECURITY</feature>
+        <feature>EMBEDDED_FILE</feature>
+        <feature>FONT</feature>
+        <feature>INFORMATION_DICTIONARY</feature>
+    </enabledFeatures>
+</featuresConfig>
+```
 
 ## Basic operation
 
 Supposing that the *PDF*s we want to analyze are in directory `~/myPdfs`, and that the *Schematron* rules that represent our policy are in the file `demo-policy.sch`, we can do a policy-based validation of all these files with one single command:
 
-    verapdf -x --policyfile demo-policy.sch ~/myPdfs/* > myPdfsOut.xml
-    
+```bash
+verapdf -x --policyfile demo-policy.sch ~/myPdfs/* > myPdfsOut.xml
+```
+
 Here the `-x` switch activates feature extraction. The output file `myPdfsOut.xml` contains, for each *PDF*, an element with *PDF/A* validation output, an element with the features report, and an element with the policy report.
 
 ## Analysis script
@@ -70,10 +74,12 @@ Typically the *VeraPDF* output is rather unwieldy. To facilitate things I wrote 
 
 ## Running the analysis
 
-For this analysis I ran the above script for both the *fonts* and *multimedia* files, using the following command line (here for the *fonts* files): 
+For this analysis I ran the above script for both the *fonts* and *multimedia* files, using the following command line (here for the *fonts* files):
 
-    ~/pdfPolicyVeraPDF/policyValidate.sh /home/johan/pdfAcrobatEngineering/fonts /home/johan/pdfPolicyVeraPDF/schemas/demo-policy.sch fonts
-        
+```bash
+~/pdfPolicyVeraPDF/policyValidate.sh /home/johan/pdfAcrobatEngineering/fonts /home/johan/pdfPolicyVeraPDF/schemas/demo-policy.sch fonts
+```
+
 ## Results, fonts category
 
 The following table lists, for each *PDF* in the *fonts* category, the corresponding (unique) validation errors (taken from the summary CSV file). Note that the text strings in the right column correspond to text values in the *assert* elements of the policy file.

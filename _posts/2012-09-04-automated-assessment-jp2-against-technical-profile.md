@@ -39,27 +39,37 @@ The table below shows the format profile that we'll be using throughout this blo
 
 + Compression type - value of *transformation* field:
 
-        /jpylyzer/properties/contiguousCodestreamBox/cod/transformation
+  ```data
+  /jpylyzer/properties/contiguousCodestreamBox/cod/transformation
+  ```
 
 + Progression order - value of *order* field:
-
-        /jpylyzer/properties/contiguousCodestreamBox/cod/order
+  
+  ```data
+  /jpylyzer/properties/contiguousCodestreamBox/cod/order
+  ```
 
 + ICC profiles - value of *meth* field:
-
-        /jpylyzer/properties/jp2HeaderBox/colourSpecificationBox/meth
+  
+  ```data
+  /jpylyzer/properties/jp2HeaderBox/colourSpecificationBox/meth
+  ```
 
 + Grid resolution - presence of *captureResolutionBox* element:
-
-        /jpylyzer/properties/jp2HeaderBox/resolutionBox
+  
+  ```data
+  /jpylyzer/properties/jp2HeaderBox/resolutionBox
+  ```
 
 ## Expressing the profile as a set of assessable rules
 
 In order to assess *jpylyzer*'s output against the profile, we first need to translate the profile to a set of assessable rules. This is where Schematron comes in. Look at parameter 'Compression type' in the table. In the previous section we saw that it corresponds to the *transformation* field in *jpylyzer*'s output. Below is a Schematron rule that asserts if *transformation* has the required value:  
 
-    <s:rule context="/jpylyzer/properties/contiguousCodestreamBox/cod">
-    <s:assert test="transformation = '9-7 irreversible'">wrong transformation</s:assert>
-    </s:rule>
+```xml
+<s:rule context="/jpylyzer/properties/contiguousCodestreamBox/cod">
+<s:assert test="transformation = '9-7 irreversible'">wrong transformation</s:assert>
+</s:rule>
+```
 
 In words, the rule asserts that the value of *transformation* (which is located in */jpylyzer/properties/contiguousCodestreamBox/*) equals *9-7 irreversible*. If the rule fails, this will result in the error message "wrong transformation".
 
@@ -69,9 +79,11 @@ Both the location (*context*) and the test statement are expressed using [XPath 
 
 The following rule checks if the compression ratio doesn't exceed a threshold value (this is actually a bit tricky, as for images that don't contain much information very high compression ratios may be obtained without losing quality):  
 
-    <s:rule context="/jpylyzer/properties">
-    <s:assert test="compressionRatio &lt; 35">Too much compression</s:assert>
-    </s:rule>
+```xml
+<s:rule context="/jpylyzer/properties">
+<s:assert test="compressionRatio &lt; 35">Too much compression</s:assert>
+</s:rule>
+```
 
 (Note that the character reference "&lt" represents "<", which isn't allowed in *XML*.)
 
@@ -79,35 +91,41 @@ The following rule checks if the compression ratio doesn't exceed a threshold va
 
 The following Schematron rule checks if the *captureResolutionBox* element exists:
 
-    <s:rule context="/jpylyzer/properties/jp2HeaderBox/resolutionBox">
-    <s:assert test="captureResolutionBox">no capture resolution box</s:assert>
-    </s:rule>
+```xml
+<s:rule context="/jpylyzer/properties/jp2HeaderBox/resolutionBox">
+<s:assert test="captureResolutionBox">no capture resolution box</s:assert>
+</s:rule>
+```
 
 ## Outcome depends on values of multiple elements
 
 Here's a more complex rule that checks whether a colour transformation (*multipleComponentTransformation*) was used while creating the image. A colour transformation is only possible for colour images, so in order to make this work for grayscale images as well, the rule must take into account that *multipleComponentTransformation* will be 'no' in that case (*nC* represents the number of image components):  
 
-    <s:rule context="/jpylyzer/properties/contiguousCodestreamBox/cod">
-    <s:assert test=
-      "(multipleComponentTransformation = 'yes') and 
-           (../../jp2HeaderBox/imageHeaderBox/nC = '3') 
-      or (multipleComponentTransformation = 'no') and 
-           (../../jp2HeaderBox/imageHeaderBox/nC = '1')">
-      no colour transformation</s:assert>
-    </s:rule>
+```xml
+<s:rule context="/jpylyzer/properties/contiguousCodestreamBox/cod">
+<s:assert test=
+    "(multipleComponentTransformation = 'yes') and 
+        (../../jp2HeaderBox/imageHeaderBox/nC = '3') 
+    or (multipleComponentTransformation = 'no') and 
+        (../../jp2HeaderBox/imageHeaderBox/nC = '1')">
+    no colour transformation</s:assert>
+</s:rule>
+```
 
 ## Multiple element instances
 
 Our profile states that the precinct size must be 256 x 256 for the  2 highest resolution levels, and 128 x 128 for the remaining ones. These occur as multiple instances of the *precinctSize* and *precinctSizeY* element in *jpylyzer*'s output, which we can handle as follows (note: for 5 decomposition levels we will have 6 resolution levels):  
 
-    <s:rule context="/jpylyzer/properties/contiguousCodestreamBox/cod">
-    <s:assert test="precinctSizeY[1] = '128'">precinctSizeY doesn't match profile</s:assert>
-    <s:assert test="precinctSizeY[2] = '128'">precinctSizeY doesn't match profile</s:assert>
-    <s:assert test="precinctSizeY[3] = '128'">precinctSizeY doesn't match profile</s:assert>
-    <s:assert test="precinctSizeY[4] = '128'">precinctSizeY doesn't match profile</s:assert>
-    <s:assert test="precinctSizeY[5] = '256'">precinctSizeY doesn't match profile</s:assert>
-    <s:assert test="precinctSizeY[6] = '256'">precinctSizeY doesn't match profile</s:assert>
-    </s:rule>
+```xml
+<s:rule context="/jpylyzer/properties/contiguousCodestreamBox/cod">
+<s:assert test="precinctSizeY[1] = '128'">precinctSizeY doesn't match profile</s:assert>
+<s:assert test="precinctSizeY[2] = '128'">precinctSizeY doesn't match profile</s:assert>
+<s:assert test="precinctSizeY[3] = '128'">precinctSizeY doesn't match profile</s:assert>
+<s:assert test="precinctSizeY[4] = '128'">precinctSizeY doesn't match profile</s:assert>
+<s:assert test="precinctSizeY[5] = '256'">precinctSizeY doesn't match profile</s:assert>
+<s:assert test="precinctSizeY[6] = '256'">precinctSizeY doesn't match profile</s:assert>
+</s:rule>
+```
 
 ## The full profile as a schema
 
@@ -121,21 +139,27 @@ For the actual assessment (or validation) of *jpylyzer* output against the schem
 
     **Example:**:
 
-        jpylyzer balloon.jp2 > balloon_jp2.xml
+    ```bash
+    jpylyzer balloon.jp2 > balloon_jp2.xml
+    ```
 
 2. Validate *jpylyzer*'s output against the schema.
 
     **Example:**:
 
-        java -jar probatron.jar balloon\_jp2.xml profile.sch > balloon_jp2_assessment.xml
+    ```bash
+    java -jar probatron.jar balloon\_jp2.xml profile.sch > balloon_jp2_assessment.xml
+    ```
 
 ## Example output
 
 The above procedure produces an *XML* file that contains a *failed assert* element for each test that failed. For example, the output below is generated if the number of layers is wrong:
 
-    <svrl:failed-assert test="layers = '8'" location="/jpylyzer[1]/properties[1]/contiguousCodestreamBox[1]/cod[1]" line="45" col="550">
-    <svrl:text>wrong number of layers</svrl:text>  
-    </svrl:failed-assert>
+```xml
+<svrl:failed-assert test="layers = '8'" location="/jpylyzer[1]/properties[1]/contiguousCodestreamBox[1]/cod[1]" line="45" col="550">
+<svrl:text>wrong number of layers</svrl:text>  
+</svrl:failed-assert>
+```
 
 ## Demo
 

@@ -27,9 +27,11 @@ In principle this change could result in problems if an *EPUB* that uses CFI for
 
 *EPUB* 3.1 imposes restrictions on the metadata elements that can be embedded in the Package Document. Up to version 3.0.1, the full [Dublin Core Metadata Element Set](http://dublincore.org/documents/dces/) was supported, whereas in 3.1 only the `dc:identifier`, `dc:title`, `dc:language`, `dc:creator`, `dc:publisher` and `dc:type` elements are allowed. Additional metadata *can* be included, but they need to be defined in a separate resource (file), which is referenced from the `metadata` element using the [`link`](http://www.idpf.org/epub/31/spec/epub-packages.html#sec-link-elem) element. Below is an example that uses a [MARC](https://en.wikipedia.org/wiki/MARC_standards) file:
 
-    <link rel="record"
-      href="meta/9780000000001.xml" 
-      media-type="application/marc"/>
+```xml
+<link rel="record"
+href="meta/9780000000001.xml" 
+media-type="application/marc"/>
+```
 
 Complicating things further, the [EPUB 3.1 Packages draft](http://www.idpf.org/epub/31/spec/epub-packages.html#sec-link-elem) says:
 
@@ -63,21 +65,23 @@ In *EPUB* 3.0.1 the [*bindings*](http://www.idpf.org/epub/301/spec/epub-publicat
 
 The [*switch*](http://www.idpf.org/epub/301/spec/epub-contentdocs.html#sec-xhtml-content-switch) element in *EPUB* 3.0.1 allows one to define alternative representations of XML fragments. Here's an example:
 
-    <epub:switch id="cmlSwitch">
-       
-       <epub:case required-namespace="http://www.xml-cml.org/schema">
-          <cml xmlns="http://www.xml-cml.org/schema">
-             <molecule id="sulfuric-acid">
-                <formula id="f1" concise="H 2 S 1 O 4"/>
-             </molecule>
-          </cml>
-       </epub:case>
-       
-       <epub:default>
-          <p>H<sub>2</sub>SO<sub>4</sub></p>
-       </epub:default>
-       
-    </epub:switch>
+```xml
+<epub:switch id="cmlSwitch">
+   
+   <epub:case required-namespace="http://www.xml-cml.org/schema">
+      <cml xmlns="http://www.xml-cml.org/schema">
+         <molecule id="sulfuric-acid">
+            <formula id="f1" concise="H 2 S 1 O 4"/>
+         </molecule>
+      </cml>
+   </epub:case>
+   
+   <epub:default>
+      <p>H<sub>2</sub>SO<sub>4</sub></p>
+   </epub:default>
+   
+</epub:switch>
+```
 
 Here, we have a chemical formula in [*ChemML*](https://en.wikipedia.org/wiki/Chemical_Markup_Language) format and in standard *HTML*. *ChemML* is not natively supported in *EPUB*, so by default a reader will display the *HTML* version. However, wrapping both in a *switch* element would allow a *ChemML*-capable reader to render that representation instead.
 
@@ -128,7 +132,7 @@ These concerns are once more confirmed by the current *EPUB* 3.1 draft. However,
 
 ## Acknowledgement
 
-Thanks to Matt Garrish for his prompt replies to my questions on Github. 
+Thanks to Matt Garrish for his prompt replies to my questions on Github.
 
 [^1]:  Following [EPUB 3.1 Changes from EPUB 3.0.1, Editor's Draft 30 January 2016](http://www.idpf.org/epub/31/spec/epub-changes.html)
 

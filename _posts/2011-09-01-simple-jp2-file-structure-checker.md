@@ -58,10 +58,10 @@ stream, it checks if the code stream is terminated by a valid
 end-of-codestream marker. Finally, it checks if the file contains all
 the compulsory/required top-level boxes. These are:
 
--   JPEG 2000 signature box
--   File Type box
--   JP2 Header box
--   Contiguous Codestream box
+- JPEG 2000 signature box
+- File Type box
+- JP2 Header box
+- Contiguous Codestream box
 
 In order to test the box checking mechanism I did some additional image
 butchering, where I deliberately changed the tags of existing boxes so

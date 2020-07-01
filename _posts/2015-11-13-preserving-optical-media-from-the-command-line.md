@@ -22,13 +22,17 @@ In addition there's a final section that covers my attempts at imaging a multise
 
 The majority of the tools covered by this blog post need the device path of the CD drive as a command-line argument. Under Linux you can usually find this by inspecting the output of the following command (run this while a CD or DVD is inserted in your drive):
 
-    mount|grep ^'/dev'
+```bash
+mount|grep ^'/dev'
+```
 
 If all goes well, the result will look similar to this:
 
-    /dev/sda1 on / type ext4 (rw,errors=remount-ro)
-    /dev/sr0 on /media/johan/REBELS_0 type iso9660
-    (ro,nosuid,nodev,uid=1000,gid=1000,iocharset=utf8,mode=0400,dmode=0500,uhelper=udisks2)
+```data
+/dev/sda1 on / type ext4 (rw,errors=remount-ro)
+/dev/sr0 on /media/johan/REBELS_0 type iso9660
+(ro,nosuid,nodev,uid=1000,gid=1000,iocharset=utf8,mode=0400,dmode=0500,uhelper=udisks2)
+```
 
 So, in this case the path to the CD drive is */dev/sr0* (if you have multiple optical drives you may also see */dev/sr1*, and so on).
 
@@ -36,14 +40,18 @@ So, in this case the path to the CD drive is */dev/sr0* (if you have multiple op
 
 For some reason the *mount* command doesn't result in the printing of any device paths in CygWin. Instead, try this:
 
-    ls /dev/
+```bash
+ls /dev/
+```
 
 Which produces a list of all devices:
 
-    clipboard  dsp   mqueue  random  sda2  sdc1    stdin   ttyS2
-    conin      fd    null    scd0    sdb   shm     stdout  urandom
-    conout     full  ptmx    sda     sdb1  sr0     tty     windows
-    console    kmsg  pty0    sda1    sdc   stderr  ttyS0   zero
+```data
+clipboard  dsp   mqueue  random  sda2  sdc1    stdin   ttyS2
+conin      fd    null    scd0    sdb   shm     stdout  urandom
+conout     full  ptmx    sda     sdb1  sr0     tty     windows
+console    kmsg  pty0    sda1    sdc   stderr  ttyS0   zero
+```
 
 In the above output both *sr0* and *scd0* point to the CD drive, and either the full paths */dev/sr0* or */dev/scd0* will work (again in case of multiple drives you may be looking for */dev/sr1* or */dev/scd1*).
 
@@ -57,23 +65,29 @@ A number of tools allow you to create an (ISO[^2]) image from a CD-ROM or DVD. A
 
 The [documentation](http://linux.die.net/man/1/readom) recommends to always run *readom* as root. Also, before running *readom*, the CD or DVD must be unmounted[^4]. So, after inserting the CD or DVD, first enter this:
 
-    umount /dev/sr0
+```bash
+umount /dev/sr0
+```
 
 Then run *readom* as root:
 
-    sudo readom retries=4 dev=/dev/sr0 f=mydisk.iso
-  
+```bash
+sudo readom retries=4 dev=/dev/sr0 f=mydisk.iso
+```
+
 Here the value of the *retries* parameter defines the number of attempts that *readom* will make at trying to recover unreadable sectors. The default value is 128, which can result in huge processing times for CDs that are seriously damaged. The *f* parameter sets the name of the image file that is created. If all goes well the following output is printed to the screen at the end of the imaging process:
 
-    Read  speed:  4234 kB/s (CD  24x, DVD  3x).
-    Write speed:     0 kB/s (CD   0x, DVD  0x).
-    Capacity: 309104 Blocks = 618208 kBytes = 603 MBytes = 633 prMB
-    Sectorsize: 2048 Bytes
-    Copy from SCSI (10,0,0) disk to file 'mydisk.iso'
-    end:    309104
-    addr:   309104 cnt: 44
-    Time total: 259.287sec
-    Read 618208.00 kB at 2384.3 kB/sec.
+```data
+Read  speed:  4234 kB/s (CD  24x, DVD  3x).
+Write speed:     0 kB/s (CD   0x, DVD  0x).
+Capacity: 309104 Blocks = 618208 kBytes = 603 MBytes = 633 prMB
+Sectorsize: 2048 Bytes
+Copy from SCSI (10,0,0) disk to file 'mydisk.iso'
+end:    309104
+addr:   309104 cnt: 44
+Time total: 259.287sec
+Read 618208.00 kB at 2384.3 kB/sec.
+```
 
 ### When read errors happen: try ddrescue
 
@@ -86,21 +100,25 @@ The [*ddrescue* Manual](https://www.gnu.org/software/ddrescue/manual/ddrescue_ma
 
 First we run *ddrescue* with the following command line:
 
-    ddrescue -b 2048 -r4 -v /dev/sr0 mydisk.iso mydisk.log
+```bash
+ddrescue -b 2048 -r4 -v /dev/sr0 mydisk.iso mydisk.log
+```
 
 Here `-b` sets the block size (which is typically 2048 bytes for a CD-ROM); `-r4` sets the maximum number of retries in case of bad sectors to 4[^7], and `-v` activates verbose output mode. File *mydisk.log* is a so-called [*mapfile*](https://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html#Mapfile-structure) (known as *logfile* in *ddrescue* versions prior to 1.20). The *mapfile* contains (among a few other things) information on the recovery status of blocks of data. After running the above command on a faulty CD-ROM, we end up with output that looks like this:
 
-    GNU ddrescue 1.17
-    About to copy 624918 kBytes from /dev/sr0 to mydisk.iso
-        Starting positions: infile = 0 B,  outfile = 0 B
-        Copy block size:  32 sectors       Initial skip size: 32 sectors
-    Sector size: 2048 Bytes
+```data
+GNU ddrescue 1.17
+About to copy 624918 kBytes from /dev/sr0 to mydisk.iso
+    Starting positions: infile = 0 B,  outfile = 0 B
+    Copy block size:  32 sectors       Initial skip size: 32 sectors
+Sector size: 2048 Bytes
 
-    Press Ctrl-C to interrupt
-    rescued:   624871 kB,  errsize:   47104 B,  current rate:        0 B/s
-       ipos:   508162 kB,   errors:       3,    average rate:     592 kB/s
-       opos:   508162 kB,    time since last successful read:    12.3 m
-    Finished
+Press Ctrl-C to interrupt
+rescued:   624871 kB,  errsize:   47104 B,  current rate:        0 B/s
+    ipos:   508162 kB,   errors:       3,    average rate:     592 kB/s
+    opos:   508162 kB,    time since last successful read:    12.3 m
+Finished
+```
 
 From this we can see the following: 
 
@@ -111,24 +129,28 @@ From this we can see the following:
 
 However, it is often possible to improve the result by additional runs of *ddrescue* using either different options, or other hardware. First we'll see if we can improve things by re-running in [*direct disc access*](https://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html#Direct-disc-access) mode (this does not work on some systems, in which case *ddrescue* will report a warning). So we use the following command[^6]:
 
-    ddrescue -d -b 2048 -r1 -v /dev/sr0 mydisk.iso mydisk.log
+```bash
+ddrescue -d -b 2048 -r1 -v /dev/sr0 mydisk.iso mydisk.log
+```
 
 Here the `-d` switch activates direct disc access, which bypasses the kernel cache (note that the number of retries is set to 1 in the above example). Running the command causes *ddrescue* to update both the ISO and the mapfile. The screen output now looks like this:
 
-    GNU ddrescue 1.17
-    About to copy 624918 kBytes from /dev/sr0 to mydisk.iso
-        Starting positions: infile = 0 B,  outfile = 0 B
-        Copy block size:  32 sectors       Initial skip size: 32 sectors
-    Sector size: 2048 Bytes
+```data
+GNU ddrescue 1.17
+About to copy 624918 kBytes from /dev/sr0 to mydisk.iso
+    Starting positions: infile = 0 B,  outfile = 0 B
+    Copy block size:  32 sectors       Initial skip size: 32 sectors
+Sector size: 2048 Bytes
 
-    Press Ctrl-C to interrupt
-    Initial status (read from logfile)
-    rescued:   624871 kB,  errsize:   47104 B,  errors:       3
-    Current status
-    rescued:   624912 kB,  errsize:    6144 B,  current rate:        0 B/s
-       ipos:   508162 kB,   errors:       3,    average rate:     1706 B/s
-       opos:   508162 kB,    time since last successful read:       7 s
-    Finished
+Press Ctrl-C to interrupt
+Initial status (read from logfile)
+rescued:   624871 kB,  errsize:   47104 B,  errors:       3
+Current status
+rescued:   624912 kB,  errsize:    6144 B,  current rate:        0 B/s
+    ipos:   508162 kB,   errors:       3,    average rate:     1706 B/s
+    opos:   508162 kB,    time since last successful read:       7 s
+Finished
+```
 
 What we see here:
 
@@ -137,24 +159,28 @@ What we see here:
 
 So this is better, but still not perfect. So let's try if we can improve the results by using a different CD-reader. At this point I hooked up an external USB CD-drive, and moved my faulty CD-ROM from the internal reader to the external one. In this case my external drive is mapped under device path */dev/sr2* (re-run the aforementioned steps to find the device path if necessary). This gives the following command-line:
 
-    ddrescue -d -b 2048 -r4 -v /dev/sr2 mydisk.iso mydisk.log
+```bash
+ddrescue -d -b 2048 -r4 -v /dev/sr2 mydisk.iso mydisk.log
+```
 
 Now the output looks like this:
 
-    GNU ddrescue 1.17
-    About to copy 624918 kBytes from /dev/sr2 to mydisk.iso
-        Starting positions: infile = 0 B,  outfile = 0 B
-        Copy block size:  32 sectors       Initial skip size: 32 sectors
-    Sector size: 2048 Bytes
+```data
+GNU ddrescue 1.17
+About to copy 624918 kBytes from /dev/sr2 to mydisk.iso
+    Starting positions: infile = 0 B,  outfile = 0 B
+    Copy block size:  32 sectors       Initial skip size: 32 sectors
+Sector size: 2048 Bytes
 
-    Press Ctrl-C to interrupt
-    Initial status (read from logfile)
-    rescued:   624916 kB,  errsize:    2048 B,  errors:       1
-    Current status
-    rescued:   624918 kB,  errsize:       0 B,  current rate:      682 B/s
-       ipos:   106450 kB,   errors:       0,    average rate:      682 B/s
-       opos:   106450 kB,    time since last successful read:       0 s
-    Finished
+Press Ctrl-C to interrupt
+Initial status (read from logfile)
+rescued:   624916 kB,  errsize:    2048 B,  errors:       1
+Current status
+rescued:   624918 kB,  errsize:       0 B,  current rate:      682 B/s
+    ipos:   106450 kB,   errors:       0,    average rate:      682 B/s
+    opos:   106450 kB,    time since last successful read:       0 s
+Finished
+```
 
 From the output we can see that after re-running *ddrescue* with the external drive, both 'errsize' and the number of errors have gone down to 0. In other words: all of the contents of the CD have been rescued without any errors. Yay!
 
@@ -164,8 +190,10 @@ In the above example I used two different CD readers that were connected to the 
 
 In theory you could use check the integrity of the created ISO image by computing a checksum on both the ISO file and the physical carrier, and then comparing both:
 
-    md5sum mydisk.iso
-    md5sum /dev/sr0
+```bash
+md5sum mydisk.iso
+md5sum /dev/sr0
+```
 
 However, in practice this comparison is not all that useful. Using dedicated data recovery tools like *readom* and particularly *ddrescue* often results in a more accurate capture of the data on a disc than accessing the corresponding device directly. Because of this, computing a checksum on the device using something like `md5sum /dev/sr0` can give unreliable results, resulting in a checksum mismatch that does not indicate any fault of the ISO image. It is worth noting that the aforementioned [Aaron Toponce article](https://pthree.org/2011/09/26/how-to-properly-create-and-burn-cddvd-iso-images-from-the-command-line/) claims that *readom* already does a checksum check. If true, the additional check would be overkill (especially given that computing a checksum on a physical CD or DVD is time consuming). However, I couldn't find any confirmation of this in either *readom*'s documentation nor its source code (although I found the source hard to read, so I may have simply overlooked it).
 
@@ -173,13 +201,17 @@ However, in practice this comparison is not all that useful. Using dedicated dat
 
 In theory, there shouldn't be any need for additional quality checks on an ISO image once its integrity against the physical carrier is confirmed by the checksum. However, since *cdrkit* includes an [*isovfy*](http://linux.die.net/man/8/isoinfo) tool that claims to " verify the integrity of an iso9660 image", I decided I might as well give it a try. It works by entering:
 
-    isovfy mydisk.iso
+```bash
+isovfy mydisk.iso
+```
 
 Here's some example output:
 
-    Root at extent 13, 2048 bytes
-    [0 0]
-    No errors found
+```data
+Root at extent 13, 2048 bytes
+[0 0]
+No errors found
+```
 
 The documentation of the tool isn't very clear about *what* specific checks it performs. In one of my tests I fed it an ISO image that had its last 50 MB missing (truncated). This did not result in any error or warning message! Most of the reported *isovfy* errors that I came across in my tests simply reflected the file system on the physical CD not conforming to ISO 9660 (this seems to be pretty common). Based on this it looks like *isovfy* isn't  very useful after all.
 
@@ -193,49 +225,59 @@ In response to the problems I encountered with *isovfy*, I created the [*isolyze
 
 The [*Primary Volume Descriptor*](http://wiki.osdev.org/ISO_9660#The_Primary_Volume_Descriptor) (PVD) of an ISO 9660 file system contains general information about the CD or DVD. The [*isoinfo*](http://linux.die.net/man/8/isoinfo) tool (which is also part of *cdrkit*) is able to  print the most important PVD fields to the screen:
 
-    isoinfo -d -i mydisk.iso
+```bash
+isoinfo -d -i mydisk.iso
+```
 
 Result:
 
-    CD-ROM is in ISO 9660 format
-    System id: 
-    Volume id: REBELS_0
-    Volume set id: 
-    Publisher id: 
-    Data preparer id: 
-    Application id: NERO - BURNING ROM
-    Copyright File id: 
-    Abstract File id: 
-    Bibliographic File id: 
-    Volume set size is: 1
-    Volume set sequence number is: 1
-    Logical block size is: 2048
-    Volume size is: 333151
-    Joliet with UCS level 3 found
-    NO Rock Ridge present
+```data
+CD-ROM is in ISO 9660 format
+System id: 
+Volume id: REBELS_0
+Volume set id: 
+Publisher id: 
+Data preparer id: 
+Application id: NERO - BURNING ROM
+Copyright File id: 
+Abstract File id: 
+Bibliographic File id: 
+Volume set size is: 1
+Volume set sequence number is: 1
+Logical block size is: 2048
+Volume size is: 333151
+Joliet with UCS level 3 found
+NO Rock Ridge present
+```
 
 You can also run *isoinfo* directly on the physical carrier:
 
-    isoinfo -d -i /dev/sr0
+```bash
+isoinfo -d -i /dev/sr0
+```
 
 To get a listing of all files and directories that are part of the filesystem, use this:
 
-    isoinfo -f -i mydisk.iso
+```bash
+isoinfo -f -i mydisk.iso
+```
 
 Result:
 
-    /AUTORUN.EXE;1
-    /AUTORUN.INF;1
-    /DISK0
-    /LICENSE2.TXT;1
-    /LICENSEF.TXT;1
-    /LICENSEU.TXT;1
-    /SETUP.EXE;1
-    /DISK0/CONTROLS.CFG;1
-    /DISK0/DISK0;1
-    ::
-    ::
-    etc
+```data
+/AUTORUN.EXE;1
+/AUTORUN.INF;1
+/DISK0
+/LICENSE2.TXT;1
+/LICENSEF.TXT;1
+/LICENSEU.TXT;1
+/SETUP.EXE;1
+/DISK0/CONTROLS.CFG;1
+/DISK0/DISK0;1
+::
+::
+etc
+```
 
 It looks like all items that are followed by *;1* are files, and those that aren't are directories. Also, the `-l` option can be used for a detailed list that includes additional file attributes (size, date, etc.).
 
@@ -243,34 +285,42 @@ It looks like all items that are followed by *;1* are files, and those that aren
 
 The [*disktype*](http://disktype.sourceforge.net/) tool is particularly useful for identifying [hybrid disc](https://en.wikipedia.org/wiki/Hybrid_disc) images that combine multiple file systems. For example:   
 
-    disktype bewaarmachine.iso
+```bash
+disktype bewaarmachine.iso
+```
 
 This results in:
 
-    --- bewaarmachine.iso
-    Regular file, size 342.1 MiB (358727680 bytes)
-    Apple partition map, 2 entries
-    Partition 1: 1 KiB (1024 bytes, 2 sectors from 1)
-      Type "Apple_partition_map"
-    Partition 2: 172.4 MiB (180773376 bytes, 353073 sectors from 346957)
-      Type "Apple_HFS"
-      HFS file system
-        Volume name "de bewaarmachine"
-        Volume size 172.4 MiB (180764672 bytes, 44132 blocks of 4 KiB)
-    ISO9660 file system
-      Volume name "BEWAARMACHINE_PC"
-      Application "TOAST ISO 9660 BUILDER COPYRIGHT (C) 1993-1996 MILES SOFTWARE GMBH - HAVE A NICE DAY"
-      Data size 169.4 MiB (177641472 bytes, 86739 blocks of 2 KiB)
+```data
+--- bewaarmachine.iso
+Regular file, size 342.1 MiB (358727680 bytes)
+Apple partition map, 2 entries
+Partition 1: 1 KiB (1024 bytes, 2 sectors from 1)
+    Type "Apple_partition_map"
+Partition 2: 172.4 MiB (180773376 bytes, 353073 sectors from 346957)
+    Type "Apple_HFS"
+    HFS file system
+    Volume name "de bewaarmachine"
+    Volume size 172.4 MiB (180764672 bytes, 44132 blocks of 4 KiB)
+ISO9660 file system
+    Volume name "BEWAARMACHINE_PC"
+    Application "TOAST ISO 9660 BUILDER COPYRIGHT (C) 1993-1996 MILES SOFTWARE GMBH - HAVE A NICE DAY"
+    Data size 169.4 MiB (177641472 bytes, 86739 blocks of 2 KiB)
+```
 
 In this example we have an image that contains both an ISO 9660 and an Apple HFS filesystem. *Disktype* can also be run directly on the physical carrier, using:
 
-    disktype /dev/sr0
+```bash
+disktype /dev/sr0
+```
 
 ### Isolyzer
 
 The  [*isolyzer*](https://github.com/KBNLresearch/isolyzer) tool also gives detailed information about an ISO image, including the file systems it contains. As an example:
 
-    isolyzer bewaarmachine.iso > bewaarmachine.xml
+```bash
+isolyzer bewaarmachine.iso > bewaarmachine.xml
+```
 
 This results [in this output file](https://gist.github.com/bitsgalore/bf5f9fb8e936efb9c4bc06a04443ef4a).
 
@@ -278,17 +328,23 @@ This results [in this output file](https://gist.github.com/bitsgalore/bf5f9fb8e9
 
 The data structure of an audio CD is fundamentally different from a CD-ROM or DVD, and because of this its content cannot be stored as an ISO image. The most widely-used approach is to extract (or "rip") the audio tracks on a CD to separate [*WAVE*](http://fileformats.archiveteam.org/wiki/WAV) files. A complicating factor here is that the way audio is encoded on a CD tends to obscure (small) read errors during playback. As a result, a single linear read will not result in a reliable transfer of the audio data. More details can be found in [this excellent article by Alexander Duryee](http://journal.code4lib.org/articles/9581). Duryee recommends a number of extraction tools that overcome this problem using sophisticated verification and correction functionality. One of these tools is the [*cdparanoia*](http://linux.die.net/man/1/cdparanoia) ripper. As an example, the following command can be used to rip a CD in batch mode, where each track is stored as a separate *WAVE* file:
 
-    cdparanoia -B -L
+```bash
+cdparanoia -B -L
+```
 
 or:
 
-    cdparanoia -B -l
+```bash
+cdparanoia -B -l
+```
 
 The `-L` switch results in the generation of a detailed log file; `-l` produces a summary log (name:  *cdparanoia.log*)[^5]. File names are generated automatically like this:
 
-    track01.cdda.wav
-    track02.cdda.wav
-    track03.cdda.wav
+```data
+track01.cdda.wav
+track02.cdda.wav
+track03.cdda.wav
+```
 
 [Here is a link to an example log file](https://gist.github.com/bitsgalore/1bea8f015eca21a706e7#file-cdparanoialogsummary-log). The output may look a little weird at first sight, which is because *cdparanoia* reports all status and progress information as symbols and smilies, respectively. Their meaning is explained in the [documentation](http://linux.die.net/man/1/cdparanoia).
 
@@ -307,27 +363,31 @@ Based on some (relatively limited) testing, the [*cdrdao*](http://linux.die.net/
 
 We can identify mixed-mode discs by running the *cd-info* command, which is part of the [*GNU libcdio*](https://www.gnu.org/software/libcdio/libcdio.html) package:
 
-    cd-info /dev/sr0
+```bash
+cd-info /dev/sr0
+```
 
 Now pay attention to the "CD Analysis Report" at the bottom of *cd-info*'s output:
 
-    CD Analysis Report
+```data
+CD Analysis Report
 
-    CD-TEXT for Disc:
-    CD-TEXT for Track  1:
-    CD-TEXT for Track  2:
-    mixed mode CD   
-    CD-ROM with ISO 9660 filesystem
-    ISO 9660: 235494 blocks, label `TNT_ROM                         '
-    Application: TOAST ISO 9660 BUILDER COPYRIGHT (C) 1993 MILES SOFTWARE ENGINEERING - HAVE A NICE DAY
-    Preparer   : 
-    Publisher  : 
-    System     : APPLE COMPUTER, INC., TYPE: 0002
-    Volume     : TNT_ROM
-    Volume Set : 
-    mixed mode CD   XA sectors   
-    session #2 starts at track  2, LSN: 235719, ISO 9660 blocks: 235494
-    ISO 9660: 235494 blocks, label `TNT_ROM    
+CD-TEXT for Disc:
+CD-TEXT for Track  1:
+CD-TEXT for Track  2:
+mixed mode CD   
+CD-ROM with ISO 9660 filesystem
+ISO 9660: 235494 blocks, label `TNT_ROM                         '
+Application: TOAST ISO 9660 BUILDER COPYRIGHT (C) 1993 MILES SOFTWARE ENGINEERING - HAVE A NICE DAY
+Preparer   : 
+Publisher  : 
+System     : APPLE COMPUTER, INC., TYPE: 0002
+Volume     : TNT_ROM
+Volume Set : 
+mixed mode CD   XA sectors   
+session #2 starts at track  2, LSN: 235719, ISO 9660 blocks: 235494
+ISO 9660: 235494 blocks, label `TNT_ROM    
+```
 
 Both the 4th line from the top and the 3rd line from the bottom contain the text `mixed mode CD`.
 
@@ -337,44 +397,54 @@ Both the 4th line from the top and the 3rd line from the bottom contain the text
 
 First we have to unmount the disc:
 
-    umount /dev/sr0
+```bash
+umount /dev/sr0
+```
 
 Then run *cdrdao* with the following arguments:
 
-    cdrdao read-cd --read-raw --datafile toolstales.bin --device /dev/sr0 --driver generic-mmc-raw toolstales.toc
+```bash
+cdrdao read-cd --read-raw --datafile toolstales.bin --device /dev/sr0 --driver generic-mmc-raw toolstales.toc
+```
 
 The result of this is a disc image in *BIN/TOC* format. The *.toc* file looks like this:
 
-    CD_ROM_XA
+```data
+CD_ROM_XA
 
-    CATALOG "0000000000000"
+CATALOG "0000000000000"
 
-    // Track 1
-    TRACK MODE2_RAW
-    NO COPY
-    DATAFILE "toolstales.bin" 52:20:69 // length in bytes: 554058288
+// Track 1
+TRACK MODE2_RAW
+NO COPY
+DATAFILE "toolstales.bin" 52:20:69 // length in bytes: 554058288
 
 
-    // Track 2
-    TRACK AUDIO
-    NO COPY
-    NO PRE_EMPHASIS
-    TWO_CHANNEL_AUDIO
-    SILENCE 00:02:00
-    FILE "toolstales.bin" #554058288 0 14:58:22
-    START 00:02:00
+// Track 2
+TRACK AUDIO
+NO COPY
+NO PRE_EMPHASIS
+TWO_CHANNEL_AUDIO
+SILENCE 00:02:00
+FILE "toolstales.bin" #554058288 0 14:58:22
+START 00:02:00
+```
 
 The *BIN/TOC* format is not easily accessible, so we need to do some additional post-processing to convert the image into a more accessible format.
 
 First we convert the *.toc* file to the *.cue* format (as defined in Appendix A of the [*CDRWIN* User Guide](https://web.archive.org/web/20070614044112/http://www.goldenhawk.com/download/cdrwin.pdf)). For this we use the *toc2cue* tool (which is part of *cdrdao*):
 
-    toc2cue toolstales.toc toolstales.cue
+```bash
+toc2cue toolstales.toc toolstales.cue
+```
 
 We now have a *BIN/CUE* image. On Linux we can mount this image with a virtual drive controller such as [*cdemu*](https://cdemu.sourceforge.io/). This way both the audio and the data are accessible in the same way they would be from the physical carrier.
 
 If needed it is possible to extract the data track of the *BIN/CUE* file to an ISO image, and any audio tracks to *WAVE* files. For this we need the [*bchunk*](http://linux.die.net/man/1/bchunk) tool. Now we invoke it with the following arguments:
 
-    bchunk -s -w toolstales.bin toolstales.cue toolstales
+```bash
+bchunk -s -w toolstales.bin toolstales.cue toolstales
+```
 
 In the example above, the `-w` option tells *bchunk* to extract audio tracks to *WAVE* files, and the `-s` option does a byte swap on the audio samples[^8]. The last argument defines the base name for all created output files. In this case the command  results in 2 files: *toolstales01.iso*, which is a mountable ISO image, and *toolstales02.wav*, which is the audio track.
 
@@ -382,19 +452,23 @@ In the example above, the `-w` option tells *bchunk* to extract audio tracks to 
 
 To identify enhanced (Blue Book) CDs, we again use *cd-info*:
 
-    cd-info /dev/sr0
+```bash
+cd-info /dev/sr0
+```
 
 Here's the corresponding "CD Analysis Report" at the bottom of *cd-info*'s output:
 
-    CD Analysis Report
+```data
+CD Analysis Report
 
-    CD-TEXT for Disc:
-    CD-TEXT for Track  1:
-    ::  ::
-    CD-TEXT for Track 18:
-    CD-Plus/Extra   
-    session #2 starts at track 18, LSN: 163570, ISO 9660 blocks: 170006
-    ISO 9660: 170006 blocks, label `NO   
+CD-TEXT for Disc:
+CD-TEXT for Track  1:
+::  ::
+CD-TEXT for Track 18:
+CD-Plus/Extra   
+session #2 starts at track 18, LSN: 163570, ISO 9660 blocks: 170006
+ISO 9660: 170006 blocks, label `NO   
+```
 
 Note that `CD-Plus/Extra`, which indicates this is a multi-session CD.
 
@@ -402,27 +476,37 @@ Note that `CD-Plus/Extra`, which indicates this is a multi-session CD.
 
 The procedure for imaging enhanced CDs is largely identical to the one for mixed-mode CDs. However, a major limitation here is that *cdrdao* is not able to combine the data/audio from both sessions into one disc image: running *cdrdao* with the command-line arguments as shown in the previous section will only create an image of the first session! However, it is possible to image both sessions separately into two image files. As an example, below are the steps I followed in an attempt to make a copy of They Might Be Giants' [*"No"*](http://tmbw.net/wiki/No!) album (which contains some video content). Again I first unmounted the disk:
 
-    umount /dev/sr0
+```bash
+umount /dev/sr0
+```
 
 Then I used the below command to create an image of the first session (note the `--session` option):
 
-    cdrdao read-cd --read-raw --session 1 --datafile no1.bin --device /dev/sr0 --driver generic-mmc-raw no1.toc
+```bash
+cdrdao read-cd --read-raw --session 1 --datafile no1.bin --device /dev/sr0 --driver generic-mmc-raw no1.toc
+```
 
 And then again for the second session:
 
-    cdrdao read-cd --read-raw --session 2 --datafile no2.bin --device /dev/sr0 --driver generic-mmc-raw no2.toc
+```bash
+cdrdao read-cd --read-raw --session 2 --datafile no2.bin --device /dev/sr0 --driver generic-mmc-raw no2.toc
+```
 
 Running *cdrdao* twice like this, I was able to create two separate images with the audio and file system data, respectively.
 
 As in the mixed-mode example, both sessions are extracted as *BIN/TOC* files, so again we use *bchunk* to convert to *BIN/CUE*:
 
-    toc2cue no1.toc no1.cue
-    toc2cue no2.toc no2.cue
+```bash
+toc2cue no1.toc no1.cue
+toc2cue no2.toc no2.cue
+```
 
 And then use *bchunk* to extract ISO and *WAVE* files from the *BIN/CUE* images:
 
-    bchunk -s -w no1.bin no1.cue no1
-    bchunk -s -w no2.bin no2.cue no2
+```bash
+bchunk -s -w no1.bin no1.cue no1
+bchunk -s -w no2.bin no2.cue no2
+```
 
 One thing to watch out for is that in most cases ISO images from an enhanced CD cannot directly be accessed or mounted. The reason for this is that the sector offsets that point to the files in the image are defined *relative to the beginning of the physical disc*, and not *relative to the start of the image*! More details on this can be found [in this blog post]({{ BASE_PATH }}/2017/04/25/imaging-cd-extra-blue-book-discs), which also describes a workaround that allows one to access such images under Linux.
 

@@ -13,8 +13,10 @@ In my [previous blog post]({{ BASE_PATH }}/2017/01/04/breaking-waves-and-some-fl
 
 A  number of techniques exist to verify a newly created ISO image. A seemingly obvious solution would be to do a checksum comparison on both the ISO image and the physical carrier. For instance, the following will work on any Linux system:
 
-    md5sum myimage.iso
-    md5sum /dev/sr0
+```
+md5sum myimage.iso
+md5sum /dev/sr0
+```
 
 The first line computes an MD5 checksum from the ISO image; the second line repeats this for the physical carrier. This method is not completely fail-safe. In some tests I did over a year ago, I ran into a a very strange issue where my attempts to image a CD would sometimes [result in incomplete reads](http://qanda.digipres.org/1076/incomplete-image-after-imaging-rom-prevent-and-detect-this), and, as a result, truncated ISO images. The problem was most likely caused by faulty hardware (the machine on which I ran those tests more or less died shortly afterwards). Most worryingly, the machine would sometimes return incomplete data, both while creating the ISO image as well as during the subsequent checksum calculation on the physical carrier. The result of this was that the computed checksums were identical in both cases, *which meant that the image passed the checksum quality check, even though it was incomplete*!
 
@@ -35,9 +37,11 @@ You can try this yourself by running *isovfy* on the following two ISO images:
 
 I ran both images through *isovfy* (version 3.02a06); both resulted in the following output:
 
-    Root at extent 17, 2048 bytes
-    [0,0]
-    No errors found
+```
+Root at extent 17, 2048 bytes
+[0,0]
+No errors found
+```
 
 This demonstrates that *isovfy* is not very useful for detecting truncated ISO files.
 
@@ -75,33 +79,37 @@ In addition to this, Isolyzer also extracts and reports technical metadata from 
 
 Currently the test results are reported in the following format (this may well change in upcoming releases):
 
-    <tests>
-        <containsISO9660Signature>True</containsISO9660Signature>
-        <containsApplePartitionMap>False</containsApplePartitionMap>
-        <containsAppleHFSHeader>False</containsAppleHFSHeader>
-        <containsAppleMasterDirectoryBlock>False</containsAppleMasterDirectoryBlock>
-        <parsedPrimaryVolumeDescriptor>True</parsedPrimaryVolumeDescriptor>
-        <sizeExpected>358400</sizeExpected>
-        <sizeActual>358400</sizeActual>
-        <sizeDifference>0</sizeDifference>
-        <sizeAsExpected>True</sizeAsExpected>
-        <smallerThanExpected>False</smallerThanExpected>
-    </tests>
+```xml
+<tests>
+    <containsISO9660Signature>True</containsISO9660Signature>
+    <containsApplePartitionMap>False</containsApplePartitionMap>
+    <containsAppleHFSHeader>False</containsAppleHFSHeader>
+    <containsAppleMasterDirectoryBlock>False</containsAppleMasterDirectoryBlock>
+    <parsedPrimaryVolumeDescriptor>True</parsedPrimaryVolumeDescriptor>
+    <sizeExpected>358400</sizeExpected>
+    <sizeActual>358400</sizeActual>
+    <sizeDifference>0</sizeDifference>
+    <sizeAsExpected>True</sizeAsExpected>
+    <smallerThanExpected>False</smallerThanExpected>
+</tests>
+```
 
 In the above example the *sizeExpected* field is the size as calculated from the ISO/Apple headers, and *sizeActual* is the actual size. In this case both are identical. Below some output for a truncated ISO:
 
-    <tests>
-        <containsISO9660Signature>True</containsISO9660Signature>
-        <containsApplePartitionMap>False</containsApplePartitionMap>
-        <containsAppleHFSHeader>False</containsAppleHFSHeader>
-        <containsAppleMasterDirectoryBlock>False</containsAppleMasterDirectoryBlock>
-        <parsedPrimaryVolumeDescriptor>True</parsedPrimaryVolumeDescriptor>
-        <sizeExpected>358400</sizeExpected>
-        <sizeActual>49157</sizeActual>
-        <sizeDifference>-309243</sizeDifference>
-        <sizeAsExpected>False</sizeAsExpected>
-        <smallerThanExpected>True</smallerThanExpected>
-    </tests>
+```xml
+<tests>
+    <containsISO9660Signature>True</containsISO9660Signature>
+    <containsApplePartitionMap>False</containsApplePartitionMap>
+    <containsAppleHFSHeader>False</containsAppleHFSHeader>
+    <containsAppleMasterDirectoryBlock>False</containsAppleMasterDirectoryBlock>
+    <parsedPrimaryVolumeDescriptor>True</parsedPrimaryVolumeDescriptor>
+    <sizeExpected>358400</sizeExpected>
+    <sizeActual>49157</sizeActual>
+    <sizeDifference>-309243</sizeDifference>
+    <sizeAsExpected>False</sizeAsExpected>
+    <smallerThanExpected>True</smallerThanExpected>
+</tests>
+```
 
 So, in this case *sizeDifference* is negative, and flag *smallerThanExpected* equals 'True' (which indicates a damaged image).
 

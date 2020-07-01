@@ -99,18 +99,24 @@ The results from the *Multimedia* PDFs are interesting for several reasons. Firs
 
 Looking more into detail at those 1.0 and 1.2.1 errors, the detailed description of most of them is:
 
-    Syntax error, Expected pattern 'obj but missed at character 'o'
- 
+```data
+ Syntax error, Expected pattern 'obj but missed at character 'o'
+```
+
 To me it looks like *Preflight* doesn't correctly parse the binary structure of the PDF. Opening a few of the problematic PDFs revealed that the object identifiers in these files were followed *immediately* by the object contents, e.g: 
 
-    32 0 obj<</Kids[33 0 R]>>
-    endobj
+```data
+32 0 obj<</Kids[33 0 R]>>
+endobj
+```
 
 whereas more commonly they are separated by a line terminator, like this:
 
-    32 0 obj
-    <</Kids[33 0 R]>>
-    endobj
+```data
+32 0 obj
+<</Kids[33 0 R]>>
+endobj
+```
 
 As far as I'm aware neither the PDF specification nor PDF/A have anything to say about line endings in this case, so my best guess is that this is simply a bug that results in the file not being fully parsed. I submitted a bug report for this issue [here](https://issues.apache.org/jira/browse/PDFBOX-1674).
 

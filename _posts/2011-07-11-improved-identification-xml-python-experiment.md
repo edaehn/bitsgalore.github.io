@@ -32,7 +32,9 @@ often less reliable. This also applies to XML. Signature-based tools
 typically identify XML by the presence of an XML declaration, which, in
 its simplest form, looks like this:
 
-    <?xml version="1.0"?>
+```xml
+<?xml version="1.0"?>
+```
 
 The problem is that not all XML files actually contain an XML
 declaration. Also, the use of an XML declaration is not mandatory.

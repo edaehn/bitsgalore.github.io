@@ -32,13 +32,28 @@ Note that of the above tools, only Jhove and Shntool are designed to detect prob
 I ran the tools with the following command-line arguments (replacing "foo.wav" with the actual file name):
 
 ### Jhove
-    jhove -m WAVE-hul foo.wav
+
+```bash
+jhove -m WAVE-hul foo.wav
+```
+
 ### Shntool
-    shntool info foo.wav
+
+```bash
+shntool info foo.wav
+```
+
 ### Ffmpeg
-    ffmpeg -v error -i foo.wav -f null -
+
+```bash
+ffmpeg -v error -i foo.wav -f null -
+```
+
 ### Mediainfo
-    mediainfo foo.wav
+
+```bash
+mediainfo foo.wav
+```
 
 I automated this using a simple [shell script](https://github.com/KBNLresearch/detectDamagedAudio/blob/master/runtoolsWAV.sh) that runs each tool on all files, and then writes the output to a set of text files.
 
@@ -63,15 +78,17 @@ So, Jhove was unable to detect *any* of the damaged files at all!
 
 Shntool checks a *WAVE* on six criteria, which are listed in its output under 'Possible problems': 
 
-    Possible problems:
-      File contains ID3v2 tag:    no
-      Data chunk block-aligned:   yes
-      Inconsistent header:        no
-      File probably truncated:    no
-      Junk appended to file:      no
-      Odd data size has pad byte: n/a
+```
+Possible problems:
+    File contains ID3v2 tag:    no
+    Data chunk block-aligned:   yes
+    Inconsistent header:        no
+    File probably truncated:    no
+    Junk appended to file:      no
+    Odd data size has pad byte: n/a
+```
 
-The thing to watch here is the 'File probably truncated' item: 
+The thing to watch here is the 'File probably truncated' item:
 
 |File|Result|
 |:--|:--|
@@ -119,7 +136,9 @@ The set of candidate tools is identical to the one used for the *WAVE* analysis,
     
 The Flac tool is able to encode audio to *FLAC*, and decode and analyze *FLAC* files. For this tests I ran it with the * -t* (or *--test*) option:
 
-    flac -t foo.flac
+```bash
+flac -t foo.flac
+```
 
 This decodes a *FLAC* without writing the decoded data to a file. Any errors during the decoding process are reported to the standard error stream.
 

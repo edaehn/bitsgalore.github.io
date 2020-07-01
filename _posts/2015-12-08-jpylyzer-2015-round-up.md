@@ -52,26 +52,28 @@ Prior to release 1.16.0, an exception during the processing of an image could ca
 
 The combined effect of the exception handling, memory mapping and status output should make *jpylyzer* releases from 1.16.0 onwards significantly more robust than previous versions. As an example, here's some (simplified) output for a 6.5 GB JP2 that caused a memory error:
 
-    <?xml version='1.0' encoding='UTF-8'?>
-    <jpylyzer>
-        <toolInfo>
-            <toolName>jpylyzer.py</toolName>
-            <toolVersion>1.16.0</toolVersion>
-        </toolInfo>
-        <fileInfo>
-            <fileName>AS16-P-4102.jp2</fileName>
-            <filePath>/home/johan/testJpylyzer/AS16-P-4102.jp2</filePath>
-            <fileSizeInBytes>6745365021</fileSizeInBytes>
-            <fileLastModified>Wed Dec  2 20:05:29 2015</fileLastModified>
-        </fileInfo>
-        <statusInfo>
-            <success>False</success>
-            <failureMessage>memory error (file size too large)</failureMessage>
-        </statusInfo>
-        <isValidJP2>False</isValidJP2>
-        <tests/>
-        <properties/>
-    </jpylyzer>
+```xml
+<?xml version='1.0' encoding='UTF-8'?>
+<jpylyzer>
+    <toolInfo>
+        <toolName>jpylyzer.py</toolName>
+        <toolVersion>1.16.0</toolVersion>
+    </toolInfo>
+    <fileInfo>
+        <fileName>AS16-P-4102.jp2</fileName>
+        <filePath>/home/johan/testJpylyzer/AS16-P-4102.jp2</filePath>
+        <fileSizeInBytes>6745365021</fileSizeInBytes>
+        <fileLastModified>Wed Dec  2 20:05:29 2015</fileLastModified>
+    </fileInfo>
+    <statusInfo>
+        <success>False</success>
+        <failureMessage>memory error (file size too large)</failureMessage>
+    </statusInfo>
+    <isValidJP2>False</isValidJP2>
+    <tests/>
+    <properties/>
+</jpylyzer>
+```
 
 Previous versions would simply crash in this situation. Now, automated workflows can simply check for the value of the *success* field to verify the status of the validation. More importantly, if the *jpylyzer* invocation involved multiple input files (e.g. through the `--recurse` option), errors like these will not stop the processing of the remaining files. 
 

@@ -35,7 +35,9 @@ Note that GraphicsMagick still uses the [JasPer](http://www.ece.uvic.ca/~frodo/j
 
 First I compressed my source TIFF (a grayscale newspaper page) to a lossy JP2 with a compression ratio about about 4:1. For this example I used OpenJPEG, with the following command line:
 
-    opj_compress -i krant.tif -o krant_oj_4.jp2 -r 4 -I -p RPCL -n 7 -c [256,256],[256,256],[256,256],[256,256],[256,256],[256,256],[256,256] -b 64,64
+```bash
+opj_compress -i krant.tif -o krant_oj_4.jp2 -r 4 -I -p RPCL -n 7 -c [256,256],[256,256],[256,256],[256,256],[256,256],[256,256],[256,256] -b 64,64
+```
 
 ## Decoding the JP2
 

@@ -40,7 +40,6 @@ Finally, the [European Booksellers Federation](http://www.europeanbooksellers.eu
 
 Having said that, the actual use of *EPUB* 3 is still limited at this stage, even though some publishers have already started using the format. Earlier this year technical publisher O’Reilly started releasing [all their new eBook bundles in *EPUB* 3 format](http://toc.oreilly.com/2013/02/oreillys-journey-to-epub-3.html). The announcement mentions that their backlist will be updated as well. Interestingly, they decided to create "hybrid" *EPUB*s that are backward-compatible with *EPUB* 2. In November 2012 publisher Hachette also [announced the launch of their *EPUB 3* program](http://www.digitalbookworld.com/2012/hachette-launches-epub3-program-committed-to-the-format/).
 
-
 ## *EPUB* 3 reader support
 
 At this time reader support for *EPUB* 3 is still limited, but there have been a number of significant developments since the second half of 2012:
@@ -55,13 +54,13 @@ At this time reader support for *EPUB* 3 is still limited, but there have been a
 
 ## Support of *EPUB* by characterisation tools
 
-The 2012 report concluded that *EPUB* was not optimally supported by characterisation tools. This situation has improved quite a lot since that time. 
+The 2012 report concluded that *EPUB* was not optimally supported by characterisation tools. This situation has improved quite a lot since that time.
 
 ### Identification
 
 *EPUB* is now [included in *PRONOM*](http://www.nationalarchives.gov.uk/PRONOM/Format/proFormatSearch.aspx?status=detailReport&id=1270), and has a corresponding [DROID](http://www.nationalarchives.gov.uk/information-management/projects-and-work/droid.htm) signature. This means that [*Fido*](http://fido.openpreservation.org/) should now be able to identify the format as well. On a side note, PRONOM doesn't differentiate between *EPUB* 2 and 3, and it appears that the current record (which is only an outline record anyway) either combines both versions, or only refers to *EPUB* 2. PRONOM should probably be more specific on this.
 
-###Validation and feature extraction
+### Validation and feature extraction
 
 The 2012 report included tests of 2 *EPUB* validator tools: [*epubcheck*](http://code.google.com/p/epubcheck/) and [flightcrew](http://code.google.com/p/flightcrew/). While testing *epubcheck* in 2012, I was't entirely happy with the rather unstructured output that the tool produced. Also, I couldn't find *any* tool that was capable of extracting technical meta-information about an *EPUB*, like the presence of encryption or other digital rights management technology (feature extraction). Happily, starting with version 3.0 *epubcheck* is capable of extracting this kind of information. Moreover, it added an option to [report its output in structured *XML* format](http://code.google.com/p/epubcheck/wiki/Extraction) that follows the [*JHOVE*](http://sourceforge.net/projects/jhove/) schema. I haven't done any elaborate testing, but a quick run on some of [these *EPUB* 3 samples](http://code.google.com/p/epub-samples/) showed that *epubcheck* was able to identify font obfuscation, in which case a property *hasEncryption* (value *true*) is reported. I wasn't able to find any *EPUB* files with *DRM*, so I cannot confirm if *epubcheck* detects this as well.
 

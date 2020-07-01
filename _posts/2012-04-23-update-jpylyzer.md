@@ -39,7 +39,7 @@ In addition to the above, various bugs and minor issues have been addressed as w
 ## Debian packages
 
 During the SCAPE Braga meeting in February, work started on the creation of [Debian packages][DEB] for *jpylyzer*. The availability of Debian packages greatly simplifies *jpylyzer*'s installation on Linux-based systems. [This work][DebBraga] was done by Dave Tarrant [(University of Southampton)][SOTON], Miguel Ferreira, Rui Castro, Hélder Silva [(KEEP Solutions)][KEEPS] and Rainer Schmidt [(AIT)][AIT]. 
- 
+
 ## Jpylyzer now hosted by OPF
 
 In order to make a tool sustainable, it is important that its maintenance and development are not solely dependent on one single institution or person. Because of this, *jpylyzer* is now hosted by the Open Planets Foundation, which ensures the involvement of a wider community. *Jpylyzer* also has [its own home page on the OPF site] [jpylyzerOPF]. It contains links to the source code, Windows executables, Debian packages and the User Manual.

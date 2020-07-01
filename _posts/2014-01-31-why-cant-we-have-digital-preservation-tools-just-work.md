@@ -13,12 +13,15 @@ One of my first blogs here covered an [evaluation of a number of format identifi
 
 Fast-forward 2.5 years: this week I saw the announcement of the latest [FITS](http://projects.iq.harvard.edu/fits) release. This got me curious, also because of the recent work on this tool as part of the [FITS Blitz](http://www.openplanetsfoundation.org/blogs/2013-11-06-fits-blitz). So I downloaded [FITS 0.8](http://projects.iq.harvard.edu/files/fits/files/fits-0.8.0.zip), installed it in a directory called *c:\fits\\*on my *Windows* PC, and then typed (while being in directory *f:\myData\\*):
 
-    f:\myData>c:\fits\fits
-
+```bash
+f:\myData>c:\fits\fits
+```
 Instead of the expected helper message I ended up with this:
 
-    The system cannot find the path specified.
-    Error: Could not find or load main class edu.harvard.hul.ois.fits.Fits
+```data
+The system cannot find the path specified.
+Error: Could not find or load main class edu.harvard.hul.ois.fits.Fits
+```
 
 Hang on, I've seen this before ... don't tell me this is the same bug that I already reported 2.5 years ago ? Well, turns out [it is](https://github.com/harvard-lts/fits/issues/10) after all!
 
@@ -28,7 +31,9 @@ This got me curious about the status of the other tools that had similar problem
 
 First I installed *DROID* in a directory *C:\droid\\*. Then I executed it using:
 
-    f:\myData>c:\droid\droid
+```bash
+f:\myData>c:\droid\droid
+```
 
 This started up a *Java Virtual Machine Launcher* that showed this message box:
 
@@ -40,11 +45,15 @@ The *Running DROID* text document that comes with *DROID* says:
 
 So, no progress on this for *DROID* either, then. I *was* able to get *DROID* running by circumventing the launcher script like this:
 
-    java -jar c:\droid\droid-command-line-6.1.3.jar
+```bash
+java -jar c:\droid\droid-command-line-6.1.3.jar
+```
 
 This resulted in the following output:
 
-    No command line options specified
+```data
+No command line options specified
+```
 
 This isn't particularly helpful. There *is* a helper message, for which you have to give the *-h* flag on the command line. But you don't get to see this until you give the *-h* flag on the command line. Catch 22 anyone?
 
@@ -52,14 +61,17 @@ This isn't particularly helpful. There *is* a helper message, for which you have
 
 After installing *JHOVE2* in *c:\jhove2\\*, I typed:
 
-    f:\myData>c:\jhove2\jhove2
+```bash
+f:\myData>c:\jhove2\jhove2
+```
 
 This gave me **1393** (yes, you read that right: 1393!) *Java* deprecation warnings, each along the lines of:
 
-
-    16:51:02,702 [main] WARN  TypeConverterDelegate : PropertyEditor [com.sun.beans.editors.EnumEditor]
-    found through deprecated global PropertyEditorManager fallback - consider using a more isolated 
-    form of registration, e.g. on the BeanWrapper/BeanFactory! 
+```data
+16:51:02,702 [main] WARN  TypeConverterDelegate : PropertyEditor [com.sun.beans.editors.EnumEditor]
+found through deprecated global PropertyEditorManager fallback - consider using a more isolated
+form of registration, e.g. on the BeanWrapper/BeanFactory!
+```
 
 This was eventually followed by the (expected) *JHOVE2* help message, and a quick test on some actual files confirmed that *JHOVE2* *does* actually work. Nevertheless, by the time the tsunami of warning messages is over, many first-time users will have started running for the bunkers!
 
@@ -67,7 +79,9 @@ This was eventually followed by the (expected) *JHOVE2* help message, and a quic
 
 *Fido* doesn't make use of any launcher scripts any more, and the default way to run it is to use the *Python* script directly. After installing in *c:\fido\\* I typed:
 
-    f:\myData>c:\fido\fido.py
+```bash
+f:\myData>c:\fido\fido.py
+```
 
 Which resulted in ..... (drum roll) ... a nicely formatted *Fido* help message, which is exactly what I was hoping for. Beautiful!
 
@@ -75,27 +89,30 @@ Which resulted in ..... (drum roll) ... a nicely formatted *Fido* help message, 
 
 I installed *JHOVE* in *c:\jhove\\* and then typed:
 
-    f:\myData>c:\jhove\jhove 
+```bash
+f:\myData>c:\jhove\jhove 
+```
 
 Which resulted in this:
 
-
-    Exception in thread "main" java.lang.NoClassDefFoundError: edu/harvard/hul/ois/j
-    hove/viewer/ConfigWindow
-            at edu.harvard.hul.ois.jhove.DefaultConfigurationBuilder.writeDefaultCon
-    figFile(Unknown Source)
-            at edu.harvard.hul.ois.jhove.JhoveBase.init(Unknown Source)
-            at Jhove.main(Unknown Source)
-    Caused by: java.lang.ClassNotFoundException: edu.harvard.hul.ois.jhove.viewer.Co
-    nfigWindow
-            at java.net.URLClassLoader$1.run(Unknown Source)
-            at java.net.URLClassLoader$1.run(Unknown Source)
-            at java.security.AccessController.doPrivileged(Native Method)
-            at java.net.URLClassLoader.findClass(Unknown Source)
-            at java.lang.ClassLoader.loadClass(Unknown Source)
-            at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
-            at java.lang.ClassLoader.loadClass(Unknown Source)
-            ... 3 more
+```data
+Exception in thread "main" java.lang.NoClassDefFoundError: edu/harvard/hul/ois/j
+hove/viewer/ConfigWindow
+        at edu.harvard.hul.ois.jhove.DefaultConfigurationBuilder.writeDefaultCon
+figFile(Unknown Source)
+        at edu.harvard.hul.ois.jhove.JhoveBase.init(Unknown Source)
+        at Jhove.main(Unknown Source)
+Caused by: java.lang.ClassNotFoundException: edu.harvard.hul.ois.jhove.viewer.Co
+nfigWindow
+        at java.net.URLClassLoader$1.run(Unknown Source)
+        at java.net.URLClassLoader$1.run(Unknown Source)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at java.net.URLClassLoader.findClass(Unknown Source)
+        at java.lang.ClassLoader.loadClass(Unknown Source)
+        at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+        at java.lang.ClassLoader.loadClass(Unknown Source)
+        ... 3 more
+```
 
 Ouch!
 

@@ -17,15 +17,21 @@ The purpose of this post is to give a brief introduction to creating, editing an
 
 Just like tools such as *DROID*, *Fido* and *Apache Tika*, *File*'s identification is based on format signatures (which in the case of *File* are usually called *magic numbers*. These are stored in a *magic* file, which is located in the *magic* directory. Typical locations of this *magic* directory are:
 
-    /usr/share/misc
+```data
+/usr/share/misc
+```
 
 Or:
 
-    /usr/share/file
+```data
+/usr/share/file
+```
 
 Or, on CygWin:
 
-    /cygwin/usr/share/misc/
+```data
+/cygwin/usr/share/misc/
+```
 
 ## Files in the magic directory: compiled versus source
 
@@ -39,15 +45,21 @@ Note that in the source distribution of *File*, the source *magic* is organised 
 
 So how do we get from a source file to a compiled *magic* file? Easy: just run *File* with the `-C` (compile) switch, and use the `-m` switch to specify the source file. For example, supposing we have a source file called *myMagic*, compile it using:
 
-    file -C -m myMagic
+```bash
+file -C -m myMagic
+```
 
 This produces the compiled *magic* file *myMagic.mgc*. You can then use the compiled file by specifying its name using (again) the `-m` switch, e,.g.:
 
-    file -i -m myMagic *
+```bash
+file -i -m myMagic *
+```
 
 Note that in the above case *File* actually uses *myMagic.mgc* (apparently it expects this extension); the following command line:
 
-    file -i -m myMagic.mgc *
+```bash
+file -i -m myMagic.mgc *
+```
 
 produces identical results.
 
@@ -64,7 +76,9 @@ The most important thing to remember is that each line in the file specifies a t
 
 Here's an example (actually this is the *JPEG 2000* *magic* that is currently used in *File* 5.11):
 
-<pre>0	string	\x00\x00\x00\x0C\x6A\x50\x20\x20\x0D\x0A\x87\x0A	JPEG 2000</pre>
+```data
+0	string	\x00\x00\x00\x0C\x6A\x50\x20\x20\x0D\x0A\x87\x0A	JPEG 2000
+```
 
 Here we have a test that compares the start of a file object (byte offset 0) against a 12-character string (here represented as hexadecimal codes). If the pattern is found, the text *JPEG 2000* will be printed to screen. Note that for most formats we will need further *sublevel tests*, which I will illustrate in the next section. Also, even though this introduction only decribes tests at fixed byte-positions, more sophisticated tests are possible as well. See the [man pages][magicManPage] for details on this.
 
@@ -79,7 +93,9 @@ The main problem of the above *JPEG 2000* entry is that it only checks for the f
 
 In other words: although *File* may be telling us that a file object matches *JPEG 2000*, this gives us zero information on whether it contains simple image data (*JP2*) or video content (*MJ2*)! Fortunately, the headers of each of the above formats include a *Brand* field, which is a 4-byte string of characters that uniquely identifies each format. This string starts at byte 20, and for *JP2* it equals '\x6a\x70\x32\x20', so we can simply add this as a second test to the existing *magic* entry:
 
-<pre>>20	string	\x6a\x70\x32\x20	Part 1 (JP2)</pre>
+```data
+>20	string	\x6a\x70\x32\x20	Part 1 (JP2)
+```
 
 Note the "`>`" character, which indicates that this is a higher-level test on top of the previous one.
 
@@ -92,13 +108,15 @@ Optionally, tests may also be associated with a *mimetype*. In that case the lin
 
 For *JP2* this is:
 
-<pre>!:mime	image/jp2</pre>
+```data
+!:mime	image/jp2
+```
 
 ## Adding the other formats
 
 Repeating the above procedure for the full set of *JPEG 2000* formats we end up with this:
 
-<pre>
+```data
 0	string	\x00\x00\x00\x0C\x6A\x50\x20\x20\x0D\x0A\x87\x0A	JPEG 2000
 >20	string	\x6a\x70\x32\x20	Part 1 (JP2)
 !:mime	image/jp2
@@ -108,7 +126,7 @@ Repeating the above procedure for the full set of *JPEG 2000* formats we end up 
 !:mime	image/jpm
 >20	string	\x6d\x6a\x70\x32	Part 3 (MJ2)
 !:mime video/mj2
-</pre>
+```
 
 ## Compiling the file
 
@@ -118,29 +136,34 @@ To create the compiled file, follow the simple steps below::
 
 2. If you're using *Windows*, you may need to convert *Windows*-style linebreaks to *Unix* linebreaks, for which you can use the *dos2unix* tool (which is included in *Cygwin*):
 
-        dos2unix jpeg2000Magic
+```bash
+dos2unix jpeg2000Magic
+```
 
 3. Now compile the file:
 
-        file -C -m jpeg2000Magic
+```bash
+file -C -m jpeg2000Magic
+```
 
 *Et voilà*, our compiled *magic* file is ready for use!
-
 
 ## Testing it
 
 For testing, run *File* on any number of files, e.g.:
 
-    file -i -m jpeg2000Magic *
+```bash
+file -i -m jpeg2000Magic *
+```
 
 Here's an example of the output you may get:
 
-<pre>
+```data
 balloon.jp2:  image/jp2; charset=binary
 balloon.jpf:  image/jpx; charset=binary
 balloon.jpm:  image/jpm; charset=binary
 Speedway.mj2: video/mj2; charset=binary
-</pre>
+```
 
 ## Submitting magic
 

@@ -9,12 +9,12 @@ The *PDF* format contains various features that may make it difficult to
 access content that is stored in this format in the long term. Examples
 include (but are not limited to):
 
--   Encryption features, which may either restrict some functionality
-    (copying, printing) or make files inaccessible altogether.
--   Multimedia features (embedded multimedia objects may be subject to
-    format obsolescence)
--   Reliance on external features (e.g. non-embedded fonts, or
-    references to external documents)
+- Encryption features, which may either restrict some functionality
+  (copying, printing) or make files inaccessible altogether.
+- Multimedia features (embedded multimedia objects may be subject to
+  format obsolescence)
+- Reliance on external features (e.g. non-embedded fonts, or
+  references to external documents)
 
 <!-- more -->
 
@@ -48,16 +48,16 @@ validator that is part of the [*Apache
 PDFBox*](http://pdfbox.apache.org/) library.The specific
 objectives of this work were:
 
--   To get a first impression of the *Apache Preflight* (part of
-    *PDFBox*) *PDF/A-1b* validator.
--   To investigate if *Apache Preflight* is able to detect unwanted
-    (from a preservation point of view) features in *PDF* files (i.e.
-    *PDF*s that are not necessarily of the *PDF/A* sub-type) such as
-    password protection, encryption and non-embedded fonts.
--   To provide a comparison with the *Preflight* module of *Adobe
-    Acrobat* 9.5.
--   To decide if doing more work on *Apache Preflight* (more elaborate
-    testing, possible involvement in its development) are worthwhile.
+- To get a first impression of the *Apache Preflight* (part of
+  *PDFBox*) *PDF/A-1b* validator.
+- To investigate if *Apache Preflight* is able to detect unwanted
+  (from a preservation point of view) features in *PDF* files (i.e.
+  *PDF*s that are not necessarily of the *PDF/A* sub-type) such as
+  password protection, encryption and non-embedded fonts.
+- To provide a comparison with the *Preflight* module of *Adobe
+  Acrobat* 9.5.
+- To decide if doing more work on *Apache Preflight* (more elaborate
+  testing, possible involvement in its development) are worthwhile.
 
 The results can be found in the report [Identification of preservation
 risks in PDF with Apache Preflight: a first
@@ -70,13 +70,13 @@ simple test files that were created especialy for this work. Each file
 contains one 'risky' feature, with focus on the following feature
 classes:
 
--   Encryption
--   Multimedia
--   Scripts
--   Fonts
--   File attachments
--   External references
--   Byte corruption
+- Encryption
+- Multimedia
+- Scripts
+- Fonts
+- File attachments
+- External references
+- Byte corruption
 
 The dataset can be found here:
 

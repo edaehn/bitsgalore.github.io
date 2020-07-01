@@ -70,29 +70,29 @@ As this is a first prototype, *jpylyzer* is still a work in progress.
 Although most aspects of the JP2 file format are covered, a few things
 are still missing at this stage:
 
--   Support of the Palette and Component Mapping boxes (which are
-    optional sub-boxes in the JP2 Header Box) is not included yet. The
-    current version of *jpylyzer* recognises these boxes, but doesn't
-    perform any analyses on them. This will change in upcoming versions.
--   The IPR, XML, UUID and UUID Info boxes are not yet supported either.
--   The analysis and validation of the image codestream is still
-    somewhat limited. Currently *jpylyzer* reads and validates the
-    required parts of the main codestream header (for those who are in
-    the know on this: the SIZ, COD and QCD markers). It also checks if
-    the information in the codestream header is consistent with the JP2
-    image header (the information in both headers is partially
-    redundant). Finally, it loops through all tile parts in an image,
-    and checks if the length (in bytes) of each tile-part is consistent
-    with the markers that delineate the start and end of each tile-part
-    in the codestream. This is particularly useful for detecting certain
-    types of image corruption where one or more bytes are missing from
-    the codestream (either at the end or in the middle).
--   For now only codestream comments that consist solely of ASCII
-    characters are reported. As the standard permits the use of
-    non-ASCII characters of the Latin (ISO/IEC 8859-15) character set,
-    this means that codestream comments that contain e.g. accent
-    characters are currently not reported by *jpylyzer*. This will
-    change in upcoming versions.
+- Support of the Palette and Component Mapping boxes (which are
+  optional sub-boxes in the JP2 Header Box) is not included yet. The
+  current version of *jpylyzer* recognises these boxes, but doesn't
+  perform any analyses on them. This will change in upcoming versions.
+- The IPR, XML, UUID and UUID Info boxes are not yet supported either.
+- The analysis and validation of the image codestream is still
+  somewhat limited. Currently *jpylyzer* reads and validates the
+  required parts of the main codestream header (for those who are in
+  the know on this: the SIZ, COD and QCD markers). It also checks if
+  the information in the codestream header is consistent with the JP2
+  image header (the information in both headers is partially
+  redundant). Finally, it loops through all tile parts in an image,
+  and checks if the length (in bytes) of each tile-part is consistent
+  with the markers that delineate the start and end of each tile-part
+  in the codestream. This is particularly useful for detecting certain
+  types of image corruption where one or more bytes are missing from
+  the codestream (either at the end or in the middle).
+- For now only codestream comments that consist solely of ASCII
+  characters are reported. As the standard permits the use of
+  non-ASCII characters of the Latin (ISO/IEC 8859-15) character set,
+  this means that codestream comments that contain e.g. accent
+  characters are currently not reported by *jpylyzer*. This will
+  change in upcoming versions.
 
 ## Downloads
 

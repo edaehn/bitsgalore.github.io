@@ -15,18 +15,22 @@ When the *PDF* standard mentions "embedded files", what it really refers to is a
 
 Here's an example (source: [ISO 32000](http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/PDF32000_2008.pdf)). First, here's a file specification dictionary:
 
-    31 0 obj   
-    <</Type /Filespec /F (mysvg.svg) /EF <</F 32 0 R>> >>    
-    endobj
-    
+```data
+31 0 obj   
+<</Type /Filespec /F (mysvg.svg) /EF <</F 32 0 R>> >>    
+endobj
+```
+
 Note the  *EF* entry, which references another *PDF* object. This is the actual embedded file stream. Here it is:
 
-    32 0 obj   
-    <</Type /EmbeddedFile /Subtype /image#2Fsvg+xml /Length 72>>   
-    stream  
-    …SVG Data…  
-    endstream  
-    endobj
+```data
+32 0 obj   
+<</Type /EmbeddedFile /Subtype /image#2Fsvg+xml /Length 72>>   
+stream  
+…SVG Data…  
+endstream  
+endobj
+```
 
 Note that the part between the *stream* and *endstream* keywords holds the actual file data, here an *SVG* image, but this could really be anything!
 
@@ -38,21 +42,23 @@ Here's the first source of confusion: if a *PDF* contains images, we often collo
 
 Here's an example of an *Image XObject* (again taken from  [ISO 32000](http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/PDF32000_2008.pdf)):
 
-    10 0 obj            % Image XObject
-    << 
-        /Type /XObject
-        /Subtype /Image
-        /Width 100
-        /Height 200
-        /ColorSpace /DeviceGray
-        /BitsPerComponent 8
-        /Length 2167
-        /Filter /DCTDecode
-    >>
-    stream
-    …Image data…
-    endstream  
-    endobj
+```data
+10 0 obj            % Image XObject
+<< 
+    /Type /XObject
+    /Subtype /Image
+    /Width 100
+    /Height 200
+    /ColorSpace /DeviceGray
+    /BitsPerComponent 8
+    /Length 2167
+    /Filter /DCTDecode
+>>
+stream
+…Image data…
+endstream  
+endobj
+```
 
 Similar to embedded filestreams, the part between the *stream* and *endstream* keywords holds the actual image data. The difference is that only a limited set of pre-defined formats are allowed. These are defined by the *Filter* entry (see Section 7.4 in [ISO 32000](http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/PDF32000_2008.pdf)). In the example above, the value of *Filter* is *DCTDecode*, which means we are dealing with *JPEG* encoded image data.
 
@@ -70,24 +76,28 @@ Here's a sample file (created in *Adobe Acrobat* 9) that illustrates this:
 
 Looking at the underlying code we can see the *File Specification Dictionary*:
 
-    37 0 obj    
-    <<
-        /Desc()
-        /EF<</F 38 0 R>>
-        /F(KSBASE.WQ2)
-        /Type/Filespec/UF(KSBASE.WQ2)>>
-    endobj
+```data
+37 0 obj    
+<<
+    /Desc()
+    /EF<</F 38 0 R>>
+    /F(KSBASE.WQ2)
+    /Type/Filespec/UF(KSBASE.WQ2)>>
+endobj
+```
 
 Note the */EF* entry, which means the referenced file  is embedded (the actual file data are in a separate stream object).
 
 Further digging also reveals an *EmbeddedFiles* entry:
 
-    33 0 obj   
-    <<
-        /EmbeddedFiles 34 0 R
-        /JavaScript 35 0 R
-    >>   
-    endobj
+```data
+33 0 obj   
+<<
+    /EmbeddedFiles 34 0 R
+    /JavaScript 35 0 R
+>>   
+endobj
+```
 
 However, careful inspection of [ISO 32000](http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/PDF32000_2008.pdf) reveals that embedded file streams can also be used for  multimedia! We'll have a look at that in the next section...
 
@@ -97,7 +107,7 @@ Section 13.2.1 (Multimedia) of the
 [PDF Specification (ISO 32000)](http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/PDF32000_2008.pdf) describes how multimedia content is represented in *PDF* (emphases added by me):
 
 > - **Rendition actions** (...) shall be used to begin the playing of multimedia content.
-> 
+>
 > - A rendition action associates a **screen annotation** (...) with a **rendition** (...)
 > - **Renditions** are of two varieties: **media renditions** (...) that define the characteristics of the media to be played, and selector renditions (...) that enables choosing which of a set of media renditions should be played.
 > - **Media renditions** contain entries that specify what should be played (...), how it should be played (...), and where it should be played (...) 
@@ -114,26 +124,30 @@ This *PDF* 1.7 file was created in *Acrobat* 9, and if you open it you will see 
 
 Digging through the underlying *PDF* code reveals a *Screen Annotation*, a *Rendition Action* and a *Media clip data dictionary*. The latter looks like this:
 
-    41 0 obj
-    <<
-        /CT(video/quicktime)
-        /D 42 0 R
-        /N(Media clip from animation.mov)
-        /P<</TF(TEMPACCESS)>>
-        /S/MCD
-    >>
-    endobj
+```data
+41 0 obj
+<<
+    /CT(video/quicktime)
+    /D 42 0 R
+    /N(Media clip from animation.mov)
+    /P<</TF(TEMPACCESS)>>
+    /S/MCD
+>>
+endobj
+```
 
 It contains a reference to another object (42 0), which turns out to be a *File Specification Dictionary*:
 
-    42 0 obj
-    <<
-        /EF<</F 43 0 R>>
-        /F(<embedded file>)
-        /Type/Filespec
-        /UF(<embedded file>)
-    >>
-    endobj
+```data
+42 0 obj
+<<
+    /EF<</F 43 0 R>>
+    /F(<embedded file>)
+    /Type/Filespec
+    /UF(<embedded file>)
+>>
+endobj
+```
 
 What's particularly interesting here is the */EF* entry, which means we're dealing with an embedded file stream here. (The actual movie data are in a stream object (43 0) that is referenced by the file specification dictionary.)
 
@@ -157,7 +171,7 @@ Finally, in [**PDF/A-3**](http://www.iso.org/iso/home/store/catalogue_tc/catalog
 
 ## Adobe adding to the confusion
 
-A few weeks ago the embedding issue came up again in a [blog post by Gary McGath](http://fileformats.wordpress.com/2012/12/22/not-pdf/). One of the comments there is from Adobe's Leonord Rosenthol (who is also the Project Leader for *PDF/A*). After correctly pointing out some mistakes in both the original blog post and in an earlier a comment by me, he nevertheless added to the confusion by stating that objects that are are rendered by the viewer (movies, etc.) all use *Annotations*, and that embedded files (which he apparently uses a a synonym to attachments) are handled in a completely different manner. This doesn't appear to be completely accurate: at least one class of renderable objects (screen annotations/rendition actions) may be using embedded filestreams. Also, embedded files that are used as attachments may be associated with a *File Attachment Annotation*, which means that "under the hood" both cases are actually more similar than first meets the eye (which is confirmed by the analysis of the 2 sample files in the preceding sections). Contributing to this confusion is also the fact that Section 7.11.4 of [ISO 32000](http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/PDF32000_2008.pdf) erroneously states that embedded file streams are only used for non-renderable objects like file attachments, which is contradicted by their allowed use for multimedia content. 
+A few weeks ago the embedding issue came up again in a [blog post by Gary McGath](http://fileformats.wordpress.com/2012/12/22/not-pdf/). One of the comments there is from Adobe's Leonord Rosenthol (who is also the Project Leader for *PDF/A*). After correctly pointing out some mistakes in both the original blog post and in an earlier a comment by me, he nevertheless added to the confusion by stating that objects that are are rendered by the viewer (movies, etc.) all use *Annotations*, and that embedded files (which he apparently uses a a synonym to attachments) are handled in a completely different manner. This doesn't appear to be completely accurate: at least one class of renderable objects (screen annotations/rendition actions) may be using embedded filestreams. Also, embedded files that are used as attachments may be associated with a *File Attachment Annotation*, which means that "under the hood" both cases are actually more similar than first meets the eye (which is confirmed by the analysis of the 2 sample files in the preceding sections). Contributing to this confusion is also the fact that Section 7.11.4 of [ISO 32000](http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/PDF32000_2008.pdf) erroneously states that embedded file streams are only used for non-renderable objects like file attachments, which is contradicted by their allowed use for multimedia content.
 
 ## Does any of this matter, really?
 

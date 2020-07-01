@@ -75,12 +75,14 @@ Kakadu's *kdu_compress* tool doesn't accept any of the JPEG 2000 formats as *inp
 
 [^1]: For most operational uses you would need to create a custom application using the full SDK.
 
-However, *kdu_transcode* is capable of wrapping output in a *JPX* container (which can be made  *JP2*-compatible), so this is what I used for these tests. To keep things simple, I started out by instructing the tool to create an output image with a 20:1 compression ratio (ignoring any of the layer / precinct requirements). For an RGB image with 8 bits/component this corresponds to an equivalent bitrate of 1.2, so I ended up with the following command line: 
+However, *kdu_transcode* is capable of wrapping output in a *JPX* container (which can be made  *JP2*-compatible), so this is what I used for these tests. To keep things simple, I started out by instructing the tool to create an output image with a 20:1 compression ratio (ignoring any of the layer / precinct requirements). For an RGB image with 8 bits/component this corresponds to an equivalent bitrate of 1.2, so I ended up with the following command line:
 
-    kdu_transcode -i balloon_master.jp2 \
-        -o balloon_access_kdu.jpf \
-        -jpx_layers sRGB,0,1,2 \
-        Sprofile=PROFILE2 -rate 1.2
+```bash
+kdu_transcode -i balloon_master.jp2 \
+    -o balloon_access_kdu.jpf \
+    -jpx_layers sRGB,0,1,2 \
+    Sprofile=PROFILE2 -rate 1.2
+```
 
 The resulting output image did have the expected size, but opening it in an image viewer revealed a problem:
 
@@ -90,13 +92,15 @@ Compared to the source image, most of the colour information has gone, resulting
 
 ## Aware
 
-Aware's *j2kdriver* tool supports encoding, decoding and reformating of JP2 images. I used the following command-line in an attempt to create a lossy access image (note that he *-w* switch sets the transformation to irreversible 9-7 wavelet, and the *-R* switch sets the target compression ratio to 20:1): 
+Aware's *j2kdriver* tool supports encoding, decoding and reformating of JP2 images. I used the following command-line in an attempt to create a lossy access image (note that he *-w* switch sets the transformation to irreversible 9-7 wavelet, and the *-R* switch sets the target compression ratio to 20:1):
 
-    j2kdriver -i balloon_master.jp2 \
-        -R 20 -w \
-        I97 \
-        -t JP2 \
-        -o balloon_access_aw.jp2
+```bash
+j2kdriver -i balloon_master.jp2 \
+    -R 20 -w \
+    I97 \
+    -t JP2 \
+    -o balloon_access_aw.jp2
+```
 
 This produced an output image that has the same size as the master! Similar to Kakadu's *kdu_transcode* tool, *j2kdriver* makes no attempt at decoding and recompressing the source image in this case. However, the Aware tool does have a number of reformatting options, including one that allows you to discard quality layers. Needless to say, as the source image contains only one quality layer, this isn't of much use in this case.
 
@@ -135,11 +139,13 @@ Kakadu's *kdu_transcode* doesn't allow you to explicitly discard quality layers,
 
 ### Kakadu
 
-    kdu_transcode -i balloon_master_layers_precincts.jp2 \
-        -o balloon_access_precincts_kdu.jpf \
-        -jpx_layers sRGB,0,1,2 \
-        Sprofile=PROFILE2 \
-        -rate 1.2
+```bash
+kdu_transcode -i balloon_master_layers_precincts.jp2 \
+    -o balloon_access_precincts_kdu.jpf \
+    -jpx_layers sRGB,0,1,2 \
+    Sprofile=PROFILE2 \
+    -rate 1.2
+```
 
 In contrast to our earlier test, the resulting image has a very good quality. Note that using *kdu_transcode* in this way produces output images that have the same number of quality layers as the source image (here: 11). However, in this case 3 are actually empty (i.e. the 4 highest quality layers are effectively identical). This is not a problem at all, it just means that progressive decoding of the image will result in an improved quality up to (and including) layer 8, with layers 9, 10 and 11 not adding anything on top of that. 
 
@@ -147,10 +153,12 @@ In contrast to our earlier test, the resulting image has a very good quality. No
 
 Aware works differently in that it allows you to define explicitly which quality layers must be included in the output image. To get an access image with 20:1 compression ratio, we need to include the 4th best quality layer and anything below it (i.e. discard the 3 highest quality layers), which is done with the following command:
 
-    j2kdriver -i balloon_master_layers_precincts.jp2 \
-        -ql 4 \
-        -t JP2 \
-        -o balloon_access_layers_precincts_aw.jp2
+```bash
+j2kdriver -i balloon_master_layers_precincts.jp2 \
+    -ql 4 \
+    -t JP2 \
+    -o balloon_access_layers_precincts_aw.jp2
+```
 
 Note that instead of decoding images by quality layer, it is also possible to do this by resolution level. This can be useful if derived images at a lower resolution are needed. Both Kakadu's *kdu_transcode* and Aware's *j2kdriver* application are capable of this, provided that the master images contain a sufficient number of resolution levels (which is controlled by the number of decomposition levels at the encoding stage).
 

@@ -35,7 +35,7 @@ This is the *news* link under which the article was first published, and a snaps
 
 <http://web.archive.org/web/20141224185904/http://www.trouw.nl/tr/nl/4504/Economie/article/detail/3287689/2012/07/17/Ik-kan-mezelf-niet-veranderen-in-een-witte-man.dhtml>
 
-Likewise, I expect that some articles may have slipped through the net in a similar way. Nevertheless, I think the above results are pretty good as they are! 
+Likewise, I expect that some articles may have slipped through the net in a similar way. Nevertheless, I think the above results are pretty good as they are!
 
 **[Click here for the full list of removed articles, includes both original URLs and URLs in Internet Archive (if available)]({{ BASE_PATH }}/images/2015/01/tabelRamesar.html)**
 

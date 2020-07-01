@@ -41,7 +41,7 @@ By default **Aware** and **Luratech** already used the *capture* resolution fiel
 
 ## Round-up and conclusions
 
-The amendment to JP2 fixes the previous shortcomings that were mentioned in my 2011 D-Lib paper. Moreover, the behaviour of the three most popular (commercial) JPEG 2000 implementations now closely follows the updated specification, which should minimise any interoperability problems related to ICC profiles and resolution. 
+The amendment to JP2 fixes the previous shortcomings that were mentioned in my 2011 D-Lib paper. Moreover, the behaviour of the three most popular (commercial) JPEG 2000 implementations now closely follows the updated specification, which should minimise any interoperability problems related to ICC profiles and resolution.
 
 ## Links
 

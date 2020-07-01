@@ -32,12 +32,12 @@ tools. This has resulted in a
 which is attached with this blog post. We have evaluated the following
 tools:
 
--   [DROID](http://sourceforge.net/apps/mediawiki/droid/index.php?title=Main_Page)
-    6.0
--   [FIDO](https://github.com/openplanets/fido) 0.9
--   [Unix File Utility](http://www.darwinsys.com/file/)
--   [FITS](http://code.google.com/p/fits/) 0.5
--   [JHOVE2](https://bitbucket.org/jhove2/main/wiki/Home)
+- [DROID](http://sourceforge.net/apps/mediawiki/droid/index.php?title=Main_Page)
+  6.0
+- [FIDO](https://github.com/openplanets/fido) 0.9
+- [Unix File Utility](http://www.darwinsys.com/file/)
+- [FITS](http://code.google.com/p/fits/) 0.5
+- [JHOVE2](https://bitbucket.org/jhove2/main/wiki/Home)
 
 All tools were evaluated against a set of 22 criteria. Extensive testing
 using real data has been a key part of the work. One area which, I

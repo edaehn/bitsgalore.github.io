@@ -21,20 +21,21 @@ In our workflow, these discs are handled in the following way:
 
 All *Blue Book* discs in our test passed steps 1 through 4 without any issues, but failed the final *isolyzer* check. This *isolyzer* check involves a comparison of the file size of the ISO image against the *expected* size, as calculated from the image's Primary Volume Descriptor fields (and Apple HFS blocks, if present). If the actual size is smaller than the expected size, this indicates the image is incomplete. For *all* ISO images that were extracted from a *Blue Book* disc, the actual file size was significantly smaller than  expected. Moreover, the images couldn't be mounted in Linux, or opened in file archiver software (e.g. 7-Zip). Below is an excerpt from the *isolyzer* output of one of the offending images:
 
-    <tests>
-        <containsISO9660Signature>True</containsISO9660Signature>
-        <containsApplePartitionMap>True</containsApplePartitionMap>
-        <containsAppleHFSHeader>False</containsAppleHFSHeader>
-        <containsAppleMasterDirectoryBlock>False</containsAppleMasterDirectoryBlock>
-        <parsedAppleZeroBlock>True</parsedAppleZeroBlock>
-        <parsedPrimaryVolumeDescriptor>True</parsedPrimaryVolumeDescriptor>
-        <sizeExpected>609912832</sizeExpected>
-        <sizeActual>554373120</sizeActual>
-        <sizeDifference>-55539712</sizeDifference>
-        <sizeAsExpected>False</sizeAsExpected>
-        <smallerThanExpected>True</smallerThanExpected>
-    </tests>
-
+```xml
+<tests>
+    <containsISO9660Signature>True</containsISO9660Signature>
+    <containsApplePartitionMap>True</containsApplePartitionMap>
+    <containsAppleHFSHeader>False</containsAppleHFSHeader>
+    <containsAppleMasterDirectoryBlock>False</containsAppleMasterDirectoryBlock>
+    <parsedAppleZeroBlock>True</parsedAppleZeroBlock>
+    <parsedPrimaryVolumeDescriptor>True</parsedPrimaryVolumeDescriptor>
+    <sizeExpected>609912832</sizeExpected>
+    <sizeActual>554373120</sizeActual>
+    <sizeDifference>-55539712</sizeDifference>
+    <sizeAsExpected>False</sizeAsExpected>
+    <smallerThanExpected>True</smallerThanExpected>
+</tests>
+```
 So, in this case the ISO image is about 56 MB smaller than expected, even though *IsoBuster* did not report any errors during the extraction process. One thing that caught my eye after running a few of these problematic images through *isolyzer*, was that the value of *sizeDifference* always roughly corresponded to the size of the uncompressed audio on the disc. The *sizeExpected* value is calculated from the *Volume Space Size* field (which defines the number of logical blocks in the ISO 9660 file system) in the ISO's Primary Volume Descriptor. This made me wonder: does the *Volume Space Size* value really reflect the number of sectors occupied by the *data track* (which I was quietly assuming), or does it perhaps reflect *all sectors on the disc* (including those in the audio session)?
 
 Finding the answer to this question was more difficult than I expected, but my initial suspicions were confirmed by this entry on the Debian mailing list:
@@ -62,25 +63,31 @@ Using the information from (mostly) the aforementioned *libdio* mailing list thr
 
 As a first step we need some information on the sector layout of the physical disc, and in particular the start sector of the second session (which contains the data track). You can do this by running *cd-info* while the disc is in the drive: 
 
-    cd-info /dev/sr0 > leesleeuw_cdinfo.txt
+```bash
+cd-info /dev/sr0 > leesleeuw_cdinfo.txt
+```
 
 In the resulting output, the start sesssion of the data session is listed twice. First look at the *CD-ROM Track List*  section:
 
-    CD-ROM Track List (1 - 3)
-      #: MSF       LSN    Type   Green? Copy? Channels Premphasis?
-      1: 00:02:00  000000 audio  false  no    2        no
-      2: 01:25:24  006249 audio  false  no    2        no
-      3: 06:05:46  027271 data   false  no   
-    170: 66:14:61  297961 leadout (668 MB raw, 668 MB formatted)
-    Media Catalog Number (MCN): 0000000000000
-    TRACK  1 ISRC: 000000000000
-    TRACK  2 ISRC: 000000000000
-    TRACK  3 ISRC: 000000000000
-    Last CD Session LSN: 27271
+```
+CD-ROM Track List (1 - 3)
+    #: MSF       LSN    Type   Green? Copy? Channels Premphasis?
+    1: 00:02:00  000000 audio  false  no    2        no
+    2: 01:25:24  006249 audio  false  no    2        no
+    3: 06:05:46  027271 data   false  no   
+170: 66:14:61  297961 leadout (668 MB raw, 668 MB formatted)
+Media Catalog Number (MCN): 0000000000000
+TRACK  1 ISRC: 000000000000
+TRACK  2 ISRC: 000000000000
+TRACK  3 ISRC: 000000000000
+Last CD Session LSN: 27271
+```
 
 This tells us that the CD contains three tracks, where track 1 and track 2 are audio tracks, and track 3 is a data track. The second column (heading: LSN) shows the start sector of each track; for track 3 this is 027271. This value is repeated in the *Last CD Session LSN* (sector number of last session). Finally it can be found again in the *CD Analysis Report* at the bottom of the file:
 
-    session #2 starts at track  3, LSN: 27271, ISO 9660 blocks: 297809
+```
+session #2 starts at track  3, LSN: 27271, ISO 9660 blocks: 297809
+```
 
 So, in this case session 2 (which contains the data track) starts on sector 27271 of the disc.
 
@@ -88,23 +95,27 @@ So, in this case session 2 (which contains the data track) starts on sector 2727
 
 Now that we know the start sector, we can use this to verify the ISO image. For this I added the new `--offset` option to *isolyzer*. This lets you specify a start sector offset, which is subtracted from the expected size estimate that is calculated from the Primary Volume Descriptor[^1]. So we call *isolyzer*  like this:
 
-    isolyzer leesleeuw.iso --offset 27271
+```bash
+isolyzer leesleeuw.iso --offset 27271
+```
 
 The *tests* elements now looks like this: 
 
-    <tests>
-        <containsISO9660Signature>True</containsISO9660Signature>
-        <containsApplePartitionMap>True</containsApplePartitionMap>
-        <containsAppleHFSHeader>False</containsAppleHFSHeader>
-        <containsAppleMasterDirectoryBlock>False</containsAppleMasterDirectoryBlock>
-        <parsedAppleZeroBlock>True</parsedAppleZeroBlock>
-        <parsedPrimaryVolumeDescriptor>True</parsedPrimaryVolumeDescriptor>
-        <sizeExpected>554061824</sizeExpected>
-        <sizeActual>554373120</sizeActual>
-        <sizeDifference>311296</sizeDifference>
-        <sizeAsExpected>False</sizeAsExpected>
-        <smallerThanExpected>False</smallerThanExpected>
-    </tests>
+```xml
+<tests>
+    <containsISO9660Signature>True</containsISO9660Signature>
+    <containsApplePartitionMap>True</containsApplePartitionMap>
+    <containsAppleHFSHeader>False</containsAppleHFSHeader>
+    <containsAppleMasterDirectoryBlock>False</containsAppleMasterDirectoryBlock>
+    <parsedAppleZeroBlock>True</parsedAppleZeroBlock>
+    <parsedPrimaryVolumeDescriptor>True</parsedPrimaryVolumeDescriptor>
+    <sizeExpected>554061824</sizeExpected>
+    <sizeActual>554373120</sizeActual>
+    <sizeDifference>311296</sizeDifference>
+    <sizeAsExpected>False</sizeAsExpected>
+    <smallerThanExpected>False</smallerThanExpected>
+</tests>
+```
 
 The *isolyzer* output now shows that the size of the ISO image is about 311 KB (152 sectors) larger than the expected value; this is completely fine.
 
@@ -114,41 +125,50 @@ Now that we're (reasonably) sure the ISO image is complete, the next step is to 
 
 First we create a file that contains 27271 sectors that are filled with zero-bytes (note that the *seek* position equals *Session Start Sector - 1*): 
 
-    dd if=/dev/zero bs=2K count=1 seek=27270 of=leesleeuw_tmp.iso
+```bash
+dd if=/dev/zero bs=2K count=1 seek=27270 of=leesleeuw_tmp.iso
+```
 
 Next we append our ISO image to this file:
 
-    cat leesleeuw.iso >>leesleeuw_tmp.iso
+```bash
+cat leesleeuw.iso >>leesleeuw_tmp.iso
+```
 
 Finally we mount the image:
 
-    sudo mount -t iso9660 -o loop,sbsector=27270 leesleeuw_tmp.iso /media/johan
-    
+```bash
+sudo mount -t iso9660 -o loop,sbsector=27270 leesleeuw_tmp.iso /media/johan
+```
+
 We can now navigate the file system with the file manager.
 
 ## Create access ISO
 
 In order to use the ISO with an emulator or virtual machine, we have to do some additional work. In theory, modifying all sector addresses in the ISO would do the trick, but as far as I'm aware there is no software tool that is capable of this. Instead, we'll use the mounted file system from the previous step to create a completely new ISO image. We can do this with the following command:
 
-    xorrisofs -r -J -o leesleeuw_new.iso /media/johan
+```bash
+xorrisofs -r -J -o leesleeuw_new.iso /media/johan
+```
 
 Again, credits go to Thomas Schmitt who suggested this on the [*libcdio* mailing list](https://lists.gnu.org/archive/html/libcdio-devel/2010-02/msg00053.html). 
 
 Finally we check the image with *isolyzer*:
 
-    <tests>
-        <containsISO9660Signature>True</containsISO9660Signature>
-        <containsApplePartitionMap>False</containsApplePartitionMap>
-        <containsAppleHFSHeader>False</containsAppleHFSHeader>
-        <containsAppleMasterDirectoryBlock>False</containsAppleMasterDirectoryBlock>
-        <parsedPrimaryVolumeDescriptor>True</parsedPrimaryVolumeDescriptor>
-        <sizeExpected>508913664</sizeExpected>
-        <sizeActual>508913664</sizeActual>
-        <sizeDifference>0</sizeDifference>
-        <sizeAsExpected>True</sizeAsExpected>
-        <smallerThanExpected>False</smallerThanExpected>
-    </tests>
-
+```xml
+<tests>
+    <containsISO9660Signature>True</containsISO9660Signature>
+    <containsApplePartitionMap>False</containsApplePartitionMap>
+    <containsAppleHFSHeader>False</containsAppleHFSHeader>
+    <containsAppleMasterDirectoryBlock>False</containsAppleMasterDirectoryBlock>
+    <parsedPrimaryVolumeDescriptor>True</parsedPrimaryVolumeDescriptor>
+    <sizeExpected>508913664</sizeExpected>
+    <sizeActual>508913664</sizeActual>
+    <sizeDifference>0</sizeDifference>
+    <sizeAsExpected>True</sizeAsExpected>
+    <smallerThanExpected>False</smallerThanExpected>
+</tests>
+```
 
 I tried this approach for a couple of ISO images with old Windows installables. I mounted the images to a Windows 2000 machine running in VirtualBox, and in all cases I was able to access the images and install the software without problems. 
 

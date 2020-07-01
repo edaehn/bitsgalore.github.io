@@ -25,27 +25,39 @@ I did two experiments: first, I did a *very* limited test where I tried to creat
 
 For this, I first installed all the required packages listed in the *Pre-Requisites* section of the [guide](http://wiki.opf-labs.org/display/SP/Building+Your+Debian+Package) using:
 
-    sudo apt-get install build-essential dh-make devscripts debhelper lintian
+```bash
+sudo apt-get install build-essential dh-make devscripts debhelper lintian
+```
 
 Subsequently I followed the instructions in the *Getting Started* section. For this I simply created an empty directory:
 
-    mkdir debtest_1.0.0
+```bash
+mkdir debtest_1.0.0
+```
 
 And then:
 
-    cd debtest_1.0.0
+```bash
+cd debtest_1.0.0
+```
 
 Then I ran *dh\_make*:
 
-    dh_make
+```bash
+dh_make
+```
 
 This resulted in an error message, telling me that the package name and its version number should be separated by a dash ('-') instead of an underscore ('_'), or, alternatively, that the -p flag should be used. So I changed the directory name:
 
-    mv debtest_1.0.0 debtest-1.0.0
+```bash
+mv debtest_1.0.0 debtest-1.0.0
+```
 
 Re-running *dh\_make*, it now accepted the directory name, but it complained about a missing tarball (which I purposefully didn't make in this test). However, as *dh\_make* offered the suggestion to use the `--createorig` option (which creates a tarball) I tried this:
 
-    dh_make --createorig
+```bash
+dh_make --createorig
+```
 
 This resulted in the creation of a *debian* directory with file templates, and an (empty) tarball *debtest\_1.0.0.orig.tar.gz* which was created in the parent (*debtest*) directory.
 
@@ -55,15 +67,21 @@ So, apart from the dash/underscore mix-up this is all pretty straightforward.
 
 In this second test I tried to build *jpylyzer* using the [already existing files in the *debian* folder of  *jpylyzer*'s Git repository](https://github.com/openplanets/jpylyzer/tree/master/debian). First I cloned the repository to my local machine:
 
-    git clone https://github.com/openplanets/jpylyzer.git
+```bash
+git clone https://github.com/openplanets/jpylyzer.git
+```
 
 Then I went into the *jpylyzer* directory:
 
-    cd jpylyzer
- 
+```bash
+cd jpylyzer
+```
+
 From there I tried to build *jpylyzer* directly, using the command given in the [guide's](http://wiki.opf-labs.org/display/SP/Building+Your+Debian+Package) *Building your package* section:
 
-    dpkg-buildpackage -tc
+```bash
+dpkg-buildpackage -tc
+```
 
 ## Missing changelog
 
@@ -73,36 +91,46 @@ The above command resulted in an error message about a missing *changelog* file 
 
 This time, *dpkg-buildpackage* exited with the following errors:
 
-    pymakespec --onefile jpylyzer.py
-    make[1]: pymakespec: Command not found
-    make[1]: *** [build] Error 127
-    make[1]: Leaving directory `/home/johan/debtest/jpylyzer'
-    make: *** [build] Error 2
-    dpkg-buildpackage: error: debian/rules build gave error exit status
+```data
+pymakespec --onefile jpylyzer.py
+make[1]: pymakespec: Command not found
+make[1]: *** [build] Error 127
+make[1]: Leaving directory `/home/johan/debtest/jpylyzer'
+make: *** [build] Error 2
+dpkg-buildpackage: error: debian/rules build gave error exit status
+```
 
 These errors arise from the following lines in *jpylyzer*'s [makefile](https://github.com/openplanets/jpylyzer/blob/master/Makefile):
 
-    build:
-        pymakespec --onefile jpylyzer.py
-        pyinstaller jpylyzer.spec
-        @echo "Built in dist/jpylyzer"
-    
+```data
+build:
+    pymakespec --onefile jpylyzer.py
+    pyinstaller jpylyzer.spec
+    @echo "Built in dist/jpylyzer"
+```
+
 The *pymakespec* and *pyinstaller* commands above are most likely shell scripts that launch the *Makespec.py* and *pyinstaller.py* scripts that are both part of [*PyInstaller*](http://www.pyinstaller.org/) (these are used for building an executable from the source code). However, neither the shell scripts nor any references to them are included in *jpylyzer*'s repository (my best guess is that they exist only on a specific machine instance - perhaps the Amazon virtual machines?), so the makefile simply won't work.
 
 I was able to fix this by changing the references to the shell scripts to this (using *PyInstaller 1.5*):
 
-    python /home/johan/pyinstall1.5/Makespec.py --onefile jpylyzer.py
-    python home/johan/pyinstall1.5/pyinstaller.py jpylyzer.spec
+```bash
+python /home/johan/pyinstall1.5/Makespec.py --onefile jpylyzer.py
+python home/johan/pyinstall1.5/pyinstaller.py jpylyzer.spec
+```
 
 For *PyInstaller 2* these two lines should be substituted by:
 
-    python /home/johan/pyinstall/pyinstaller.py --onefile jpylyzer.py	
+```bash
+python /home/johan/pyinstall/pyinstaller.py --onefile jpylyzer.py	
+```
 
 Note here that *PyInstaller* has no default installation location, and the file paths will vary from machine to machine!
 
 After making these changes I was able to run *dpkg-buildpackage* without any problems:
 
-    dpkg-buildpackage -tc
+```bash
+dpkg-buildpackage -tc
+```
 
 Result: the following files were created in the repo's parent directory:
 
@@ -123,19 +151,25 @@ So, I initially thought I would need to create a tarball of my repo first. As it
 
 As a final step I used *lintian* to verify my package:
 
-    lintian jpylyzer_1.9.0_amd64.deb
+```bash
+lintian jpylyzer_1.9.0_amd64.deb
+```
 
 This resulted in the following output (using *PyInstaller* 1.5):
 
-    E: jpylyzer: unstripped-binary-or-object usr/bin/jpylyzer
-    W: jpylyzer: hardening-no-fortify-functions usr/bin/jpylyzer
-    W: jpylyzer: wrong-bug-number-in-closes l3:#nnnn
-    E: jpylyzer: debian-changelog-file-contains-invalid-email-address johan@unknown
-    E: jpylyzer: helper-templates-in-copyright
+```data
+E: jpylyzer: unstripped-binary-or-object usr/bin/jpylyzer
+W: jpylyzer: hardening-no-fortify-functions usr/bin/jpylyzer
+W: jpylyzer: wrong-bug-number-in-closes l3:#nnnn
+E: jpylyzer: debian-changelog-file-contains-invalid-email-address johan@unknown
+E: jpylyzer: helper-templates-in-copyright
+```
 
 With *PyInstaller 2* I got this additional warning:  
 
-    W: jpylyzer: hardening-no-relro usr/bin/jpylyzer
+```data
+W: jpylyzer: hardening-no-relro usr/bin/jpylyzer
+```
 
 I still need to give these errors and warnings an in-depth look. At least one error is related to the bogus *changelog* file I used. Some others (e.g. *unstripped-binary-or-object*) appear to be related to the build process of the binaries.
 

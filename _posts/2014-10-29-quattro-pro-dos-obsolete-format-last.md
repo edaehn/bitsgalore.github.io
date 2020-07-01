@@ -75,16 +75,16 @@ With no access to the software that originally created the files, it is impossib
 
 ## Implications for long-term access
 
-Apart from Quattro Pro, modern spreadsheet programs offer no support for Quattro Pro for DOS spreadsheets. The most recent version of Quattro Pro still reads both DOS era formats, although there are some problems. Some of these are formatting-related (e.g. cells that contain data showing up as blank), and can be easily remedied. The behaviour of one spreadsheet with an external dependency is much more problematic, especially because Quattro Pro updates the original values (which are stored in the file) after fully loading the spreadsheet. Migrating this spreadsheet to another format would result in the loss of some of the original data. So, based on this (admittedly cursory) analysis it looks like no modern-day software is able to correctly handle the Quattro Pro for DOS formats. Add to this that the Quattro Pro for DOS formats are proprietary with (as far as I'm aware) no publicly available specifications, and I think we have a pretty strong candidate for a format that may be (nearly) obsolete. 
+Apart from Quattro Pro, modern spreadsheet programs offer no support for Quattro Pro for DOS spreadsheets. The most recent version of Quattro Pro still reads both DOS era formats, although there are some problems. Some of these are formatting-related (e.g. cells that contain data showing up as blank), and can be easily remedied. The behaviour of one spreadsheet with an external dependency is much more problematic, especially because Quattro Pro updates the original values (which are stored in the file) after fully loading the spreadsheet. Migrating this spreadsheet to another format would result in the loss of some of the original data. So, based on this (admittedly cursory) analysis it looks like no modern-day software is able to correctly handle the Quattro Pro for DOS formats. Add to this that the Quattro Pro for DOS formats are proprietary with (as far as I'm aware) no publicly available specifications, and I think we have a pretty strong candidate for a format that may be (nearly) obsolete.
 
 ## Solutions
 
 Although I haven't explored any concrete solutions for accessing Quattro Pro for DOS spreadsheets, some obvious routes would be:
 
 * Run an old copy of Quattro Pro for DOS (e.g. in a virtual machine) and export the spreadsheet to e.g. the [Lotus 1-2-3](http://fileformats.archiveteam.org/wiki/Lotus_1-2-3) format (which is still reasonably well supported today).
-* Run an old version of MS Excel (2003 or earlier) and export the spreadsheet to the [XLS](http://fileformats.archiveteam.org/wiki/XLS) format.    
+* Run an old version of MS Excel (2003 or earlier) and export the spreadsheet to the [XLS](http://fileformats.archiveteam.org/wiki/XLS) format.
 
-If anyone decides to have a go at this, I'd be very interested to see the results! 
+If anyone decides to have a go at this, I'd be very interested to see the results!
 
 ## Update: analysis by Euan Cochrane; Lotus 1-2-3 problematic as well?
 

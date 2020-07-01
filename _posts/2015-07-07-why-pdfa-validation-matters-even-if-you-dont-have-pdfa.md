@@ -9,13 +9,13 @@ This is the first instalment of a 2-part blog. It was prompted by the upcoming D
 
 <!-- more -->
 
-The purpose of this 2-part blog is twofold: first it is an attempt to give an accessible overview of the earlier work on PDF preservation risks, stressing the importance of PDF/A validator tools in detecting these risks. Second, it  provides some tentative suggestions of how the ongoing work on the new [VeraPDF](http://verapdf.org/) PDF/A validator could close some of the gaps and limitations of the SCAPE work.   
+The purpose of this 2-part blog is twofold: first it is an attempt to give an accessible overview of the earlier work on PDF preservation risks, stressing the importance of PDF/A validator tools in detecting these risks. Second, it  provides some tentative suggestions of how the ongoing work on the new [VeraPDF](http://verapdf.org/) PDF/A validator could close some of the gaps and limitations of the SCAPE work.
 
 ## Preservation risks of PDF
 
 The PDF format has a number of features that don't sit well with the aims of long-term preservation and accessibility. This includes encryption and password protection, external dependencies (e.g. fonts that are not embedded in a document), and reliance on external software. More details can be found in the [PDF entry of the OPF File Format Risk Registry](http://wiki.opf-labs.org/display/TR/Portable+Document+Format). Below are some examples; I included download links, so you can try them out for yourself.
 
-### Document Open password 
+### Document Open password
 
 If you try to open file [*encryption_openpassword.pdf*](https://github.com/openpreserve/format-corpus/blob/master/pdfCabinetOfHorrors/encryption_openpassword.pdf?raw=true) in Adobe Acrobat, you end up with this dialog:
 

@@ -15,7 +15,7 @@ Ultimately, the aim of this work is to be able to profile large *PDF* collection
 
 ## Validation errors
 
-As I was curious about the most common validation errors (or, more correctly, violations of the *PDF/A-1b* profile), I ran a little post-processing script on the output files to calculate error occurrences. The following table lists the results. For each *Preflight* error (which is represented as an error code), the table shows the number of *PDF*s for which the error was reported (expressed as a percentage)[^3]. 
+As I was curious about the most common validation errors (or, more correctly, violations of the *PDF/A-1b* profile), I ran a little post-processing script on the output files to calculate error occurrences. The following table lists the results. For each *Preflight* error (which is represented as an error code), the table shows the number of *PDF*s for which the error was reported (expressed as a percentage)[^3].
 
 |Error code|% PDFs reported|Description (from [Preflight source code](http://svn.apache.org/repos/asf/pdfbox/trunk/preflight/src/main/java/org/apache/pdfbox/preflight/PreflightConstants.java))|
 |:---|:---|:---|

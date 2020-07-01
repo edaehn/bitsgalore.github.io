@@ -30,7 +30,9 @@ To illustrate my arguments, I created a [simple demo spreadsheet](https://github
 * Column A: random number between 0 and 100 (as static values)
 * Column B: formula that takes the value from Column A and adds its square root:
 
-    `=A2 + SQRT(A2)`
+  ```data
+  =A2 + SQRT(A2)
+  ```
 
 ## Displayed precision not equal to stored precision
 
@@ -40,11 +42,15 @@ Without applying any special formatting, this is what the spreadsheet looks like
 
 The first thing of interest here is that the displayed values in the cells are different from those that are actually stored! For example, the value that is shown in cell A2 is:
 
-     52.06077146 
+```data
+52.06077146
+```
 
 Note that 8 decimal places are shown. But by looking at the formula bar you can see a different value:
 
-     52.0607714623856 
+```data
+52.0607714623856
+```
 
 which contains 13 decimal places. Since Excel internally [stores numbers at a precision of 15 significant figures](https://en.wikipedia.org/wiki/Numeric_precision_in_Microsoft_Excel), only the latter corresponds to the actual (stored) value.
 
@@ -70,11 +76,15 @@ A possible way around the rounding issue would be to use Excel's *Format Cells* 
 
 This is also less than ideal, if only for the reason that a fixed value will result in the display of non-significant figures. For example, applying a setting of 14 decimal places to the value in cell A1 results in:
 
-     52.06077146238560
+```data
+52.06077146238560
+```
 
 which is different from the stored value:
 
-     52.0607714623856 
+```data
+52.0607714623856
+```
 
 Moreover, this approach gets extremely cumbersome for spreadsheets that contain numbers at different precisions (e.g. it is pretty common to have one column with integer values, and another one with floating-point numbers).
 
@@ -84,7 +94,7 @@ In practice, Excel's number formatting is often used to *reduce* the number of d
 
 So in this case even more information is lost!
 
-## Interactive or dynamic? 
+## Interactive or dynamic?
 
 The preferred formats document does acknowledge that PDF/A may not always be suited for spreadsheets, using the following statement (in Dutch):
 
