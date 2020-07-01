@@ -470,7 +470,7 @@ session #2 starts at track 18, LSN: 163570, ISO 9660 blocks: 170006
 ISO 9660: 170006 blocks, label `NO   
 ```
 
-Note that `CD-Plus/Extra`, which indicates this is a multi-session CD.
+Note `CD-Plus/Extra`, which indicates this is a multi-session CD.
 
 ### Imaging enhanced CDs
 
