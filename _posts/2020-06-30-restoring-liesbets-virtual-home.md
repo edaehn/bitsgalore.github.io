@@ -295,7 +295,7 @@ Note how the *data* parameter holds a dictionary with the three variables and th
 
 ## Rendering the WARC with Pywb
 
-I finally verified the WARC capture by importing it in [Pywb](https://github.com/webrecorder/pywb). More details on this can be found in my separate [WARC capture and rendering notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-warc-notes.md). Rendering the WARC did not result in any problems, and to illustrate this below screenshot shows one output combination of the interactive bedroom mirror:
+I finally verified the WARC capture by importing it in [Pywb](https://github.com/webrecorder/pywb). More details on this can be found in my separate [WARC capture and rendering notes](https://github.com/KBNLresearch/xs4all-resources/blob/master/doc/liesbets-atelier-warc-notes.md). Rendering the WARC did not result in any problems, and to illustrate this, below screenshot shows one output combination of the interactive bedroom mirror:
 
 <figure class="image">
   <img src="{{ BASE_PATH }}/images/2020/06/mirror-pywb.png" alt="Mirror script screenshot">
