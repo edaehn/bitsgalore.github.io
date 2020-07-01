@@ -31,7 +31,9 @@ The remainder of this blog describes how we went about the first two steps.
 
 A first attempt at viewing the contents of the CD-ROMs in a file manager resulted in read errors for *all* discs. This is not surprising, given the instability of CD-Rs, and the fact these discs were burned in early 2004. So, we tried to recover the contents of the discs with the dedicated data-recovery tool [*ddrescue*](https://www.gnu.org/software/ddrescue/). We used the following command line:
 
-    ddrescue -d -b 2048 -r4 -v /dev/sr0 NL-menu-ddrescue.iso NL-menu-ddrescue.log
+```bash
+ddrescue -d -b 2048 -r4 -v /dev/sr0 NL-menu-ddrescue.iso NL-menu-ddrescue.log
+```
 
 Here *-d* tells *ddrescue* to read the disc using direct disc access mode, *-b* sets the block size (which is 2048 bytes for a CD-ROM); *-r4* sets the maximum number of retries in case of bad sectors to 4, and *-v* activates verbose output mode. File *NL-menu-ddrescue.iso* is the image file with the recovered data; *NL-menu-ddrescue.log* is a so-called [*mapfile*](https://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html#Mapfile-structure), which holds information on the recovery status of blocks of data.
 

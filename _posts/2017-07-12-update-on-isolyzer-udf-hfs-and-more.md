@@ -26,7 +26,9 @@ Finally *Isolyzer*'s documentation has been given a major overhaul, as you can s
 
 You can install *Isolyzer* with [*pip*](https://en.wikipedia.org/wiki/Pip_(package_manager)), using the following command:
 
-    pip install isolyzer --user
+```bash
+pip install isolyzer --user
+```
 
 For Windows users [64- and 32-bit binaries are available here](https://github.com/KBNLresearch/isolyzer/releases/tag/1.0.0). These binaries are completely stand-alone and don't require Python on your machine.
 

@@ -22,7 +22,7 @@ The output from the underlying extraction tool ([*7-zip*](https://en.wikipedia.o
 
 As a first test I tried to extract the file from the terminal using *unzip* (v. 6.0) using the following command:
 
-```
+```bash
 unzip kb-4d8a2f9a-5e0b-11ea-9376-40b0341fbf5f.zip
 ```
 
@@ -44,7 +44,7 @@ So, according to *unzip* the file is simply corrupt. *Unzip* wasn't able to extr
 
 Next I tried to  to extract the file with *7-zip* (v. 16.02) using this command:
 
-```
+```bash
 7z x kb-4d8a2f9a-5e0b-11ea-9376-40b0341fbf5f.zip
 ```
 
@@ -105,7 +105,7 @@ I did some additional tests to verify if my problem could be a ZIP64-related iss
 
 The *zip* tool has a switch that can be used to test the integrity of a ZIP file. I ran it on the problematic file like this:
 
-```
+```bash
 zip -T kb-4d8a2f9a-5e0b-11ea-9376-40b0341fbf5f.zip
 ```
 
@@ -154,7 +154,6 @@ if diskno != 0 or disks > 1:
 ```
 
 Here's the description of this data structure in the [format specification](https://pkware.cachefly.net/webdocs/APPNOTE/APPNOTE-6.3.6.TXT):
-
 
 ```
 zip64 end of central dir locator 
@@ -238,7 +237,7 @@ In the comments section, Paul Marquess posted a link to a small Perl script he w
 
 I ran a quick test with my openly-licensed test file, using the following command:
 
-```
+```bash
 fix-onedrive-zip onedrive-zip-test-zeros.zip
 ```
 

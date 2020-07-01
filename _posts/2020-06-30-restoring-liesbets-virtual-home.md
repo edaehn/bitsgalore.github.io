@@ -81,13 +81,13 @@ https://ziklies.home.xs4all.nl/zolder/
 
 I then ran [this Bash script](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-seeds.sh), using the above text file as a command-line argument:
 
-```
+```bash
 scrape-seeds.sh seed-urls.txt
 ```
 
 As a check I subsequently did a recursive diff on the output directories of both the original crawl and the improved crawl:
 
-```
+```bash
 diff -r ./wget-original/ziklies.home.xs4all.nl/ ./wget-improved/ziklies.home.xs4all.nl/ > diff-site-toilet.txt
 ```
 

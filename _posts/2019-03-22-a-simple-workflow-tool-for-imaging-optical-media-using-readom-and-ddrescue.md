@@ -15,31 +15,31 @@ In [my 2015 blog post]({{ BASE_PATH }}/2015/11/13/preserving-optical-media-from-
 
 1. Unmount the disc:
    
-   ```
+   ```bash
    umount /dev/sr0
    ```
 
 2. Try to create an ISO image of the disc with *readom*:
 
-   ```
+   ```bash
    readom retries=4 dev=/dev/sr0 f=disc.iso
    ```
 
 3. If *readom* fails, try to image the disc with *ddrescue*:
 
-   ```
+   ```bash
    ddrescue -b 2048 -r4 -v /dev/sr0 disc.iso disc.map
    ```
 
 4. If *ddrescue* was unable to recover all the data on the disc, try to improve the result by re-running *ddrescue* in direct disc mode:
 
-   ```
+   ```bash
    ddrescue -d -b 2048 -r4 -v /dev/sr0 disc.iso disc.map
    ```
 
 5. If there are still read errors after the above command, try to improve the result by re-running *ddrescue* with another optical drive (e.g. an external USB-drive):
 
-   ```
+   ```bash
    ddrescue -b 2048 -r4 -v /dev/sr1 disc.iso disc.map
    ```
 
@@ -47,7 +47,7 @@ In [my 2015 blog post]({{ BASE_PATH }}/2015/11/13/preserving-optical-media-from-
 
 6. Check the extracted ISO image for completeness with [*isolyzer*](https://github.com/KBNLresearch/isolyzer):
 
-   ```
+   ```bash
    isolyzer disc.iso
    ```
 

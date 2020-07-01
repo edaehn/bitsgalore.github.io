@@ -20,7 +20,9 @@ A [2016 report by Jeroen van Luin](https://kia.pleio.nl/file/download/55806143/R
 
 In most cases it will be desirable that the site snapshot will appear in the Wayback timeline around the year/date it was actually online. This can be achieved by setting the computer's system date to that date. This has to be done before running the crawl. In the case of *NL-menu* I used the "last modified" time stamp of the files on the CD-ROM filesystem as an approximation. On a Linux-based system the following command will do the trick:
 
-    sudo date --set="2004-01-23 21:03:09.000"
+```bash
+sudo date --set="2004-01-23 21:03:09.000"
+```
 
 Also, to completely rule out anything from the "live" web leaking into the crawl, it may be prudent to disable the network connection at this point (both wired and wireless connections).
 
@@ -32,13 +34,15 @@ I started out with some limited tests with *Heritrix* 3, but this resulted in se
 
 After some experimentation, the following set of *wget* options appeared to work reasonably well[^2]: 
 
-    wget --mirror \
-        --page-requisites \
-        --adjust-extension \
-        --warc-file="nl-menu" \
-        --warc-cdx \
-        --output-file="nl-menu.log" \
-        http://www.nl-menu.nl/
+```bash
+wget --mirror \
+    --page-requisites \
+    --adjust-extension \
+    --warc-file="nl-menu" \
+    --warc-cdx \
+    --output-file="nl-menu.log" \
+    http://www.nl-menu.nl/
+```
 
 The above command results in a 200 MB compressed WARC file, a mirror of the crawled directory tree, a CDX index file (not really nececessary, but useful for quality checks), and a log file.
 
@@ -46,15 +50,21 @@ The above command results in a 200 MB compressed WARC file, a mirror of the craw
 
 In order to test the rendering of the WARC locally, I installed [*pywb*](https://github.com/webrecorder/pywb) (which is part of the Webrecorder project). I then created a test archive using:
 
-    wb-manager init my-web-archive
+```bash
+wb-manager init my-web-archive
+```
 
 and then added my newly created WARC using:
 
-    wb-manager add my-web-archive ~/NL-menu/warc-wget/nl-menu.warc.gz
+```bash
+wb-manager add my-web-archive ~/NL-menu/warc-wget/nl-menu.warc.gz
+```
 
 I then started the server with the command:
 
-    wayback
+```bash
+wayback
+```
 
 After this the archive is available from <http://localhost:8080/my-web-archive/>. Below is a screenshot of one page:
 
@@ -75,32 +85,38 @@ This raises the obvious question: can we force *wget* to crawl *all* files in th
 
 The solution here is to use *wget*'s `--input-file` switch, which takes a list of URLs which are sequentially crawled. As a first step we need to create a directory listing of the source directory of the website, and then transform each file entry into a corresponding URL. I did this using the following command: 
 
-    find /var/www/www.nl-menu.nl -type f \
-        | sed -e 's/\/var\/www\//http:\/\//g' > urls.txt
+```bash
+find /var/www/www.nl-menu.nl -type f \
+    | sed -e 's/\/var\/www\//http:\/\//g' > urls.txt
+```
 
 I then ran *wget*[^5]:
 
-    wget --page-requisites \
-        --warc-file="nl-menu" \
-        --warc-cdx \
-        --output-file="nl-menu.log" \
-        --input-file=urls.txt
+```bash
+wget --page-requisites \
+    --warc-file="nl-menu" \
+    --warc-cdx \
+    --output-file="nl-menu.log" \
+    --input-file=urls.txt
+```
 
 This results in a WARC file that contains *all* files from the source directory. But it does introduce a different problem: when the WARC is accessed using *pywb*, it shows up as over 80 thousand individual captures (i.e. each file appears to be treated as an individual capture)! This makes rendering of the WARC near impossible (if only because loading the list of captures is extremely slow to begin with). 
 
 After getting in touch with *pywb* author Ilya Kreymer, Ilya pointed out that *pywb*'s behaviour here is the combined effect of a bug in *pywb* and a peculiarity of the *NL-menu* directory tree: unlike most websites, it does not contain an index document (e.g. *index.html*) at the domain root level. Instead, the domain root contains 2 directories which hold the Dutch and English-language versions of the site, respectively: 
 
-    /var/www/www.nl-menu.nl/
-    ├── nlmenu.en
-    │   ├── index.html
-    │   ├── ...
-    │   ├── ...
-    │   └── ...
-    └── nlmenu.nl
-        ├── index.html
-        ├── ...
-        ├── ...
-        └── ...
+```
+/var/www/www.nl-menu.nl/
+├── nlmenu.en
+│   ├── index.html
+│   ├── ...
+│   ├── ...
+│   └── ...
+└── nlmenu.nl
+    ├── index.html
+    ├── ...
+    ├── ...
+    └── ...
+```
 
 The result of this is that the input URL list (which is derived from files in the directory tree) does not contain the site's root URL (*http://www.nl-menu.nl*), which in turn ends up missing in the WARC. Ultimately this leads *pywb* to do a prefix query which in this case results in 80 thousand URLs!
 
@@ -108,25 +124,33 @@ The result of this is that the input URL list (which is derived from files in th
 
 Ilya suggested to avoid this problem by explicitly adding the domain root to the URL list:  
 
-    echo "http://www.nl-menu.nl/" > urls.txt
+```bash
+echo "http://www.nl-menu.nl/" > urls.txt
+```
 
 Incidentally we also need to add entries for the root directories of the Dutch and English language sub-sites:
 
-    echo "http://www.nl-menu.nl/nlmenu.nl/" >> urls.txt
-    echo "http://www.nl-menu.nl/nlmenu.en/" >> urls.txt
+```bash
+echo "http://www.nl-menu.nl/nlmenu.nl/" >> urls.txt
+echo "http://www.nl-menu.nl/nlmenu.en/" >> urls.txt
+```
 
 Then we can add the remaining files (and rewrite file paths as URLs) as before:
 
-    find /var/www/www.nl-menu.nl -type f \
-        | sed -e 's/\/var\/www\//http:\/\//g' > urls.txt
+```bash
+find /var/www/www.nl-menu.nl -type f \
+    | sed -e 's/\/var\/www\//http:\/\//g' > urls.txt
+```
 
 Finally run *wget*:
 
-    wget --page-requisites \
-        --warc-file="nl-menu" \
-        --warc-cdx \
-        --output-file="nl-menu.log" \
-        --input-file=urls.txt
+```bash
+wget --page-requisites \
+    --warc-file="nl-menu" \
+    --warc-cdx \
+    --output-file="nl-menu.log" \
+    --input-file=urls.txt
+```
 
 This results in a WARC that is complete *and* renders in *pywb* as well. On a side note, although rendering and navigating the site works well overall, there are still some small issues. For one thing, coming from the Dutch or English-language home page, clicking on the link to the site's *registration* page results in a *Url Not Found* error, even though this page loads without problems coming from any other page on the site. I don't really understand why this happens, although I suspect a combination of JavaScript and early-2000s [frames](https://en.wikipedia.org/wiki/Framing_(World_Wide_Web)) madness may be to blame here.
 
@@ -138,31 +162,37 @@ My [previous blog post](http://openpreservation.org/blog/2018/04/24/resurrecting
 
 So the more specific question is: does the WARC that we just created contain any metadata about the provenance of this snapshot? To find out, let's use the *warcdump* tool that is part of the [*warctools*](https://github.com/internetarchive/warctools) toolkit: 
 
-    warcdump nl-menu.warc.gz > nl-menu-dump.txt
+```bash
+warcdump nl-menu.warc.gz > nl-menu-dump.txt
+```
 
 This results in a (huge) text file with metadata about all archived resources inside the WARC. Here is an example of one (request) record: 
 
-    archive record at nl-menu.warc.gz:75708014
-    Headers:
-        WARC-Type:request
-        WARC-Target-URI:<http://www.nl-menu.nl/nlmenu.en/index.html>
-        Content-Type:application/http;msgtype=request
-        WARC-Date:2004-01-23T20:04:54Z
-        WARC-Record-ID:<urn:uuid:4b05df6b-d408-4f2f-8efb-bbd38098cbdb>
-        WARC-IP-Address:127.0.0.1
-        WARC-Warcinfo-ID:<urn:uuid:7dacf508-ab81-4244-ae9c-ce04a1e18123>
-        WARC-Block-Digest:sha1:MJEIKQUIEOMARJPUEYXZFT4TTTUKX2IE
-        Content-Length:159
-    Content Headers:
-        Content-Type : application/http;msgtype=request
-        Content-Length : 159
-    Content:
-        GET /nlmenu\x2Een/index\x2Ehtml HTTP/1\x2E1\xD\xAUser\x2DAgent\x3A Wget/1\x2E19 \x28linux\x2Dgnu\x29\xD\xAAccept\x3A \x2A/\x2A\xD\xAAccept\x2DEncoding\x3A identity\xD\xAHost\x3A www\x2Enl\x2Dmenu\x2Enl\xD\xAConnection\x3A Keep\x2DAlive\xD\xA\xD\xA
-        ...
+```
+archive record at nl-menu.warc.gz:75708014
+Headers:
+    WARC-Type:request
+    WARC-Target-URI:<http://www.nl-menu.nl/nlmenu.en/index.html>
+    Content-Type:application/http;msgtype=request
+    WARC-Date:2004-01-23T20:04:54Z
+    WARC-Record-ID:<urn:uuid:4b05df6b-d408-4f2f-8efb-bbd38098cbdb>
+    WARC-IP-Address:127.0.0.1
+    WARC-Warcinfo-ID:<urn:uuid:7dacf508-ab81-4244-ae9c-ce04a1e18123>
+    WARC-Block-Digest:sha1:MJEIKQUIEOMARJPUEYXZFT4TTTUKX2IE
+    Content-Length:159
+Content Headers:
+    Content-Type : application/http;msgtype=request
+    Content-Length : 159
+Content:
+    GET /nlmenu\x2Een/index\x2Ehtml HTTP/1\x2E1\xD\xAUser\x2DAgent\x3A Wget/1\x2E19 \x28linux\x2Dgnu\x29\xD\xAAccept\x3A \x2A/\x2A\xD\xAAccept\x2DEncoding\x3A identity\xD\xAHost\x3A www\x2Enl\x2Dmenu\x2Enl\xD\xAConnection\x3A Keep\x2DAlive\xD\xA\xD\xA
+    ...
+```
 
 Note this line:
 
-    WARC-IP-Address:127.0.0.1
+```
+WARC-IP-Address:127.0.0.1
+```
 
 The field *WARC-IP-Address* is defined in the [WARC specification](https://iipc.github.io/warc-specifications/specifications/warc-format/warc-1.1/#warc-ip-address) as:
 

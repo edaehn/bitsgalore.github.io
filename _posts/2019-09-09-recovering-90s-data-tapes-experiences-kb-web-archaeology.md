@@ -305,7 +305,7 @@ forensic workflows that are used for other carrier types in e.g.
 In the simplest case, reading data from a tape involves nothing more
 than a *dd* command line such as this one:
 
-```
+```bash
 dd if=/dev/nst0 of=file0001.dd bs=16384
 ```
 
@@ -323,14 +323,14 @@ following iterative procedure:
     record (and direct the output to the null device, as we don’t need
     it):
 
-    ```
+    ```bash
     dd if=/dev/nst0 of=/dev/null bs=512 count=1
     ```
 
 2.  Position the tape 1 record backward using the *mt*[^23] tool (this
     resets the read position to the start of the current session):
 
-    ```
+    ```bash
     mt -f /dev/nst0 bsr 1
     ```
 
@@ -344,7 +344,7 @@ single output file. This leads to a second complication: a tape may
 contain additional sessions. We can test for this by positioning the
 tape 1 record forward with the *mt* tool:
 
-```
+```bash
 mt -f /dev/nst0 fsr 1
 ```
 
@@ -516,7 +516,7 @@ The remaining files are all *tar* archives, a format that is still
 widely used today. These files can be extracted by simply running the
 *tar*[^35] command like this:
 
-```
+```bash
 tar -xvf /path/to/file0001.dd > /dev/null
 ```
 
