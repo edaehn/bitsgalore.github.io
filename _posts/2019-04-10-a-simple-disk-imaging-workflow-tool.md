@@ -78,29 +78,31 @@ After an initial attempt to image this floppy with *dd* failed with errors, a fi
 
 Descriptive metadata, a SHA-512 checksum of the disk image, and a host of event metadata are written to a *JSON* file in a format that is largely identical to the one used by *omimgr*. Below is an example:
 
-    {
-        "acquisitionEnd": "2019-04-09T13:10:40.503984+02:00",
-        "acquisitionStart": "2019-04-09T13:09:59.835833+02:00",
-        "autoRetry": false,
-        "blockDevice": "/dev/sdc",
-        "checksumType": "SHA-512",
-        "checksums": {
-            "ks.img": "79a17d3fa536b8fa750257b01d05124dadb888f1171e9ca5cc3398a2c16de81b1687b52c70135b966409a723ef5f3960536a6e994847c5ebe7d5eaffefa62dc7"
-        },
-        "description": "KS metingen origineel",
-        "diskimgrVersion": "0.1.0b3",
-        "extension": "img",
-        "identifier": "cc630cda-5ab7-11e9-bc82-dc4a3e5f53bf",
-        "interruptedFlag": false,
-        "maxRetries": "4",
-        "notes": "",
-        "prefix": "ks",
-        "readCommandLine": "dd if=/dev/sdc of=/home/johan/test/6/ks.img bs=512 conv=notrunc",
-        "readMethod": "dd",
-        "readMethodVersion": "dd (coreutils) 8.25",
-        "rescueDirectDiscMode": false,
-        "successFlag": true
-    }
+```json
+{
+    "acquisitionEnd": "2019-04-09T13:10:40.503984+02:00",
+    "acquisitionStart": "2019-04-09T13:09:59.835833+02:00",
+    "autoRetry": false,
+    "blockDevice": "/dev/sdc",
+    "checksumType": "SHA-512",
+    "checksums": {
+        "ks.img": "79a17d3fa536b8fa750257b01d05124dadb888f1171e9ca5cc3398a2c16de81b1687b52c70135b966409a723ef5f3960536a6e994847c5ebe7d5eaffefa62dc7"
+    },
+    "description": "KS metingen origineel",
+    "diskimgrVersion": "0.1.0b3",
+    "extension": "img",
+    "identifier": "cc630cda-5ab7-11e9-bc82-dc4a3e5f53bf",
+    "interruptedFlag": false,
+    "maxRetries": "4",
+    "notes": "",
+    "prefix": "ks",
+    "readCommandLine": "dd if=/dev/sdc of=/home/johan/test/6/ks.img bs=512 conv=notrunc",
+    "readMethod": "dd",
+    "readMethodVersion": "dd (coreutils) 8.25",
+    "rescueDirectDiscMode": false,
+    "successFlag": true
+}
+```
 
 ## Main uses
 
