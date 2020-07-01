@@ -89,7 +89,7 @@ Since *ddrescue* may need a *lot* of time to recover data from a faulty disc (12
 
 A the end of each session, *omimgr* writes a metadata file in *JSON* format. Here's an example:  
 
-```
+```json
 {
     "acquisitionEnd": "2019-03-22T13:38:51.969934+01:00",
     "acquisitionStart": "2019-03-22T13:37:43.060185+01:00",
