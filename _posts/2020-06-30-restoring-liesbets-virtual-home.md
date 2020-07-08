@@ -343,6 +343,10 @@ Below posts (both in Dutch) give some additional background information about th
 
 - [Redden wat van waarde is: webarchivering homepages XS4ALL](https://www.sidnfonds.nl/nieuws/redden-wat-van-waarde-is-webarchivering-homepages-xs4all)
 
+## Revision history
+
+- 8 July 2020: added sections on toilet door restoration attempt
+
 
 [^2]: Some purists may consider this a technological anachronism. Client-side image maps were first introduced in HTML 3.2, which was published in 1997, whereas Liesbet's ["what's new" page](https://ziklies.home.xs4all.nl/new.html) shows that most of the site's development activity took place between early 1995 and late 1997. This could be a problem for users who want to view the site in a period browser (e.g. inside an emulated environment), which may not support client-side image maps.
 
