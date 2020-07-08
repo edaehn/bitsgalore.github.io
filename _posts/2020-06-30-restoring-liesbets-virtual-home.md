@@ -187,15 +187,24 @@ The main challenge was then to make the scripts play nicely with a web server. T
   <figcaption>Demonstration of interactive bedroom mirror.</figcaption>
 </figure>
 
-## Remaining issues
+## Interactive toilet door
 
-Although the above modifications restore most of the broken features, there are still an number of unresolved issues.
+The [toilet page](https://ziklies.home.xs4all.nl/e-toilet.html) has an interactive feature where visitors can scratch a message onto a virtual toilet door. Zikkenheimer wrote to us that she initially updated the toilet door image by hand (presumably using submissions sent by e-mail), but that she later replaced this with a Python script that automatically updates the image. This script is no longer available from the live site, but it is included in the ZIP file. From a text string, it maps each [glyph](https://en.wikipedia.org/wiki/Glyph) to a corresponding GIF image, and then pastes these GIF images onto the pre-existing version of the toilet door image, using randomly selected image co-ordinates.
 
-### Interactive toilet door
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2020/06/toilet-door.png" alt="Toilet door">
+  <figcaption>Interactive toilet door.</figcaption>
+</figure>
 
-The [toilet page](https://ziklies.home.xs4all.nl/e-toilet.html) has an interactive feature where visitors can scratch a message onto a virtual toilet door. This works by way of an external form[^6] that sends the entered message by e-mail. The ZIP file that Zikkenheimer sent us contains a Python script that generates a GIF image of the toilet door with the received message added to it, but it isn't entirely clear how this script interfaces with the e-mail component[^7]. For now, I left this unchanged.
+Interestingly, the source of the current "live version" references another script that simply sends the entered message by e-mail[^6]. However, the Python script from the ZIP file shows that the toilet pages were originally hosted at a different server location, and [an archived snapshot from the Internet Archive](https://web.archive.org/web/19981205234146/http://prima12.xs4all.nl/liesbet/toilet.html) still exists. The source code of that snapshot also contains a link to the Python script.
 
-### Unsupported file formats
+## Restoring the toilet door
+
+I tried to make the interactive toilet door work again, but while doing this I ran into several problems. First of all, the underlying Python script is based on Python 1.4, which was one of the earliest Python releases, and its code is not compatible with modern Python interpreters. I tried to upgrade it to Python-3-compatible code. Overall this was pretty easy, but it uses [gdmodule](https://github.com/Solomoriah/gdmodule), a Python module that is [currently unsupported and not compatible](https://github.com/Solomoriah/gdmodule/issues/3) with Python 3. I was able to make the script work with Python 2.7, but since Python 2 [is no longer maintained](https://www.python.org/doc/sunset-python-2/) this is not a sustainable solution.
+
+Also, the set of glyph images in the ZIP file appeared to be incomplete, only including lowercase characters (with an image for the "u" glyph strangely missing), and no uppercase characters or punctuation marks. If the user enters any of these missing characters, this results in an "Internal Server Error". In addition, the script often places text outside of the toilet door image canvas. For both of these issues, it is unclear whether they are specific to the restored version, or simply reflect the state of the old "live" site. Because of these issues, I would not consider the restoration of this part of the site a success.
+
+## Unsupported file formats
 
 The site also uses a number of file formats that are not supported by modern browsers. Some examples:
 
@@ -291,7 +300,7 @@ with capture_http(warcFile):
     requests.post(url, data={'onder': '1a', 'midden': '1b', 'top': '1c'})
 ```
 
-Note how the *data* parameter holds a dictionary with the three variables and their associated values. To capture the form's full behavior, we can simply iterate over all input combinations, and then capture each of them. Having confirmed that this worked, I re-wrote my existing wget-based Bash script into a Python script that only uses warcio. The script is [available here](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-ziklies-local.py).
+Note how the *data* parameter holds a dictionary with the three variables and their associated values. To capture the form's full behavior, we can simply iterate over all input combinations, and then capture each of them. Having confirmed that this worked, I re-wrote my existing wget-based Bash script into a Python script that only uses warcio. The script is [available here](https://github.com/KBNLresearch/xs4all-resources/blob/master/scripts/scrape-ziklies-local.py). This approach doesn't work for the interactive toilet door, since, unlike the bedroom mirror, it processes free text, which means that the number of possible inputs is infinite.
 
 ## Rendering the WARC with Pywb
 
@@ -342,8 +351,6 @@ Below posts (both in Dutch) give some additional background information about th
 [^5]: Under Linux this is simply a matter of issuing a command like `chmod 755 barbie.cgi`.
 
 [^6]: Documented here: <https://www.xs4all.nl/service/installeren/hosting/mail-a-form-toevoegen/>.
-
-[^7]: The script is also written for Python 1.4, and some of the code is incompatible with modern (Python 3) interpreters. It would probably be possible to update it to Python 3 pretty easily.
 
 [^8]: I'm not actually sure if this behavior was any different on late-'90s browsers.
 
