@@ -244,6 +244,14 @@ figure figcaption{
     padding-left: 20px;
     text-indent: -20px;}
 
+.content ul, ol{
+  margin-bottom: 20px;
+}
+
+.content li {
+  line-height: 150%;
+}
+
 table{
   font-size:18px;line-height:120%;
   border-collapse:collapse;
@@ -254,10 +262,6 @@ table{
 td, th{
  padding:15px;
  border: 1px solid black; }
-
-li {
-  line-height: 150%;
-}
 
 code, pre{
     font-size:16px;

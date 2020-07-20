@@ -135,21 +135,23 @@ A sample schema that covers all aspects of the example format profile is availab
 
 For the actual assessment (or validation) of *jpylyzer* output against the schema a couple of options exist. Probably the most widely-used one is the [ISO Schematron reference implementation][10]. Validation using that software involves a number of successive *XSLT* stylesheet transformations. A more accessible (but probaby less performant) alternative is the [*Probatron* command-line executable][2]. Using *Probatron*, asssessment of a *JP2* would typically involve the following two steps:
 
-1. Run *jpylyzer*.
+### 1. Run *jpylyzer*
 
-    **Example:**:
+For example:
 
-    ```bash
-    jpylyzer balloon.jp2 > balloon_jp2.xml
-    ```
 
-2. Validate *jpylyzer*'s output against the schema.
+```bash
+jpylyzer balloon.jp2 > balloon_jp2.xml
+```
 
-    **Example:**:
+### 2. Validate *jpylyzer*'s output against the schema
 
-    ```bash
-    java -jar probatron.jar balloon\_jp2.xml profile.sch > balloon_jp2_assessment.xml
-    ```
+Example:
+
+
+```bash
+java -jar probatron.jar balloon\_jp2.xml profile.sch > balloon_jp2_assessment.xml
+```
 
 ## Example output
 
