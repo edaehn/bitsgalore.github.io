@@ -60,6 +60,10 @@
   margin-bottom: 0px;
   }
 
+.content p{
+  margin-bottom: 30px;
+}
+
 .footnotes{
   border-top: 2px solid black;
   margin-top: 50px;
@@ -133,14 +137,14 @@ footer {
   }
   
 .sidebarGroup p{
-  line-height:20px;
+  line-height:120%;
   }  
 
 .sidebarGroup h2{
   font-family: 'Lato';
   font-weight: bold;
   font-size:20px;
-  line-height:22px;
+  line-height:120%;
   padding-top: 0px;
   } 
 
@@ -148,7 +152,7 @@ footer {
   font-family: 'Lato';
   font-weight: bold;
   font-size:20px;
-  line-height:22px;
+  line-height:120%;
   padding-top: 0px;
   } 
 
@@ -168,35 +172,39 @@ footer {
 body{
     font-family: 'Lato';
     font-size: 22px;
-    line-height: 33px;
+    line-height: 150%;
   }
-  
-blockquote p{
-  margin-bottom:0; font-size:20px; font-style:italic; font-weight:400 ;}
 
-h1{
+blockquote p{
+  margin-bottom:0; font-size:20px; font-style:italic; font-weight:400;}
+
+.content h1{
     font-family: 'Lato';
     font-size:48px;
-    line-height: 54px;
+    line-height: 120%;
     font-weight: bold;
     text-align:left;
-    /*padding-bottom:20px;*/
+    padding-bottom:20px;
 }
 
-h2{
+.content h2{
     font-family: 'Lato';
     font-size:30px;
+    line-height: 120%;
     font-weight: bold;
     text-align:left;
     padding-top: 20px;
+    padding-bottom:20px;
 }
 
-h3{
+.content h3{
     font-family: 'Lato';
     font-size:26px;
+    line-height: 120%;
     font-weight: bold;
     text-align:left;
     padding-top: 20px;
+    padding-bottom:20px;
 }
 .img-center{
   display: block;
@@ -216,25 +224,28 @@ figure{
   padding-left:0px;
   padding-right:0px;
   margin-top:0px;
-  margin-bottom: 0px;
+  margin-bottom: 30px;
   }
 
 figure img{
   margin-bottom: 20px;
 }
 
+figure video{
+  margin-bottom: 20px;
+}
 figure figcaption{
     font-size:20px;
     font-style:italic;
-    line-height: 30px;
+    line-height: 120%;
     margin-top: -10px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     text-align: left;
     padding-left: 20px;
     text-indent: -20px;}
 
 table{
-  font-size:18px;line-height:22px;
+  font-size:18px;line-height:120%;
   border-collapse:collapse;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -245,10 +256,12 @@ td, th{
  border: 1px solid black; }
 
 li {
-  line-height: 35px; }
+  line-height: 150%;
+}
 
-code{
+code, pre{
     font-size:16px;
+    margin-bottom: 30px;
 }
 
 .button {
@@ -314,7 +327,7 @@ code{
   overflow: hidden; }
 
 .tag_box li {
-  line-height: 28px; }
+  line-height: 120%; }
 
 .tag_box li i {
   opacity: 0.9; }
