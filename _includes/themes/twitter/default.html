@@ -86,6 +86,17 @@
           </ul>
         </div>
 
+        <div class="sidebarGroup">
+          <!-- Archive -->
+          <h2><a href="{{ site.url }}/archive.html">Archive</a></h2>
+
+         {% assign posts_collate = site.posts %}
+          <div class="archive">
+            {% include JB/posts_collate %}
+          </div>
+
+        </div>
+
       </div>
 
       <div id="footer">
