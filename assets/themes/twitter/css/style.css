@@ -127,7 +127,7 @@ footer {
   
 .sidebarGroup{
   font-family: 'Lato';
-  font-size:18px;
+  font-size:22px;
   text-align: left;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -140,10 +140,14 @@ footer {
   line-height:120%;
   }  
 
+.sidebarGroup a{
+  line-height:120%;
+  }  
+
 .sidebarGroup h2{
   font-family: 'Lato';
   font-weight: bold;
-  font-size:22px;
+  font-size:28px;
   line-height:120%;
   padding-top: 0px;
   } 
@@ -351,6 +355,7 @@ code, pre{
 
 /* tag_box */
 .tag_box {
+  font-size: 18px;
   list-style: none;
   margin: 0;
   overflow: hidden; }

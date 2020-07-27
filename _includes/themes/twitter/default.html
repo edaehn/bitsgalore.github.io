@@ -58,24 +58,21 @@
 
       <div id="sidebarRight">
         <div class="sidebarGroup">
-          <p>
-          <a href="{{ HOME_PATH }}"><img src="{{ BASE_PATH }}/images/bgava.png" alt="bitsgalore avatar"  width="159" height="200"></a>	  	
-		  </p>
-		  <h2><a href="{{ site.url }}/about.html">About</a></h2>
-		  <h2><a href="https://twitter.com/bitsgalore" target="_blank">Twitter</a></h2>
-          <h2><a href="https://digipres.club/@bitsgalore" target="_blank">Mastodon (digipres.club)</a></h2>
-          <h2><a href="https://github.com/bitsgalore/bitsgalore.github.io/issues" target="_blank">Report a problem with this site</a></h2>
-        </div>
-
+          <p><a href="{{ HOME_PATH }}"><img src="{{ BASE_PATH }}/images/bgava.png" alt="bitsgalore avatar"  width="159" height="200"></a></p>	
+          <p><a href="{{ site.url }}/about.html">About</a></p>
+          <p><a href="https://twitter.com/bitsgalore" target="_blank">Twitter</a></p>
+          <p><a href="https://digipres.club/@bitsgalore" target="_blank">Mastodon (digipres.club)</a></p>
+          <p><a href="https://github.com/bitsgalore/bitsgalore.github.io/issues" target="_blank">Report a problem with this site</a></p>
+      </div>
 	    <div class="sidebarGroup">
-		  <h2><a href="{{ site.url }}/rss.xml">RSS feed</a></h2>
-		  <h2><a href="{{ site.url }}/atom.xml">ATOM feed</a></h2>
-          <h2><a href="{{ site.url }}/archive.html">Archive</a></h2>
+        <p><a href="{{ site.url }}/rss.xml">RSS feed</a></p>
+        <p><a href="{{ site.url }}/atom.xml">ATOM feed</a></p>
 	    </div>
 
 	    <div class="sidebarGroup">
 	      <!-- Tag cloud -->
-          <h2><a href="{{ site.url }}/tags.html">Tags</a></h2>
+          <h2>Tags</h2>
+          <br>
           {% include JB/setup %}
           <ul class="tag_box inline">
             {% assign tags_list = "" | split:"" %}
@@ -88,7 +85,7 @@
 
         <div class="sidebarGroup">
           <!-- Archive -->
-          <h2><a href="{{ site.url }}/archive.html">Archive</a></h2>
+          <h2>Archive</h2>
 
          {% assign posts_collate = site.posts %}
           <div class="archive">
