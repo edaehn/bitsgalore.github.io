@@ -28,9 +28,7 @@ Usage:
   
     {% if forloop.first %}
       <ul>
-      <li><h2>{{this_year}}</h2></li>
-      <ul>
-      <li><h3>{{this_month}}</h3></li>
+      <li><h2>{{this_month}}, {{this_year}}</h2></li>
       <ul>
     {% endif %}
   
@@ -43,18 +41,13 @@ Usage:
       {% if this_year != next_year %}
         </ul>
         </ul>
-        </ul>
         <ul>
-        <li><h2>{{next_year}}</h2></i>
-        <ul>
-        <li><h3>{{next_month}}</h3></li>
+        <li><h2>{{next_month}}, {{next_year}}</h2></i>
         <ul>
       {% else %}    
         {% if this_month != next_month %}
           </ul>
-          </ul>
-          <ul>
-          <li><h3>{{next_month}}</h3></li>
+          <li><h2>{{next_month}}, {{this_year}}</h2></li>
           <ul>
         {% endif %}
       {% endif %}
