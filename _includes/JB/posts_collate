@@ -28,7 +28,7 @@ Usage:
   
     {% if forloop.first %}
       <ul>
-      <li><h2>{{this_month}}, {{this_year}}</h2></li>
+      <li><h3>{{this_month}}, {{this_year}}</h3></li>
       <ul>
     {% endif %}
   
@@ -42,12 +42,12 @@ Usage:
         </ul>
         </ul>
         <ul>
-        <li><h2>{{next_month}}, {{next_year}}</h2></i>
+        <li><h3>{{next_month}}, {{next_year}}</h3></i>
         <ul>
       {% else %}    
         {% if this_month != next_month %}
           </ul>
-          <li><h2>{{next_month}}, {{this_year}}</h2></li>
+          <li><h3>{{next_month}}, {{this_year}}</h3></li>
           <ul>
         {% endif %}
       {% endif %}
