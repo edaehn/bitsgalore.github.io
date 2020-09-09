@@ -109,7 +109,7 @@ And again in table form:
 | Limburg       |  11154           |                         0.32 |
 | Zeeland       |   3325           |                         0.1  |
 
-It's remarkable to see that over 75% of all NL-hosted domains are hosted from the province of Noord-Holland (North Holland)alone. This might simply reflect the concentration of internet hosting companies in especially the Amsterdam area. At only about 20 thousand domains, Friesland (Fryslân) is one of the "smallest" provinces in terms of this analysis.  
+It's remarkable to see that over 75% of all NL-hosted domains are hosted from the province of Noord-Holland (North Holland) alone. This might simply reflect the concentration of internet hosting companies in especially the Amsterdam area. At only about 20 thousand domains, Friesland (Fryslân) is one of the "smallest" provinces in terms of this analysis.  
 
 ## Discussion
 
