@@ -113,7 +113,7 @@ It's remarkable to see that over 75% of all NL-hosted domains are hosted from th
 
 ## Discussion
 
-In this blog post I have outlined the geo-location and data processing procedure, and I have also shown how the results of this exercise can reveal spatial characteristics of a top-level web domain. However, it's important to be aware of the limitations of the source data used here.
+In this blog post I have outlined the geo-location and data processing procedure, and I have also shown how the results of this exercise can reveal spatial characteristics of a top-level web domain. However, it's important to be aware of the limitations of the source data used here, as well as the methodology as such.
 
 First of all there's the accuracy of the geolocation results. The latitude and longitude values in the GeoLite2 database are only approximate, and refer to larger spatial entities, ranging from cities to even whole countries. As a measure of the approximate accuracy at any location, it reports an "accuracy radius" value, which is [defined as](https://www.maxmind.com/en/geoip2-precision-insights):
 
