@@ -144,7 +144,7 @@ Another thing to keep in mind, is that not all active domains have an associated
 
 - [Web domain geolocation and spatial analysis with QGIS]({{ BASE_PATH }}/2020/02/11/web-domain-geolocation-and-spatial-analysis)[^6]
 
-[^1]: See Kees Teszelsky - ['Alle Begjin Is Swier': The Use Of The Frisian Web Domain Web Data For Digital Humanities Research](https://doi.org/10.34894/PO7PZD).
+[^1]: See Kees Teszelszky - ['Alle Begjin Is Swier': The Use Of The Frisian Web Domain Web Data For Digital Humanities Research](https://doi.org/10.34894/PO7PZD).
 
 [^2]: See my [earlier blog post]({{ BASE_PATH }}/2020/02/11/web-domain-geolocation-and-spatial-analysis) for a more detailed discussion.
 
