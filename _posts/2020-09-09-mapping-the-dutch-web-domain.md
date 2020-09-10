@@ -132,7 +132,7 @@ Another thing to keep in mind, is that not all active domains have an associated
 
 ## Acknowledgements
 
-[Stichting Internet Domeinregistratie Nederland](https://www.sidn.nl/en/theme/about-sidn) provided us the top-level *.nl* domain data on which this analysis is based. [SURFsara](https://www.surf.nl/en/services-and-support/purchasing-services-from-surfsara) is thanked for allowing us to use their HPC Cloud computing facilities, and for their help in getting things running. Thanks are also due to Kees Teszelszky for his help with this work.
+[Stichting Internet Domeinregistratie Nederland](https://www.sidn.nl/en/theme/about-sidn) provided us the top-level *.nl* domain data on which this analysis is based. [SURFsara](https://www.surf.nl/en/services-and-support/purchasing-services-from-surfsara) (and in particular Nuno Ferreira) is thanked for allowing us to use their HPC Cloud computing facilities, and for their help in getting things running. Thanks are also due to Kees Teszelszky for his help with this work.
 
 ## Further resources
 
