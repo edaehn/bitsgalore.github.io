@@ -6,7 +6,7 @@ comment_id: 73
 ---
 
 <figure class="image">
-  <img src="{{ BASE_PATH }}/images/2020/09/wwwspace.png" alt="Satelite image of Wadden Sea">
+  <img src="{{ BASE_PATH }}/images/2020/09/wwwspace.png" alt="Satellite image of Wadden Sea">
   <figcaption><a href="https://commons.wikimedia.org/wiki/File:World_Wide_Web_-_Digital_Preservation.png">“World Wide Web - Digital Preservation”</a> by <a href="https://www.wikidata.org/wiki/Q55754361">Jørgen Stamp</a>, used under <a href="https://creativecommons.org/licenses/by/2.5/dk/deed.en">CC BY 2.5 DK</a>; <a href="https://commons.wikimedia.org/wiki/File:Wadden_Sea.jpg">“Wadden Sea”</a> by Envisat satellite, used under <a href="https://creativecommons.org/licenses/by-sa/3.0-igo">CC BY-SA 3.0-IGO</a>.</figcaption>
 </figure>
 
@@ -31,7 +31,7 @@ Geo-locating a web domain involves two steps[^2]:
 
 I first tried to run the geolocation script that I also used in my earlier blog post, using the full list of 5.86 million *.nl* domains as an input file. I started the script on the 2nd of March on a local machine in my office at the KB, and by extrapolating the throughput after one day, I estimated it would need about 10 days to finish. Unfortunately, by that time the KB had closed down due to the COVID-19 outbreak, which meant I was unable to ever retrieve the results any time soon. I briefly considered to re-run the script from home, but decided against it for practical reasons[^3]. Then some months later my colleague Kees Teszelszky (who initiated the activities on the Frisian web domain) suggested we might use the services of [SURFsara](https://www.surf.nl/en/services-and-support/purchasing-services-from-surfsara), which hosts several cloud computing facilities that can be used free of charge by Dutch research institutions. After getting in touch with them, SURsara gave us access to its [HPC Cloud](https://doc.hpccloud.surfsara.nl/) platform. Here I created a simple virtual machine running Ubuntu Server, and then installed the dependencies needed by the geolocation script.
 
-## Parallellization
+## Parallelization
 
 To improve the performance of the script itself, I also parallelized its IP lookup component (which would take up most of its running time). Tests on an early version of the parallelized script resulted in a nasty memory leak when run with the full domains list. Even though I was able to fix this (albeit in a rather ugly way), tests with the [improved script](https://github.com/KBNLresearch/geolocatedomains/blob/master/scripts/geolocatedomains.py) still showed a slow increase of memory consumption over time. I was not sure how this increase would develop over the course of processing 5.86 million domains, so to be on the safe side I simply split the domains list into 6 smaller files of 1 million domains each, and then ran the script consecutively on all these files.
 
