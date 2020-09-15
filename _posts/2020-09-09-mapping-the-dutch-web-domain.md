@@ -126,7 +126,7 @@ The figure below shows the distribution of accuracy radius values for all active
   <figcaption>Distribution of accuracy radius values for active domains.</figcaption>
 </figure>
 
-The figure shows an accuracy value of 100 km for over half of the active domains. If these values reflect the true accuracy of the database, the results of the current analysis should be interpreted with a good deal of caution, especially for a small country like the Netherlands. It might be able to get better results with MaxMind's (the company behind the GeoLite2 database) higher-precision databases, which are available commercially. 
+The figure shows an accuracy value of 100 km for over half of the active domains. Its value is greater than or to 100 km for no less than 96%  of all domains. If these values reflect the true accuracy of the database, the results of the current analysis should be interpreted with a good deal of caution, especially for a small country like the Netherlands. It might be able to get better results with MaxMind's (the company behind the GeoLite2 database) higher-precision databases, which are available commercially. 
 
 Another thing to keep in mind, is that not all active domains have an associated web site. For example, some domains are only used for e-mail (I actually own such an email-only domain myself). For this analysis I haven't investigated this any further.
 
