@@ -35,7 +35,7 @@ For the experiments, I limited myself to these two apps:
 
 The Emulation General Wiki contains [a good overview of Android "emulators"](https://emulation.gametechwiki.com/index.php/Android_emulators)[^3]. Most of these are closed-source, and the Wiki warns that some may come with malicious apps pre-installed. For the purposes of this study these are of no interest. The listed open-source solutions are:
 
-- [Android-x86](https://www.android-x86.org/) is a port of the Android open source project to x86 platform. It is not an emulator, but rather an operating system that can be installed on either a physical device, or within a virtual machine (e.g. using VirtualBox or QEMU).
+- [Android-x86](https://www.android-x86.org/) is a port of the [Android open source project](https://source.android.com/) to the [x86](https://en.wikipedia.org/wiki/X86) architecture. It is not an emulator, but rather an operating system that can be installed on either a physical device, or within a virtual machine (e.g. using VirtualBox or QEMU).
 
 - [Android Studio](https://developer.android.com/studio/) is Google's offial development environment for Android. It includes an [Android Emulator](https://developer.android.com/studio/run/emulator), which "simulates Android devices on your computer so that you can test your application on a variety of devices and Android API levels without needing to have each physical device".
 
@@ -60,7 +60,15 @@ and:
 
 > 3.2 You may not use this SDK to develop applications for other platforms (including non-compatible implementations of Android) or to develop another SDK. You are of course free to develop applications for other platforms, including non-compatible implementations of Android, provided that this SDK is not used for that purpose.
 
-Would possibly rule out use for long-term preservation? Could this be negotiated with Google?
+Would possibly rule out use for long-term preservation? Could this be negotiated with Google? Also not clear how these terms are compatible with the Apache 2.0 License under which source is published. Also, NOTICE.txt in Android Studio root folder states:
+
+> Android Studio includes proprietary code subject to separate license, including
+> JetBrains CLion(R) (www.jetbrains.com/clion) and IntelliJ(R) IDEA Community
+> Edition (www.jetbrains.com/idea).
+> Copyright (C) 2000 - 2017 JetBrains s.r.o. All Rights Reserved.
+> CLion, IntelliJ, and JetBrains are the registered trademarks of JetBrains s.r.o
+
+In addition, NOTICE.txt in Android/Sdk/emulator contains licensing info for all components of the emulator, + 3000 line file with numerous licenses. So licensing situation looks complex.
 
 
 <figure class="image">
@@ -77,7 +85,11 @@ Pennock, May & Day write:
 
 ## Conclusions
 
-Also, the tests covered here are not by any means exhaustive
+- Tests covered here are not by any means exhaustive
+
+- External dependencies - content on external server, out of scope
+
+- "Best" emulator in this test (Android Studio) - primarily aimed at app developers: implications for long-term maintenance? Especially given complex looking license situation + restrictive terms? 
 
 
 ## Acknowledgements
@@ -95,4 +107,4 @@ Also, the tests covered here are not by any means exhaustive
 
 [^4]: This is similar to how [WINE](https://www.winehq.org/) allows one to run Windows applications on Unix-like operating systems.
 
-[^5]: See also this instruction video <https://youtu.be/h4syCHftyCs>
+[^5]: This instruction video shows how this works <https://youtu.be/h4syCHftyCs>
