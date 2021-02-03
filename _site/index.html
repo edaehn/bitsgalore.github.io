@@ -62,13 +62,68 @@
 
 
    <div class="post-entry">
+   <h1><a href="/2021/02/02/android-emulation">Android emulation revisited</a></h1>
+   <div class="date">
+    <span>02 February 2021</span>
+   </div>
+   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
+   <figure class="image">
+  <img src="/images/2021/02/wwwspace.png" alt="Satellite image of Wadden Sea" />
+  <figcaption><a href="https://commons.wikimedia.org/wiki/File:World_Wide_Web_-_Digital_Preservation.png">“World Wide Web - Digital Preservation”</a> by <a href="https://www.wikidata.org/wiki/Q55754361">Jørgen Stamp</a>, used under <a href="https://creativecommons.org/licenses/by/2.5/dk/deed.en">CC BY 2.5 DK</a>; <a href="https://commons.wikimedia.org/wiki/File:Wadden_Sea.jpg">“Wadden Sea”</a> by Envisat satellite, used under <a href="https://creativecommons.org/licenses/by-sa/3.0-igo">CC BY-SA 3.0-IGO</a>.</figcaption>
+</figure>
+
+<p>So far the KB hasn’t actively pursued the preservation of mobile apps. However, born-digital publications in app-only form have become increasingly common, as well as “hybrid” publications, with apps that are supplemental to a paper book. We cannot ignore mobile apps any longer, and at the request of our Digital Preservation department I’ve started looking into how to preserve them. The <a href="https://zenodo.org/record/3460450">2019 iPres paper on the Acquisition and Preservation of Mobile eBook Apps by the British Library’s Maureen Pennock, Peter May and Michael Day</a> provided an excellent starting point for this, and it highlights many of the challenges involved.</p>
+
+<p>However, before we can start archiving mobile apps ourselves, some additional aspects need to be addressed in more detail. One of these is the question of how to ensure long-term access. <a href="https://en.wikipedia.org/wiki/Emulator">Emulation</a> is the obvious strategy here, but I couldn’t find much information on the emulation of mobile platforms in a digital preservation context.So, I ran some simple experiments, where I tried to emulate two selected apps. The main objective here was twofold:</p>
+
+<ol>
+  <li>
+    <p>Get a better idea of the current state of emulation of mobile devices.</p>
+  </li>
+  <li>
+    <p>Get a first impression of the strengths and weaknesses of some popular emulation solutions.</p>
+  </li>
+</ol>
+
+<p>For practical reasons I’ve limited myself to the Android platform<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. Attentive readers may recall I <a href="/2014/10/23/running-archived-android-apps-pc-first-impressions">briefly touched on this subject back in 2014</a>, but the information in that blog post is now largely outdated<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>.</p>
+
+
+   <div class="buttonArea">
+   <a href="/2021/02/02/android-emulation" class="button">Read more ...</a>
+  </div>
+   
+   <ul class="tag_box inline">
+     
+     
+
+
+
+
+  
+     
+    	<li><a href="/tags.html#Android-ref">Android <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#emulation-ref">emulation <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#virtualization-ref">virtualization <span>2</span></a></li>
+    
+  
+
+
+
+   </ul>
+  
+   </div>
+   <hr>
+
+   <div class="post-entry">
    <h1><a href="/2020/09/09/mapping-the-dutch-web-domain">Mapping the Dutch web domain</a></h1>
    <div class="date">
     <span>09 September 2020</span>
    </div>
    <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
    <figure class="image">
-  <img src="/images/2020/09/wwwspace.png" alt="Satelite image of Wadden Sea" />
+  <img src="/images/2020/09/wwwspace.png" alt="Satellite image of Wadden Sea" />
   <figcaption><a href="https://commons.wikimedia.org/wiki/File:World_Wide_Web_-_Digital_Preservation.png">“World Wide Web - Digital Preservation”</a> by <a href="https://www.wikidata.org/wiki/Q55754361">Jørgen Stamp</a>, used under <a href="https://creativecommons.org/licenses/by/2.5/dk/deed.en">CC BY 2.5 DK</a>; <a href="https://commons.wikimedia.org/wiki/File:Wadden_Sea.jpg">“Wadden Sea”</a> by Envisat satellite, used under <a href="https://creativecommons.org/licenses/by-sa/3.0-igo">CC BY-SA 3.0-IGO</a>.</figcaption>
 </figure>
 
@@ -244,47 +299,6 @@
    </div>
    <hr>
 
-   <div class="post-entry">
-   <h1><a href="/2020/02/20/offline-digital-carriers-kb-deposit-collection">Offline digital data carriers in the KB deposit collection</a></h1>
-   <div class="date">
-    <span>20 February 2020</span>
-   </div>
-   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
-   <figure class="image">
-  <img src="/images/2020/02/carriers-stillife.jpg" alt="Still life of assorted data carriers" />
-</figure>
-
-<p>Following earlier work on the preservation of optical media and data tapes, I recently got a request to make an inventory of offline digital data carriers in the KB’s deposit collection. The goal was to obtain approximate figures on the various carrier types in the collection. This was partially prompted by <a href="https://www.netwerkdigitaalerfgoed.nl/activiteiten/digitaal-erfgoed-houdbaar/bedreigd-digitaal-erfgoed-op-fysieke-dragers/">a project on at-risk digital heritage on physical carriers</a> by the <a href="https://www.netwerkdigitaalerfgoed.nl/en/">Dutch Digital Heritage Network</a> (NDE) that the KB is participating in. This blog post presents the results.</p>
-
-
-   <div class="buttonArea">
-   <a href="/2020/02/20/offline-digital-carriers-kb-deposit-collection" class="button">Read more ...</a>
-  </div>
-   
-   <ul class="tag_box inline">
-     
-     
-
-
-
-
-  
-     
-    	<li><a href="/tags.html#floppy-disks-ref">floppy-disks <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#optical-media-ref">optical-media <span>9</span></a></li>
-     
-    	<li><a href="/tags.html#tapes-ref">tapes <span>3</span></a></li>
-    
-  
-
-
-
-   </ul>
-  
-   </div>
-   <hr>
-
 
 <!-- Pagination links -->
 
@@ -390,7 +404,7 @@
 
   
      
-    	<li><a href="/tags.html#Android-ref">Android <span>1</span></a></li>
+    	<li><a href="/tags.html#Android-ref">Android <span>2</span></a></li>
      
     	<li><a href="/tags.html#Apache-Preflight-ref">Apache-Preflight <span>4</span></a></li>
      
@@ -406,7 +420,7 @@
      
     	<li><a href="/tags.html#e-depot-ref">e-depot <span>1</span></a></li>
      
-    	<li><a href="/tags.html#emulation-ref">emulation <span>1</span></a></li>
+    	<li><a href="/tags.html#emulation-ref">emulation <span>2</span></a></li>
      
     	<li><a href="/tags.html#EPUB-ref">EPUB <span>6</span></a></li>
      
@@ -478,7 +492,7 @@
      
     	<li><a href="/tags.html#VeraPDF-ref">VeraPDF <span>3</span></a></li>
      
-    	<li><a href="/tags.html#virtualization-ref">virtualization <span>1</span></a></li>
+    	<li><a href="/tags.html#virtualization-ref">virtualization <span>2</span></a></li>
      
     	<li><a href="/tags.html#WAVE-ref">WAVE <span>1</span></a></li>
      
@@ -514,9 +528,29 @@
   
     
       <details open="true">
-      <summary>2020</summary>
-      <h3>September</h3>
+      <summary>2021</summary>
+      <h3>February</h3>
       <ul>
+    
+  
+	<li><a href="/2021/02/02/android-emulation">Android emulation revisited</a></li>
+	
+    
+      
+        </ul>
+        </details>
+        <details>
+        <summary>2020</summary>
+        <h3>September</h3>
+        <ul>
+      
+    
+  
+    
+    
+    
+    
+  
     
   
 	<li><a href="/2020/09/09/mapping-the-dutch-web-domain">Mapping the Dutch web domain</a></li>
@@ -1651,7 +1685,7 @@
         </div>
 
         <footer>
-	      <p><small>&copy; 2020 Johan van der Knijff
+	      <p><small>&copy; 2021 Johan van der Knijff
             with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
             and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a></small></p>
         </footer>
