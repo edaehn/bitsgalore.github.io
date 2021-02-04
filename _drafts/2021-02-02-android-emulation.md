@@ -29,7 +29,7 @@ The Emulation General Wiki contains [a good overview of Android "emulators"](htt
 
 ## Experimental setup
 
-The experiments described in this post focus on the emulation of two selected apps:
+The experiments described in this post focus on the emulation of two selected test apps:
 
 1. The Dutch-language children's book "De avonturen van Max - Op zoek naar F…" comes with the [ARize "augmented reality" app](https://arize.io/). By pointing the mobile device's camera to selected pages in the book, the app adds 3-D visualizations and animations[^5]. 
 2. [Immer](https://immer.app/), which is a book reading app that claims to "help\[ing\] you read more often, easily and enjoyably on your phone or tablet".
@@ -81,14 +81,14 @@ Note that the current version of the tool has a small bug that results in a warn
 
 ### Setup
 
-[This blog post by Sjoerd Langkemper](https://www.sjoerdlangkemper.nl/2020/05/06/testing-android-apps-on-a-virtual-machine/) gives a good overview of how to set up a virtual machine running Android-86 with VirtualBox, and I largely followed the instructions mentioned here. I used VirtualBox verion 6.0.24, r139119. I had some difficulty getting a functional virtual machine from the latest Android-86 ISO installer image, so in the end I settled for the pre-built VirtualBox image from [osboxes.org](https://www.osboxes.org/android-x86/) (Android-x86 9.0-R2, 64-bit). Initially the virtual machine got stuck on a black screen at startup. I was able to fix this by setting the graphics controller (which can be found under "Display" in the VM settings) to "VBoxSVGA". I also set the number of processors ("System' settings, "Processor" tab) to 2, as according to the [Android-86 documentation](https://www.android-x86.org/documentation/virtualbox.html):
+[This blog post by Sjoerd Langkemper](https://www.sjoerdlangkemper.nl/2020/05/06/testing-android-apps-on-a-virtual-machine/) gives a good overview of how to set up a virtual machine running Android-x86 with VirtualBox, and I largely followed the instructions mentioned here. I used VirtualBox verion 6.0.24, r139119. I had some difficulty getting a functional virtual machine from the latest Android-86 ISO installer image, so in the end I settled for the pre-built VirtualBox image from [osboxes.org](https://www.osboxes.org/android-x86/) (Android-x86 9.0-R2, 64-bit). Initially the virtual machine got stuck on a black screen at startup. I was able to fix this by setting the graphics controller (which can be found under "Display" in the VM settings) to "VBoxSVGA". I also set the number of processors ("System' settings, "Processor" tab) to 2, as according to the [Android-86 documentation](https://www.android-x86.org/documentation/virtualbox.html):
 
 > Processor(s) should be set above 1 if you have more than one virtual processor in your host system. Failure to do so means every single app (like Google Chrome) might crush if you try to use it.
 
 Here's what the virtual machine looks like after it has booted: 
 
 <figure class="image">
-  <img src="{{ BASE_PATH }}/images/2021/02/vb_android_startup.png" alt="Startup screen, Android-x86 on VirtualBox">
+  <img src="{{ BASE_PATH }}/images/2021/02/vbox_android_startup.png" alt="Startup screen, Android-x86 on VirtualBox">
   <figcaption>Startup screen, Android-x86 on VirtualBox.</figcaption>
 </figure>
 
@@ -98,7 +98,67 @@ At a first glance, everything pretty much works, although I did run into a numbe
 
 To install apps on Android, you'd normally use the [Google Play Store](https://play.google.com/store/apps). Within a typical preservation workflow, you're more likely to have a local copy of the app's [Android Package (APK)](https://en.wikipedia.org/wiki/Android_application_package). Because of this, I tried to "emulate" this by using locally downloaded APKs for my experiments. To achieve this, I first used the [gplaycli](https://github.com/matlink/gplaycli) tool to download APK files of the test apps to my local (Linux) machine. Installing these APKs on the emulated machine can be a bit tricky, as VirualBox (and most other Android emulators) provides no easy way to set up shared folders between the host machine and the emulated device. The easiest method (which works for *all* of the environments covered by this post) uses the [Android Debug Bridge (adb)](https://developer.android.com/studio/command-line/adb), which is part of [Android Studio](https://developer.android.com/studio/). [Langkemper's blog post](https://www.sjoerdlangkemper.nl/2020/05/06/testing-android-apps-on-a-virtual-machine/) covers the use of the *adb* tool in detail, so for brevity I'll only show the basic steps here.
 
-First, we need to find the IP address of our virtual Android machine, which in my particular case turned out to be "127.0.0.1" (localhost)[^6]. 
+First, we need to find the IP address of our virtual Android machine, which in my particular case turned out to be "127.0.0.1" (localhost)[^6]. Then we can use the Android Debug Bridge tool to connect to the virtual machine:
+
+```bash
+adb connect 127.0.0.1
+```
+If all goes well, you should see this:
+
+```
+connected to 127.0.0.1:5555
+```
+
+If you get a "Connection refused" error instead, you might need to set a port forwarding rule for the virtual machine. In VirtualBox, go to "Network" in your VM's settings. Click on "Advanced", followed by "Port Forwarding". Here, click on the green "+" icon (top-right). This adds a port forwarding rule. Now change the values of both "Host Port" and "Guest Port" to 5555 (defaults for both are 0):
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/02/vbox_ptforward.png" alt="Setting port forwarding rules in VirtualBox.">
+  <figcaption>Setting port forwarding rules in VirtualBox.</figcaption>
+</figure>
+
+Then try to connect again.  Once the connection is established, you can install the local APK file with adb using its "install" subcommand, with the name of the package file as an argument:
+
+```bash
+adb install com.Triplee.TripleeSocial.apk
+```
+
+### Results for test apps
+
+I was able to install the test apps without any problems, and their launcher icons show up promptly after the installation:
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/02/vbox_android_apps.png" alt="App launchers after installation (note ARize and Immer icons).">
+  <figcaption>App launchers after installation (note ARize and Immer icons).</figcaption>
+</figure>
+
+However, the ARize app crashes immediately after it is launched:
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/02/vbox_android_arize.png" alt="ARize crash message after repeated launch attempts.">
+  <figcaption>ARize crash message after repeated launch attempts.</figcaption>
+</figure>
+
+I'm not really sure why this happens, but going by various reports of sites like StackOverflow, such crashes are pretty common. One possible explanation might be that the app uses native ARM libraries that are not supported by Android-x86 (e.g. see [here](https://stackoverflow.com/a/60148570)), but I'm not sure this is the culprit here. This needs further investigation.
+
+By contrast, the Immer app works without any problems. Below are some screenshots that show Immer in action:
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/02/vbox_android_immer.png" alt="Immer welcome screen (Android-x86 + VirtualBox).">
+  <figcaption>Immer welcome screen (Android-x86 + VirtualBox).</figcaption>
+</figure>
+
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/02/vbox_android_immer_2.png" alt="Immer book selection screen (Android-x86 + VirtualBox).">
+  <figcaption>Immer book selection screen (Android-x86 + VirtualBox).</figcaption>
+</figure>
+
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/02/vbox_android_immer_3.png" alt="Immer book reading interface (Android-x86 + VirtualBox).">
+  <figcaption>Immer book reading interface (Android-x86 + VirtualBox).</figcaption>
+</figure>
+
 
 ## Android-x86 + QEMU
 
