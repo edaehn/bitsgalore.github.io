@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Android emulation revisited
+title: Android emulation experiments
 tags: [Android, emulation, virtualization]
 comment_id: 74
 ---
@@ -12,44 +12,104 @@ comment_id: 74
 
 So far the KB hasn't actively pursued the preservation of mobile apps. However, born-digital publications in app-only form have become increasingly common, as well as "hybrid" publications, with apps that are supplemental to a paper book. We cannot ignore mobile apps any longer, and at the request of our Digital Preservation department I've started looking into how to preserve them. The [2019 iPres paper on the Acquisition and Preservation of Mobile eBook Apps by the British Library's Maureen Pennock, Peter May and Michael Day](https://zenodo.org/record/3460450) provided an excellent starting point for this, and it highlights many of the challenges involved.
 
-However, before we can start archiving mobile apps ourselves, some additional aspects need to be addressed in more detail. One of these is the question of how to ensure long-term access. [Emulation](https://en.wikipedia.org/wiki/Emulator) is the obvious strategy here, but I couldn't find much information on the emulation of mobile platforms in a digital preservation context.So, I ran some simple experiments, where I tried to emulate two selected apps. The main objective here was twofold:
+However, before we can start archiving mobile apps ourselves, some additional aspects need to be addressed in more detail. One of these is the question of how to ensure long-term access. [Emulation](https://en.wikipedia.org/wiki/Emulator) is the obvious strategy here, but I couldn't find much information on the emulation of mobile platforms in a digital preservation context.So, I ran some simple experiments, where I tried to emulate two selected apps. The main objective here was to explore the current state of emulation of mobile devices, and to get an initial impression of the suitability of some popular emulation solutions for long-term access.
 
-1. Get a better idea of the current state of emulation of mobile devices.
-
-2. Get a first impression of the strengths and weaknesses of some popular emulation solutions.
-
-For practical reasons I've limited myself to the Android platform[^1]. Attentive readers may recall I [briefly touched on this subject back in 2014]({{ BASE_PATH }}/2014/10/23/running-archived-android-apps-pc-first-impressions), but the information in that blog post is now largely outdated[^2]. 
+For practical reasons I've limited myself to the Android platform[^1]. Attentive readers may recall I [briefly touched on this subject back in 2014]({{ BASE_PATH }}/2014/10/23/running-archived-android-apps-pc-first-impressions). As much of the information in that blog post has now become outdated, this new post  presents a more up-to date investigation.
 
 <!-- more -->
-
-
-## The apps
-
-For the experiments, I limited myself to these two apps:
-
-1. The Dutch-language children's book "De avonturen van Max - Op zoek naar F…" comes with an ["augmented reality" app](https://arize.io/). By pointing the mobile device's camera to selected pages in the book, the app adds 3-D visualizations and animations[^5]. 
-
-2. [Immer](https://immer.app/) is book reading app that claims to "help\[ing\] you read more often, easily and enjoyably on your phone or tablet".
 
 ## Android emulation options
 
 The Emulation General Wiki contains [a good overview of Android "emulators"](https://emulation.gametechwiki.com/index.php/Android_emulators)[^3]. Most of these are closed-source, and the Wiki warns that some may come with malicious apps pre-installed. For the purposes of this study these are of no interest. The listed open-source solutions are:
 
 - [Android-x86](https://www.android-x86.org/) is a port of the [Android open source project](https://source.android.com/) to the [x86](https://en.wikipedia.org/wiki/X86) architecture. It is not an emulator, but rather an operating system that can be installed on either a physical device, or within a virtual machine (e.g. using VirtualBox or QEMU).
-
 - [Android Studio](https://developer.android.com/studio/) is Google's offial development environment for Android. It includes an [Android Emulator](https://developer.android.com/studio/run/emulator), which "simulates Android devices on your computer so that you can test your application on a variety of devices and Android API levels without needing to have each physical device".
-
 - [Anbox](https://github.com/anbox/anbox) is "a container-based approach to boot a full Android system on a regular GNU/Linux system like Ubuntu". It is not an emulator, but rather a [compatibility layer](https://en.wikipedia.org/wiki/Compatibility_layer)[^4].
+- [Shashlik](http://www.shashlik.io/) is another project for running Android apps on Linux. Going by [its description](http://www.shashlik.io/what-is/), it uses a stripped-down Android base that is run within a modified version of QEMU, combined with graphics rendering on the host machine.
 
-- [shashlik](http://www.shashlik.io/) is another project for running Android apps on Linux. Going by [its description](http://www.shashlik.io/what-is/), it uses a stripped-down Android base that is run within a modified version of QEMU, combined with graphics rendering on the host machine. The project has been [inactive since 2016](https://github.com/shashlik).
+## Experimental setup
 
-Si
+The experiments described in this post focus on the emulation of two selected apps:
 
+1. The Dutch-language children's book "De avonturen van Max - Op zoek naar F…" comes with the [ARize "augmented reality" app](https://arize.io/). By pointing the mobile device's camera to selected pages in the book, the app adds 3-D visualizations and animations[^5]. 
+2. [Immer](https://immer.app/), which is a book reading app that claims to "help\[ing\] you read more often, easily and enjoyably on your phone or tablet".
 
+I tried to emulate these apps using the following environments:
 
+1. Android-x86, running in VirtualBox
+2. Android-86, running in QEMU
+3. Anbox
+4. Android Studio's emulator
 
+I did not include Shashlik, as this project has been [inactive since 2016](https://github.com/shashlik). I evaluated each of these environments by the following (admittedly very basic) criteria:
+
+- Does the environment work at all?
+- Is it possible to install the ARize and Immer apps?
+- Do the installed apps work?
+
+I ran all tests on a regular desktop PC with the following characteristics:
+
+- Quad-core [Intel Core i5-6500 processor](https://ark.intel.com/content/www/us/en/ark/compare.html?productIds=88184)
+- 12 GB RAM
+- Operating system: Linux Mint 19.3 (Tricia)
+
+Below follows a more detailed discussion of each of the emulated environments.
+
+<!-- Perhaps move section to follow-up post and just mention tools here instead?
+
+## Installing and downloading Android packages
+
+Before diving into the emulators, a few words about installing apps. A regular Android user would just use the [Google Play Store](https://play.google.com/store/apps?hl=en) to install an app. Within a typical preservation context, you're more likely to have a local copy of the app's [Android Package (APK)](https://en.wikipedia.org/wiki/Android_application_package). Installing from a local APK can be a bit tricky, as most Android emulators don't allow you to set up shared folders between the host machine and the emulated device. The easiest method (which works for *all* of the environments covered by this post) uses the [Android Debug Bridge (adb)](https://developer.android.com/studio/command-line/adb), which is part of [Android Studio](https://developer.android.com/studio/). I will show some examples of how to use it in the sections below.
+
+Related to this, I wanted to "emulate" the preservation-specific workflow (i.e. installation from a local APK file) as much as possible in my experiments, but then ran into the problem that the Google Play Store doesn't provide an option to download APK files to a non-Android device. Various websites exist that do offer the possibility to download APK installers. I found that many of these sites re-package the original data, which makes it near impossible to verify the authenticity of the downloaded packages. This could imply various security concerns, and I would not advise using any of these services.
+
+There are also a number of open-source tools for downloading packages from the Play Store, but many of these are abondoned projects that no longer work. After trying out a few of them, I finally ran into [gplaycli](https://github.com/matlink/gplaycli), which is "a command line tool to search, install, update Android applications from the Google Play Store". It allows you to download an APK, using the App ID as an identifier. As an example, here's the link to the ARize app in the Play Store:
+
+<https://play.google.com/store/apps/details?id=com.Triplee.TripleeSocial>
+
+From the URL we can derive the app ID (`com.Triplee.TripleeSocial`). We can then download the APK like this:
+
+```bash
+gplaycli -d com.Triplee.TripleeSocial
+```
+
+Note that the current version of the tool has a small bug that results in a warning ([documented here](https://github.com/matlink/gplaycli/issues/272)), but otherwise it does work as expected, and the downloaded APKs are identical to those downloaded from the Play Store on an Android device.
+
+--> 
+
+## Android-x86 + VirtualBox
+
+### Setup
+
+[This blog post by Sjoerd Langkemper](https://www.sjoerdlangkemper.nl/2020/05/06/testing-android-apps-on-a-virtual-machine/) gives a good overview of how to set up a virtual machine running Android-86 with VirtualBox, and I largely followed the instructions mentioned here. I used VirtualBox verion 6.0.24, r139119. I had some difficulty getting a functional virtual machine from the latest Android-86 ISO installer image, so in the end I settled for the pre-built VirtualBox image from [osboxes.org](https://www.osboxes.org/android-x86/) (Android-x86 9.0-R2, 64-bit). Initially the virtual machine got stuck on a black screen at startup. I was able to fix this by setting the graphics controller (which can be found under "Display" in the VM settings) to "VBoxSVGA". I also set the number of processors ("System' settings, "Processor" tab) to 2, as according to the [Android-86 documentation](https://www.android-x86.org/documentation/virtualbox.html):
+
+> Processor(s) should be set above 1 if you have more than one virtual processor in your host system. Failure to do so means every single app (like Google Chrome) might crush if you try to use it.
+
+Here's what the virtual machine looks like after it has booted: 
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/02/vb_android_startup.png" alt="Startup screen, Android-x86 on VirtualBox">
+  <figcaption>Startup screen, Android-x86 on VirtualBox.</figcaption>
+</figure>
+
+At a first glance, everything pretty much works, although I did run into a number of crashes of the Chrome browser app. These all occurred while entering text into the address bar. Strangely, I couldn't replicate these crashes in a later session, so I'm not sure about the exact cause. 
+
+### Installing the apps
+
+To install apps on Android, you'd normally use the [Google Play Store](https://play.google.com/store/apps). Within a typical preservation workflow, you're more likely to have a local copy of the app's [Android Package (APK)](https://en.wikipedia.org/wiki/Android_application_package). Because of this, I tried to "emulate" this by using locally downloaded APKs for my experiments. To achieve this, I first used the [gplaycli](https://github.com/matlink/gplaycli) tool to download APK files of the test apps to my local (Linux) machine. Installing these APKs on the emulated machine can be a bit tricky, as VirualBox (and most other Android emulators) provides no easy way to set up shared folders between the host machine and the emulated device. The easiest method (which works for *all* of the environments covered by this post) uses the [Android Debug Bridge (adb)](https://developer.android.com/studio/command-line/adb), which is part of [Android Studio](https://developer.android.com/studio/). [Sjoerd Langkemper's blog post](https://www.sjoerdlangkemper.nl/2020/05/06/testing-android-apps-on-a-virtual-machine/) covers the use of the *adb* tool in detail, so for brevity I'll only show the basic steps here.
+
+First, we need to know the IP address of our virtual Android machine[^6]. 
+
+## Android-x86 + QEMU
+
+### Setup
+
+### Installing the apps
+
+## Anbox
 
 ## Android Studio
+
 
 
 [Terms and conditions](https://developer.android.com/studio/terms.html)
@@ -71,10 +131,9 @@ Would possibly rule out use for long-term preservation? Could this be negotiated
 In addition, NOTICE.txt in Android/Sdk/emulator contains licensing info for all components of the emulator, + 3000 line file with numerous licenses. So licensing situation looks complex.
 
 
-<figure class="image">
-  <img src="{{ BASE_PATH }}/images/2020/09/accuracyradius.png" alt="Bar chart of distribution of accuracy radius values for active domains">
-  <figcaption>Distribution of accuracy radius values for active domains.</figcaption>
-</figure>
+|Environment|Android version|
+|:--|:--|
+|Android-x86 + VirtualBox|Android-x86 9.0-R2, 64-bit|
 
 
 ## External dependencies
@@ -98,13 +157,15 @@ Pennock, May & Day write:
 
 - [Considerations on the Acquisition and Preservation of Mobile eBook Apps](https://zenodo.org/record/3460450)
 
+- [Testing Android apps on a virtual machine](https://www.sjoerdlangkemper.nl/2020/05/06/testing-android-apps-on-a-virtual-machine/)
+
 
 [^1]: The proprietary nature of iOS severely constrains any emulation options; I may address this in a future blog post.
-
-[^2]: For various reasons I never followed up on this work at the time.
 
 [^3]: Actually most of these aren't really emulators in the traditional sense at all.
 
 [^4]: This is similar to how [WINE](https://www.winehq.org/) allows one to run Windows applications on Unix-like operating systems.
 
 [^5]: This instruction video shows how this works <https://youtu.be/h4syCHftyCs>
+
+[^6]: According to Langkemper's blog this can be found by either checking Android's Wi-Fi preferences, or by running `ip a` or `ifconfig` in Android's terminal emulator app. However, for my VirtualBox machine the value value shown in the Wi-Fi preferences is "10.0.2.15", which is not recognised by adb. The `ifconfig` command reports 3 different entries ("wlan0", "wifi_eth" and "lo"); in my case I found that the value of the "lo" ("local loopback") entry ("127.0.0.1") did the trick. So you might to experiment a bit here to makevthings work.
