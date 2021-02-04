@@ -94,7 +94,7 @@ Here's what the virtual machine looks like after it has booted:
 
 At a first glance, everything pretty much works, although I did run into a number of crashes of the Chrome browser app. These all occurred while entering text into the address bar. Strangely, I couldn't replicate these crashes in a later session, so I'm not sure about the exact cause. 
 
-### Installing the apps
+### App installation
 
 To install apps on Android, you'd normally use the [Google Play Store](https://play.google.com/store/apps). Within a typical preservation workflow, you're more likely to have a local copy of the app's [Android Package (APK)](https://en.wikipedia.org/wiki/Android_application_package). Because of this, I tried to "emulate" this by using locally downloaded APKs for my experiments. To achieve this, I first used the [gplaycli](https://github.com/matlink/gplaycli) tool to download APK files of the test apps to my local (Linux) machine. Installing these APKs on the emulated machine can be a bit tricky, as VirualBox (and most other Android emulators) provides no easy way to set up shared folders between the host machine and the emulated device. The easiest method (which works for *all* of the environments covered by this post) uses the [Android Debug Bridge (adb)](https://developer.android.com/studio/command-line/adb), which is part of [Android Studio](https://developer.android.com/studio/). [Langkemper's blog post](https://www.sjoerdlangkemper.nl/2020/05/06/testing-android-apps-on-a-virtual-machine/) covers the use of the *adb* tool in detail, so for brevity I'll only show the basic steps here.
 
@@ -164,12 +164,25 @@ By contrast, the Immer app works without any problems. Below are some screenshot
 
 ### Setup
 
-### Installing the apps
+### App installation
+
+### Results for test apps
 
 ## Anbox
 
+### Setup
+
+### App installation
+
+### Results for test apps
+
 ## Android Studio
 
+### Setup
+
+### App installation
+
+### Results for test apps
 
 
 [Terms and conditions](https://developer.android.com/studio/terms.html)
