@@ -207,7 +207,7 @@ I was able to install both test apps without problems on the QEMU machine. As wi
 
 ### Setup
 
-I installed Anbox (version 4-56c25f1) by following the [official Anbox documentation](https://github.com/anbox/anbox/blob/master/docs/install.md). After the installation, fire up the "Anbox Application Manager" from (depending on your Linux desktop) the desktop menu or launch bar:
+I installed Anbox (version 4-56c25f1) by following the [official Anbox documentation](https://github.com/anbox/anbox/blob/master/docs/install.md). After the installation, fire up the "Anbox Application Manager" from (depending on your Linux desktop) the desktop menu or launch bar[^10]:
 
 <figure class="image">
   <img src="{{ BASE_PATH }}/images/2021/02/anbox_launch.png" alt="Anbox launcher.">
@@ -330,3 +330,5 @@ Pennock, May & Day write:
 [^8]: E.g. see [here](https://forums.opensuse.org/showthread.php/539026-Can-t-enable-opengl-on-the-qemu-machine) and [here](https://bugzilla.redhat.com/show_bug.cgi?id=1867343).
 
 [^9]: If you are connected to multiple devices at the same time, you'll need to add the `-s` switch to your *adb* calls to specify the target device. See [the documentation](https://developer.android.com/studio/command-line/adb#directingcommands) for details.
+
+[^10]: This might seem obvious, but it's not really clear from the documentation, so I thought I'd just mention it. 
