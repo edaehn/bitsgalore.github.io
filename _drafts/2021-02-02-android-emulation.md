@@ -55,28 +55,6 @@ I ran all tests on a regular desktop PC with the following characteristics:
 
 Below follows a more detailed discussion of each of the emulated environments.
 
-<!-- Perhaps move section to follow-up post and just mention tools here instead?
-
-## Installing and downloading Android packages
-
-Before diving into the emulators, a few words about installing apps. A regular Android user would just use the [Google Play Store](https://play.google.com/store/apps?hl=en) to install an app. Within a typical preservation context, you're more likely to have a local copy of the app's [Android Package (APK)](https://en.wikipedia.org/wiki/Android_application_package). Installing from a local APK can be a bit tricky, as most Android emulators don't allow you to set up shared folders between the host machine and the emulated device. The easiest method (which works for *all* of the environments covered by this post) uses the [Android Debug Bridge (adb)](https://developer.android.com/studio/command-line/adb), which is part of [Android Studio](https://developer.android.com/studio/). I will show some examples of how to use it in the sections below.
-
-Related to this, I wanted to "emulate" the preservation-specific workflow (i.e. installation from a local APK file) as much as possible in my experiments, but then ran into the problem that the Google Play Store doesn't provide an option to download APK files to a non-Android device. Various websites exist that do offer the possibility to download APK installers. I found that many of these sites re-package the original data, which makes it near impossible to verify the authenticity of the downloaded packages. This could imply various security concerns, and I would not advise using any of these services.
-
-There are also a number of open-source tools for downloading packages from the Play Store, but many of these are abondoned projects that no longer work. After trying out a few of them, I finally ran into [gplaycli](https://github.com/matlink/gplaycli), which is "a command line tool to search, install, update Android applications from the Google Play Store". It allows you to download an APK, using the App ID as an identifier. As an example, here's the link to the ARize app in the Play Store:
-
-<https://play.google.com/store/apps/details?id=com.Triplee.TripleeSocial>
-
-From the URL we can derive the app ID (`com.Triplee.TripleeSocial`). We can then download the APK like this:
-
-```bash
-gplaycli -d com.Triplee.TripleeSocial
-```
-
-Note that the current version of the tool has a small bug that results in a warning ([documented here](https://github.com/matlink/gplaycli/issues/272)), but otherwise it does work as expected, and the downloaded APKs are identical to those downloaded from the Play Store on an Android device.
-
---> 
-
 ## Android-x86 + VirtualBox
 
 ### Setup
@@ -231,6 +209,8 @@ Pennock, May & Day write:
 - [Considerations on the Acquisition and Preservation of Mobile eBook Apps](https://zenodo.org/record/3460450)
 
 - [Testing Android apps on a virtual machine](https://www.sjoerdlangkemper.nl/2020/05/06/testing-android-apps-on-a-virtual-machine/)
+
+- [How to Run Android in QEMU to Play 3D Android Games on Linux](https://linuxhint.com/android_qemu_play_3d_games_linux/)
 
 
 [^1]: The proprietary nature of iOS severely constrains any emulation options; I may address this in a future blog post.
