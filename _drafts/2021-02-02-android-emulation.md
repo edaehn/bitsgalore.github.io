@@ -201,7 +201,7 @@ After this, the package install procedure is identical to the one I showed for V
 
 ### Results for test apps
 
-I was able to install both test apps without problems on the QEMU machine. As with VirtualBox, the ARize app consistently crashes after it is launched. The Immer app worked without any issues.
+I was able to install both test apps without problems on the QEMU machine. As with VirtualBox, the ARize app consistently crashed after launch. The Immer app worked without any issues.
 
 ## Anbox
 
