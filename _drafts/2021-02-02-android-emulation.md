@@ -66,8 +66,8 @@ Below follows a more detailed discussion of each of the emulated environments.
 Here's what the virtual machine looks like after it has booted: 
 
 <figure class="image">
-  <img src="{{ BASE_PATH }}/images/2021/02/vbox_android_startup.png" alt="Startup screen, Android-x86 on VirtualBox">
-  <figcaption>Startup screen, Android-x86 on VirtualBox.</figcaption>
+  <img src="{{ BASE_PATH }}/images/2021/02/vbox_android_startup.png" alt="Home app, Android-x86 on VirtualBox.">
+  <figcaption>Home app, Android-x86 on VirtualBox.</figcaption>
 </figure>
 
 At a first glance, everything pretty much works, although I did run into a number of crashes of the Chrome browser app. These all occurred while entering text into the address bar. Strangely, I couldn't replicate these crashes in a later session, so I'm not sure about the exact cause. 
@@ -142,9 +142,66 @@ By contrast, the Immer app works without any problems. Below are some screenshot
 
 ### Setup
 
+Since the Debian packages of QEMU for the Linux Mint version I'm using are way out of date, I first compiled and installed the most recent (5.2) QEMU release from its source, using the instructions [here](https://www.qemu.org/download/#source)[^7]. For setting up Android-x86 within QEMU, I largely followed [this guide by Nitesh Kumar](https://linuxhint.com/android_qemu_play_3d_games_linux/) (starting from the *Android-x86 QEMU Installation Walkthrough* section). However, these instructions initially failed for me, and I could trace this back to problems with QEMU's OpenGL (which is related to graphics rendering) support[^8]. After some experimentation, I managed to make it work by removing all OpenGL-related command line arguments. I'll briefly summarize the setup steps here:
+
+1. Download the Android-x86 ISO installer image from [here](https://osdn.net/projects/android-x86/releases) (I picked the 64-bit 9.0 R2 release).
+2. Create a virtual hard disk (size: 8 GB):
+```bash
+qemu-img create -f qcow2 androidx86_9_hda.img 8G
+```
+3. Boot the Android-x86 live ISO image inside a virtual machine, attaching also the virtual hard disk:
+```bash
+qemu-system-x86_64 \
+-enable-kvm \
+-m 2048 \
+-smp 2 \
+-cpu host \
+-device ES1370 -device virtio-mouse-pci -device virtio-keyboard-pci \
+-serial mon:stdio \
+-boot menu=on \
+-net nic \
+-net user,hostfwd=tcp::4444-:5555 \
+-hda androidx86_9_hda.img \
+-cdrom android-x86_64-9.0-r2.iso
+```
+4. Follow [Kumar's guide](https://linuxhint.com/android_qemu_play_3d_games_linux/) (starting from the first screenshot) to install Android on the virtual machine. 
+5. After the installation process is completed, close down the virtual machine (you can do this by simply closing the QEMU window), and then re-start it using (same command as before, but omitting the `-cdrom` argument):
+```bash
+qemu-system-x86_64 \
+-enable-kvm \
+-m 2048 \
+-smp 2 \
+-cpu host \
+-device ES1370 -device virtio-mouse-pci -device virtio-keyboard-pci \
+-serial mon:stdio \
+-boot menu=on \
+-net nic \
+-net user,hostfwd=tcp::4444-:5555 \
+-hda androidx86_9_hda.img
+```
+
+And here's what this looks like after start-up:: 
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/02/qemu_android_startup.png" alt="Home app, Android-x86 on QEMU.">
+  <figcaption>Home app, Android-x86 on VirtualBox.</figcaption>
+</figure>
+
+One oddity is that the rendering of colours doesn't look quite right, with reds shown as shades of blue (this is even more apparent when you open some web pages with the Chrome app). Perhaps this could be remedied by using better device settings in QEMU, but I haven't looked into this any further.
+
 ### App installation
 
+Because of the slightly different network configuration, I had to add a reference to the `4444` network port make to make the *adb* connection to the QEMU machine:
+
+```bash
+adb connect 127.0.0.1:4444
+```
+
+After this, the package install procedure is identical to the one I showed for VirtualBox.
+
 ### Results for test apps
+
+I was able to install both test apps without problems on the QEMU machine. As with VirtualBox, the ARize app consistently crashes after it is launched. The Immer app worked without any issues.
 
 ## Anbox
 
@@ -212,6 +269,8 @@ Pennock, May & Day write:
 
 - [How to Run Android in QEMU to Play 3D Android Games on Linux](https://linuxhint.com/android_qemu_play_3d_games_linux/)
 
+- [Android 8.1 in qemu and Burp Suite SSL interception](https://astr0baby.wordpress.com/2019/07/09/android-8-1-in-qemu-and-burp-suite-ssl-interception/)
+
 
 [^1]: The proprietary nature of iOS severely constrains any emulation options; I may address this in a future blog post.
 
@@ -222,3 +281,7 @@ Pennock, May & Day write:
 [^5]: This instruction video shows how this works <https://youtu.be/h4syCHftyCs>
 
 [^6]: Finding the correct IP address can be a bit tricky. Langkemper's blog suggests to either look at Android's Wi-Fi preferences, or to run `ip a` or `ifconfig` in the Android terminal emulator app. However, in my case the value value shown in the Wi-Fi preferences is "10.0.2.15", which is not recognised by adb. The `ifconfig` command reports 3 different entries ("wlan0", "wifi_eth" and "lo"); eventually I found the value of the "lo" ("local loopback") entry ("127.0.0.1") did the trick. So you might need to experiment a bit to make things work.
+
+[^7]: Compilation of QEMU requires Python [Ninja package](https://ninja-build.org/), so install this first by running `python3 -m pip install --user ninja`.
+
+[^8]: E.g. see [here](https://forums.opensuse.org/showthread.php/539026-Can-t-enable-opengl-on-the-qemu-machine) and [here](https://bugzilla.redhat.com/show_bug.cgi?id=1867343).
