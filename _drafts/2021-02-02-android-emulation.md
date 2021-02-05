@@ -207,9 +207,52 @@ I was able to install both test apps without problems on the QEMU machine. As wi
 
 ### Setup
 
+I installed Anbox (version 4-56c25f1) by following the [official Anbox documentation](https://github.com/anbox/anbox/blob/master/docs/install.md). After the installation, fire up the "Anbox Application Manager" from (depending on your Linux desktop) the desktop menu or launch bar:
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/02/anbox_launch.png" alt="Anbox launcher.">
+  <figcaption>Anbox launcher in Linux Mint desktop menu.</figcaption>
+</figure>
+
+Unlike the other platforms covered in this post, Anbox doesn't try to "emulate" a single device, but rather provides a compatibility layer that allows you to run Android apps from the Application Manager. Each app is launched in its own window, as shown below: 
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/02/anbox_desktop.png" alt="Anbox Application Manager with calculator, file manager and clock apps.">
+  <figcaption>Anbox Application Manager with calculator, file manager and clock apps.</figcaption>
+</figure>
+
+
+Looking at the information under Settings, the current Anbox release is based on Android 7.1.1, which is quite an old version. A quick test with the pre-installed Webview Browser showed Anbox couldn't connect to the internet, which apparently is a [known issue](https://github.com/anbox/anbox/issues/1724). After some searching I found [a workaround here](https://wiki.archlinux.org/index.php/Anbox#Via_NetworkManager). I simply ran the following command:
+
+```bash
+nmcli con add type bridge ifname anbox0 -- connection.id anbox-net ipv4.method shared ipv4.addresses 192.168.250.1/24
+```
+
+I then closed and re-started the Anbox Application Manager, after which internet connectivity was working properly.
+
 ### App installation
 
+The Anbox Application Manager automatically launches an ADB server process, so you don't need to manually run `adb connect`. Other than that, you can use the regular `adb install` commands to install the APK files. 
+
 ### Results for test apps
+
+My attempt to install the ARize app failed with this error message:
+
+```
+adb: failed to install com.Triplee.TripleeSocial.apk:
+Failure [INSTALL_FAILED_NO_MATCHING_ABIS: Failed to extract native libraries, res=-113]
+```
+
+According to [this StackOverflow answer](https://stackoverflow.com/a/24572239) this error can occur if an app uses native (e.g. ARM) libraries that are not compatible with the architecture of the (virtual) destination machine.
+
+The Immer app installed without any problems, and I was also able to launch it. However, the text in the app is partially rendered outside the app window: 
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/02/anbox_immer.png" alt="Immer welcome screen, Anbox.">
+  <figcaption>Anbox Application Manager.</figcaption>
+</figure>
+
+All text disappeared altogether after I tried to re-size or maximize the app window. Clicking on the icon at the bottom allowed me to open a personal profile page, and I was able to edit the settings there, but ultimately I was unable to get the core book selection and reading functionality working (I just got stuck at empty screens).  
 
 ## Android Studio
 
