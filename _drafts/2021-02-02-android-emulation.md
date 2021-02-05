@@ -27,7 +27,7 @@ The Emulation General Wiki contains [a good overview of Android "emulators"](htt
 - [Anbox](https://github.com/anbox/anbox) is "a container-based approach to boot a full Android system on a regular GNU/Linux system like Ubuntu". It is not an emulator, but rather a [compatibility layer](https://en.wikipedia.org/wiki/Compatibility_layer)[^4].
 - [Shashlik](http://www.shashlik.io/) is another project for running Android apps on Linux. Going by [its description](http://www.shashlik.io/what-is/), it uses a stripped-down Android base that is run within a modified version of QEMU, combined with graphics rendering on the host machine.
 
-## Experimental setup
+## Test setup
 
 The experiments described in this post focus on the emulation of two selected test apps:
 
