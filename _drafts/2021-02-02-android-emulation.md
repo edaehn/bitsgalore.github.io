@@ -197,7 +197,7 @@ Because of the slightly different network configuration, I had to add a referenc
 adb connect 127.0.0.1:4444
 ```
 
-After this, the package install procedure is identical to the one I showed for VirtualBox.
+After this, the package install procedure is identical to the one I showed for VirtualBox[^9].
 
 ### Results for test apps
 
@@ -285,3 +285,5 @@ Pennock, May & Day write:
 [^7]: Compilation of QEMU requires Python [Ninja package](https://ninja-build.org/), so install this first by running `python3 -m pip install --user ninja`.
 
 [^8]: E.g. see [here](https://forums.opensuse.org/showthread.php/539026-Can-t-enable-opengl-on-the-qemu-machine) and [here](https://bugzilla.redhat.com/show_bug.cgi?id=1867343).
+
+[^9]: If you are connected to multiple devices at the same time, you'll need to add the `-s` switch to your *adb* calls to specify the target device. See [the documentation](https://developer.android.com/studio/command-line/adb#directingcommands) for details.
