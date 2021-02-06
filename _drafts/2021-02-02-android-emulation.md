@@ -14,7 +14,7 @@ So far the KB hasn't actively pursued the preservation of mobile apps. However, 
 
 However, before we can start archiving mobile apps ourselves, some additional aspects need to be addressed in more detail. One of these is the question of how to ensure long-term access. [Emulation](https://en.wikipedia.org/wiki/Emulator) is the obvious strategy here, but I couldn't find much information on the emulation of mobile platforms in a digital preservation context.So, I ran some simple experiments, where I tried to emulate two selected apps. The main objective here was to explore the current state of emulation of mobile devices, and to get an initial impression of the suitability of some popular emulation solutions for long-term access.
 
-For practical reasons I've limited myself to the Android platform[^1]. Attentive readers may recall I [briefly touched on this subject back in 2014]({{ BASE_PATH }}/2014/10/23/running-archived-android-apps-pc-first-impressions). As much of the information in that blog post has now become outdated, this new post  presents a more up-to date investigation.
+For practical reasons I've limited myself to the Android platform[^1]. Attentive readers may recall I [briefly touched on this subject back in 2014]({{ BASE_PATH }}/2014/10/23/running-archived-android-apps-pc-first-impressions). As much of the information in that blog post has now become outdated, this new post  presents a more up-to date investigation. I should probably mention here that I don't own or use any Android device, or any other kind of smartphone or tablet for that matter[^2]. This probably puts me in a pretty bad position to evaluate emulated Android environments, but who's going to stop me trying anyway? No one, that's who!
 
 <!-- more -->
 
@@ -316,6 +316,8 @@ Pennock, May & Day write:
 
 
 [^1]: The proprietary nature of iOS severely constrains any emulation options; I may address this in a future blog post.
+
+[^2]: As a matter of fact I'm still using [this basic dumb phone](https://en.wikipedia.org/wiki/Motorola_C139), which I bough back in 2006.
 
 [^3]: Actually most of these aren't really emulators in the traditional sense at all.
 
