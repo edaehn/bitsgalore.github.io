@@ -243,7 +243,7 @@ adb: failed to install com.Triplee.TripleeSocial.apk:
 Failure [INSTALL_FAILED_NO_MATCHING_ABIS: Failed to extract native libraries, res=-113]
 ```
 
-According to [this StackOverflow answer](https://stackoverflow.com/a/24572239) this error can occur if an app uses native (e.g. ARM) libraries that are not compatible with the architecture of the (virtual) destination machine.
+According to [this StackOverflow answer](https://stackoverflow.com/a/24572239), this error can occur if an app uses native (e.g. ARM) libraries that are not compatible with the architecture of the (virtual) destination machine.
 
 The Immer app installed without any problems, and I was also able to launch it. However, the text in the app is partially rendered outside the app window: 
 
@@ -252,7 +252,7 @@ The Immer app installed without any problems, and I was also able to launch it. 
   <figcaption>Anbox Application Manager.</figcaption>
 </figure>
 
-All text disappeared altogether after I tried to re-size or maximize the app window. Clicking on the icon at the bottom allowed me to open a personal profile page, and I was able to edit the settings there, but ultimately I was unable to get the core book selection and reading functionality working (I just got stuck at empty screens).  
+After I tried to re-size or maximize the app window, all text disappeared altogether. I was also unable to get the core book selection and reading functionality working (I just ended up with an empty screen), although clicking on the icon at the bottom did allow me to open and edit the app's user profile.
 
 ## Android Studio
 
