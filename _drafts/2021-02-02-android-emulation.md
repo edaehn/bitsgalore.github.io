@@ -225,7 +225,8 @@ Unlike the other platforms covered in this post, Anbox doesn't try to "emulate" 
 Looking at the information under Settings, the current Anbox release is based on Android 7.1.1, which is quite an old version. A quick test with the pre-installed Webview Browser showed Anbox couldn't connect to the internet, which apparently is a [known issue](https://github.com/anbox/anbox/issues/1724). After some searching I found [a workaround here](https://wiki.archlinux.org/index.php/Anbox#Via_NetworkManager). I simply ran the following command:
 
 ```bash
-nmcli con add type bridge ifname anbox0 -- connection.id anbox-net ipv4.method shared ipv4.addresses 192.168.250.1/24
+nmcli con add type bridge ifname anbox0 -- connection.id \
+anbox-net ipv4.method shared ipv4.addresses 192.168.250.1/24
 ```
 
 I then closed and re-started the Anbox Application Manager, after which internet connectivity was working properly.
