@@ -94,7 +94,7 @@ If you get a "Connection refused" error instead, you might need to set a port fo
   <figcaption>Setting port forwarding rules in VirtualBox.</figcaption>
 </figure>
 
-Then try to connect again.  Once the connection is established, you can install the local APK file with adb using its "install" subcommand, with the name of the package file as an argument:
+Then try to connect again.  Once the connection is established, you can install the local APK file with *adb* using its "install" subcommand, with the name of the package file as an argument:
 
 ```bash
 adb install com.Triplee.TripleeSocial.apk
@@ -326,7 +326,7 @@ Pennock, May & Day write:
 
 [^5]: This instruction video shows how this works <https://youtu.be/h4syCHftyCs>
 
-[^6]: Finding the correct IP address can be a bit tricky. Langkemper's blog suggests to either look at Android's Wi-Fi preferences, or to run `ip a` or `ifconfig` in the Android terminal emulator app. However, in my case the value value shown in the Wi-Fi preferences is "10.0.2.15", which is not recognised by adb. The `ifconfig` command reports 3 different entries ("wlan0", "wifi_eth" and "lo"); eventually I found the value of the "lo" ("local loopback") entry ("127.0.0.1") did the trick. So you might need to experiment a bit to make things work.
+[^6]: Finding the correct IP address can be a bit tricky. Langkemper's blog suggests to either look at Android's Wi-Fi preferences, or to run `ip a` or `ifconfig` in the Android terminal emulator app. However, in my case the value value shown in the Wi-Fi preferences is "10.0.2.15", which is not recognised by *adb*. The `ifconfig` command reports 3 different entries ("wlan0", "wifi_eth" and "lo"); eventually I found the value of the "lo" ("local loopback") entry ("127.0.0.1") did the trick. So you might need to experiment a bit to make things work.
 
 [^7]: Compilation of QEMU requires Python [Ninja package](https://ninja-build.org/), so install this first by running `python3 -m pip install --user ninja`.
 
