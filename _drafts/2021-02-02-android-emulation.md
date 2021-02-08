@@ -322,9 +322,9 @@ The table below summarizes the main results of the emulation tests:
 |**Immer app installs**|Yes|Yes|Yes|Yes|
 |**Immer app works**|Yes|Yes|Partially (rendering and navigation issues)|Yes|
  
- It is important to stress that the tests presented here are limited in scope and size, and should not be interpreted as representative of Android apps in general. 
+ It is important to stress that the tests presented here are limited in scope and size, and should not be interpreted as representative of Android apps in general.
  
- ### Android-x86 limitations
+### Android-x86 limitations
  
  Nevertheless, the results tentatively suggest that emulation approaches based on Android-x86 may have some serious limitations. Going by various reports I found on sites like StackOverflow, the ARize app crashing on startup might be indicative of a more widespread problem. Sjoerd Langkemper mentions in his [blog post](https://www.sjoerdlangkemper.nl/2020/05/06/testing-android-apps-on-a-virtual-machine/) that:
 
