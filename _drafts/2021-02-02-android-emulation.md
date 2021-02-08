@@ -322,11 +322,11 @@ The table below summarizes the main results of the emulation tests:
 |**Immer app installs**|Yes|Yes|Yes|Yes|
 |**Immer app works**|Yes|Yes|Partially (rendering and navigation issues)|Yes|
  
- It is important to stress that the tests presented here are limited in scope and size, and should not be interpreted as representative of Android apps in general.
+ It is important to stress that the tests presented here are limited in scope and size, and should not be interpreted as representative of Android apps in general. With that in mind, it is possible to draw some tentative conclusions.
  
 ### Android-x86 limitations
  
- Nevertheless, the results tentatively suggest that emulation approaches based on Android-x86 may have some serious limitations. Going by various reports I found on sites like StackOverflow, the ARize app crashing on startup might be indicative of a more widespread problem. Sjoerd Langkemper mentions in his [blog post](https://www.sjoerdlangkemper.nl/2020/05/06/testing-android-apps-on-a-virtual-machine/) that:
+First of all, the results suggest that emulation approaches based on Android-x86 may have some serious limitations. Going by various reports I found on sites like StackOverflow, the ARize app crashing on startup might be indicative of a more widespread problem. Sjoerd Langkemper mentions in his [blog post](https://www.sjoerdlangkemper.nl/2020/05/06/testing-android-apps-on-a-virtual-machine/) that:
 
 > Testing on a virtual machine (VM) has some disadvantages. Testing on an actual Android phone is more reliable. Android is meant to run on ARM phones and not on x86 virtual machines, so things may randomly break when using a VM. Apps that ship with native libraries may not run at all in the VM, or they may run perfectly but don’t show up in the Play store. 
 
@@ -334,7 +334,7 @@ A similar explanation, citing  the use of native ARM libraries that are not supp
 
 ### Android Emulator for long-term access
 
-By contrast, Android Emulator (from Android Studio) shows great promise, and could potentially be a very interesting solution for emulating Android apps. It is the only emulator that was able to run both test apps (although with some issues in case of the ARize app). It also has an overall look and feel that is more faithful to a physical Android device. Right now I'm unable to judge whether it would be truly suitable as a solution for long-term access. Some concerns:
+By contrast, Android Emulator (from Android Studio) could be a very interesting solution for emulating Android apps. It is the only emulator that was able to run both test apps (although with some issues in case of the ARize app). It also has an overall look and feel that is more faithful to a physical Android device. Right now I'm unable to judge whether it would be truly suitable as a solution for long-term access. Some concerns:
 
 - Google has developed the Android Emulator for the sole purpose of allowing Android developers to test their apps on a wide variety of (virtual) devices. It's unlikely that Google will keep developing or maintaining it beyond Android's lifetime. For long-term access, this implies that some organization should take over the maintenance of (a fork of) the software from that point onwards (assuming this is allowed under its licensing conditions, but see below). 
 
@@ -348,9 +348,9 @@ By contrast, Android Emulator (from Android Studio) shows great promise, and cou
 
   At first glance this does not look compatible with (operational) use as a long-term access solution to me, but I'm interested in the opinion of any legal experts on this. Also, Android Studio's licensing information mentions that it includes "includes proprietary code subject to \[a\] separate license". It's not clear to me if this applies to the Emulator component. The emulator's subdirectory contains an additional over 3000-line file with licensing information that applies specifically to the rmulator component. I haven't gone through it in detail (and am not planning to do so), but the licensing situation does look somewhat complex.   
 
-## External dependencies
+### External dependencies
 
-It's important to stress that the ability to run an app in an emulated or virtualized environment doesn't ensure it's accessibility over time. As Pennock, May & Day write:
+It's important to stress that the ability to run an app in an emulated environment is only one part of the preservation puzzle, which by itself doesn't guarantee its accessibility over time. As Pennock, May & Day write:
 
 > If the app is to be acquired in the most robust and complete form possible then we must find some way to deal with apps which have an inherent reliance on content hosted externally to the app. These are likely to lose their integrity over time, particularly as linkage to archived web content does not yet (if at all) appear to have become standard practice in apps.
 
@@ -361,13 +361,7 @@ This also applies to both the ARize and Immer apps, both of which rely on extern
   <figcaption>Startup screen of ARize app after disabling internet connection.</figcaption>
 </figure>
 
-Immer simply starts up with a blank screen.
-
-
-So, the app does not actually work without an active internet connection, which is a serious (and probably unsurmountable) obstacle for long-term accessibility. 
-
-
-
+Immer simply starts up with a blank screen. So, without (access to) the externally hosted resources, both apps are essentially useless, which is a pretty sobering note for this post to end on. 
 
 ## Conclusions
 
