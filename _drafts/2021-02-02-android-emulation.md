@@ -184,7 +184,7 @@ And here's what this looks like after start-up::
 
 <figure class="image">
   <img src="{{ BASE_PATH }}/images/2021/02/qemu_android_startup.png" alt="Home app, Android-x86 on QEMU.">
-  <figcaption>Home app, Android-x86 on VirtualBox.</figcaption>
+  <figcaption>Home app, Android-x86 on QEMU.</figcaption>
 </figure>
 
 One oddity is that the rendering of colours doesn't look quite right, with reds shown as shades of blue (this is even more apparent when you open some web pages with the Chrome app). Perhaps this could be remedied by using better device settings in QEMU, but I haven't looked into this any further.
@@ -314,11 +314,11 @@ The Immer app also worked without any issues, as shown in the screenshot below:
 |:--|:--|:--|:--|:--|
 |**Emulator version**|6.0.24, r139119|5.2|4-56c25f1|30.3.5.0|
 |**Android version**|Android-x86 9.0-R2 (64-bit)|Android-x86 9.0-R2 (64-bit)|Customized system image based on v. 7.1.1 of Android Open Source Project|Android 9.0 x86 system image (Google), API level 28|
-|**Emulation approach**|Virtualization|Virtualization|Compatibility layer|Virtualization (full emulation optional)|
+|**Emulation approach**|Virtualization|Virtualization|Compatibility layer|Virtualization (full ARM emulation optional, depending on system image)|
 |**ARize app installs**|Yes|Yes|No|Yes|
-|**ARize app works**|No|No|-|Partially|
+|**ARize app works**|No|No|-|Partially (camera device not recognised; emulator unresponsive after using camera device)|
 |**Immer app installs**|Yes|Yes|Yes|Yes|
-|**Immer app works**|Yes|Yes|Partially|Yes|
+|**Immer app works**|Yes|Yes|Partially (rendering and navigation issues)|Yes|
 
 [Terms and conditions](https://developer.android.com/studio/terms.html)
 
@@ -339,9 +339,6 @@ Would possibly rule out use for long-term preservation? Could this be negotiated
 In addition, NOTICE.txt in Android/Sdk/emulator contains licensing info for all components of the emulator, + 3000 line file with numerous licenses. So licensing situation looks complex.
 
 
-
-
-
 ## External dependencies
 
 It's important to stress that the ability to run an app in an emulated or virtualized environment doesn't ensure it's accessibility over time. As Pennock, May & Day write:
@@ -355,7 +352,7 @@ This also applies to both the ARize and Immer apps, both of which rely on extern
   <figcaption>Startup screen of ARize app after disabling internet connection.</figcaption>
 </figure>
 
-Immer simply starts up with a blanl screen
+Immer simply starts up with a blank screen.
 
 
 So, the app does not actually work without an active internet connection, which is a serious (and probably unsurmountable) obstacle for long-term accessibility. 
