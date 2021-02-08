@@ -318,7 +318,7 @@ The table below summarizes the main results of the emulation tests:
 |**Android version**|Android-x86 9.0-R2 (64-bit)|Android-x86 9.0-R2 (64-bit)|Customized system image based on v. 7.1.1 of Android Open Source Project|Android 9.0 x86 system image (Google), API level 28|
 |**Emulation approach**|Virtualization|Virtualization|Compatibility layer|Virtualization (full ARM emulation optional, depending on system image)|
 |**ARize app installs**|Yes|Yes|No|Yes|
-|**ARize app works**|No|No|-|Partially (camera device not recognised; emulator unresponsive after using camera device)|
+|**ARize app works**|No|No|-|Partially (camera device not recognised; emulator unresponsive after using camera)|
 |**Immer app installs**|Yes|Yes|Yes|Yes|
 |**Immer app works**|Yes|Yes|Partially (rendering and navigation issues)|Yes|
  
