@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Android emulation experiments
+title: Four Android emulators, two apps
 tags: [Android, emulation, virtualization]
 comment_id: 74
 ---
