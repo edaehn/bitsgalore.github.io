@@ -55,7 +55,7 @@ I ran all tests on a regular desktop PC with the following characteristics:
 - 12 GB RAM
 - Operating system: Linux Mint 19.3 (Tricia)
 
-Below follows a more detailed discussion of each of the emulated environments.
+Below follows a more detailed discussion of each of the emulated environments. I deliberately included quite a lot of detail here, mostly to make life easier for others who may want to do similar tests themselves. If you're only interested in the main findings, you may want to skip these details and head right over to the "Summary and conclusions" section.
 
 ## Android-x86 + VirtualBox
 
