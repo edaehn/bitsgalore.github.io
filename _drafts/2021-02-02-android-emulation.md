@@ -23,7 +23,7 @@ For practical reasons I've limited myself to the Android platform[^1]. Attentive
 The Emulation General Wiki contains [a good overview of Android "emulators"](https://emulation.gametechwiki.com/index.php/Android_emulators)[^3]. Most of these are closed-source, and the Wiki warns that some may come with malicious apps pre-installed. For the purposes of this study these are of no interest. The listed open-source solutions are:
 
 - [Android-x86](https://www.android-x86.org/) is a port of the [Android open source project](https://source.android.com/) to the [x86](https://en.wikipedia.org/wiki/X86) architecture. It is not an emulator, but rather an operating system that can be installed on either a physical device, or within a virtual machine (e.g. using VirtualBox or QEMU).
-- [Android Studio](https://developer.android.com/studio/) is Google's offial development environment for Android. It includes an [Android Emulator](https://developer.android.com/studio/run/emulator), which "simulates Android devices on your computer so that you can test your application on a variety of devices and Android API levels without needing to have each physical device".
+-  [Android Emulator](https://developer.android.com/studio/run/emulator) is part of [Android Studio](https://developer.android.com/studio/), Google's offial development environment for Android. Android Emulator "simulates Android devices on your computer so that you can test your application on a variety of devices and Android API levels without needing to have each physical device".
 - [Anbox](https://github.com/anbox/anbox) is "a container-based approach to boot a full Android system on a regular GNU/Linux system like Ubuntu". It is not an emulator, but rather a [compatibility layer](https://en.wikipedia.org/wiki/Compatibility_layer)[^4].
 - [Shashlik](http://www.shashlik.io/) is another project for running Android apps on Linux. Going by [its description](http://www.shashlik.io/what-is/), it uses a stripped-down Android base that is run within a modified version of QEMU, combined with graphics rendering on the host machine.
 
@@ -39,7 +39,7 @@ I tried to emulate these apps using the following environments:
 1. Android-x86, running in VirtualBox
 2. Android-86, running in QEMU
 3. Anbox
-4. Android Studio's emulator
+4. Android Studio Emulator (Android Studio)
 
 I did not include Shashlik, as this project has been [inactive since 2016](https://github.com/shashlik). I evaluated each of these environments by the following (admittedly very basic) criteria:
 
@@ -255,14 +255,70 @@ The Immer app installed without any problems, and I was also able to launch it. 
 
 After I tried to re-size or maximize the app window, all text disappeared altogether. I was also unable to get the core book selection and reading functionality working (I just ended up with an empty screen), although clicking on the icon at the bottom did allow me to open and edit the app's user profile.
 
-## Android Studio
+## Android Emulator (Android Studio)
 
 ### Setup
 
+I installed Android Studio 4.1.2, which includes version 30.3.5.0 of Android Emulator. The emulator can be accessed from the "Tools" menu in the main Android Studio application. Here, the "AVD Manager" items allows you to set up one or more [Android Virtual Devices](https://developer.android.com/studio/run/managing-avds), each based on a user-specified "hardware profile, system image, storage area, skin, and other properties". The setup process uses a wizard-like interface, which is pretty straightforward to use:
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/02/android_emulator_avd.png" alt="First step of Android Virtual Device setup process.">
+  <figcaption>First step of Android Virtual Device setup process.</figcaption>
+</figure>
+
+Nevertheless, it offers many customization options that allow you to mimic very specific device configurations. Both x86 and ARM system images are available for a variety of Android versions. The documentation advises against full ARM emulation because of the better performance of the x86 images. According the [Emulator 30.0.0 release notes](https://developer.android.com/studio/releases/emulator#support_for_arm_binaries_on_android_9_and_11_system_images):
+
+> If you were previously unable to use the Android Emulator because your app depended on ARM binaries, you can now use the Android 9 x86 system image or any Android 11 system image to run your app – it is no longer necessary to download a specific system image to run ARM binaries. These Android 9 and Android 11 system images support ARM by default and provide dramatically improved performance when compared to those with full ARM emulation.
+
+Because of this recommendation, I set up a device with Android 9 (for better comparison with the Android-86 tests) using the x86 image. The emulated can then be launched from either Android Studio, or [using the command line](https://developer.android.com/studio/run/emulator-commandline). On startup, the emulated device looks like this:
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/02/android_emulator_startup.png" alt="Home app, Android 9 on Android Emulator.">
+  <figcaption>Home app, Android 9 on Android Emulator.</figcaption>
+</figure>
+
+Unlike the previous Android-x86 emulations, which are based on the Android Open Source Project, Android Emulator uses the official system images by Google. As a result, the "look and feel" of the Android Emulator virtual devices is quite different, and they also come with a larger number of pre-installed apps. Because of this, Android Emulator most likely approximates the Android experience on a physical device more closely[^11].
+
 ### App installation
+
+Like Anbox, Android Emulator automatically launches an ADB server process, so there's no need to manually run `adb connect`. Installing APK files involves the usual `adb install` commands. 
 
 ### Results for test apps
 
+Both the ARize and Immer apps installed without any problems. Unlike all other emulators in this test, I was able to run the ARize app, although with some limitations. The screenshot below shows the app's "gallery" screen:
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/02/arize_gallery.png" alt="ARize app gallery.">
+  <figcaption>ARize app gallery.</figcaption>
+</figure>
+
+Clicking on an item in the gallery opens up a 3-D model, that can be manipulated by the user. As an example, here's a model of a necklace:
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/02/arize_necklace.png" alt="3-D visualization of necklace in ARize app.">
+  <figcaption>3-D visualization of necklace in ARize app.</figcaption>
+</figure>
+
+If I understand it correctly, clicking the "View AR" button should switch the app to "augmented reality" mode, where the 3-D model is combined with video from the phone's camera. Although Android Emulator allows one to attach external cameras (in my case a webcam), this didn't quite work for me, with the emulator reporting a "Camera name 'webcam0' is not found in the list of connected cameras" warning. Whenever I tried to use the camera, the app showed a blank screen, after which the emulated device became unresponsive. Although far from perfect, these Android Emulator results still look promising, bearing in mind that none of the other tested emulators could even run the ARize app at all.
+
+The Immer app also worked without any issues, as shown in the screenshot below:
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/02/android_emulator_immer.png" alt="Immer book reading interface (Android Emulator).">
+  <figcaption>Immer book reading interface (Android Emulator).</figcaption>
+</figure>
+
+## Summary of tests
+
+||Android-x86, VirtualBox|Android-x86, QEMU|Anbox|Android Studio|
+|:--|:--|:--|:--|:--|
+|**Emulator version**|6.0.24, r139119|5.2|4-56c25f1|30.3.5.0|
+|**Android version**|Android-x86 9.0-R2 (64-bit)|Android-x86 9.0-R2 (64-bit)|Customized system image based on v. 7.1.1 of Android Open Source Project|Android 9.0 x86 system image (Google), API level 28|
+|**Emulation approach**|Virtualization|Virtualization|Compatibility layer|Virtualization (full emulation optional)|
+|**ARize app installs**|Yes|Yes|No|Yes|
+|**ARize app works**|No|No|-|Partially|
+|**Immer app installs**|Yes|Yes|Yes|Yes|
+|**Immer app works**|Yes|Yes|Partially|Yes|
 
 [Terms and conditions](https://developer.android.com/studio/terms.html)
 
@@ -283,16 +339,29 @@ Would possibly rule out use for long-term preservation? Could this be negotiated
 In addition, NOTICE.txt in Android/Sdk/emulator contains licensing info for all components of the emulator, + 3000 line file with numerous licenses. So licensing situation looks complex.
 
 
-|Environment|Android version|
-|:--|:--|
-|Android-x86 + VirtualBox|Android-x86 9.0-R2, 64-bit|
+
 
 
 ## External dependencies
 
-Pennock, May & Day write:
+It's important to stress that the ability to run an app in an emulated or virtualized environment doesn't ensure it's accessibility over time. As Pennock, May & Day write:
 
 > If the app is to be acquired in the most robust and complete form possible then we must find some way to deal with apps which have an inherent reliance on content hosted externally to the app. These are likely to lose their integrity over time, particularly as linkage to archived web content does not yet (if at all) appear to have become standard practice in apps.
+
+This also applies to both the ARize and Immer apps, both of which rely on externally hosted content. To illustrate this, after disabling the internet connection on my PC,  the ARize app shows this on start-up:
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/02/arize_noconnection.png" alt="Startup screen of ARize app after disabling internet connection.">
+  <figcaption>Startup screen of ARize app after disabling internet connection.</figcaption>
+</figure>
+
+Immer simply starts up with a blanl screen
+
+
+So, the app does not actually work without an active internet connection, which is a serious (and probably unsurmountable) obstacle for long-term accessibility. 
+
+
+
 
 ## Conclusions
 
@@ -334,4 +403,6 @@ Pennock, May & Day write:
 
 [^9]: If you are connected to multiple devices at the same time, you'll need to add the `-s` switch to your *adb* calls to specify the target device. See [the documentation](https://developer.android.com/studio/command-line/adb#directingcommands) for details.
 
-[^10]: This might seem obvious, but it's not really clear from the documentation, so I thought I'd just mention it. 
+[^10]: This might seem obvious, but it's not really clear from the documentation, so I thought I'd just mention it.
+
+[^11]: But bear in mind I didn't have any physical Android devices available while doing these tests.
