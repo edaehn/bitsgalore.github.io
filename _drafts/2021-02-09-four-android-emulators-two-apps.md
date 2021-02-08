@@ -350,7 +350,9 @@ By contrast, Android Emulator (from Android Studio) could be a very interesting 
 
   > 3.2 You may not use this SDK to develop applications for other platforms (including non-compatible implementations of Android) or to develop another SDK. You are of course free to develop applications for other platforms, including non-compatible implementations of Android, provided that this SDK is not used for that purpose.
 
-  At first glance this does not look compatible with (operational) use as a long-term access solution to me, but I'm interested in the opinion of any legal experts on this. Also, Android Studio's licensing information mentions that it includes "includes proprietary code subject to \[a\] separate license". It's not clear to me if this applies to the Emulator component. The emulator's subdirectory contains an additional over 3000-line file with licensing information that applies specifically to the rmulator component. I haven't gone through it in detail (and am not planning to do so), but the licensing situation does look somewhat complex.   
+  At first glance this does not look compatible with (operational) use as a long-term access solution to me, but I'm interested in the opinion of any legal experts on this. Also, Android Studio's licensing information mentions that it includes "includes proprietary code subject to \[a\] separate license". It's not clear to me if this applies to the Emulator component. The emulator's subdirectory contains an additional over 3000-line file with licensing information that applies specifically to the rmulator component. I haven't gone through it in detail (and am not planning to do so), but the licensing situation does look somewhat complex.
+
+It's also worth pointing out here that under the hood, Android Emulator uses (a modified version of) QEMU[^12].
 
 ### External dependencies
 
@@ -397,3 +399,5 @@ Immer simply starts up with a blank screen. So, without (access to) the external
 [^10]: This might seem obvious, but it's not really clear from the documentation, so I thought I'd just mention it.
 
 [^11]: But bear in mind I didn't have any physical Android devices available while doing these tests.
+
+[^12]: This ["Under the hood of Android Emulator"](https://wiki.diebin.at/Under_the_hood_of_Android_Emulator_(appcert).html) Wiki entry shows how QEMU is used within the emulator (note that it hasn't been updated since 2011, so it may be well out of date).
