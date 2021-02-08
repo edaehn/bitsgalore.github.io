@@ -308,7 +308,7 @@ The Immer app also worked without any issues, as shown in the screenshot below:
   <figcaption>Immer book reading interface (Android Emulator).</figcaption>
 </figure>
 
-## Summary and discussion
+## Summary and conclusions
 
 The table below summarizes the main results of the emulation tests:
 
@@ -322,7 +322,7 @@ The table below summarizes the main results of the emulation tests:
 |**Immer app installs**|Yes|Yes|Yes|Yes|
 |**Immer app works**|Yes|Yes|Partially (rendering and navigation issues)|Yes|
  
- It is important to stress that the tests presented here are limited in scope and size, and should not be interpreted as representative of Android apps in general. With that in mind, it is possible to draw some tentative conclusions.
+It is important to stress that the tests presented here are limited in scope and size, and should not be interpreted as representative of Android apps in general. With that in mind, it is possible to draw some tentative conclusions.
  
 ### Android-x86 limitations
  
@@ -330,7 +330,11 @@ First of all, the results suggest that emulation approaches based on Android-x86
 
 > Testing on a virtual machine (VM) has some disadvantages. Testing on an actual Android phone is more reliable. Android is meant to run on ARM phones and not on x86 virtual machines, so things may randomly break when using a VM. Apps that ship with native libraries may not run at all in the VM, or they may run perfectly but don’t show up in the Play store. 
 
-A similar explanation, citing  the use of native ARM libraries that are not supported by Android-x86, is given [here](https://stackoverflow.com/a/60148570). I'm not sure this is the culprit here, but it would be a plausible explanation, and needs further investigation. If correct, this would put a serious constraint on the usefulness of Android-x86 for long-term access.
+A similar explanation, citing  the use of native ARM libraries that are not supported by Android-x86, is given [here](https://stackoverflow.com/a/60148570). I'm not sure this is the culprit here, but if correct, this would seriously limit the usefulness of Android-x86 for long-term access.
+
+### Anbox
+
+In its current form, Anbox seems of limited value for long-term access. With that said, I quite like its approach to providing access to Android apps, which is very different to the other emulators covered by this post. The project has an active developer community, and I'm curious how it will will develop in the future.
 
 ### Android Emulator for long-term access
 
@@ -361,18 +365,7 @@ This also applies to both the ARize and Immer apps, both of which rely on extern
   <figcaption>Startup screen of ARize app after disabling internet connection.</figcaption>
 </figure>
 
-Immer simply starts up with a blank screen. So, without (access to) the externally hosted resources, both apps are essentially useless, which is a pretty sobering note for this post to end on. 
-
-## Conclusions
-
-- Tests covered here are not by any means exhaustive
-
-- External dependencies - content on external server, out of scope
-
-- "Best" emulator in this test (Android Studio) - primarily aimed at app developers: implications for long-term maintenance? Especially given complex looking license situation + restrictive terms? 
-
-
-## Acknowledgements
+Immer simply starts up with a blank screen. So, without (access to) the externally hosted resources, both apps are essentially useless, which is a pretty sobering note for this post to end on.
 
 ## Further resources
 
