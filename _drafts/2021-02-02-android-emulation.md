@@ -12,20 +12,22 @@ comment_id: 74
 
 So far the KB hasn't actively pursued the preservation of mobile apps. However, born-digital publications in app-only form have become increasingly common, as well as "hybrid" publications, with apps that are supplemental to a paper book. We cannot ignore mobile apps any longer, and at the request of our Digital Preservation department I've started looking into how to preserve them. The [2019 iPres paper on the Acquisition and Preservation of Mobile eBook Apps by the British Library's Maureen Pennock, Peter May and Michael Day](https://zenodo.org/record/3460450) provided an excellent starting point for this, and it highlights many of the challenges involved.
 
-However, before we can start archiving mobile apps ourselves, some additional aspects need to be addressed in more detail. One of these is the question of how to ensure long-term access. [Emulation](https://en.wikipedia.org/wiki/Emulator) is the obvious strategy here, but I couldn't find much information on the emulation of mobile platforms in a digital preservation context. So, I ran some simple experiments, where I tried to emulate two selected apps. The main objective here was to explore the current state of emulation of mobile devices, and to get an initial impression of the suitability of some popular emulation solutions for long-term access.
+Before we can start archiving mobile apps ourselves, some additional aspects need to be addressed in more detail. One of these is the question of how to ensure long-term access. [Emulation](https://en.wikipedia.org/wiki/Emulator) is the obvious strategy here, but I couldn't find much information on the emulation of mobile platforms in a digital preservation context. In this blog post I present the results of some simple experiments, where I tried to emulate two selected apps. The main objective here was to explore the current state of emulation of mobile devices, and to get an initial impression of the suitability of some existing emulation solutions for long-term access.
 
-For practical reasons I've limited myself to the Android platform[^1]. Attentive readers may recall I [briefly touched on this subject back in 2014]({{ BASE_PATH }}/2014/10/23/running-archived-android-apps-pc-first-impressions). As much of the information in that blog post has now become outdated, this new post  presents a more up-to date investigation. I should probably mention here that I don't own or use any Android device, or any other kind of smartphone or tablet for that matter[^2]. This probably puts me in a pretty bad position to evaluate emulated Android environments, but who's going to stop me trying anyway? No one, that's who!
+For practical reasons I've limited myself to the Android platform[^1]. Attentive readers may recall I [briefly touched on this subject back in 2014]({{ BASE_PATH }}/2014/10/23/running-archived-android-apps-pc-first-impressions). As much of the information in that blog post has now become outdated, this new post  presents a more up-to date investigation. I should probably mention here that I don't own or use any Android device, or any other kind of smartphone or tablet for that matter[^2]. This probably makes me the worst possible person to evaluate emulated Android environments, but who's going to stop me trying anyway? No one, that's who!
 
 <!-- more -->
 
 ## Android emulation options
 
-The Emulation General Wiki contains [a good overview of Android "emulators"](https://emulation.gametechwiki.com/index.php/Android_emulators)[^3]. Most of these are closed-source, and the Wiki warns that some may come with malicious apps pre-installed. For the purposes of this study these are of no interest. The listed open-source solutions are:
+The Emulation General Wiki gives [a good overview of Android emulators](https://emulation.gametechwiki.com/index.php/Android_emulators). Most of these are closed-source, and the Wiki warns that some may come with malicious apps pre-installed. For the purposes of this study these are of no interest. The listed open-source solutions are:
 
 - [Android-x86](https://www.android-x86.org/) is a port of the [Android open source project](https://source.android.com/) to the [x86](https://en.wikipedia.org/wiki/X86) architecture. It is not an emulator, but rather an operating system that can be installed on either a physical device, or within a virtual machine (e.g. using VirtualBox or QEMU).
 -  [Android Emulator](https://developer.android.com/studio/run/emulator) is part of [Android Studio](https://developer.android.com/studio/), Google's offial development environment for Android. Android Emulator "simulates Android devices on your computer so that you can test your application on a variety of devices and Android API levels without needing to have each physical device".
-- [Anbox](https://github.com/anbox/anbox) is "a container-based approach to boot a full Android system on a regular GNU/Linux system like Ubuntu". It is not an emulator, but rather a [compatibility layer](https://en.wikipedia.org/wiki/Compatibility_layer)[^4].
-- [Shashlik](http://www.shashlik.io/) is another project for running Android apps on Linux. Going by [its description](http://www.shashlik.io/what-is/), it uses a stripped-down Android base that is run within a modified version of QEMU, combined with graphics rendering on the host machine.
+- [Anbox](https://github.com/anbox/anbox) is "a container-based approach to boot a full Android system on a regular GNU/Linux system like Ubuntu".
+- [Shashlik](http://www.shashlik.io/) is another project for running Android apps on Linux. Going by [its description](http://www.shashlik.io/what-is/), it 
+
+It's worth pointing out that most of these solutions aren't really "emulators" in a strict sense. Android-x86 can be run inside a virtual machine (without the need for real hardware emulation) on x86-based platforms. Android Emulator can do full [ARM hardware](https://en.wikipedia.org/wiki/ARM_architecture) emulation, but is usually run with x86 system images. Anbox is not not an emulator at all, but rather a [compatibility layer](https://en.wikipedia.org/wiki/Compatibility_layer), similar to how [WINE](https://www.winehq.org/) allows one to run Windows applications on Unix-like operating systems. Shaslik uses a hybrid approach, by pairing a stripped-down Android base that is run within a modified version of QEMU with graphics rendering on the host machine. For the sake of simplicity, I will refer use the term "emulation" for all of the above in this post.
 
 ## Test setup
 
@@ -115,8 +117,6 @@ However, the ARize app crashes immediately after it is launched:
   <img src="{{ BASE_PATH }}/images/2021/02/vbox_android_arize.png" alt="ARize crash message after repeated launch attempts.">
   <figcaption>ARize crash message after repeated launch attempts.</figcaption>
 </figure>
-
-I'm not really sure why this happens, but going by various reports of sites like StackOverflow, such crashes are pretty common. One possible explanation might be that the app uses native ARM libraries that are not supported by Android-x86 (e.g. see [here](https://stackoverflow.com/a/60148570)), but I'm not sure this is the culprit here. This needs further investigation.
 
 By contrast, the Immer app works without any problems. Below are some screenshots that show Immer in action:
 
@@ -308,7 +308,9 @@ The Immer app also worked without any issues, as shown in the screenshot below:
   <figcaption>Immer book reading interface (Android Emulator).</figcaption>
 </figure>
 
-## Summary of tests
+## Summary and discussion
+
+The table below summarizes the main results of the emulation tests:
 
 ||Android-x86, VirtualBox|Android-x86, QEMU|Anbox|Android Studio|
 |:--|:--|:--|:--|:--|
@@ -319,25 +321,32 @@ The Immer app also worked without any issues, as shown in the screenshot below:
 |**ARize app works**|No|No|-|Partially (camera device not recognised; emulator unresponsive after using camera device)|
 |**Immer app installs**|Yes|Yes|Yes|Yes|
 |**Immer app works**|Yes|Yes|Partially (rendering and navigation issues)|Yes|
+ 
+ It is important to stress that the tests presented here are limited in scope and size, and should not be interpreted as representative of Android apps in general. 
+ 
+ ### Android-x86 limitations
+ 
+ Nevertheless, the results tentatively suggest that emulation approaches based on Android-x86 may have some serious limitations. Going by various reports I found on sites like StackOverflow, the ARize app crashing on startup might be indicative of a more widespread problem. Sjoerd Langkemper mentions in his [blog post](https://www.sjoerdlangkemper.nl/2020/05/06/testing-android-apps-on-a-virtual-machine/) that:
 
-[Terms and conditions](https://developer.android.com/studio/terms.html)
+> Testing on a virtual machine (VM) has some disadvantages. Testing on an actual Android phone is more reliable. Android is meant to run on ARM phones and not on x86 virtual machines, so things may randomly break when using a VM. Apps that ship with native libraries may not run at all in the VM, or they may run perfectly but don’t show up in the Play store. 
+
+A similar explanation, citing  the use of native ARM libraries that are not supported by Android-x86, is given [here](https://stackoverflow.com/a/60148570). I'm not sure this is the culprit here, but it would be a plausible explanation, and needs further investigation. If correct, this would put a serious constraint on the usefulness of Android-x86 for long-term access.
+
+### Android Emulator for long-term access
+
+By contrast, Android Emulator (from Android Studio) shows great promise, and could potentially be a very interesting solution for emulating Android apps. It is the only emulator that was able to run both test apps (although with some issues in case of the ARize app). It also has an overall look and feel that is more faithful to a physical Android device. Right now I'm unable to judge whether it would be truly suitable as a solution for long-term access. Some concerns:
+
+- Google has developed the Android Emulator for the sole purpose of allowing Android developers to test their apps on a wide variety of (virtual) devices. It's unlikely that Google will keep developing or maintaining it beyond Android's lifetime. For long-term access, this implies that some organization should take over the maintenance of (a fork of) the software from that point onwards (assuming this is allowed under its licensing conditions, but see below). 
+
+- The [Terms and conditions](https://developer.android.com/studio/terms.html) of the Android Software Development Kit (of which Android Emulator is a part) state that:
 
 > 3.1 Subject to the terms of the License Agreement, Google grants you a limited, worldwide, royalty-free, non-assignable, non-exclusive, and non-sublicensable license to use the SDK solely to develop applications for compatible implementations of Android.
 
-and:
+  and also:
 
 > 3.2 You may not use this SDK to develop applications for other platforms (including non-compatible implementations of Android) or to develop another SDK. You are of course free to develop applications for other platforms, including non-compatible implementations of Android, provided that this SDK is not used for that purpose.
 
-Would possibly rule out use for long-term preservation? Could this be negotiated with Google? Also not clear how these terms are compatible with the Apache 2.0 License under which source is published. Also, NOTICE.txt in Android Studio root folder states:
-
-> Android Studio includes proprietary code subject to separate license, including
-> JetBrains CLion(R) (www.jetbrains.com/clion) and IntelliJ(R) IDEA Community
-> Edition (www.jetbrains.com/idea).
-> Copyright (C) 2000 - 2017 JetBrains s.r.o. All Rights Reserved.
-> CLion, IntelliJ, and JetBrains are the registered trademarks of JetBrains s.r.o
-
-In addition, NOTICE.txt in Android/Sdk/emulator contains licensing info for all components of the emulator, + 3000 line file with numerous licenses. So licensing situation looks complex.
-
+ At first glance this does not seem compatible with (operational) use for long-term access, but I'm interested in the opinion of any legal experts on this. Also, Android Studio's licensing information mentions that it includes "includes proprietary code subject to \[a\] separate license". It's not clear to me if this applies to the Emulator component. The emulator's subdirectory contains an additional over 3000-line file with licensing information that applies specifically to the rmulator component. I haven't gone through it in detail (and am not planning to do so), but the licensing situation does look somewhat complex.   
 
 ## External dependencies
 
@@ -381,14 +390,12 @@ So, the app does not actually work without an active internet connection, which 
 
 - [Android 8.1 in qemu and Burp Suite SSL interception](https://astr0baby.wordpress.com/2019/07/09/android-8-1-in-qemu-and-burp-suite-ssl-interception/)
 
+- [Create and manage virtual devices in Android Emulator](https://developer.android.com/studio/run/managing-avds)
+
 
 [^1]: The proprietary nature of iOS severely constrains any emulation options; I may address this in a future blog post.
 
 [^2]: As a matter of fact I'm still using [this basic dumb phone](https://en.wikipedia.org/wiki/Motorola_C139), which I bough back in 2006.
-
-[^3]: Actually most of these aren't really emulators in the traditional sense at all.
-
-[^4]: This is similar to how [WINE](https://www.winehq.org/) allows one to run Windows applications on Unix-like operating systems.
 
 [^5]: This instruction video shows how this works <https://youtu.be/h4syCHftyCs>
 
