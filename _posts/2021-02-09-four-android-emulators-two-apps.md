@@ -27,7 +27,7 @@ The Emulation General Wiki gives [a good overview of Android emulators](https://
 - [Anbox](https://github.com/anbox/anbox) is "a container-based approach to boot a full Android system on a regular GNU/Linux system like Ubuntu".
 - [Shashlik](http://www.shashlik.io/) is another project for running Android apps on Linux. 
 
-It's worth pointing out that most of these solutions aren't really "emulators" in a strict sense. Android-x86 is an operating system can be run inside a virtual machine (without the need for real hardware emulation) on x86-based platforms. Android Emulator can do full [ARM hardware](https://en.wikipedia.org/wiki/ARM_architecture) emulation, but is usually run with x86 system images. Anbox is not an emulator at all, but rather a [compatibility layer](https://en.wikipedia.org/wiki/Compatibility_layer), similar to how [WINE](https://www.winehq.org/) allows one to run Windows applications on Unix-like operating systems. Shashlik uses a hybrid approach, by pairing a stripped-down Android base that is run within a modified version of QEMU with graphics rendering on the host machine. For the sake of simplicity, I will refer use the term "emulation" for all of the above in this post.
+It's worth pointing out that most of these solutions aren't really "emulators" in a strict sense. Android-x86 is an operating system can be run inside a virtual machine (without the need for real hardware emulation) on x86-based platforms. Android Emulator can do full [ARM hardware](https://en.wikipedia.org/wiki/ARM_architecture) emulation, but is usually run with x86 system images. Anbox is not an emulator at all, but rather a [compatibility layer](https://en.wikipedia.org/wiki/Compatibility_layer), similar to how [WINE](https://www.winehq.org/) allows one to run Windows applications on Unix-like operating systems. Shashlik uses a hybrid approach, by pairing a stripped-down Android base that is run within a modified version of QEMU with graphics rendering on the host machine[^14]. For the sake of simplicity, I will refer use the term "emulation" for all of the above in this post.
 
 ## Test setup
 
@@ -389,7 +389,7 @@ Immer simply started up with a blank screen. So, without (access to) the externa
 
 [^2]: As a matter of fact I'm still using [this basic dumb phone](https://en.wikipedia.org/wiki/Motorola_C139), which I bough back in 2006.
 
-[^5]: This instruction video shows how this works <https://youtu.be/h4syCHftyCs>
+[^5]: This instruction video shows how this works <https://youtu.be/h4syCHftyCs>.
 
 [^6]: Finding the correct IP address can be a bit tricky. Langkemper's blog suggests to either look at Android's Wi-Fi preferences, or to run `ip a` or `ifconfig` in the Android terminal emulator app. However, in my case the value value shown in the Wi-Fi preferences is "10.0.2.15", which is not recognised by *adb*. The `ifconfig` command reports 3 different entries ("wlan0", "wifi_eth" and "lo"); eventually I found the value of the "lo" ("local loopback") entry ("127.0.0.1") did the trick. So you might need to experiment a bit to make things work.
 
@@ -405,4 +405,6 @@ Immer simply started up with a blank screen. So, without (access to) the externa
 
 [^12]: This ["Under the hood of Android Emulator"](https://wiki.diebin.at/Under_the_hood_of_Android_Emulator_(appcert).html) Wiki entry shows how QEMU is used within the emulator (note that it hasn't been updated since 2011, so it may be well out of date).
 
-[^13]: "Camera name 'webcam0' is not found in the list of connected cameras"
+[^13]: "Camera name 'webcam0' is not found in the list of connected cameras".
+
+[^14]: See <http://www.shashlik.io/what-is/>.
