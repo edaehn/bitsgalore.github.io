@@ -270,7 +270,7 @@ Nevertheless, it offers many customization options that allow you to mimic very 
 
 > If you were previously unable to use the Android Emulator because your app depended on ARM binaries, you can now use the Android 9 x86 system image or any Android 11 system image to run your app – it is no longer necessary to download a specific system image to run ARM binaries. These Android 9 and Android 11 system images support ARM by default and provide dramatically improved performance when compared to those with full ARM emulation.
 
-Because of this recommendation, I set up a device with Android 9 (for better comparison with the Android-86 tests) using the x86 image. The emulated can then be launched from either Android Studio, or [using the command line](https://developer.android.com/studio/run/emulator-commandline). On startup, the emulated device looks like this:
+Because of this recommendation, I set up a device with Android 9 (for better comparison with the Android-86 tests) using the x86 image. The emulator can then be launched from either Android Studio, or [using the command line](https://developer.android.com/studio/run/emulator-commandline). On startup, the emulated device looks like this:
 
 <figure class="image">
   <img src="{{ BASE_PATH }}/images/2021/02/android_emulator_startup.png" alt="Home app, Android 9 on Android Emulator.">
