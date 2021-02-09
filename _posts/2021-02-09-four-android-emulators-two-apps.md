@@ -250,7 +250,7 @@ The Immer app installed without any problems, and I was also able to launch it. 
 
 <figure class="image">
   <img src="{{ BASE_PATH }}/images/2021/02/anbox_immer.png" alt="Immer welcome screen, Anbox.">
-  <figcaption>Anbox Application Manager.</figcaption>
+  <figcaption>Immer welcome screen, Anbox.</figcaption>
 </figure>
 
 After I tried to re-size or maximize the app window, all text disappeared altogether. I was also unable to get the core book selection and reading functionality working (I just ended up with an empty screen), although clicking on the icon at the bottom did allow me to open and edit the app's user profile.
