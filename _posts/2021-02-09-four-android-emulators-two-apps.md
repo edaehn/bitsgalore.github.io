@@ -352,7 +352,9 @@ By contrast, Android Emulator (from Android Studio) could be a very interesting 
 
   > 3.2 You may not use this SDK to develop applications for other platforms (including non-compatible implementations of Android) or to develop another SDK. You are of course free to develop applications for other platforms, including non-compatible implementations of Android, provided that this SDK is not used for that purpose.
 
-   Also, Android Studio's licensing information mentions that it includes "proprietary code subject to \[a\] separate license". It's not clear to me if this affects the Emulator component. The emulator's subdirectory contains an additional +3000-line file with licensing information that applies specifically to the emulator component. I haven't gone through it in detail (and am not planning to do so), but the licensing situation does look somewhat complex.
+  To my legally untrained eyes, this appears to rule out the use of any of the components of the Android SDK for preservation and long-term access.
+
+- Also, Android Studio's licensing information mentions that it includes "proprietary code subject to \[a\] separate license". It's not clear to me if this affects the Emulator component. The emulator's subdirectory contains an additional +3000-line file with licensing information that applies specifically to the emulator component. I haven't gone through it in detail (and am not planning to do so), but the licensing situation does look somewhat complex.
 
 I can't really assess to what extent this may impact the (future) use of Android Emulator as a long-term access solution, but I'd be interested in the opinion of any legal experts who may be reading this.
 
