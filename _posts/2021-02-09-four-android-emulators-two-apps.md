@@ -41,7 +41,7 @@ I tried to emulate these apps using the following emulated environments:
 1. Android-x86, running in VirtualBox
 2. Android-86, running in QEMU
 3. Anbox
-4. Android Studio Emulator (Android Studio)
+4. Android Emulator (Android Studio)
 
 I did not include Shashlik, as this project has been [inactive since 2016](https://github.com/shashlik). I evaluated each of the emulations by the following (admittedly crude and incomplete) criteria:
 
