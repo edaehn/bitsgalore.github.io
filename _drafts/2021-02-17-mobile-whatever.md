@@ -66,13 +66,13 @@ The [apkanalyzer](https://developer.android.com/studio/command-line/apkanalyzer.
 androguard axml com.Triplee.TripleeSocial.apk -o arize-android.xml
 ```
 
-The decoded app manifest can be found in full [here](https://github.com/KBNLresearch/mobile-apps/blob/main/sample-files/arize-androidManifest.xml). A detailed discussion of the app manifest is beyond the scope of this post, but it's worth highligting some elements that are immediately relevant to long-term preservation. The (confusingly named) `android:minSdkVersion` and `android:targetSdkVersion` attributes (part of the [uses-sdk](https://developer.android.com/guide/topics/manifest/uses-sdk-element) element) are particularly interesting. They define the minimum and target API levels of the app, respectively. For the ARize app, the values are 24 and 29: 
+The decoded app manifest can be found in full [here](https://github.com/KBNLresearch/mobile-apps/blob/main/sample-files/arize-androidManifest.xml). A detailed discussion of the app manifest is beyond the scope of this post, but it's worth highligting some elements that are immediately relevant to long-term preservation. The (confusingly named) `android:minSdkVersion` and `android:targetSdkVersion` attributes (part of the [uses-sdk](https://developer.android.com/guide/topics/manifest/uses-sdk-element) element) are particularly interesting. They define the minimum and target API levels of the app, respectively:
 
 ```xml
 <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="29"/>
 ```
 
-These API levels directly correspond to Android versions. In [the table here](https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels) we see that API level 24 (the minimum level) corresponds to Android 7.0, and level 29 (the target level) to Android 10. So, this information will allow us to figure out the required emulated environment to to run any Android app in the future.
+In [the table here](https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels) we see that API level 24 (the minimum level) corresponds to Android 7.0, and level 29 (the target level) to Android 10. So, this information will allow us to figure out the required emulated environment to to run any Android app in the future.
 
 [uses-library](https://developer.android.com/guide/topics/manifest/uses-library-element) element - external dependency:
 
