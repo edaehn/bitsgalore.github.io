@@ -66,9 +66,7 @@ The [apkanalyzer](https://developer.android.com/studio/command-line/apkanalyzer.
 androguard axml com.Triplee.TripleeSocial.apk -o arize-androidManifest.xml
 ```
 
-It is beyond the scope of this post to cover the Android App Manifest in any detail, but I'll highlight some elements that are immediately relevant to long-term preservation.
-
-The (confusingly named) `android:minSdkVersion` and `android:targetSdkVersion` attributes (part of the [uses-sdk](https://developer.android.com/guide/topics/manifest/uses-sdk-element) element) define the minimum and target API levels of the app, respectively. For the ARize app the values are 24 and 29: 
+The decoded app manifest can be found in full [here](https://github.com/KBNLresearch/mobile-apps/blob/main/sample-files/arize-androidManifest.xml). A detailed discussion of the app manifest is beyond the scope of this post, but it's worth highligting some elements that are immediately relevant to long-term preservation. The (confusingly named) `android:minSdkVersion` and `android:targetSdkVersion` attributes (part of the [uses-sdk](https://developer.android.com/guide/topics/manifest/uses-sdk-element) element) are particularly interesting. They define the minimum and target API levels of the app, respectively. For the ARize app, the values are 24 and 29: 
 
 ```xml
 <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="29"/>
