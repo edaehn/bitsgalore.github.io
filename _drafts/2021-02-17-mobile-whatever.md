@@ -63,7 +63,7 @@ The [apkanalyzer](https://developer.android.com/studio/command-line/apkanalyzer.
 [Androguard](https://github.com/androguard/androguard) is a Python-based tool that is primarily aimed at reverse-engineering Android apps. Some of its functionality is also very useful for extracting technical metadata. It is particularly useful for extracting and decoding the [App Manifest](https://developer.android.com/guide/topics/manifest/manifest-intro). The manifest contains general information about the package, its components, and its hardware and software requirements. The manifest uses a [binary XML](https://en.wikipedia.org/wiki/Binary_XML) format for which [no publicly available documentation exists](https://reverseengineering.stackexchange.com/questions/21806/where-is-android-binary-xml-format-documented). Using the command below, Androguard will extract and decode an APK's app manifest, resulting in human-readable XML:
 
 ```bash
-androguard axml com.Triplee.TripleeSocial.apk -o arize-androidManifest.xml
+androguard axml com.Triplee.TripleeSocial.apk -o arize-android.xml
 ```
 
 The decoded app manifest can be found in full [here](https://github.com/KBNLresearch/mobile-apps/blob/main/sample-files/arize-androidManifest.xml). A detailed discussion of the app manifest is beyond the scope of this post, but it's worth highligting some elements that are immediately relevant to long-term preservation. The (confusingly named) `android:minSdkVersion` and `android:targetSdkVersion` attributes (part of the [uses-sdk](https://developer.android.com/guide/topics/manifest/uses-sdk-element) element) are particularly interesting. They define the minimum and target API levels of the app, respectively. For the ARize app, the values are 24 and 29: 
