@@ -50,7 +50,7 @@ As the above method is a bit clumsy, I started looking for tools that allow down
 gplaycli -d com.Triplee.TripleeSocial
 ```
 
-This resulted in a file "com.Triplee.TripleeSocial.apk". I verified the file by doing a bitwise comparison against the APK obtained from the "virtual machine method" described in the previous section[^3]. This confirmed both files were identical.
+This resulted in a file "com.Triplee.TripleeSocial.apk". I verified the file by doing a bitwise comparison against the APK obtained from the "virtual machine method" described in the previous section[^3]. This confirmed both files were identical. It's worth mentioning that gplaycli is also [reported to work for downloading paid apps](https://github.com/matlink/gplaycli/issues/8) (provided the proper login credentials are used), but I haven't tested this.
 
 ## Technical checks and metadata extraction
 
@@ -72,7 +72,7 @@ The decoded app manifest can be found in full [here](https://github.com/KBNLrese
 <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="29"/>
 ```
 
-In [the table here](https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels) we see that API level 24 (the minimum level) corresponds to Android 7.0, and level 29 (the target level) to Android 10. So, this information will allow us to figure out the required emulated environment to to run any Android app in the future.
+In [the table here](https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels) we see that API level 24 (the minimum level) corresponds to Android 7.0, and level 29 (the target level) to Android 10. So, this information will allow us to figure out the required emulated environment to to run this app in the future.
 
 [uses-library](https://developer.android.com/guide/topics/manifest/uses-library-element) element - external dependency:
 
