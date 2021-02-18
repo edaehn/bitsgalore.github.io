@@ -96,6 +96,15 @@ The decoded app manifest can be found in full [here](https://github.com/KBNLrese
 
 The above information largely defines the (emulated) technical environment that is required to run the app. Even though I've only skimmed the surface of the App Manifest here, it's importance as a source for deriving technical and preservation metadata about an Android app should be clear.   
 
+## Downloading iOS packages
+
+Apple iOS apps are distributed through the [Apple App Store](https://www.apple.com/app-store/). However, the Play Store doesn't allow you to download a local copy of an app's [iOS App Store Package (IPA)](https://en.wikipedia.org/wiki/.ipa) on a non-Android device, which is a problem within a preservation workflow. Various third-party websites exist that offer the possibility to download APK installers, but it is often difficult to establish their trustworthiness. Some of these sites also do some re-packaging of the original data, which makes it near impossible to verify the authenticity of the downloaded packages. It also introduces security concerns, and I would advise against using any of these services within a preservation workflow.
+
+
+[](https://en.wikipedia.org/wiki/.ipa)
+
+<https://libimobiledevice.org/>
+
 ## Misc ideas
 
 Collect additional materials that show what the app does and how, and in what context it was used. Example: videos related to the ARize app:
@@ -108,6 +117,14 @@ Collect additional materials that show what the app does and how, and in what co
 <https://youtu.be/h4syCHftyCs>
 
 Download + store as supporting documentation / context information. May also help futuer emulation efforts.
+
+Same for Immer app:
+
+<https://www.youtube.com/channel/UCnrnDrJ5MXccQJxaicEi7cA>
+
+See also (ht Andrew Berger via Twitter):
+
+[Saving Mementos from Virtual Worlds](https://blogs.loc.gov/thesignal/2014/02/saving-digital-mementos-from-virtual-worlds/)
 
 
 ## Acknowledgements
