@@ -66,10 +66,6 @@ Apache Tika was the only tool that identified both files as Android packages. Si
 
 ## Technical checks and metadata extraction
 
-### Apkanalyzer
-
-The [apkanalyzer](https://developer.android.com/studio/command-line/apkanalyzer.html) tool is part of [Android Studio](https://developer.android.com/studio/). It can be used to query an APK's file attributes, inspect its contents, and to cross-compare APKs. Unfortunately, I was unable to make the tool work on my machine, and running apkanalyzer only resulted in a sequence of Java exceptions[^4]. That aside, it's not entirely clear if [terms and conditions](https://developer.android.com/studio/terms.html) of Android Studio permit the use of this tool in an archival workflow[^5].
-
 ### Androguard
 
 [Androguard](https://github.com/androguard/androguard) is a Python-based tool that is primarily aimed at reverse-engineering Android apps. Some of its functionality is also very useful for extracting technical metadata. It is particularly useful for extracting and decoding the [App Manifest](https://developer.android.com/guide/topics/manifest/manifest-intro). The manifest contains general information about the package, its components, and its hardware and software requirements. The manifest uses a [binary XML](https://en.wikipedia.org/wiki/Binary_XML) format for which [no publicly available documentation exists](https://reverseengineering.stackexchange.com/questions/21806/where-is-android-binary-xml-format-documented). Using the command below, Androguard will extract and decode an APK's app manifest, resulting in human-readable XML:
@@ -95,6 +91,10 @@ The decoded app manifest can be found in full [here](https://github.com/KBNLrese
 - The [uses-library](https://developer.android.com/guide/topics/manifest/uses-library-element) element tells us about any shared libraries that the app depends on. 
 
 The above information largely defines the (emulated) technical environment that is required to run the app. Even though I've only skimmed the surface of the App Manifest here, it's importance as a source for deriving technical and preservation metadata about an Android app should be clear.   
+
+### Apkanalyzer
+
+The [apkanalyzer](https://developer.android.com/studio/command-line/apkanalyzer.html) tool is part of [Android Studio](https://developer.android.com/studio/). It can be used to query an APK's file attributes, inspect its contents, and to cross-compare APKs. Unfortunately, I was unable to make it work on my machine, and running apkanalyzer only resulted in a sequence of Java exceptions for me[^4]. Also, it's not entirely clear if [terms and conditions](https://developer.android.com/studio/terms.html) of Android Studio permit the use of this tool in an archival workflow[^5].
 
 ## Downloading iOS packages
 
