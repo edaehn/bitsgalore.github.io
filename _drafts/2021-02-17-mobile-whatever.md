@@ -52,6 +52,18 @@ gplaycli -d com.Triplee.TripleeSocial
 
 This resulted in a file "com.Triplee.TripleeSocial.apk". I verified the file by doing a bitwise comparison against the APK obtained from the "virtual machine method" described in the previous section[^3]. This confirmed both files were identical. It's worth mentioning that gplaycli is also [reported to work for downloading paid apps](https://github.com/matlink/gplaycli/issues/8) (provided the proper login credentials are used), but I haven't tested this.
 
+## Format identification
+
+As most archival ingest workflows include a format identification component, I tried to identify the ARize and Immer Android packages with 3 widely used format identification tools. The table below shows the results:
+
+|Tool|Version|ID (ARize)|ID (Immer)|
+|:--|:--|:--|:--|
+|[Siegfried](https://www.itforarchivists.com/siegfried/)|1.9.1; DROID Signature File V97[^7]|x-fmt/412 (Java Archive Format)|x-fmt/263 (ZIP Format)|
+|[Unix File](http://darwinsys.com/file/)|5.32|application/zip|application/zip|
+|[Apache Tika](http://tika.apache.org/)|1.23|application/vnd.android.package-archive|application/vnd.android.package-archive|
+
+Apache Tika was the only tool that identified both files as Android packages. Siegfried (which uses the [PRONOM](https://www.nationalarchives.gov.uk/PRONOM/Default.aspx) format signatures) identified one file as a regular ZIP file, and the other one as a [Java Archive](https://en.wikipedia.org/wiki/JAR_(file_format)). Since the Android package format is based on the Java Archive format (which is in turn a subset of the ZIP format) this result is not necessarily wrong, but it lacks specificity. At the time of writing, the [PRONOM](https://www.nationalarchives.gov.uk/PRONOM/Default.aspx) technical registry does have an entry for the Android package format[^6], so this result is not surprising.
+
 ## Technical checks and metadata extraction
 
 ### Apkanalyzer
@@ -66,17 +78,23 @@ The [apkanalyzer](https://developer.android.com/studio/command-line/apkanalyzer.
 androguard axml com.Triplee.TripleeSocial.apk -o arize-android.xml
 ```
 
-The decoded app manifest can be found in full [here](https://github.com/KBNLresearch/mobile-apps/blob/main/sample-files/arize-androidManifest.xml). A detailed discussion of the app manifest is beyond the scope of this post, but it's worth highligting some elements that are immediately relevant to long-term preservation. The (confusingly named) `android:minSdkVersion` and `android:targetSdkVersion` attributes (part of the [uses-sdk](https://developer.android.com/guide/topics/manifest/uses-sdk-element) element) are particularly interesting. They define the minimum and target API levels of the app, respectively:
+The decoded app manifest can be found in full [here](https://github.com/KBNLresearch/mobile-apps/blob/main/sample-files/arize-androidManifest.xml). A detailed discussion of the app manifest is beyond the scope of this post, but it's worth highligting a few elements that are particularly interesting:
 
-```xml
-<uses-sdk android:minSdkVersion="24" android:targetSdkVersion="29"/>
-```
+- The [uses-sdk](https://developer.android.com/guide/topics/manifest/uses-sdk-element) element contains information about the app's compatibility with one or more Android versions:
+  ```xml
+  <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="29"/>
+  ```
+  Here, the (confusingly named) `minSdkVersion` and `targetSdkVersion` attributes define the minimum and target API levels of the app, respectively. In [the table here](https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels) we see that API level 24 (the minimum level) corresponds to Android 7.0, and level 29 (the target level) to Android 10.
 
-In [the table here](https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels) we see that API level 24 (the minimum level) corresponds to Android 7.0, and level 29 (the target level) to Android 10. So, this information will allow us to figure out the required emulated environment to to run this app in the future.
+- The [uses-feature](https://developer.android.com/guide/topics/manifest/uses-feature-element) element is used to declare hardware or software features that are used by the app:
+  ```xml
+  <uses-feature android:name="android.hardware.camera" android:required="true"/>
+  ```
+  In the above example (taken from the ARize app), it informs us that the app needs a camera.
 
-[uses-library](https://developer.android.com/guide/topics/manifest/uses-library-element) element - external dependency:
+- The [uses-library](https://developer.android.com/guide/topics/manifest/uses-library-element) element tells us about any shared libraries that the app depends on. 
 
-> If this element is present and its android:required attribute is set to true, the PackageManager framework won't let the user install the application unless the library is present on the user's device. 
+The above information largely defines the (emulated) technical environment that is required to run the app. Even though I've only skimmed the surface of the App Manifest here, it's importance as a source for deriving technical and preservation metadata about an Android app should be clear.   
 
 ## Misc ideas
 
@@ -106,3 +124,7 @@ Download + store as supporting documentation / context information. May also hel
 [^4]: Tried with Android Studio 4.1.2, running under Linux Mint 19.3.
 
 [^5]: See also the "Android Emulator for long-term access" section in my [previous blog post]({{ BASE_PATH }}/2021/02/09/four-android-emulators-two-apps).
+
+[^6]: PRONOM version at the time of writing: DROID_SignatureFile_V97.xml, 1st October 2020.
+
+[^7]: DROID Container Signature File 20201001.xml
