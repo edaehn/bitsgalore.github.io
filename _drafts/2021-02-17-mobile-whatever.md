@@ -109,7 +109,6 @@ Apple iOS apps are distributed through the [Apple App Store](https://www.apple.c
 
 Collect additional materials that show what the app does and how, and in what context it was used. Example: videos related to the ARize app:
 
-
 <https://www.youtube.com/channel/UCPEDDkRVC7jegjC02-7VsUw/videos>
 
 "Hoe werkt mijn boek?"
@@ -125,6 +124,16 @@ Same for Immer app:
 See also (ht Andrew Berger via Twitter):
 
 [Saving Mementos from Virtual Worlds](https://blogs.loc.gov/thesignal/2014/02/saving-digital-mementos-from-virtual-worlds/)
+
+
+From [DPC Bit List 2020](https://www.dpconline.org/docs/miscellaneous/advocacy/2390-bitlist2020/file):
+
+> Perhaps ios is more critical - at least with Android you can often get .apk from the
+internet separate from the marketplace.
+
+Via Euan:
+
+[Mobile apps added to NIST’s National Software Reference Library (NSRL)](https://gcn.com/Articles/2016/12/20/NIST-mobile-software-library.aspx?m=1)
 
 
 ## Acknowledgements
