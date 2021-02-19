@@ -92,12 +92,23 @@ The above information largely defines the (emulated) technical environment that 
 
 ## Downloading iOS packages
 
-Apple iOS apps are distributed through the [Apple App Store](https://www.apple.com/app-store/). However, the Play Store doesn't allow you to download a local copy of an app's [iOS App Store Package (IPA)](https://en.wikipedia.org/wiki/.ipa) on a non-Android device, which is a problem within a preservation workflow. Various third-party websites exist that offer the possibility to download APK installers, but it is often difficult to establish their trustworthiness. Some of these sites also do some re-packaging of the original data, which makes it near impossible to verify the authenticity of the downloaded packages. It also introduces security concerns, and I would advise against using any of these services within a preservation workflow.
+Apple iOS apps are distributed through the [Apple App Store](https://www.apple.com/app-store/). Much like Google's Play Store, it doesn't allow you to download the installer packages (published in the [iOS App Store Package (IPA)](https://en.wikipedia.org/wiki/.ipa) format) on anything but an Apple device. Unlike the Android situation, there don't appear to be any tools that are able to get around this limitation, and this seriously limits the possibilities to incorporate downloading iOS packages as part of a preservation workflow. It might be possible to work around these limitations to some degree by installing the app on a (physical) iOS device, and then transfer the app to another machine. The open-source [libimobiledevice](https://libimobiledevice.org/) library appears to be capable of file transfers between iOS and other platforms. However, according to various online sources iOS doesn't actually keep the original IPA files after installation[^8]! I'm unable to confirm this, as I don't currently have an iOS device available for further testing.
 
+## Format identification
+
+As most archival ingest workflows include a format identification component, I tried to identify the ARize and Immer Android packages with 3 widely used format identification tools. The table below shows the results:
+
+|Tool|Version|ID (ARize)|ID (Immer)|
+|:--|:--|:--|:--|
+|[Siegfried](https://www.itforarchivists.com/siegfried/)|1.9.1; DROID Signature File V97[^7]|x-fmt/412 (Java Archive Format)|x-fmt/263 (ZIP Format)|
+|[Unix File](http://darwinsys.com/file/)|5.32|application/zip|application/zip|
+|[Apache Tika](http://tika.apache.org/)|1.23|application/vnd.android.package-archive|application/vnd.android.package-archive|
 
 [](https://en.wikipedia.org/wiki/.ipa)
 
 <https://libimobiledevice.org/>
+
+<https://wiki.debian.org/iPhone>
 
 ## Misc ideas
 
@@ -151,3 +162,5 @@ Via Euan:
 [^6]: PRONOM version at the time of writing: DROID_SignatureFile_V97.xml, 1st October 2020.
 
 [^7]: DROID Container Signature File 20201001.xml
+
+[^8]: See e.g. [here](https://stackoverflow.com/a/29743193/1209004), [here](https://www.reddit.com/r/jailbreak/comments/4dhbtb/question_ipa_location_in_ios_9/) and [here](https://medium.com/@lucideus/extracting-the-ipa-file-and-local-data-storage-of-an-ios-application-be637745624d).
