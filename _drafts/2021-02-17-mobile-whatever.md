@@ -92,7 +92,7 @@ The above information largely defines the (emulated) technical environment that 
 
 ## Downloading iOS packages
 
-Apple iOS apps are distributed through the [Apple App Store](https://www.apple.com/app-store/). Much like Google's Play Store, it doesn't allow you to download the installer packages (published in the [iOS App Store Package (IPA)](https://en.wikipedia.org/wiki/.ipa) format) on anything but an Apple device. Unlike the Android situation, there don't appear to be any tools that are able to get around this limitation, and this seriously limits the possibilities to incorporate downloading iOS packages as part of a preservation workflow. It might be possible to work around these limitations to some degree by installing the app on a either a physical or virtual[^10] iOS device, and then transfer the app to another machine. The open-source [libimobiledevice](https://libimobiledevice.org/) library appears to be capable of file transfers between iOS and other platforms. However, according to various online sources iOS doesn't actually keep the original IPA files after installation[^8]! I'm unable to confirm this, as I don't currently have an iOS device available for further testing.
+Apple iOS apps are distributed through the [Apple App Store](https://www.apple.com/app-store/). Installer packages are published in the [iOS App Store Package (IPA)](https://en.wikipedia.org/wiki/.ipa) format. A good overview of the format can be found [here](https://web.archive.org/web/20200714200020/https://blog.razb.me/pulling-apart-an-ios-app/). Like Google's Play Store, Apple doesn't allow you to download the packages on anything but an Apple device. Unlike the Android situation, there don't appear to be any tools that are able to get around this limitation, and this seriously limits the possibilities to incorporate downloading iOS packages as part of a preservation workflow. It might be possible to work around these limitations to some degree by installing the app on a either a physical or virtual[^10] iOS device, and then transfer the app to another machine. The open-source [libimobiledevice](https://libimobiledevice.org/) library appears to be capable of file transfers between iOS and other platforms. However, according to various online sources iOS doesn't actually keep the original IPA files after installation[^8]! I'm unable to confirm this, as I don't currently have an iOS device available for further testing.
 
 ## iOS package identification
 
@@ -108,7 +108,23 @@ These results are similar to the situation for Android packages. Only Apache Tik
 
 ## iOS package metadata extraction
 
+For iOS apps, the [information property list file](https://developer.apple.com/documentation/bundleresources/information_property_list) (Info.plist) it the root of the bundle directory[^11] contains various metadata about the app, including information about the required technical environment. Confusingly, [Apple property lists](https://en.wikipedia.org/wiki/Property_list) can be implemented in both XML and binary formats. For both test files I analyzed the format was XML, but I'm not entirely sure if this is always the case.
 
+[Ipa-metadata](https://github.com/matiassingers/ipa-metadata) is a tool for extracting "metadata and provisdioning info about an .ipa file". Although I was able to install it, running it on any of my test files would just return a "Callback must be a function" error, and nothing else.
+
+Python's [plistlib](https://docs.python.org/3/library/plistlib.html) module can read and write property lists in both binary and XML format.
+
+
+[](https://web.archive.org/web/20171222000837/https://owasp.org/images/b/b9/OWASP_Mobile_App_Hacking_(AppSecUSA_2014)_Workshop_Content.pdf)
+
+
+
+
+
+
+At the very minimum this would include details about the required Android version(s), hardware features, and shared software libraries. This information (and much more) is stored in an Android Package's [App Manifest](https://developer.android.com/guide/topics/manifest/manifest-intro). The App Manifest is stored in a [binary XML](https://en.wikipedia.org/wiki/Binary_XML) format for which [no publicly available documentation exists](https://reverseengineering.stackexchange.com/questions/21806/where-is-android-binary-xml-format-documented).
+
+[information property list file](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html) (Info.plist).
 
 
 <https://wiki.debian.org/iPhone>
@@ -150,6 +166,7 @@ Via Euan:
 
 - [gplaycli](https://github.com/matlink/gplaycli)
 - [Androguard](https://github.com/androguard/androguard)
+- [Pulling apart an iOS App](https://web.archive.org/web/20200714200020/https://blog.razb.me/pulling-apart-an-ios-app/)
 
 [^1]: See my [previous blog on Android emulation options]({{ BASE_PATH }}/2021/02/09/four-android-emulators-two-apps).
 
@@ -171,3 +188,5 @@ Via Euan:
 [^9]: I used the [ioninja.io](https://iosninja.io/ipa-library) site. I have no idea about the site's legal status or the safety of the downloads on offer, so proceed with caution! I only used the downloaded IPAs for some simple technical tests without installing them.
 
 [^10]: For example using a service like [Corellium](https://corellium.com/).
+
+[^11]: This is typically the `Payload/Application.app` folder (where "Application" is replaced with the app's name).
