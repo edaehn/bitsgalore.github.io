@@ -96,17 +96,18 @@ Apple iOS apps are distributed through the [Apple App Store](https://www.apple.c
 
 ## Format identification
 
-As most archival ingest workflows include a format identification component, I tried to identify the ARize and Immer Android packages with 3 widely used format identification tools. The table below shows the results:
+As I was unable to obtain any IPA installers from the Apple App Store, I downloaded some random IPA files from an [iOS jailbreaking](https://en.wikipedia.org/wiki/IOS_jailbreaking) website[^9]. The table below shows the results:
 
-|Tool|Version|ID (ARize)|ID (Immer)|
-|:--|:--|:--|:--|
-|[Siegfried](https://www.itforarchivists.com/siegfried/)|1.9.1; DROID Signature File V97[^7]|x-fmt/412 (Java Archive Format)|x-fmt/263 (ZIP Format)|
-|[Unix File](http://darwinsys.com/file/)|5.32|application/zip|application/zip|
-|[Apache Tika](http://tika.apache.org/)|1.23|application/vnd.android.package-archive|application/vnd.android.package-archive|
+|Tool|Version|ID|
+|:--|:--|:--|
+|[Siegfried](https://www.itforarchivists.com/siegfried/)|1.9.1; DROID Signature File V97[^7]|x-fmt/263 (ZIP Format)|
+|[Unix File](http://darwinsys.com/file/)|5.32|application/zip|
+|[Apache Tika](http://tika.apache.org/)|1.23|application/x-itunes-ipa|
 
-[](https://en.wikipedia.org/wiki/.ipa)
+Only Apache Tika was able to identify these files as IPA packages. Both Siegfried and File could only detect the container format. These results are similar to the situation for Android packages, and an inspection of PRONOM confirmed that the IPA format is not included in PRONOM yet.
 
-<https://libimobiledevice.org/>
+
+
 
 <https://wiki.debian.org/iPhone>
 
@@ -164,3 +165,5 @@ Via Euan:
 [^7]: DROID Container Signature File 20201001.xml
 
 [^8]: See e.g. [here](https://stackoverflow.com/a/29743193/1209004), [here](https://www.reddit.com/r/jailbreak/comments/4dhbtb/question_ipa_location_in_ios_9/) and [here](https://medium.com/@lucideus/extracting-the-ipa-file-and-local-data-storage-of-an-ios-application-be637745624d).
+
+[^9]: I used the [ioninja.io](https://iosninja.io/ipa-library) site. Note that I have no idea about the site's legal status or the safety of any of the downloads available on it, so proceed with caution! I only used the downloaded IPAs for some simple technical tests without installing them.
