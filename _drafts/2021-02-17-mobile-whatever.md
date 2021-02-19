@@ -52,19 +52,19 @@ gplaycli -d com.Triplee.TripleeSocial
 
 This resulted in a file "com.Triplee.TripleeSocial.apk". I verified the file by doing a bitwise comparison against the APK obtained from the "virtual machine method" described in the previous section[^3]. This confirmed both files were identical. It's worth mentioning that gplaycli is also [reported to work for downloading paid apps](https://github.com/matlink/gplaycli/issues/8) (provided the proper login credentials are used), but I haven't tested this.
 
-## Format identification
+## Android package identification
 
 As most archival ingest workflows include a format identification component, I tried to identify the ARize and Immer Android packages with 3 widely used format identification tools. The table below shows the results:
 
-|Tool|Version|ID (ARize)|ID (Immer)|
-|:--|:--|:--|:--|
-|[Siegfried](https://www.itforarchivists.com/siegfried/)|1.9.1; DROID Signature File V97[^7]|x-fmt/412 (Java Archive Format)|x-fmt/263 (ZIP Format)|
-|[Unix File](http://darwinsys.com/file/)|5.32|application/zip|application/zip|
-|[Apache Tika](http://tika.apache.org/)|1.23|application/vnd.android.package-archive|application/vnd.android.package-archive|
+|Tool|Version|ID|
+|:--|:--|:--|
+|[Siegfried](https://www.itforarchivists.com/siegfried/)|1.9.1; DROID Signature File V97[^7]|x-fmt/412 (Java Archive Format)<br>x-fmt/263 (ZIP Format)|
+|[Unix File](http://darwinsys.com/file/)|5.32|application/zip|
+|[Apache Tika](http://tika.apache.org/)|1.23|application/vnd.android.package-archive|
 
-Apache Tika was the only tool that identified both files as Android packages. Siegfried (which uses the [PRONOM](https://www.nationalarchives.gov.uk/PRONOM/Default.aspx) format signatures) identified one file as a regular ZIP file, and the other one as a [Java Archive](https://en.wikipedia.org/wiki/JAR_(file_format)). Since the Android package format is based on the Java Archive format (which is in turn a subset of the ZIP format) this result is not necessarily wrong, but it lacks specificity. At the time of writing, the [PRONOM](https://www.nationalarchives.gov.uk/PRONOM/Default.aspx) technical registry does have an entry for the Android package format[^6], so this result is not surprising.
+Apache Tika was the only tool that identified both files as Android packages. Siegfried (which uses the [PRONOM](https://www.nationalarchives.gov.uk/PRONOM/Default.aspx) format signatures) identified one file as a regular ZIP file, and the other one as a [Java Archive](https://en.wikipedia.org/wiki/JAR_(file_format)). Since the Android package format is based on the Java Archive format (which is in turn a subset of the ZIP format) this result is not necessarily wrong, but it lacks specificity. At the time of writing, the [PRONOM](https://www.nationalarchives.gov.uk/PRONOM/Default.aspx) technical registry does not have an entry for the Android package format[^6], so this result is not surprising.
 
-## Metadata extraction
+## Android package metadata extraction
 
 To ensure long-term access, it is vital that an archived app installer is accompanied by [preservation metadata](https://en.wikipedia.org/wiki/Preservation_metadata) about the technical environment that is needed to render it. At the very minimum this would include details about the required Android version(s), hardware features, and shared software libraries. This information (and much more) is stored in an Android Package's [App Manifest](https://developer.android.com/guide/topics/manifest/manifest-intro). The App Manifest is stored in a [binary XML](https://en.wikipedia.org/wiki/Binary_XML) format for which [no publicly available documentation exists](https://reverseengineering.stackexchange.com/questions/21806/where-is-android-binary-xml-format-documented). This makes reading it somwhat challenging, although [various software solutions for decoding the App Manifest exist](https://stackoverflow.com/q/4191762/1209004). [Apkanalyzer](https://developer.android.com/studio/command-line/apkanalyzer.html), which is part of [Android Studio](https://developer.android.com/studio/), is the officially supported tool by Google for this.However, running apkanalyzer only resulted in a sequence of Java exceptions for me[^4]. Besides, it's not entirely clear if the [terms and conditions](https://developer.android.com/studio/terms.html) of Android Studio permit is use in an archival workflow[^5]. I eventually found [Androguard](https://github.com/androguard/androguard), which is a Python-based tool that is primarily aimed at reverse-engineering Android apps. Using the command below, it will extract and decode an APK's app manifest, resulting in a human-readable XML file:
 
@@ -94,7 +94,7 @@ The above information largely defines the (emulated) technical environment that 
 
 Apple iOS apps are distributed through the [Apple App Store](https://www.apple.com/app-store/). Much like Google's Play Store, it doesn't allow you to download the installer packages (published in the [iOS App Store Package (IPA)](https://en.wikipedia.org/wiki/.ipa) format) on anything but an Apple device. Unlike the Android situation, there don't appear to be any tools that are able to get around this limitation, and this seriously limits the possibilities to incorporate downloading iOS packages as part of a preservation workflow. It might be possible to work around these limitations to some degree by installing the app on a (physical) iOS device, and then transfer the app to another machine. The open-source [libimobiledevice](https://libimobiledevice.org/) library appears to be capable of file transfers between iOS and other platforms. However, according to various online sources iOS doesn't actually keep the original IPA files after installation[^8]! I'm unable to confirm this, as I don't currently have an iOS device available for further testing.
 
-## Format identification
+## iOS package identification
 
 As I was unable to obtain any IPA installers from the Apple App Store, I downloaded some random IPA files from an [iOS jailbreaking](https://en.wikipedia.org/wiki/IOS_jailbreaking) website[^9]. The table below shows the results:
 
@@ -104,7 +104,9 @@ As I was unable to obtain any IPA installers from the Apple App Store, I downloa
 |[Unix File](http://darwinsys.com/file/)|5.32|application/zip|
 |[Apache Tika](http://tika.apache.org/)|1.23|application/x-itunes-ipa|
 
-Only Apache Tika was able to identify these files as IPA packages. Both Siegfried and File could only detect the container format. These results are similar to the situation for Android packages, and an inspection of PRONOM confirmed that the IPA format is not included in PRONOM yet.
+These results are similar to the situation for Android packages. Only Apache Tika was able to identify these files as IPA packages. Both Siegfried and File could only detect the container format. An inspection of PRONOM confirmed that it doesn't include the IPA format yet.
+
+## iOS package metadata extraction
 
 
 
