@@ -64,17 +64,15 @@ As most archival ingest workflows include a format identification component, I t
 
 Apache Tika was the only tool that identified both files as Android packages. Siegfried (which uses the [PRONOM](https://www.nationalarchives.gov.uk/PRONOM/Default.aspx) format signatures) identified one file as a regular ZIP file, and the other one as a [Java Archive](https://en.wikipedia.org/wiki/JAR_(file_format)). Since the Android package format is based on the Java Archive format (which is in turn a subset of the ZIP format) this result is not necessarily wrong, but it lacks specificity. At the time of writing, the [PRONOM](https://www.nationalarchives.gov.uk/PRONOM/Default.aspx) technical registry does have an entry for the Android package format[^6], so this result is not surprising.
 
-## Technical checks and metadata extraction
+## Metadata extraction
 
-### Androguard
-
-[Androguard](https://github.com/androguard/androguard) is a Python-based tool that is primarily aimed at reverse-engineering Android apps. Some of its functionality is also very useful for extracting technical metadata. It is particularly useful for extracting and decoding the [App Manifest](https://developer.android.com/guide/topics/manifest/manifest-intro). The manifest contains general information about the package, its components, and its hardware and software requirements. The manifest uses a [binary XML](https://en.wikipedia.org/wiki/Binary_XML) format for which [no publicly available documentation exists](https://reverseengineering.stackexchange.com/questions/21806/where-is-android-binary-xml-format-documented). Using the command below, Androguard will extract and decode an APK's app manifest, resulting in human-readable XML:
+To ensure long-term access, it is vital that an archived app installer is accompanied by [preservation metadata](https://en.wikipedia.org/wiki/Preservation_metadata) about the technical environment that is needed to render it. At the very minimum this would include details about the required Android version(s), hardware features, and shared software libraries. This information (and much more) is stored in an Android Package's [App Manifest](https://developer.android.com/guide/topics/manifest/manifest-intro). The App Manifest is stored in a [binary XML](https://en.wikipedia.org/wiki/Binary_XML) format for which [no publicly available documentation exists](https://reverseengineering.stackexchange.com/questions/21806/where-is-android-binary-xml-format-documented). This makes reading it somwhat challenging, although [various software solutions for decoding the App Manifest exist](https://stackoverflow.com/q/4191762/1209004). [Apkanalyzer](https://developer.android.com/studio/command-line/apkanalyzer.html), which is part of [Android Studio](https://developer.android.com/studio/), is the officially supported tool by Google for this.However, running apkanalyzer only resulted in a sequence of Java exceptions for me[^4]. Besides, it's not entirely clear if the [terms and conditions](https://developer.android.com/studio/terms.html) of Android Studio permit is use in an archival workflow[^5]. I eventually found [Androguard](https://github.com/androguard/androguard), which is a Python-based tool that is primarily aimed at reverse-engineering Android apps. Using the command below, it will extract and decode an APK's app manifest, resulting in a human-readable XML file:
 
 ```bash
 androguard axml com.Triplee.TripleeSocial.apk -o arize-android.xml
 ```
 
-The decoded app manifest can be found in full [here](https://github.com/KBNLresearch/mobile-apps/blob/main/sample-files/arize-androidManifest.xml). A detailed discussion of the app manifest is beyond the scope of this post, but it's worth highligting a few elements that are particularly interesting:
+The decoded app manifest can be found in full [here](https://github.com/KBNLresearch/mobile-apps/blob/main/sample-files/arize-androidManifest.xml). A detailed discussion of the app manifest is beyond the scope of this post, but it's worth highlighting a few elements that are particularly interesting:
 
 - The [uses-sdk](https://developer.android.com/guide/topics/manifest/uses-sdk-element) element contains information about the app's compatibility with one or more Android versions:
   ```xml
@@ -90,11 +88,7 @@ The decoded app manifest can be found in full [here](https://github.com/KBNLrese
 
 - The [uses-library](https://developer.android.com/guide/topics/manifest/uses-library-element) element tells us about any shared libraries that the app depends on. 
 
-The above information largely defines the (emulated) technical environment that is required to run the app. Even though I've only skimmed the surface of the App Manifest here, it's importance as a source for deriving technical and preservation metadata about an Android app should be clear.   
-
-### Apkanalyzer
-
-The [apkanalyzer](https://developer.android.com/studio/command-line/apkanalyzer.html) tool is part of [Android Studio](https://developer.android.com/studio/). It can be used to query an APK's file attributes, inspect its contents, and to cross-compare APKs. Unfortunately, I was unable to make it work on my machine, and running apkanalyzer only resulted in a sequence of Java exceptions for me[^4]. Also, it's not entirely clear if [terms and conditions](https://developer.android.com/studio/terms.html) of Android Studio permit the use of this tool in an archival workflow[^5].
+The above information largely defines the (emulated) technical environment that is required to run the app. Even though I've only skimmed the surface of the App Manifest here, its importance as a source for deriving technical and preservation metadata about an Android app should be clear.
 
 ## Downloading iOS packages
 
@@ -139,6 +133,9 @@ Via Euan:
 ## Acknowledgements
 
 ## Further resources
+
+- [gplaycli](https://github.com/matlink/gplaycli)
+- [Androguard](https://github.com/androguard/androguard)
 
 [^1]: See my [previous blog on Android emulation options]({{ BASE_PATH }}/2021/02/09/four-android-emulators-two-apps).
 
