@@ -168,4 +168,4 @@ Via Euan:
 
 [^8]: See e.g. [here](https://stackoverflow.com/a/29743193/1209004), [here](https://www.reddit.com/r/jailbreak/comments/4dhbtb/question_ipa_location_in_ios_9/) and [here](https://medium.com/@lucideus/extracting-the-ipa-file-and-local-data-storage-of-an-ios-application-be637745624d).
 
-[^9]: I used the [ioninja.io](https://iosninja.io/ipa-library) site. Note that I have no idea about the site's legal status or the safety of any of the downloads available on it, so proceed with caution! I only used the downloaded IPAs for some simple technical tests without installing them.
+[^9]: I used the [ioninja.io](https://iosninja.io/ipa-library) site. I have no idea about the site's legal status or the safety of the downloads on offer, so proceed with caution! I only used the downloaded IPAs for some simple technical tests without installing them.
