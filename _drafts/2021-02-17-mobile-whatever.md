@@ -92,7 +92,7 @@ The above information largely defines the (emulated) technical environment that 
 
 ## Downloading iOS packages
 
-Apple iOS apps are distributed through the [Apple App Store](https://www.apple.com/app-store/). Much like Google's Play Store, it doesn't allow you to download the installer packages (published in the [iOS App Store Package (IPA)](https://en.wikipedia.org/wiki/.ipa) format) on anything but an Apple device. Unlike the Android situation, there don't appear to be any tools that are able to get around this limitation, and this seriously limits the possibilities to incorporate downloading iOS packages as part of a preservation workflow. It might be possible to work around these limitations to some degree by installing the app on a (physical) iOS device, and then transfer the app to another machine. The open-source [libimobiledevice](https://libimobiledevice.org/) library appears to be capable of file transfers between iOS and other platforms. However, according to various online sources iOS doesn't actually keep the original IPA files after installation[^8]! I'm unable to confirm this, as I don't currently have an iOS device available for further testing.
+Apple iOS apps are distributed through the [Apple App Store](https://www.apple.com/app-store/). Much like Google's Play Store, it doesn't allow you to download the installer packages (published in the [iOS App Store Package (IPA)](https://en.wikipedia.org/wiki/.ipa) format) on anything but an Apple device. Unlike the Android situation, there don't appear to be any tools that are able to get around this limitation, and this seriously limits the possibilities to incorporate downloading iOS packages as part of a preservation workflow. It might be possible to work around these limitations to some degree by installing the app on a either a physical or virtual[^10] iOS device, and then transfer the app to another machine. The open-source [libimobiledevice](https://libimobiledevice.org/) library appears to be capable of file transfers between iOS and other platforms. However, according to various online sources iOS doesn't actually keep the original IPA files after installation[^8]! I'm unable to confirm this, as I don't currently have an iOS device available for further testing.
 
 ## iOS package identification
 
@@ -169,3 +169,5 @@ Via Euan:
 [^8]: See e.g. [here](https://stackoverflow.com/a/29743193/1209004), [here](https://www.reddit.com/r/jailbreak/comments/4dhbtb/question_ipa_location_in_ios_9/) and [here](https://medium.com/@lucideus/extracting-the-ipa-file-and-local-data-storage-of-an-ios-application-be637745624d).
 
 [^9]: I used the [ioninja.io](https://iosninja.io/ipa-library) site. I have no idea about the site's legal status or the safety of the downloads on offer, so proceed with caution! I only used the downloaded IPAs for some simple technical tests without installing them.
+
+[^10]: For example using a service like [Corellium](https://corellium.com/).
