@@ -128,7 +128,8 @@ In this example, the value of *MinimumOSVersion* is defined by the *string* elem
 
 ## Extraction of information property list
 
-I was unable to find any tools that directly extract and process the information property list (similar to what [Androguard](https://github.com/androguard/androguard) does for Android packages)[^12]. However, Python has a built-in [plistlib](https://docs.python.org/3/library/plistlib.html) module that is able to read and write property lists in both binary and XML format. I wrote [a small demo script](https://github.com/KBNLresearch/mobile-apps/blob/main/scripts/readplist.py) to test the module, and it at first sight it appears to work well. Using thuis module, it would be fairly straightforward to write a tool that extracts the property list items directly out of an IPA file, and transform them into a more manageable format.
+I was unable to find any tools that directly extract and process the information property list (similar to what [Androguard](https://github.com/androguard/androguard) does for Android packages)[^12]. However, Python has a built-in [plistlib](https://docs.python.org/3/library/plistlib.html) module that is able to read and write property lists in both binary and XML format. I did some tests with it, and at first sight it appears to work well: reading the XML property lists for each of my test apps resulted in a Python dictionary that accurately represented the key-value pairs of the property list[^13]. Using this module, it would be fairly straightforward to write a tool that extracts the property list items directly out of an IPA file, and transform them into a more manageable format. 
+
 
 As with the Android App Manifest before, I won't go into a detailed discussion of all the items inside the information property list, but following ones caught my immediate attention:
 
@@ -206,3 +207,5 @@ Via Euan:
 [^11]: This is typically the `Payload/Application.app` folder (where "Application" is replaced with the app's name).
 
 [^12]: There is [Ipa-metadata](https://github.com/matiassingers/ipa-metadata), which is a tool for extracting "metadata and provisdioning info about an .ipa file". Although I was able to install it, running it on any of my test files would just return a "Callback must be a function" error, and nothing else.
+
+[^13]: The demo script that I wrote for my tests is [available here](https://github.com/KBNLresearch/mobile-apps/blob/main/scripts/readplist.py).
