@@ -112,19 +112,30 @@ These results are similar to the situation for Android packages. Only Apache Tik
 
 ## iOS package metadata
 
-For iOS apps, the [information property list file](https://developer.apple.com/documentation/bundleresources/information_property_list) (Info.plist) in the root of the bundle directory[^11] contains various metadata about the app, including information about the required technical environment. Confusingly, [Apple property lists](https://en.wikipedia.org/wiki/Property_list) can be implemented in both XML and binary formats. For both test files I analyzed, the format was XML, but I'm not entirely sure if this is always the case.
+For iOS apps, the [information property list file](https://developer.apple.com/documentation/bundleresources/information_property_list) (Info.plist) in the root of the bundle directory[^11] contains various metadata about the app, including information about the required technical environment. Confusingly, [Apple property lists](https://en.wikipedia.org/wiki/Property_list) can be implemented in both XML and binary formats. For both test files I analyzed, the format was XML, but I'm not entirely sure if this is always the case. The Apple developer's site provides [a brief explanation of the format](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/PropertyLists/UnderstandXMLPlist/UnderstandXMLPlist.html#//apple_ref/doc/uid/10000048i-CH6-SW1), and I've uploaded [an example file here](https://github.com/KBNLresearch/mobile-apps/blob/main/sample-files/Info.plist). Unlike any other XML-based format I've seen, the correspondences between the key-value pairs in these files are not defined by the XML hierarchy, but by the order of appearance of the XML elements. See for example the following fragment:
+
+```xml
+<key>MinimumOSVersion</key>
+<string>7.0</string>
+<key>UIDeviceFamily</key>
+<array>
+  <integer>1</integer>
+  <integer>2</integer>
+</array>
+```
+
+In this example, the value of *MinimumOSVersion* is defined by the *string* element that directly follows the *key* element; likewise, the value of *UIDeviceFamily* is defined by the *array* element. This unusual layout means that simple parsing of these files with an XML library is not enough to interpret them in a meaningful way. 
 
 ## Extraction of information property list
 
-[Ipa-metadata](https://github.com/matiassingers/ipa-metadata) is a tool for extracting "metadata and provisdioning info about an .ipa file". Although I was able to install it, running it on any of my test files would just return a "Callback must be a function" error, and nothing else.
+I was unable to find any tools that directly extract and process the information property list (similar to what [Androguard](https://github.com/androguard/androguard) does for Android packages)[^12]. However, Python has a built-in [plistlib](https://docs.python.org/3/library/plistlib.html) module that is able to read and write property lists in both binary and XML format. I wrote [a small demo script](https://github.com/KBNLresearch/mobile-apps/blob/main/scripts/readplist.py) to test the module, and it at first sight it appears to work well. Using thuis module, it would be fairly straightforward to write a tool that extracts the property list items directly out of an IPA file, and transform them into a more manageable format.
 
-Python's [plistlib](https://docs.python.org/3/library/plistlib.html) module can read and write property lists in both binary and XML format.
+As with the Android App Manifest before, I won't go into a detailed discussion of all the items inside the information property list, but following ones caught my immediate attention:
 
+- The [UIRequiredDeviceCapabilities](https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html) key declares "the hardware or specific capabilities" that an app needs in order to run.
+- The [MinimumOSVersion](https://developer.apple.com/documentation/bundleresources/information_property_list/minimumosversion) key defines the minimum operating system version required for the app to run.
 
-[information property list file](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html) (Info.plist).
-
-
-<https://wiki.debian.org/iPhone>
+Both are directly relevant for emulation purposes.
 
 ## Misc ideas
 
@@ -165,6 +176,12 @@ Via Euan:
 - [Androguard](https://github.com/androguard/androguard)
 - [Pulling apart an iOS App](https://web.archive.org/web/20200714200020/https://blog.razb.me/pulling-apart-an-ios-app/)
 
+
+
+[information property list file](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html) (Info.plist).
+<https://wiki.debian.org/iPhone>
+
+
 [^1]: See my [previous blog on Android emulation options]({{ BASE_PATH }}/2021/02/09/four-android-emulators-two-apps).
 
 
@@ -187,3 +204,5 @@ Via Euan:
 [^10]: For example using a service like [Corellium](https://corellium.com/).
 
 [^11]: This is typically the `Payload/Application.app` folder (where "Application" is replaced with the app's name).
+
+[^12]: There is [Ipa-metadata](https://github.com/matiassingers/ipa-metadata), which is a tool for extracting "metadata and provisdioning info about an .ipa file". Although I was able to install it, running it on any of my test files would just return a "Callback must be a function" error, and nothing else.
