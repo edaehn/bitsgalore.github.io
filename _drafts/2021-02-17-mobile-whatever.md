@@ -18,9 +18,9 @@ Whatever.
 
 Android apps are distributed through the [Google Play Store](https://play.google.com/store/apps?hl=en). However, the Play Store doesn't allow you to download a local copy of an app's [Android Package (APK)](https://en.wikipedia.org/wiki/Android_application_package) on a non-Android device, which is a problem within a preservation workflow. Various third-party websites exist that offer the possibility to download APK installers, but it is often difficult to establish their trustworthiness. Some of these sites also do some re-packaging of the original data, which makes it near impossible to verify the authenticity of the downloaded packages. It also introduces security concerns, and I would advise against using any of these services within a preservation workflow.
 
-## Virtual machine method
+### Virtual machine method
 
-A better (but somewhat cumbersome) solution would be to set up a virtual machine or emulator with Android[^1], and use that to install the app directly from the Play store. Once installed, it is possible to transfer the APK installer file from the virtual machine to the host machine using the [Android Debug Bridge (adb) tool](https://developer.android.com/studio/command-line/adb). This involves the following steps (all after installation of the app inside the virtual machine):
+A better (but somewhat cumbersome) solution would be to set up a virtual machine or emulator with Android[^1], and use that to install the app directly from the Play store. Once installed, it is possible to transfer the APK installer file from the virtual machine to the host machine using the [Android Debug Bridge (adb) tool](https://developer.android.com/studio/command-line/adb). This involves the following steps:
 
 
 1. Get a list of all installed packages on the virtual machine (redirecting output to a text file):
@@ -42,7 +42,7 @@ adb pull /data/app/com.Triplee.TripleeSocial-r8iVFUp1MOSAc6LmHA1MDQ==/base.apk
 
 In this case, this results in a file "base.apk".
 
-## Gplaycli method
+### Gplaycli method
 
 As the above method is a bit clumsy, I started looking for tools that allow downloading packages from the Play Store directly. Several such open-source tools exist, but many of these are abondoned projects that no longer work. After trying out a few of them, I utimately had success with [gplaycli](https://github.com/matlink/gplaycli), which is "a command line tool to search, install, update Android applications from the Google Play Store". It allows you to download an APK, using the App ID as an identifier. Taking the ARize app as an example again, we can download the APK with the following command[^2]:
 
@@ -75,6 +75,8 @@ To ensure long-term access, it is vital that an archived app installer is accomp
 ```bash
 androguard axml com.Triplee.TripleeSocial.apk -o arize-android.xml
 ```
+
+## Interesting App Manifest elements 
 
 The decoded app manifest can be found in full [here](https://github.com/KBNLresearch/mobile-apps/blob/main/sample-files/arize-androidManifest.xml). A detailed discussion of the app manifest is beyond the scope of this post, but it's worth highlighting a few elements that are particularly interesting:
 
@@ -130,6 +132,7 @@ In this example, the value of *MinimumOSVersion* is defined by the *string* elem
 
 I was unable to find any tools that directly extract and process the information property list (similar to what [Androguard](https://github.com/androguard/androguard) does for Android packages)[^12]. However, Python has a built-in [plistlib](https://docs.python.org/3/library/plistlib.html) module that is able to read and write property lists in both binary and XML format. I did some tests with it, and at first sight it appears to work well: reading the XML property lists for each of my test apps resulted in a Python dictionary that accurately represented the key-value pairs[^13]. Using this module, it would be fairly straightforward to write a tool that extracts the property list items directly out of an IPA file, and transform them into a more manageable format. 
 
+## Interesting property list elements
 
 As with the Android App Manifest before, I won't go into a detailed discussion of all the items inside the information property list, but following ones caught my immediate attention:
 
