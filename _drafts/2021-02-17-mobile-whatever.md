@@ -24,7 +24,7 @@ In practical terms, this means that the workflows that are used for acquisition 
 2. Identification of the package format (APK for Android, IPA for iOS).
 3. Identification of metadata about the app's technical dependencies.
 
-The main objective of this post is to get an idea of what would be needed to implement these components. Is it possible to do all of this with existing tools? If not so, what are the gaps?
+The main objective of this post is to get an idea of what would be needed to implement these components. Is it possible to do all of this with existing tools? If not so, what are the gaps? The underlying assumption here is an emulation-based preservation strategy[^14].
 
 As for the acquisition component, Pennock, May and Day recommend direct publisher deposit, as this may avoid some potential problems related to digital rights management and dependencies on content that is hosted remotely. Since we've only started exploring mobile app preservation at this stage, it's too early to make any assumptions about what acquisition route would work best in our case. Because of this, I started out by investigating to what extent it is possible to download APK and iOS packages from the Google Play Store and the Apple App Store, respectively.
 
@@ -163,7 +163,16 @@ As with the Android App Manifest before, I won't go into a detailed discussion o
 
 Both are directly relevant for emulation purposes.
 
-## Misc ideas
+## Conclusions and recommendations
+
+The main conclusions from the above tests are:
+
+- Downloading Android APK packages from the Google Play store is possible, but it does require unofficial third-party tools like [gplaycli](https://github.com/matlink/gplaycli). However, such tools may stop working if Google applies changes to its Play Store API. This has already happened previously, leading to various unmaintained tools that no longer work. 
+- Access to the Apple App Store appears to be completely restricted from non-Apple devices. Since installing an app on iOS reportedly gets rid of the IPA container, workarounds that use a native iOS device as an intermediate medium most likely won't be usable for preservation workflows. 
+- Out of the three file format identification tools tested, only Apache Tika was able to correctly identify APK and IPA files. Since PRONOM doesn't include these formats yet, any tools that use the PRONOM database (Siegfried, but also DROID and FIDO) currently only identyify both formats at the higher container levels (ZIP, JAR). This could be easily remedied by developing PRONOM signatures for both formats.
+- Both the APK and IPA formats contain metadata about an app's technical dependencies, such as the minimal OS version and required hardware. Based on a cursory look, this information appears to be adequate for establishing the emulated environment needed to run an app, but it does not expose any dependencies on remotely hosted content[^15]. For the APK format a software tool that extracts this information is readily available. For the IPA format no such tool exists, but it could be developed with a limited amount of effort.
+
+## Additional recommendations
 
 Pennock, May and Day also propose "alternative solutions such as recording or documentation" in case the end access solution (e.g. the emulator) does not provide a sufficiently 'authentic' experience.
 
@@ -203,7 +212,9 @@ Via Euan:
 - [gplaycli](https://github.com/matlink/gplaycli)
 - [Androguard](https://github.com/androguard/androguard)
 - [Pulling apart an iOS App](https://web.archive.org/web/20200714200020/https://blog.razb.me/pulling-apart-an-ios-app/)
-
+-[](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009248-SW1)
+- [Android App Manifest documentation](https://developer.android.com/guide/topics/manifest/manifest-intro)
+- [Information Property List Key Reference](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html)
 
 
 [information property list file](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html) (Info.plist).
@@ -236,3 +247,7 @@ Via Euan:
 [^12]: There is [Ipa-metadata](https://github.com/matiassingers/ipa-metadata), which is a tool for extracting "metadata and provisdioning info about an .ipa file". Although I was able to install it, running it on any of my test files would just return a "Callback must be a function" error, and nothing else.
 
 [^13]: The demo script that I wrote for my tests is [available here](https://github.com/KBNLresearch/mobile-apps/blob/main/scripts/readplist.py).
+
+[^14]: I'm well aware that the possibilities for emulating iOS-based devices are still very limited (for both technical and legal reasons), but that may be the subject of another post.
+
+[^15]: This needs further confirmation from a more in-depth look at the available documentation.
