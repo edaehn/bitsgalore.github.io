@@ -10,7 +10,29 @@ comment_id: 75
   <figcaption><a href="https://commons.wikimedia.org/wiki/File:World_Wide_Web_-_Digital_Preservation.png">“World Wide Web - Digital Preservation”</a> by <a href="https://www.wikidata.org/wiki/Q55754361">Jørgen Stamp</a>, used under <a href="https://creativecommons.org/licenses/by/2.5/dk/deed.en">CC BY 2.5 DK</a>; <a href="https://commons.wikimedia.org/wiki/File:Wadden_Sea.jpg">“Wadden Sea”</a> by Envisat satellite, used under <a href="https://creativecommons.org/licenses/by-sa/3.0-igo">CC BY-SA 3.0-IGO</a>.</figcaption>
 </figure>
 
-Whatever.
+My [previous post]({{ BASE_PATH }}/2021/02/09/four-android-emulators-two-apps) addressed the emulation of mobile Android apps. In this follow-up, I'll explore some other aspects of mobile app preservation, with a focus on acquisition and ingest processes. The [2019 iPres paper on the Acquisition and Preservation of Mobile eBook Apps](https://zenodo.org/record/3460450) by Maureen Pennock, Peter May and Michael Day again was the departure point. In the its concluding section, they recommend:
+
+> In terms of target formats for acquisition, we reach the undeniable conclusion that acquisition of the app in its packaged form (either an IPA file or an APK file) is optimal for ensuring organisations at least acquire a complete published object for preservation.
+
+And:
+
+> \[T\]his form should at least also include sufficient metadata about inherent technical dependencies to understand what is needed to meet them.
+
+In practical terms, this means that the workflows that are used for acquisition and (pre-)ingest must include components that are capable of dealing with the following aspects:
+
+1. Acquisition of the app packages (either by direct deposit from the publisher, or using the app store).
+2. Identification of the package format (APK for Android, IPA for iOS).
+3. Identification of metadata about the app's technical dependencies.
+
+The main objective of this post is to get an idea of what would be needed to implement these components. Is it possible to do all of this with existing tools? If not so, what are the gaps?
+
+As for the acquisition component, Pennock, May and Day recommend direct publisher deposit, as this may avoid some potential problems related to digital rights management and dependencies on content that is hosted remotely. Since we've only started exploring mobile app preservation at this stage, it's too early to make any assumptions about what acquisition route would work best in our case. Because of this, I started out by investigating to what extent it is possible to download APK and iOS packages from the Google Play Store and the Apple App Store, respectively.
+
+I then tried to do automatic format identification on some sample APK and IPA packages, using recent versions of [Siegfried](https://www.itforarchivists.com/siegfried/), [Unix File](http://darwinsys.com/file/) and [Apache Tika](http://tika.apache.org/).
+
+Next, I looked at how the APK and IPA formats store metadata about an app's technical dependencies, and how to extract this information.
+
+The following sections discuss these aspects for the Android and iOS platforms.  
 
 <!-- more -->
 
@@ -143,6 +165,10 @@ Both are directly relevant for emulation purposes.
 
 ## Misc ideas
 
+Pennock, May and Day also propose "alternative solutions such as recording or documentation" in case the end access solution (e.g. the emulator) does not provide a sufficiently 'authentic' experience.
+
+Similar to [Saving Mementos from Virtual Worlds](https://blogs.loc.gov/thesignal/2014/02/saving-digital-mementos-from-virtual-worlds/) ((ht Andrew Berger via Twitter).
+
 Collect additional materials that show what the app does and how, and in what context it was used. Example: videos related to the ARize app:
 
 <https://www.youtube.com/channel/UCPEDDkRVC7jegjC02-7VsUw/videos>
@@ -157,9 +183,6 @@ Same for Immer app:
 
 <https://www.youtube.com/channel/UCnrnDrJ5MXccQJxaicEi7cA>
 
-See also (ht Andrew Berger via Twitter):
-
-[Saving Mementos from Virtual Worlds](https://blogs.loc.gov/thesignal/2014/02/saving-digital-mementos-from-virtual-worlds/)
 
 
 From [DPC Bit List 2020](https://www.dpconline.org/docs/miscellaneous/advocacy/2390-bitlist2020/file):
@@ -176,6 +199,7 @@ Via Euan:
 
 ## Further resources
 
+- [Considerations on the Acquisition and Preservation of Mobile eBook Apps](https://zenodo.org/record/3460450)
 - [gplaycli](https://github.com/matlink/gplaycli)
 - [Androguard](https://github.com/androguard/androguard)
 - [Pulling apart an iOS App](https://web.archive.org/web/20200714200020/https://blog.razb.me/pulling-apart-an-ios-app/)
@@ -186,7 +210,7 @@ Via Euan:
 <https://wiki.debian.org/iPhone>
 
 
-[^1]: See my [previous blog on Android emulation options]({{ BASE_PATH }}/2021/02/09/four-android-emulators-two-apps).
+[^1]: See my [previous post on Android emulation options]({{ BASE_PATH }}/2021/02/09/four-android-emulators-two-apps).
 
 
 [^2]: Note that the current (3.29) version of the tool has a small bug that results in a warning, which is [documented here](https://github.com/matlink/gplaycli/issues/272). Other than that it does work as expected.
