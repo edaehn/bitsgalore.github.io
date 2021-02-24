@@ -62,7 +62,7 @@
 
 
    <div class="post-entry">
-   <h1><a href="/2021/02/17/mobile-whatever">Android emulation experiments</a></h1>
+   <h1><a href="/2021/02/17/mobile-whatever">Towards a preservation workflow for mobile apps</a></h1>
    <div class="date">
     <span>17 February 2021</span>
    </div>
@@ -72,7 +72,7 @@
   <figcaption><a href="https://commons.wikimedia.org/wiki/File:World_Wide_Web_-_Digital_Preservation.png">“World Wide Web - Digital Preservation”</a> by <a href="https://www.wikidata.org/wiki/Q55754361">Jørgen Stamp</a>, used under <a href="https://creativecommons.org/licenses/by/2.5/dk/deed.en">CC BY 2.5 DK</a>; <a href="https://commons.wikimedia.org/wiki/File:Wadden_Sea.jpg">“Wadden Sea”</a> by Envisat satellite, used under <a href="https://creativecommons.org/licenses/by-sa/3.0-igo">CC BY-SA 3.0-IGO</a>.</figcaption>
 </figure>
 
-<p>My <a href="/2021/02/09/four-android-emulators-two-apps">previous post</a> addressed the emulation of mobile Android apps. In this follow-up, I’ll explore some other aspects of mobile app preservation, with a focus on acquisition and ingest processes. The <a href="https://zenodo.org/record/3460450">2019 iPres paper on the Acquisition and Preservation of Mobile eBook Apps</a> by Maureen Pennock, Peter May and Michael Day again was the departure point. In the its concluding section, they recommend:</p>
+<p>My <a href="/2021/02/09/four-android-emulators-two-apps">previous post</a> addressed the emulation of mobile Android apps. In this follow-up, I’ll explore some other aspects of mobile app preservation, with a focus on acquisition and ingest processes. The <a href="https://zenodo.org/record/3460450">2019 iPres paper on the Acquisition and Preservation of Mobile eBook Apps</a> by Maureen Pennock, Peter May and Michael Day again was the departure point. In its concluding section, they recommend:</p>
 
 <blockquote>
   <p>In terms of target formats for acquisition, we reach the undeniable conclusion that acquisition of the app in its packaged form (either an IPA file or an APK file) is optimal for ensuring organisations at least acquire a complete published object for preservation.</p>
@@ -84,7 +84,7 @@
   <p>[T]his form should at least also include sufficient metadata about inherent technical dependencies to understand what is needed to meet them.</p>
 </blockquote>
 
-<p>In practical terms, this means that the workflows that are used for acquisition and (pre-)ingest must include components that are capable of dealing with the following aspects:</p>
+<p>In practical terms, this means that the workflows that are used for acquisition and (pre-)ingest must include components that are able to deal with the following aspects:</p>
 
 <ol>
   <li>Acquisition of the app packages (either by direct deposit from the publisher, or using the app store).</li>
@@ -93,14 +93,6 @@
 </ol>
 
 <p>The main objective of this post is to get an idea of what would be needed to implement these components. Is it possible to do all of this with existing tools? If not so, what are the gaps? The underlying assumption here is an emulation-based preservation strategy<sup id="fnref:14"><a href="#fn:14" class="footnote">1</a></sup>.</p>
-
-<p>As for the acquisition component, Pennock, May and Day recommend direct publisher deposit, as this may avoid some potential problems related to digital rights management and dependencies on content that is hosted remotely. Since we’ve only started exploring mobile app preservation at this stage, it’s too early to make any assumptions about what acquisition route would work best in our case. Because of this, I started out by investigating to what extent it is possible to download APK and iOS packages from the Google Play Store and the Apple App Store, respectively.</p>
-
-<p>I then tried to do automatic format identification on some sample APK and IPA packages, using recent versions of <a href="https://www.itforarchivists.com/siegfried/">Siegfried</a>, <a href="http://darwinsys.com/file/">Unix File</a> and <a href="http://tika.apache.org/">Apache Tika</a>.</p>
-
-<p>Next, I looked at how the APK and IPA formats store metadata about an app’s technical dependencies, and how to extract this information.</p>
-
-<p>The following sections discuss these aspects for the Android and iOS platforms.</p>
 
 
    <div class="buttonArea">
@@ -118,9 +110,19 @@
      
     	<li><a href="/tags.html#Android-ref">Android <span>3</span></a></li>
      
-    	<li><a href="/tags.html#emulation-ref">emulation <span>3</span></a></li>
+    	<li><a href="/tags.html#Apache-Tika-ref">Apache-Tika <span>2</span></a></li>
      
-    	<li><a href="/tags.html#virtualization-ref">virtualization <span>3</span></a></li>
+    	<li><a href="/tags.html#APK-ref">APK <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#format-identification-ref">format-identification <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#iOS-ref">iOS <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#IPA-ref">IPA <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Siegfried-ref">Siegfried <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#unix-file-ref">unix-file <span>4</span></a></li>
     
   
 
@@ -164,9 +166,9 @@
      
     	<li><a href="/tags.html#Android-ref">Android <span>3</span></a></li>
      
-    	<li><a href="/tags.html#emulation-ref">emulation <span>3</span></a></li>
+    	<li><a href="/tags.html#emulation-ref">emulation <span>2</span></a></li>
      
-    	<li><a href="/tags.html#virtualization-ref">virtualization <span>3</span></a></li>
+    	<li><a href="/tags.html#virtualization-ref">virtualization <span>2</span></a></li>
     
   
 
@@ -421,7 +423,9 @@
      
     	<li><a href="/tags.html#Apache-Preflight-ref">Apache-Preflight <span>4</span></a></li>
      
-    	<li><a href="/tags.html#Apache-Tika-ref">Apache-Tika <span>1</span></a></li>
+    	<li><a href="/tags.html#Apache-Tika-ref">Apache-Tika <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#APK-ref">APK <span>1</span></a></li>
      
     	<li><a href="/tags.html#Debian-ref">Debian <span>2</span></a></li>
      
@@ -433,7 +437,7 @@
      
     	<li><a href="/tags.html#e-depot-ref">e-depot <span>1</span></a></li>
      
-    	<li><a href="/tags.html#emulation-ref">emulation <span>3</span></a></li>
+    	<li><a href="/tags.html#emulation-ref">emulation <span>2</span></a></li>
      
     	<li><a href="/tags.html#EPUB-ref">EPUB <span>6</span></a></li>
      
@@ -447,13 +451,17 @@
      
     	<li><a href="/tags.html#floppy-disks-ref">floppy-disks <span>2</span></a></li>
      
-    	<li><a href="/tags.html#format-identification-ref">format-identification <span>4</span></a></li>
+    	<li><a href="/tags.html#format-identification-ref">format-identification <span>5</span></a></li>
      
     	<li><a href="/tags.html#geodata-ref">geodata <span>2</span></a></li>
      
     	<li><a href="/tags.html#GW-BASIC-ref">GW-BASIC <span>1</span></a></li>
      
     	<li><a href="/tags.html#HFS-ref">HFS <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#iOS-ref">iOS <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#IPA-ref">IPA <span>1</span></a></li>
      
     	<li><a href="/tags.html#iromlab-ref">iromlab <span>1</span></a></li>
      
@@ -493,6 +501,8 @@
      
     	<li><a href="/tags.html#schematron-ref">schematron <span>4</span></a></li>
      
+    	<li><a href="/tags.html#Siegfried-ref">Siegfried <span>1</span></a></li>
+     
     	<li><a href="/tags.html#spreadsheets-ref">spreadsheets <span>2</span></a></li>
      
     	<li><a href="/tags.html#tapeimgr-ref">tapeimgr <span>2</span></a></li>
@@ -501,11 +511,11 @@
      
     	<li><a href="/tags.html#UDF-ref">UDF <span>2</span></a></li>
      
-    	<li><a href="/tags.html#unix-file-ref">unix-file <span>3</span></a></li>
+    	<li><a href="/tags.html#unix-file-ref">unix-file <span>4</span></a></li>
      
     	<li><a href="/tags.html#VeraPDF-ref">VeraPDF <span>3</span></a></li>
      
-    	<li><a href="/tags.html#virtualization-ref">virtualization <span>3</span></a></li>
+    	<li><a href="/tags.html#virtualization-ref">virtualization <span>2</span></a></li>
      
     	<li><a href="/tags.html#WAVE-ref">WAVE <span>1</span></a></li>
      
@@ -546,7 +556,7 @@
       <ul>
     
   
-	<li><a href="/2021/02/17/mobile-whatever">Android emulation experiments</a></li>
+	<li><a href="/2021/02/17/mobile-whatever">Towards a preservation workflow for mobile apps</a></li>
 	
     
           
