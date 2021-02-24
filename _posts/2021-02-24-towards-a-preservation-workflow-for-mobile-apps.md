@@ -182,7 +182,7 @@ Pennock, May and Day propose the use of "alternative solutions such as recording
 
 > \[M\]oving to an approach to virtualize or emulate old systems on new hardware will inevitably be a complex process and having even a reference image of what it looked like at a particular moment in time would likely be valuable as a way to evaluate the extent to which it is being authentically rendered. Here a general principle emerges. Documentation (like the screenshot) can be useful as both a means to preserve significance and also as a means to create reference material to triangulate an object’s or work’s significance.
 
-For both ARize and Immer apps from my previous blog post, Youtube channels exist that contain videos that demonstrate how these apps work[^19]. I don't know how common this situation is for other apps, but such videos could serve as a reference for (future) emulation efforts, and it might be worthwhile to collect them as part of the acquisition process, and store them alongside the app packages.
+For both the ARize and Immer apps from my previous blog post, Youtube channels exist with videos that demonstrate how these apps work[^19]. I don't know how common this situation is for other apps, but such videos could serve as a reference for (future) emulation efforts, and it might be worthwhile to collect them as part of the acquisition process, and store them alongside the app packages.
 
 ## Final thoughts
 
