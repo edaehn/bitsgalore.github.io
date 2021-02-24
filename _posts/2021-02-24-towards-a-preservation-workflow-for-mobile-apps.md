@@ -219,7 +219,7 @@ This post is only a first (and at this stage incomplete) attempt at piecing toge
 
 [^11]: This is typically the `Payload/Application.app` folder (where "Application" is replaced with the app's name).
 
-[^12]: There is [Ipa-metadata](https://github.com/matiassingers/ipa-metadata), which is a tool for extracting "metadata and provisdioning info about an .ipa file". Although I was able to install it, running it on any of my test files would just return a "Callback must be a function" error, and nothing else.
+[^12]: There is [Ipa-metadata](https://github.com/matiassingers/ipa-metadata), which is a tool for extracting "metadata and provisioning info about an .ipa file". Although I was able to install it, running it on any of my test files would just return a "Callback must be a function" error, and nothing else.
 
 [^13]: The demo script that I wrote for my tests is [available here](https://github.com/KBNLresearch/mobile-apps/blob/main/scripts/readplist.py).
 
