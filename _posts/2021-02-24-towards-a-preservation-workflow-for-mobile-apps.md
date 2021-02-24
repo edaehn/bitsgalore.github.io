@@ -6,8 +6,8 @@ comment_id: 75
 ---
 
 <figure class="image">
-  <img src="{{ BASE_PATH }}/images/2021/02/wwwspace.png" alt="Satellite image of Wadden Sea">
-  <figcaption><a href="https://commons.wikimedia.org/wiki/File:World_Wide_Web_-_Digital_Preservation.png">“World Wide Web - Digital Preservation”</a> by <a href="https://www.wikidata.org/wiki/Q55754361">Jørgen Stamp</a>, used under <a href="https://creativecommons.org/licenses/by/2.5/dk/deed.en">CC BY 2.5 DK</a>; <a href="https://commons.wikimedia.org/wiki/File:Wadden_Sea.jpg">“Wadden Sea”</a> by Envisat satellite, used under <a href="https://creativecommons.org/licenses/by-sa/3.0-igo">CC BY-SA 3.0-IGO</a>.</figcaption>
+  <img src="{{ BASE_PATH }}/images/2021/02/stewardess-phone.jpg" alt="Satellite image of Wadden Sea">
+  <figcaption>Production photo from "2001: A Space Odyssey". ©Stanley Kubrick Archives/TASCHEN.</figcaption>
 </figure>
 
 My [previous post]({{ BASE_PATH }}/2021/02/09/four-android-emulators-two-apps) addressed the emulation of mobile Android apps. In this follow-up, I'll explore some other aspects of mobile app preservation, with a focus on acquisition and ingest processes. The [2019 iPres paper on the Acquisition and Preservation of Mobile eBook Apps](https://zenodo.org/record/3460450) by Maureen Pennock, Peter May and Michael Day again was the departure point. In its concluding section, they recommend:
