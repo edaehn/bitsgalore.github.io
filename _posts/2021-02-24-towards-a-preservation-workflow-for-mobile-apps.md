@@ -86,7 +86,14 @@ As most archival ingest workflows include a format identification component, I t
 |[Unix File](http://darwinsys.com/file/)|5.32|application/zip|
 |[Apache Tika](http://tika.apache.org/)|1.23|application/vnd.android.package-archive|
 
-Apache Tika was the only tool that identified both files as Android packages. Siegfried (which uses the [PRONOM](https://www.nationalarchives.gov.uk/PRONOM/Default.aspx) format signatures) identified one file as a regular ZIP file, and the other one as a [Java Archive](https://en.wikipedia.org/wiki/JAR_(file_format)). Since the Android package format is based on the Java Archive format (which is in turn a subset of the ZIP format) this result is not necessarily wrong, but it lacks specificity. At the time of writing, the [PRONOM](https://www.nationalarchives.gov.uk/PRONOM/Default.aspx) technical registry does not have an entry for the Android package format[^6], so this result is not surprising.
+Apache Tika was the only tool that identified both files as Android packages. Siegfried (which uses the [PRONOM](https://www.nationalarchives.gov.uk/PRONOM/Default.aspx) format signatures) identified one file as a regular ZIP file, and the other one as a [Java Archive](https://en.wikipedia.org/wiki/JAR_(file_format)). Since the Android package format is based on the Java Archive format (which is in turn a subset of the ZIP format) this result is not necessarily wrong, but it lacks specificity. At the time of writing, the [PRONOM](https://www.nationalarchives.gov.uk/PRONOM/Default.aspx) technical registry does not have an entry for the Android package format[^6], so this result is not surprising. A look at [Tika's Mimetype definition file](https://github.com/apache/tika/blob/618345263ee41108e1a225dbcdbb8db16b2aae28/tika-core/src/main/resources/org/apache/tika/mime/tika-mimetypes.xml#L316) reveals that Tika only uses the file extension to differentiate between the Android packages and Java archives:
+
+```xml
+<mime-type type="application/vnd.android.package-archive">
+  <sub-class-of type="application/java-archive"/>
+  <glob pattern="*.apk"/>
+</mime-type>
+```
 
 ## Android package metadata
 
@@ -134,7 +141,15 @@ As I was unable to obtain any IPA installers from the Apple App Store, I downloa
 |[Unix File](http://darwinsys.com/file/)|5.32|application/zip|
 |[Apache Tika](http://tika.apache.org/)|1.23|application/x-itunes-ipa|
 
-These results are similar to the situation for Android packages. Only Apache Tika was able to identify these files as IPA packages. Both Siegfried and File could only detect the container format. An inspection of PRONOM confirmed that it doesn't include the IPA format yet.
+These results are similar to the situation for Android packages. Only Apache Tika was able to identify these files as IPA packages. Both Siegfried and File could only detect the container format. An inspection of PRONOM confirmed that it doesn't include the IPA format yet. Also, Tika's specific result for this format is again [only based on a file extension pattern](https://github.com/apache/tika/blob/master/tika-core/src/main/resources/org/apache/tika/mime/tika-mimetypes.xml#L3819):
+
+```xml
+<mime-type type="application/x-itunes-ipa">
+  <sub-class-of type="application/zip"/>
+  <_comment>Apple iOS IPA AppStore file</_comment>
+  <glob pattern="*.ipa"/>
+</mime-type>
+```
 
 ## iOS package metadata
 
@@ -171,7 +186,7 @@ As this is quite a lengthy post, here's a brief summary of the main results of t
 
 - Downloading Android APK packages from the Google Play store is possible, but it does require unofficial third-party tools like [gplaycli](https://github.com/matlink/gplaycli). However, such tools may stop functioning if Google applies changes to its Play Store API. This has already happened previously, leading to various unmaintained tools that no longer work. 
 - Access to the Apple App Store appears to be completely restricted from non-Apple devices. Since installing an app on iOS reportedly gets rid of the IPA container, workarounds that use a native iOS device as an intermediate medium most likely won't be usable for preservation workflows. 
-- Out of the three file format identification tools tested, only Apache Tika was able to correctly identify both APK and IPA files. Since PRONOM doesn't include these formats yet, any tools that use its database (Siegfried, but also DROID and FIDO) currently only identify both formats at the higher container levels (ZIP, JAR). This could be easily remedied by developing PRONOM signatures for both formats[^16].
+- Out of the three file format identification tools tested, only Apache Tika was able to correctly identify both APK and IPA files. However, Tika's specific results are solely based on file extension patterns. At the time of writing PRONOM doesn't cover these formats at all, and any tools that use its database (Siegfried, but also DROID and FIDO) only identify them at the higher container levels (ZIP, JAR). This could be easily remedied by developing PRONOM signatures for both formats[^16].
 - Both the APK and IPA formats contain package-level metadata about an app's technical dependencies, such as the minimal OS version and required hardware.
 - For the APK format a software tool that extracts this information is readily available. For the IPA format no such tool exists, but it could be developed with a limited amount of effort.
 - Based on the cursory look presented here, these package-level metadata appear to be adequate for establishing the emulated environment needed to run an app, but they do not expose any dependencies on remotely hosted content[^15].
