@@ -418,6 +418,14 @@ code, pre{
   margin-bottom: 20px;
 }
 
+.github-comments li ul li{
+  border: none;
+}
+
+.github-comments li ol li{
+  border: none;
+}
+
 .github-comments .user{
   font-weight: bold;
 }
