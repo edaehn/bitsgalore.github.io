@@ -57,17 +57,20 @@
       </div>
 
       <div id="sidebarRight">
-        <div class="sidebarGroup">
-          <p><a href="{{ HOME_PATH }}"><img src="{{ BASE_PATH }}/images/bgava.png" alt="bitsgalore avatar"  width="159" height="200"></a></p>	
-          <h3><a href="{{ site.url }}/about.html">About</a></h3>
-          <h3><a href="https://twitter.com/bitsgalore" target="_blank">Twitter</a></h3>
-          <h3><a href="https://digipres.club/@bitsgalore" target="_blank">Mastodon (digipres.club)</a></h3>
-          <h3><a href="https://github.com/bitsgalore/bitsgalore.github.io/issues" target="_blank">Report a problem with this site</a></h3>
+
+      <div class="sidebarGroup">
+        <p><a href="{{ HOME_PATH }}"><img src="{{ BASE_PATH }}/images/bgava.png" alt="bitsgalore avatar"  width="159" height="200"></a></p>
       </div>
-	    <div class="sidebarGroup">
-        <h3><a href="{{ site.url }}/rss.xml">RSS feed</a></h3>
-        <h3><a href="{{ site.url }}/atom.xml">ATOM feed</a></h3>
-	    </div>
+
+      <div class="sidebarGroup">
+        <!-- Site search using DuckDuckGo -->
+        <h2>Search</h2>
+        <form method="get" action="https://duckduckgo.com/">
+          <input type="hidden" value="https://www.bitsgalore.org/" name="sites"></input>
+          <input size="40" placeholder="Search (DuckDuckGo)" name="q">
+          <input type="submit" value="&#x1F50D;">
+        </form>
+      </div>
 
 	    <div class="sidebarGroup">
 	      <!-- Tag cloud -->
@@ -81,18 +84,30 @@
             {% endfor %}
             {% include JB/tags_list %}
           </ul>
-        </div>
+      </div>
 
-        <div class="sidebarGroup">
-          <!-- Archive -->
-          <h2>Archive</h2>
+      <div class="sidebarGroup">
+       <!-- Archive -->
+        <h2>Archive</h2>
 
-         {% assign posts_collate = site.posts %}
+        {% assign posts_collate = site.posts %}
           <div class="archive">
             {% include JB/posts_collate %}
           </div>
 
-        </div>
+      </div>
+
+      <div class="sidebarGroup">
+        <h3><a href="{{ site.url }}/about.html">About</a></h3>
+        <h3><a href="https://twitter.com/bitsgalore" target="_blank">Twitter</a></h3>
+        <h3><a href="https://digipres.club/@bitsgalore" target="_blank">Mastodon (digipres.club)</a></h3>
+        <h3><a href="https://github.com/bitsgalore/bitsgalore.github.io/issues" target="_blank">Report a problem with this site</a></h3>
+      </div>
+
+      <div class="sidebarGroup">
+        <h3><a href="{{ site.url }}/rss.xml">RSS feed</a></h3>
+        <h3><a href="{{ site.url }}/atom.xml">ATOM feed</a></h3>
+      </div>
 
       </div>
 
