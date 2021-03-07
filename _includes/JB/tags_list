@@ -22,34 +22,17 @@ Usage:
 {% if site.JB.tags_list.provider == "custom" %}
   {% include custom/tags_list %}
 {% else %}
-  {% if tags_list.first[0] == null %}
-    {% for tag in tags_list %}
-      <li>
-        <details>
-        <summary>{{ tag }}</summary>
-        <ul>
-        {% for post in site.tags[tag] %}
-          <li><a href="{{ BASE_PATH }}{{post.url}}">{{post.title}}</a></li>
-        {% endfor %}
-        </ul>
-        </details>
-      </li>
-    	<!-- <li><a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag }}-ref">{{ tag }} <span>{{ site.tags[tag].size }}</span></a></li> -->
-    {% endfor %}
-  {% else %}
-    {% for tag in tags_list %}
-      <li>
-        <details>
-        <summary>{{ tag }}</summary>
-        <ul>
-        {% for post in site.tags[tag] %}
-          <li><a href="{{ BASE_PATH }}{{post.url}}">{{post.title}}</a></li>
-        {% endfor %}
-        </ul>
-        </details>
-      </li>
-    	<!-- <li><a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref">{{ tag[0] }} <span>{{ tag[1].size }}</span></a></li> -->
-    {% endfor %}
-  {% endif %}
+  {% for tag in tags_list %}
+    <li>
+      <details>
+      <summary>{{ tag }}</summary>
+      <ul>
+      {% for post in site.tags[tag] %}
+        <li><a href="{{ BASE_PATH }}{{post.url}}">{{post.title}}</a></li>
+      {% endfor %}
+      </ul>
+      </details>
+    </li>
+  {% endfor %}
 {% endif %}
 {% assign tags_list = nil %}
