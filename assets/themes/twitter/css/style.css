@@ -368,7 +368,7 @@ code, pre{
   opacity: 0.9; }
 
 .tag_box.inline li {
-    float: left; }
+    float: none; }
 
 .tag_box details summary{
   background: #eee;
