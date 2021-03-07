@@ -28,10 +28,9 @@ Usage:
         <details>
         <summary>{{ tag }}</summary>
         <ul>
-        <li>Knolraap</li>
-        <li>Lof</li>
-        <li>Schorseneren</li>
-        <li>Prei</li>
+        {% for post in site.tags[tag] %}
+          <li><a href="{{ BASE_PATH }}{{post.url}}">{{post.title}}</a></li>
+        {% endfor %}
         </ul>
         </details>
       </li>
@@ -43,10 +42,9 @@ Usage:
         <details>
         <summary>{{ tag }}</summary>
         <ul>
-        <li>Knolraap</li>
-        <li>Lof</li>
-        <li>Schorseneren</li>
-        <li>Prei</li>
+        {% for post in site.tags[tag] %}
+          <li><a href="{{ BASE_PATH }}{{post.url}}">{{post.title}}</a></li>
+        {% endfor %}
         </ul>
         </details>
       </li>
