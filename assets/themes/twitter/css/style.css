@@ -358,7 +358,8 @@ code, pre{
   font-size: 18px;
   list-style: none;
   margin: 0;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 .tag_box li {
   line-height: 120%; }
@@ -367,28 +368,19 @@ code, pre{
   opacity: 0.9; }
 
 .tag_box.inline li {
-  float: none; }
+    float: left; }
 
-.tag_box details {
+.tag_box details summary{
+  background: #eee;
   padding: 3px 6px;
   margin: 2px;
-  background: #eee;
-  color: #555;
   border-radius: 3px;
   text-decoration: none;
-  border: 1px dashed #cccccc; }
+  border: 1px none #595959;
+ }
 
-.tag_box details span {
-  vertical-align: super;
-  font-size: 0.8em; }
-
-.tag_box details:hover {
+.tag_box details summary:hover {
   background-color: #e5e5e5; }
-
-.tag_box details.active {
-  background: #57A957;
-  border: 1px solid #4c964d;
-  color: #FFF; }
 
 .archive ul{
   list-style-type: none;
