@@ -367,8 +367,13 @@ code, pre{
 .tag_box li i {
   opacity: 0.9; }
 
-.tag_box.inline li {
-    float: none; }
+.tag_box.inline ul li {
+    float: none;
+    list-style-type: none;
+    text-indent: -20px;
+    padding-top: 5px;
+    padding-bottom: 5px;;
+}
 
 .tag_box details summary{
   background: #eee;
