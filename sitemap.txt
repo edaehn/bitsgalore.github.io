@@ -1,8 +1,10 @@
 ---
 # Remember to set production_url in your _config.yml file!
 title : Sitemap
+sitemap:
+  exclude: 'yes'
 ---
 {% for page in site.pages %}
-{{site.production_url}}{{ page.url }}{% endfor %}
+{% unless page.sitemap.exclude == "yes" or page.name == "feed.xml" %}{{ site.url }}{{ page.url | remove: "index.html" }}{% endunless %}{% endfor %}
 {% for post in site.posts %}
-{{site.production_url}}{{ post.url }}{% endfor %}
+{{ site.url }}{{ post.url }}{% endfor %}
