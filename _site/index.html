@@ -63,6 +63,149 @@
 
 
    <div class="post-entry">
+   <h1><a href="/2021/08/31/pdf-tools">PDF processing and analysis with open-source tools</a></h1>
+   <div class="date">
+    <span>31 August 2021</span>
+   </div>
+   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
+   <figure class="image">
+  <img src="/images/2021/02/stewardess-phone.jpg" alt="Satellite image of Wadden Sea" />
+  <figcaption>Production photo from "2001: A Space Odyssey". ©Stanley Kubrick Archives/TASCHEN.</figcaption>
+</figure>
+
+<p>Problems with PDF files are a recurring theme in my daily work. Over the years, I’ve been using a variety of open-source software tools for solving such problems. These include tools for validation and error-checking, the extraction of (technical) features and metadata, text and image extraction, to name but a few. Many of these are tools that I only use occasionally, so I often find myself forgetting how to use them (if I even remember what tool to use at all!). So, I thought it would be useful to document my go-to PDF tools and commands for a variety of common tasks in one single place, similar to <a href="/2015/11/13/preserving-optical-media-from-the-command-line">my 2015 post on preserving optical media from the command-line</a>. This post is first attempt at this. For now it is largely based on a number of unpublished lists, cheat-sheets and working notes that I’ve compiled earlier. I expect this will be very much a “living” document, and that I will add more content over time. The selection of tasks and tools presented here is by no means exhaustive, as it is guided to a great degree by the PDF-related issues I encounter in my day to day work. Also, many of these tasks could be done using other tools (including ones that are not mentioned here), so there’s probably a fair amount of selection bias here, and don’t want to make any claims of presenting the “best” way to do any of these tasks here.</p>
+
+<p>All of the tools presented here are published as open-source, and most of them have a command-line interface.</p>
+
+
+   <div class="buttonArea">
+   <a href="/2021/08/31/pdf-tools" class="button">Read more ...</a>
+  </div>
+   
+   <ul class="tag_box inline">
+     
+     
+
+
+
+
+  
+    <li>
+      <details>
+      <summary>Apache-Tika</summary>
+      <ul>
+      
+        <li><a href="/2021/08/31/pdf-tools">PDF processing and analysis with open-source tools</a></li>
+      
+        <li><a href="/2021/02/24/towards-a-preservation-workflow-for-mobile-apps">Towards a preservation workflow for mobile apps</a></li>
+      
+        <li><a href="/2015/04/29/top-50-file-formats-in-the-kb-e-depot">Top 50 file formats in the KB e-Depot</a></li>
+      
+      </ul>
+      </details>
+    </li>
+  
+    <li>
+      <details>
+      <summary>JHOVE</summary>
+      <ul>
+      
+        <li><a href="/2021/08/31/pdf-tools">PDF processing and analysis with open-source tools</a></li>
+      
+        <li><a href="/2017/01/04/breaking-waves-and-some-flacs">Breaking WAVEs (and some FLACs too)</a></li>
+      
+        <li><a href="/2014/01/31/why-cant-we-have-digital-preservation-tools-just-work">Why can't we have digital preservation tools that just work?</a></li>
+      
+        <li><a href="/2011/09/01/simple-jp2-file-structure-checker">A simple JP2 file structure checker</a></li>
+      
+      </ul>
+      </details>
+    </li>
+  
+    <li>
+      <details>
+      <summary>PDF</summary>
+      <ul>
+      
+        <li><a href="/2021/08/31/pdf-tools">PDF processing and analysis with open-source tools</a></li>
+      
+        <li><a href="/2017/06/01/policy-based-assessment-with-verapdf-a-first-impression">Policy-based assessment with VeraPDF - a first impression</a></li>
+      
+        <li><a href="/2016/12/09/pdfa-as-a-preferred-sustainable-format-for-spreadsheets">PDF/A as a preferred, sustainable format for spreadsheets?</a></li>
+      
+        <li><a href="/2015/07/08/why-pdfa-validation-matters-part-2">Why PDF/A validation matters, even if you don't have PDF/A - Part 2</a></li>
+      
+        <li><a href="/2015/07/07/why-pdfa-validation-matters-even-if-you-dont-have-pdfa">Why PDF/A validation matters, even if you don't have PDF/A</a></li>
+      
+        <li><a href="/2014/08/27/when-not-migrate-pdf-pdfa">When (not) to migrate a PDF to PDF/A</a></li>
+      
+        <li><a href="/2014/01/27/identification-pdf-preservation-risks-analysis-govdocs-selected-corpus">Identification of PDF preservation risks&#58; analysis of Govdocs selected corpus</a></li>
+      
+        <li><a href="/2013/07/25/identification-pdf-preservation-risks-sequel">Identification of PDF preservation risks with Apache Preflight&#58; the sequel</a></li>
+      
+        <li><a href="/2013/01/09/what-do-we-mean-embedded-files-pdf">What do we mean by "embedded" files in PDF?</a></li>
+      
+        <li><a href="/2012/12/19/identification-pdf-preservation-risks-apache-preflight-first-impression">Identification of PDF preservation risks with Apache Preflight&#58; a first impression</a></li>
+      
+        <li><a href="/2012/07/26/pdf-inventory-long-term-preservation-risks">PDF – Inventory of long-term preservation risks</a></li>
+      
+      </ul>
+      </details>
+    </li>
+  
+    <li>
+      <details>
+      <summary>preservation-risks</summary>
+      <ul>
+      
+        <li><a href="/2021/08/31/pdf-tools">PDF processing and analysis with open-source tools</a></li>
+      
+        <li><a href="/2020/04/30/iso-iec-ts-22424-standard-on-epub3-preservation">ISO/IEC TS 22424 standard on EPUB3 preservation</a></li>
+      
+        <li><a href="/2020/03/11/does-microsoft-onedrive-export-large-ZIP-files-that-are-corrupt">Does Microsoft OneDrive export large ZIP files that are corrupt?</a></li>
+      
+        <li><a href="/2015/07/08/why-pdfa-validation-matters-part-2">Why PDF/A validation matters, even if you don't have PDF/A - Part 2</a></li>
+      
+        <li><a href="/2015/07/07/why-pdfa-validation-matters-even-if-you-dont-have-pdfa">Why PDF/A validation matters, even if you don't have PDF/A</a></li>
+      
+        <li><a href="/2013/10/08/measuring-bigfoot">Measuring Bigfoot</a></li>
+      
+        <li><a href="/2013/09/30/assessing-file-format-risks-searching-bigfoot">Assessing file format risks&#58; searching for Bigfoot?</a></li>
+      
+        <li><a href="/2012/07/26/pdf-inventory-long-term-preservation-risks">PDF – Inventory of long-term preservation risks</a></li>
+      
+        <li><a href="/2012/06/18/epub-archival-preservation">EPUB for archival preservation</a></li>
+      
+      </ul>
+      </details>
+    </li>
+  
+    <li>
+      <details>
+      <summary>VeraPDF</summary>
+      <ul>
+      
+        <li><a href="/2021/08/31/pdf-tools">PDF processing and analysis with open-source tools</a></li>
+      
+        <li><a href="/2017/06/01/policy-based-assessment-with-verapdf-a-first-impression">Policy-based assessment with VeraPDF - a first impression</a></li>
+      
+        <li><a href="/2015/07/08/why-pdfa-validation-matters-part-2">Why PDF/A validation matters, even if you don't have PDF/A - Part 2</a></li>
+      
+        <li><a href="/2015/07/07/why-pdfa-validation-matters-even-if-you-dont-have-pdfa">Why PDF/A validation matters, even if you don't have PDF/A</a></li>
+      
+      </ul>
+      </details>
+    </li>
+  
+
+
+
+   </ul>
+  
+   </div>
+   <hr>
+
+   <div class="post-entry">
    <h1><a href="/2021/02/24/towards-a-preservation-workflow-for-mobile-apps">Towards a preservation workflow for mobile apps</a></h1>
    <div class="date">
     <span>24 February 2021</span>
@@ -93,7 +236,7 @@
   <li>Identification of metadata about the app’s technical dependencies.</li>
 </ol>
 
-<p>The main objective of this post is to get an idea of what would be needed to implement these components. Is it possible to do all of this with existing tools? If not so, what are the gaps? The underlying assumption here is an emulation-based preservation strategy<sup id="fnref:14"><a href="#fn:14" class="footnote">1</a></sup>.</p>
+<p>The main objective of this post is to get an idea of what would be needed to implement these components. Is it possible to do all of this with existing tools? If not so, what are the gaps? The underlying assumption here is an emulation-based preservation strategy<sup id="fnref:14" role="doc-noteref"><a href="#fn:14" class="footnote" rel="footnote">1</a></sup>.</p>
 
 
    <div class="buttonArea">
@@ -127,6 +270,8 @@
       <details>
       <summary>Apache-Tika</summary>
       <ul>
+      
+        <li><a href="/2021/08/31/pdf-tools">PDF processing and analysis with open-source tools</a></li>
       
         <li><a href="/2021/02/24/towards-a-preservation-workflow-for-mobile-apps">Towards a preservation workflow for mobile apps</a></li>
       
@@ -239,7 +384,7 @@
 
 <p>Before we can start archiving mobile apps ourselves, some additional aspects need to be addressed in more detail. One of these is the question of how to ensure long-term access. <a href="https://en.wikipedia.org/wiki/Emulator">Emulation</a> is the obvious strategy here, but I couldn’t find much information on the emulation of mobile platforms within a digital preservation context. In this blog post I present the results of some simple experiments, where I tried to emulate two selected apps. The main objective here was to explore the current state of emulation of mobile devices, and to get an initial impression of the suitability of some existing emulation solutions for long-term access.</p>
 
-<p>For practical reasons I’ve limited myself to the Android platform<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. Attentive readers may recall I <a href="/2014/10/23/running-archived-android-apps-pc-first-impressions">briefly touched on this subject back in 2014</a>. As much of the information in that blog post has now become outdated, this new post  presents a more up-to date investigation. I should probably mention here that I don’t own or use any Android device, or any other kind of smartphone or tablet for that matter<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>. This probably makes me the worst possible person to evaluate Android emulation, but who’s going to stop me trying anyway? No one, that’s who!</p>
+<p>For practical reasons I’ve limited myself to the Android platform<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. Attentive readers may recall I <a href="/2014/10/23/running-archived-android-apps-pc-first-impressions">briefly touched on this subject back in 2014</a>. As much of the information in that blog post has now become outdated, this new post  presents a more up-to date investigation. I should probably mention here that I don’t own or use any Android device, or any other kind of smartphone or tablet for that matter<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>. This probably makes me the worst possible person to evaluate Android emulation, but who’s going to stop me trying anyway? No one, that’s who!</p>
 
 
    <div class="buttonArea">
@@ -353,6 +498,8 @@
       
         <li><a href="/2020/02/11/web-domain-geolocation-and-spatial-analysis">Web domain geolocation and spatial analysis with QGIS</a></li>
       
+        <li><a href="/2019/12/13/how-to-save-web">Archiving web pages -</a></li>
+      
         <li><a href="/2018/07/11/crawling-offline-web-content-the-nl-menu-case">Crawling offline web content&#58; the NL-menu case</a></li>
       
         <li><a href="/2018/04/24/resurrecting-the-first-dutch-web-index-nl-menu-revisited">Resurrecting the first Dutch web index&#58; NL-menu revisited</a></li>
@@ -435,6 +582,8 @@
       
         <li><a href="/2020/02/11/web-domain-geolocation-and-spatial-analysis">Web domain geolocation and spatial analysis with QGIS</a></li>
       
+        <li><a href="/2019/12/13/how-to-save-web">Archiving web pages -</a></li>
+      
         <li><a href="/2018/07/11/crawling-offline-web-content-the-nl-menu-case">Crawling offline web content&#58; the NL-menu case</a></li>
       
         <li><a href="/2018/04/24/resurrecting-the-first-dutch-web-index-nl-menu-revisited">Resurrecting the first Dutch web index&#58; NL-menu revisited</a></li>
@@ -457,99 +606,6 @@
       <ul>
       
         <li><a href="/2020/06/30/restoring-liesbets-virtual-home">Restoring Liesbet's Virtual Home, a digital treasure from the early Dutch web</a></li>
-      
-      </ul>
-      </details>
-    </li>
-  
-
-
-
-   </ul>
-  
-   </div>
-   <hr>
-
-   <div class="post-entry">
-   <h1><a href="/2020/04/30/iso-iec-ts-22424-standard-on-epub3-preservation">ISO/IEC TS 22424 standard on EPUB3 preservation</a></h1>
-   <div class="date">
-    <span>30 April 2020</span>
-   </div>
-   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
-   <figure class="image">
-  <img src="/images/2020/04/scream.jpg" alt="Scream" />
-  <figcaption><a href="https://commons.wikimedia.org/wiki/File:%27The_Scream%27,_undated_drawing_Edvard_Munch,_Bergen_Kunstmuseum.JPG">“The Scream”</a>, undated drawing by Edvard Munch, Bergen Kunstmuseum, Public domain.</figcaption>
-</figure>
-
-<p>Earlier this week Library of Congress added <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000519.shtml">a new entry on the standard “Digital publishing — EPUB3 preservation” (ISO/IEC TS 22424)</a> to its excellent Digital Formats web site. This standard was developed by the <a href="https://www.iso.org/committee/45374.html">ISO Technical Committee on Document description and processing languages</a>, and was published in January this year (2020).</p>
-
-<p>According to its authors, “the ISO/IEC TS 22424 series supports long-term preservation of EPUB publications via a dual strategy”. The standard is made up of 2 parts, which are sold as separate documents on the ISO website:</p>
-
-<ol>
-  <li>
-    <p><a href="https://www.iso.org/standard/73163.html">Part 1: Principles (ISO/IEC TS 22424-1:2020)</a></p>
-  </li>
-  <li>
-    <p><a href="https://www.iso.org/standard/73169.html">Part 2: Metadata requirements ISO/IEC TS 22424-2:2020</a></p>
-  </li>
-</ol>
-
-<p>In this blog post I will take a closer look at both parts of the standard. What do they purport, what is their scope, and to what degree do they live up to their stated promises? Readers who are only interested in the most important findings may want to jump to the “Summary and discussion” section at the end of this post.</p>
-
-
-   <div class="buttonArea">
-   <a href="/2020/04/30/iso-iec-ts-22424-standard-on-epub3-preservation" class="button">Read more ...</a>
-  </div>
-   
-   <ul class="tag_box inline">
-     
-     
-
-
-
-
-  
-    <li>
-      <details>
-      <summary>EPUB</summary>
-      <ul>
-      
-        <li><a href="/2020/04/30/iso-iec-ts-22424-standard-on-epub3-preservation">ISO/IEC TS 22424 standard on EPUB3 preservation</a></li>
-      
-        <li><a href="/2016/04/04/valid-but-not-accessible-epub-crazy-fixed-layouts">Valid, but not accessible&#58; crazy fixed EPUB layouts</a></li>
-      
-        <li><a href="/2016/03/10/the-future-of-epub-a-first-look-at-the-epub-3-1-editors-draft">The future of EPUB? A first look at the EPUB 3.1 Editor’s draft</a></li>
-      
-        <li><a href="/2015/03/13/policy-based-assessment-of-epub-with-epubcheck">Policy-based assessment of EPUB with Epubcheck</a></li>
-      
-        <li><a href="/2013/05/23/epub-archival-preservation-update">EPUB for archival preservation&#58; an update</a></li>
-      
-        <li><a href="/2012/06/18/epub-archival-preservation">EPUB for archival preservation</a></li>
-      
-      </ul>
-      </details>
-    </li>
-  
-    <li>
-      <details>
-      <summary>preservation-risks</summary>
-      <ul>
-      
-        <li><a href="/2020/04/30/iso-iec-ts-22424-standard-on-epub3-preservation">ISO/IEC TS 22424 standard on EPUB3 preservation</a></li>
-      
-        <li><a href="/2020/03/11/does-microsoft-onedrive-export-large-ZIP-files-that-are-corrupt">Does Microsoft OneDrive export large ZIP files that are corrupt?</a></li>
-      
-        <li><a href="/2015/07/08/why-pdfa-validation-matters-part-2">Why PDF/A validation matters, even if you don't have PDF/A - Part 2</a></li>
-      
-        <li><a href="/2015/07/07/why-pdfa-validation-matters-even-if-you-dont-have-pdfa">Why PDF/A validation matters, even if you don't have PDF/A</a></li>
-      
-        <li><a href="/2013/10/08/measuring-bigfoot">Measuring Bigfoot</a></li>
-      
-        <li><a href="/2013/09/30/assessing-file-format-risks-searching-bigfoot">Assessing file format risks&#58; searching for Bigfoot?</a></li>
-      
-        <li><a href="/2012/07/26/pdf-inventory-long-term-preservation-risks">PDF – Inventory of long-term preservation risks</a></li>
-      
-        <li><a href="/2012/06/18/epub-archival-preservation">EPUB for archival preservation</a></li>
       
       </ul>
       </details>
@@ -642,8 +698,8 @@
       <div id="sidebarRight">
 
       <div class="sidebarGroup">
-        <p><a href="http://localhost:4000/about.html"><img src="/images/bgava.png" alt="bitsgalore avatar"  width="159" height="200"></a></p>
-        <h3><a href="http://localhost:4000/about.html">About</a></h3>
+        <p><a href="/about.html"><img src="/images/bgava.png" alt="bitsgalore avatar"  width="159" height="200"></a></p>
+        <h3><a href="/about.html">About</a></h3>
       </div>
 
       <div class="sidebarGroup">
@@ -707,6 +763,8 @@
       <details>
       <summary>Apache-Tika</summary>
       <ul>
+      
+        <li><a href="/2021/08/31/pdf-tools">PDF processing and analysis with open-source tools</a></li>
       
         <li><a href="/2021/02/24/towards-a-preservation-workflow-for-mobile-apps">Towards a preservation workflow for mobile apps</a></li>
       
@@ -1015,6 +1073,8 @@
       <summary>JHOVE</summary>
       <ul>
       
+        <li><a href="/2021/08/31/pdf-tools">PDF processing and analysis with open-source tools</a></li>
+      
         <li><a href="/2017/01/04/breaking-waves-and-some-flacs">Breaking WAVEs (and some FLACs too)</a></li>
       
         <li><a href="/2014/01/31/why-cant-we-have-digital-preservation-tools-just-work">Why can't we have digital preservation tools that just work?</a></li>
@@ -1222,6 +1282,8 @@
       <summary>PDF</summary>
       <ul>
       
+        <li><a href="/2021/08/31/pdf-tools">PDF processing and analysis with open-source tools</a></li>
+      
         <li><a href="/2017/06/01/policy-based-assessment-with-verapdf-a-first-impression">Policy-based assessment with VeraPDF - a first impression</a></li>
       
         <li><a href="/2016/12/09/pdfa-as-a-preferred-sustainable-format-for-spreadsheets">PDF/A as a preferred, sustainable format for spreadsheets?</a></li>
@@ -1250,6 +1312,8 @@
       <details>
       <summary>preservation-risks</summary>
       <ul>
+      
+        <li><a href="/2021/08/31/pdf-tools">PDF processing and analysis with open-source tools</a></li>
       
         <li><a href="/2020/04/30/iso-iec-ts-22424-standard-on-epub3-preservation">ISO/IEC TS 22424 standard on EPUB3 preservation</a></li>
       
@@ -1397,6 +1461,8 @@
       <summary>VeraPDF</summary>
       <ul>
       
+        <li><a href="/2021/08/31/pdf-tools">PDF processing and analysis with open-source tools</a></li>
+      
         <li><a href="/2017/06/01/policy-based-assessment-with-verapdf-a-first-impression">Policy-based assessment with VeraPDF - a first impression</a></li>
       
         <li><a href="/2015/07/08/why-pdfa-validation-matters-part-2">Why PDF/A validation matters, even if you don't have PDF/A - Part 2</a></li>
@@ -1463,6 +1529,8 @@
       
         <li><a href="/2020/02/11/web-domain-geolocation-and-spatial-analysis">Web domain geolocation and spatial analysis with QGIS</a></li>
       
+        <li><a href="/2019/12/13/how-to-save-web">Archiving web pages -</a></li>
+      
         <li><a href="/2018/07/11/crawling-offline-web-content-the-nl-menu-case">Crawling offline web content&#58; the NL-menu case</a></li>
       
         <li><a href="/2018/04/24/resurrecting-the-first-dutch-web-index-nl-menu-revisited">Resurrecting the first Dutch web index&#58; NL-menu revisited</a></li>
@@ -1525,8 +1593,27 @@
     
       <details open="true">
       <summary>2021</summary>
-      <h3>February</h3>
+      <h3>August</h3>
       <ul>
+    
+  
+	<li><a href="/2021/08/31/pdf-tools">PDF processing and analysis with open-source tools</a></li>
+	
+    
+          
+        
+          </ul>
+          <h3>February</h3>
+          <ul>
+        
+      
+    
+  
+    
+    
+    
+    
+  
     
   
 	<li><a href="/2021/02/24/towards-a-preservation-workflow-for-mobile-apps">Towards a preservation workflow for mobile apps</a></li>
@@ -1663,8 +1750,27 @@
         </details>
         <details>
         <summary>2019</summary>
-        <h3>September</h3>
+        <h3>December</h3>
         <ul>
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+	<li><a href="/2019/12/13/how-to-save-web">Archiving web pages -</a></li>
+	
+    
+          
+        
+          </ul>
+          <h3>September</h3>
+          <ul>
+        
       
     
   
@@ -2677,8 +2783,8 @@
 
       <div class="sidebarGroup">
         <h2>Feeds</h2>
-        <h3><a href="http://localhost:4000/rss.xml">RSS</a></h3>
-        <h3><a href="http://localhost:4000/atom.xml">ATOM</a></h3>
+        <h3><a href="/rss.xml">RSS</a></h3>
+        <h3><a href="/atom.xml">ATOM</a></h3>
       </div>
 
       </div>
