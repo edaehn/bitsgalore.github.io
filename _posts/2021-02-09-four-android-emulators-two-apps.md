@@ -7,7 +7,7 @@ comment_id: 74
 
 <figure class="image">
   <img src="{{ BASE_PATH }}/images/2021/02/android-header.png" alt="Header image">
-  <figcaption><a href="https://commons.wikimedia.org/wiki/File:Android_robot.svg">"Android Robot"</a> by Google Inc., used under <a href="https://creativecommons.org/licenses/by/3.0>">CC BY 3.0</a>, via Wikimedia Commons.</figcaption>
+  <figcaption><a href="https://commons.wikimedia.org/wiki/File:Android_robot.svg">"Android Robot"</a> by Google Inc., used under <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>, via Wikimedia Commons.</figcaption>
 </figure>
 
 So far the KB hasn't actively pursued the preservation of mobile apps. However, born-digital publications in app-only form have become increasingly common, as well as "hybrid" publications, with apps that are supplemental to traditional (paper) books. At the request of our Digital Preservation department, I've started some exploratory investigations into how to preserve mobile apps in the near future. The [2019 iPres paper on the Acquisition and Preservation of Mobile eBook Apps](https://zenodo.org/record/3460450) by the British Library's Maureen Pennock, Peter May and Michael Day provides an excellent starting point on the subject, and it highlights many of the challenges involved.
