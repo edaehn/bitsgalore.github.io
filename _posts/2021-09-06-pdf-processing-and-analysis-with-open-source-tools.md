@@ -13,7 +13,6 @@ comment_id: 76
 Over the years, I've been using a variety of open-source software tools for solving all sorts of issues with PDF documents. This post is an attempt to (finally) bring together my go-to PDF analysis and processing tools and commands for a variety of common tasks in one single place. It is largely based on a multitude of scattered lists, cheat-sheets and working notes that I made earlier. Starting with a brief overview of some general-purpose PDF toolkits, I then move on to a discussion of the following specific tasks:
 
 - Validation and integrity testing
-- Validation of compliance with PDF/A and PDF/UA
 - PDF/A and PDF/UA compliance testing
 - Document information and metadata extraction
 - Policy/profile compliance testing
