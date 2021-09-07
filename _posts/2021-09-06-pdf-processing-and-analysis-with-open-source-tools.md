@@ -231,6 +231,63 @@ Optimized:      yes
 PDF version:    1.6
 ```
 
+### Extract metadata with Apache Tika
+
+[Apache Tika](https://tika.apache.org/) is a Java library that supports metadata and content extraction for a wide variety of file formats. For command-line use, download the *Tika-app* runnable JAR from [here](https://tika.apache.org/download.html). By default, Tika will extract both text and metadata, and report both in XHTML format. Tika has several command-line options that this behaviour. A basic metadata extraction command is (you may need to adapt the path and name of the JAR file)):
+
+```bash
+java -jar ~/tika/tika-app-2.1.0.jar -m whatever.pdf > whatever.txt
+```
+
+Result:
+
+```
+Content-Length: 24728
+Content-Type: application/pdf
+X-TIKA:Parsed-By: org.apache.tika.parser.DefaultParser
+X-TIKA:Parsed-By: org.apache.tika.parser.pdf.PDFParser
+access_permission:assemble_document: true
+access_permission:can_modify: true
+access_permission:can_print: true
+access_permission:can_print_degraded: true
+access_permission:extract_content: true
+access_permission:extract_for_accessibility: true
+access_permission:fill_in_form: true
+access_permission:modify_annotations: true
+dc:format: application/pdf; version=1.6
+dcterms:created: 2021-09-02T05:52:56Z
+dcterms:modified: 2021-09-02T05:53:20Z
+pdf:PDFVersion: 1.6
+pdf:charsPerPage: 0
+pdf:docinfo:created: 2021-09-02T05:52:56Z
+pdf:docinfo:creator_tool: PdfCompressor 3.1.32
+pdf:docinfo:modified: 2021-09-02T05:53:20Z
+pdf:docinfo:producer: CVISION Technologies
+pdf:encrypted: false
+pdf:hasMarkedContent: false
+pdf:hasXFA: false
+pdf:hasXMP: true
+pdf:producer: CVISION Technologies
+pdf:unmappedUnicodeCharsPerPage: 0
+resourceName: whatever.pdf
+xmp:CreateDate: 2021-09-02T07:52:56Z
+xmp:CreatorTool: PdfCompressor 3.1.32
+xmp:MetadataDate: 2021-09-02T07:53:20Z
+xmp:ModifyDate: 2021-09-02T07:53:20Z
+xmpMM:DocumentID: uuid:2ec84d65-f99d-49fe-9aac-bd0c1fff5e66
+xmpTPg:NPages: 1
+```
+
+Tika offers several options for alternative output formats (e.g. XMP and JSON); these are all [explained here](https://tika.apache.org/2.1.0/gettingstarted.html) (section "Using Tika as a command line utility").
+
+### Extract metadata from embedded documents
+
+One particularly useful feature of Tika is its ability to deal with embedded documents. As an example, [this file](https://github.com/openpreserve/format-corpus/blob/master/pdfCabinetOfHorrors/digitally_signed_3D_Portfolio.pdf) is a [PDF portfolio](https://helpx.adobe.com/acrobat/using/overview-pdf-portfolios.html), which can contain multiple files and file types. Invoking Tika with the `-J` ("output metadata and content from all embedded files") option results in JSON-formatted output that contains metadata (and also extracted text) for all for all files that are embedded in this document:
+
+```bash
+java -jar ~/tika/tika-app-2.1.0.jar -J digitally_signed_3D_Portfolio.pdf > whatever.json
+```
+
 ### Elaborate feature extraction with VeraPDF
 
 Although primarily aimed at PDF/A validation, [VeraPDF](https://verapdf.org/) can also be used as a powerful metadata and feature extractor for any PDF file (including files that don't follow the PDF/A or PDF/UA at all!). By default, VeraPDF is configured to only extract metadata from a PDF's information dictionary, but this behaviour can be easily changed by modifying a configuration file, which is [explained in the documentation](https://docs.verapdf.org/cli/config/#features.xml). This enables you to obtain detailed information about things like Actions, Annotations, colour spaces, document security features (including encryption), embedded files, fonts, images, and much more. Then use a command line like[^3]:
@@ -317,13 +374,12 @@ PDFBox also provides various options, which are [documented here](https://pdfbox
 
 ### Extract text with Apache Tika
 
-[Apache Tika](https://tika.apache.org/) is a Java library that supports metadata and content (including text) extraction for a wide variety of file formats. For PDF it uses the PDF parser of PDFBox (see previous section). Tika is particularly interesting for situations where text extraction from multiple input formats is needed. For command-line use, download the *Tika-app* runnable JAR from [here](https://tika.apache.org/download.html). By default, Tika will extract both text and metadata, and report both in XHTML format. You can change this behaviour with the `--text` option (as with PDFBox, you may need to adapt the path and name of the JAR file):
+I already mentioned [Apache Tika](https://tika.apache.org/) in the metadata extraction section. Tika is also a powerful text extraction tool, and it is particularly useful for situations where text extraction from multiple input formats is needed. For PDF it uses the PDF parser of PDFBox (see previous section). By default, Tika extracts both text and metadata, and reports both in XHTML format. If needed, you can change this behaviour with the `--text` option:
 
 ```bash
 java -jar ~/tika/tika-app-2.1.0.jar --text whatever.pdf > whatever.txt
 ```
-
-An explanation of all available options is [available here](https://tika.apache.org/1.17/gettingstarted.html) (section "Using Tika as a command line utility").
+Again, an explanation of all available options is [available here](https://tika.apache.org/2.1.0/gettingstarted.html) (section "Using Tika as a command line utility").
 
 ### Batch processing with Tika
 
@@ -597,6 +653,10 @@ I intend to make this post a "living" document, and will add more PDF "recipes" 
 - [PDF tools in Community Owned Digital Preservation Tool Registry (COPTR)](https://coptr.digipres.org/index.php/PDF)
 - [Policy-based assessment with VeraPDF - a first impression]({{ BASE_PATH }}/2017/06/01/policy-based-assessment-with-verapdf-a-first-impression)
 - [What's so hard about PDF text extraction? ​](https://filingdb.com/b/pdf-text-extraction)
+
+## Revision history
+
+- 7 September 2021: added sections on metadata extraction and Tika batch processing, following suggestions by Tim Allison.
 
 [^1]: Command line: `pdfinfo whatever.pdf`
 
