@@ -668,4 +668,4 @@ I intend to make this post a "living" document, and will add more PDF "recipes" 
 
 [^5]: This is because a new Java VM is started for each processed PDF, which will result in poor performance.
 
-[^6] Of course this also works for metadata extraction, and both text and metadata extraction can be combined in one single command. As an example, the following command will extract both text and metadata, including any embedded documents: `java -jar ~/tika/tika-app-2.1.0.jar -J --text -i ./myPDFs/ -o ./tika-out/`
+[^6]: Of course this also works for metadata extraction, and both text and metadata extraction can be combined in one single command. As an example, the following command will extract both text and metadata, including any embedded documents: `java -jar ~/tika/tika-app-2.1.0.jar -J --text -i ./myPDFs/ -o ./tika-out/`
