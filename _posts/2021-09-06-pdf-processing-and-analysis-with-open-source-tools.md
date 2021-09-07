@@ -74,6 +74,10 @@ The tools in Xpdf are largely identical, but don't include *pdfseparate*, *pdfsi
 
 [MuPDF](https://www.mupdf.com/) is "a lightweight PDF, XPS, and E-book viewer". It includes the [mutool](https://www.mupdf.com/docs/index.html) utility, which can do a number of PDF processing tasks.
 
+### PDFtk
+
+[PDFtk](https://www.pdflabs.com/tools/pdftk-server/) (server edition) is a "command-line tool for working with PDFs" that is "commonly used for client-side scripting or server-side processing of PDFs". More information can be found in the [documentation](https://www.pdflabs.com/docs/pdftk-man-page/), and the [command-line examples page](https://www.pdflabs.com/docs/pdftk-cli-examples/). It was [removed from the Ubuntu repositories](https://www.joho.se/2020/10/01/pdftk-and-php-pdftk-on-ubuntu-18-04-without-using-snap/) around 2018 due to "dependency issues". However, these days the repositories include a package for "pdftk-java" (a Java for of PDFtk), which is probably the installation option. 
+
 ### Ghostscript
 
 [Ghostscript](https://www.ghostscript.com/) is "an interpreter for the PostScript language and PDF files". It provides rendering to a variety of raster and vector formats.  
