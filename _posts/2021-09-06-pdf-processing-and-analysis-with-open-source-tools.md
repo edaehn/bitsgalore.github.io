@@ -383,7 +383,7 @@ Again, an explanation of all available options is [available here](https://tika.
 
 ### Batch processing with Tika
 
-The above single-file command does not scale well for situations that require the processing of large volumes of PDFs[^5]. In such cases, it's better to run Tika in batch mode. As an example, the command below will process all files in directory "myPDFs", and store the results in output directory "tika-out":
+The above single-file command does not scale well for situations that require the processing of large volumes of PDFs[^5]. In such cases, it's better to run Tika in batch mode. As an example, the command below will process all files in directory "myPDFs", and store the results in output directory "tika-out"[^6]:
 
 ```bash
 java -jar ~/tika/tika-app-2.1.0.jar --text -i ./myPDFs/ -o ./tika-out/
@@ -666,4 +666,6 @@ I intend to make this post a "living" document, and will add more PDF "recipes" 
 
 [^4]: On Debian-based systems you can install it using `sudo apt install comparepdf`.
 
-[^5]: This is because a new Java VM is started for each processed PDF, which will result in poor performance. 
+[^5]: This is because a new Java VM is started for each processed PDF, which will result in poor performance.
+
+[^6] Of course this also works for metadata extraction, and both text and metadata extraction can be combined in one single command. As an example, the following command will extract both text and metadata, including any embedded documents: `java -jar ~/tika/tika-app-2.1.0.jar -J --text -i ./myPDFs/ -o ./tika-out/`
