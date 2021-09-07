@@ -325,7 +325,15 @@ java -jar ~/tika/tika-app-2.1.0.jar --text whatever.pdf > whatever.txt
 
 An explanation of all available options is [available here](https://tika.apache.org/1.17/gettingstarted.html) (section "Using Tika as a command line utility").
 
-If you need to process many PDFs, you might consider using TikaServer for better performance. A [runnable JAR is available here](https://tika.apache.org/download.html). To use it, first start the server using:
+### Batch processing with Tika
+
+The above single-file command does not scale well for situations that require the processing of large volumes of PDFs[^5]. In such cases, it's better to run Tika in batch mode. As an example, the command below will process all files in directory "myPDFs", and store the results in output directory "tika-out":
+
+```bash
+java -jar ~/tika/tika-app-2.1.0.jar --text -i ./myPDFs/ -o ./tika-out/
+```
+
+Alternatively, you could use TikaServer. A [runnable JAR is available here](https://tika.apache.org/download.html). To use it, first start the server using:
 
 ```bash
 java -jar ~/tika/tika-server-standard-2.1.0.jar
@@ -334,10 +342,9 @@ Once the server is running, use [cURL](https://en.wikipedia.org/wiki/CURL) (from
 
 ```bash
 curl -T whatever.pdf http://localhost:9998/tika --header "Accept: text/plain" > whatever.txt
-
 ```
 
-The full TikaServer documentation is [available here](https://cwiki.apache.org/confluence/display/TIKA/TikaServer).
+The full TikaServer documentation is [available here](https://cwiki.apache.org/confluence/display/TIKA/TikaServer). 
 
 Yet another option is [Tika-python](https://github.com/chrismattmann/tika-python), which is a Python port of Tika that uses TikaServer under the hood (resulting in similar performance).
 
@@ -599,4 +606,4 @@ I intend to make this post a "living" document, and will add more PDF "recipes" 
 
 [^4]: On Debian-based systems you can install it using `sudo apt install comparepdf`.
 
-[^5]: Whith the "regular" Tika application, performance can be poor because a new Java VM has to be started for each processed PDF. With TikaServer, the VM is only started once. 
+[^5]: This is because a new Java VM is started for each processed PDF, which will result in poor performance. 
