@@ -688,7 +688,7 @@ I intend to make this post a "living" document, and will add more PDF "recipes" 
 ## Revision history
 
 - 7 September 2021: added sections on metadata extraction and Tika batch processing, following suggestions by Tim Allison.
-- 8 September 2021: added section on inspecting low-level PDF structure with iText RUPS, as suggested by Mark Stephens; added sections on PDFtk as suggested by Tyler Thorsted; corrected error in *pdftocairo* example.
+- 8 September 2021: added section on inspecting low-level PDF structure with iText RUPS, as suggested by Mark Stephens; added sections on PDFtk as suggested by Tyler Thorsted; corrected errors in *pdftocairo* and *gs* examples.
 
 [^1]: Command line: `pdfinfo whatever.pdf`
 
