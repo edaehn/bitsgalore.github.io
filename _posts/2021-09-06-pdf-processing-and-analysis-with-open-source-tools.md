@@ -74,9 +74,13 @@ The tools in Xpdf are largely identical, but don't include *pdfseparate*, *pdfsi
 
 [MuPDF](https://www.mupdf.com/) is "a lightweight PDF, XPS, and E-book viewer". It includes the [mutool](https://www.mupdf.com/docs/index.html) utility, which can do a number of PDF processing tasks.
 
+<!--
+
 ### PDFtk
 
 [PDFtk](https://www.pdflabs.com/tools/pdftk-server/) (server edition) is a "command-line tool for working with PDFs" that is "commonly used for client-side scripting or server-side processing of PDFs". More information can be found in the [documentation](https://www.pdflabs.com/docs/pdftk-man-page/), and the [command-line examples page](https://www.pdflabs.com/docs/pdftk-cli-examples/). It was [removed from the Ubuntu repositories](https://www.joho.se/2020/10/01/pdftk-and-php-pdftk-on-ubuntu-18-04-without-using-snap/) around 2018 due to "dependency issues". However, these days the repositories include a package for "pdftk-java" (a Java for of PDFtk), which is probably the installation option. 
+
+-->
 
 ### Ghostscript
 
@@ -527,10 +531,37 @@ gs -o whatever_repaired.pdf -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress whatever_c
 A second option mentioned in the Super User thread is *pdftocairo*, which is part of Xpdf and Poppler:
 
 ```bash
-pdftocairo -pdf whatever_corrupted.pdf whatever_corrupted.pdf
+pdftocairo -pdf whatever_corrupted.pdf whatever_repaired.pdf
 ```
 
 It's worth adding here that the success of any repair action largely depends on the nature and extent of the damage/corruption, so your mileage may very. Always make sure to carefully check the result, and keep a copy of the original file.
+
+<!--
+### Repair with PDFtk
+
+Finally, *pdftk* can, [according to its documentation](https://www.pdflabs.com/docs/pdftk-cli-examples/), "repair a PDF’s corrupted XREF table and stream lengths, if possible". This uses the following command line:
+
+```bash
+pdftk whatever_corrupted.pdf whatever_repaired.pdf
+```
+
+Results in error:
+
+```
+Error: Unable to find file.
+Error: Failed to open PDF file: 
+   out.pdf
+Done.  Input errors, so no output created
+```
+
+Apparently this is a common issue, e.g.: 
+
+- <https://unix.stackexchange.com/questions/533839/why-is-pdftk-saying-it-cant-find-files-that-are-right-there> (but blames snap, which I'm not even using)
+- <https://wilransz.com/pdftk-on-ubuntu-18-04/>
+
+Neither of suggested solutions seem to work.
+
+-->
 
 ## Reduce size of PDF with hi-res graphics with Ghostscript
 
@@ -544,9 +575,13 @@ gs -sDEVICE=pdfwrite \
    -sOutputFile=whatever_small.pdf whatever_large.pdf
 ```
 
-## Inspect low-level PDF structure with PDFBox PDFDebugger
+## Inspect low-level PDF structure
 
-PDFBox includes a "PDF Debugger" that is quite useful for exploring a PDF's low-level structure. You can start it with the following command:
+The following tools are useful for inspecting and browsing the internal (low-level object) structure of PDF files. 
+
+### Inspect with PDFBox PDFDebugger
+
+PDFBox includes a "PDF Debugger", which you can start with the following command:
 
 ```bash
 java -jar ~/pdfbox/pdfbox-app-2.0.24.jar PDFDebugger whatever.pdf
@@ -557,6 +592,21 @@ Subsequently a GUI window pops up that allows you to browse the PDF's internal o
 <figure class="image">
   <img src="{{ BASE_PATH }}/images/2021/09/pdf-debugger.png" alt="PDF Debugger screenshot">
   <figcaption>Screenshot of PDFBOX PDFDebugger.</figcaption>
+</figure>
+
+### Inspect with iText RUPS
+
+The [itext RUPS](https://github.com/itext/i7j-rups) viewer provides similar functionality to PDF Debugger. You can download a self-contained runnable JAR [here](https://github.com/itext/i7j-rups/releases/latest) (select the "only-jars" ZIP file). Run it using:
+
+```bash
+java -jar ~/itext-rups/itext-rups-7.1.16.jar
+```
+
+Then open a PDF from the GUI, and browse your way through its internal structure:
+
+<figure class="image">
+  <img src="{{ BASE_PATH }}/images/2021/09/itext-rups.png" alt="iText RUPS screenshot">
+  <figcaption>Screenshot of iText RUPS.</figcaption>
 </figure>
 
 ## View, search and extract PDF objects with mutool show
@@ -661,6 +711,7 @@ I intend to make this post a "living" document, and will add more PDF "recipes" 
 ## Revision history
 
 - 7 September 2021: added sections on metadata extraction and Tika batch processing, following suggestions by Tim Allison.
+- 8 September 2021: added section on inspecting low-level PDF structure with iText RUPS, as suggested by Mark Stephens; corrected error in *pdftocairo* example.
 
 [^1]: Command line: `pdfinfo whatever.pdf`
 
