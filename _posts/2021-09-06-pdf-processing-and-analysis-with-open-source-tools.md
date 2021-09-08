@@ -546,7 +546,7 @@ The following Ghostscript command (source [here](https://askubuntu.com/questions
 
 ```bash
 gs -sDEVICE=pdfwrite \
-   -dCompatibilityLevel=1.4
+   -dCompatibilityLevel=1.4 \
    -dPDFSETTINGS=/ebook \
    -dNOPAUSE -dQUIET -dBATCH \
    -sOutputFile=whatever_small.pdf whatever_large.pdf
