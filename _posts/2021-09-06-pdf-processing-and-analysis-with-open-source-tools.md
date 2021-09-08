@@ -74,13 +74,9 @@ The tools in Xpdf are largely identical, but don't include *pdfseparate*, *pdfsi
 
 [MuPDF](https://www.mupdf.com/) is "a lightweight PDF, XPS, and E-book viewer". It includes the [mutool](https://www.mupdf.com/docs/index.html) utility, which can do a number of PDF processing tasks.
 
-<!--
-
 ### PDFtk
 
-[PDFtk](https://www.pdflabs.com/tools/pdftk-server/) (server edition) is a "command-line tool for working with PDFs" that is "commonly used for client-side scripting or server-side processing of PDFs". More information can be found in the [documentation](https://www.pdflabs.com/docs/pdftk-man-page/), and the [command-line examples page](https://www.pdflabs.com/docs/pdftk-cli-examples/). It was [removed from the Ubuntu repositories](https://www.joho.se/2020/10/01/pdftk-and-php-pdftk-on-ubuntu-18-04-without-using-snap/) around 2018 due to "dependency issues". However, these days the repositories include a package for "pdftk-java" (a Java for of PDFtk), which is probably the installation option. 
-
--->
+[PDFtk](https://www.pdflabs.com/tools/pdftk-server/) (server edition) is a "command-line tool for working with PDFs" that is "commonly used for client-side scripting or server-side processing of PDFs". More information can be found in the [documentation](https://www.pdflabs.com/docs/pdftk-man-page/), and the [command-line examples page](https://www.pdflabs.com/docs/pdftk-cli-examples/). For Ubuntu/Linux Mint users, the most straightforward installation option is the "pdftk-java" Debian package. This is a Java fork of PDFtk[^7]. 
 
 ### Ghostscript
 
@@ -536,32 +532,13 @@ pdftocairo -pdf whatever_corrupted.pdf whatever_repaired.pdf
 
 It's worth adding here that the success of any repair action largely depends on the nature and extent of the damage/corruption, so your mileage may very. Always make sure to carefully check the result, and keep a copy of the original file.
 
-<!--
 ### Repair with PDFtk
 
 Finally, *pdftk* can, [according to its documentation](https://www.pdflabs.com/docs/pdftk-cli-examples/), "repair a PDF’s corrupted XREF table and stream lengths, if possible". This uses the following command line:
 
 ```bash
-pdftk whatever_corrupted.pdf whatever_repaired.pdf
+pdftk whatever_corrupted.pdf output whatever_repaired.pdf
 ```
-
-Results in error:
-
-```
-Error: Unable to find file.
-Error: Failed to open PDF file: 
-   out.pdf
-Done.  Input errors, so no output created
-```
-
-Apparently this is a common issue, e.g.: 
-
-- <https://unix.stackexchange.com/questions/533839/why-is-pdftk-saying-it-cant-find-files-that-are-right-there> (but blames snap, which I'm not even using)
-- <https://wilransz.com/pdftk-on-ubuntu-18-04/>
-
-Neither of suggested solutions seem to work.
-
--->
 
 ## Reduce size of PDF with hi-res graphics with Ghostscript
 
@@ -711,7 +688,7 @@ I intend to make this post a "living" document, and will add more PDF "recipes" 
 ## Revision history
 
 - 7 September 2021: added sections on metadata extraction and Tika batch processing, following suggestions by Tim Allison.
-- 8 September 2021: added section on inspecting low-level PDF structure with iText RUPS, as suggested by Mark Stephens; corrected error in *pdftocairo* example.
+- 8 September 2021: added section on inspecting low-level PDF structure with iText RUPS, as suggested by Mark Stephens; added sections on PDFtk as suggested by Tyler Thorsted; corrected error in *pdftocairo* example.
 
 [^1]: Command line: `pdfinfo whatever.pdf`
 
@@ -724,3 +701,5 @@ I intend to make this post a "living" document, and will add more PDF "recipes" 
 [^5]: This is because a new Java VM is started for each processed PDF, which will result in poor performance.
 
 [^6]: Of course this also works for metadata extraction, and both text and metadata extraction can be combined in one single command. As an example, the following command will extract both text and metadata, including any embedded documents: `java -jar ~/tika/tika-app-2.1.0.jar -J --text -i ./myPDFs/ -o ./tika-out/`
+
+[^7]: The Debian package of the "original" PDFtk software was [removed from the Ubuntu repositories](https://www.joho.se/2020/10/01/pdftk-and-php-pdftk-on-ubuntu-18-04-without-using-snap/) around 2018 due to "dependency issues".
