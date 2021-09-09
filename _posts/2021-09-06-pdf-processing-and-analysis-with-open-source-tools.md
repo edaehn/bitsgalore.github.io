@@ -21,6 +21,7 @@ Over the years, I've been using a variety of open-source software tools for solv
 - Image extraction
 - Conversion to other (graphics) formats
 - Inspection of embedded image information
+- Conversion of multiple images to PDF
 - Cross-comparison of two PDFs
 - Corrupted PDF repair
 - File size reduction of PDF with hi-res graphics
@@ -489,6 +490,18 @@ page   object ID x-ppi y-ppi size ratio
    1       16  0   301   301   99B 0.0%
    1       17  0   300   300 17.9K 4.0%
 ```
+
+## Conversion of multiple image files to PDF
+
+### Losslessly convert raster images to pdf 
+
+The [img2pdf](https://gitlab.mister-muffin.de/josch/img2pdf) tool converts a list of image files to PDF. Unlike several other tools (such as ImageMagick), it does not re-encode the source images, but simply embeds them as PDF objects in their original formats. This means that the conversion is always lossless. The following example how to convert 3 [JP2 (JPEG 200 Part 1)](http://fileformats.archiveteam.org/wiki/JP2) images:
+
+```bash
+img2pdf image1.jp2 image2.jp2 image3.jp2 -o whatever.pdf
+```
+
+In the resulting PDF, each image is embedded as an image stream with the JPXDecode (JPEG 2000) filter.
 
 ## PDF comparison with Comparepdf
 
