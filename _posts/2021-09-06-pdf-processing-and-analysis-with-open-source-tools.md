@@ -493,7 +493,7 @@ page   object ID x-ppi y-ppi size ratio
 
 ## Conversion of multiple image files to PDF
 
-### Losslessly convert raster images to pdf 
+### Losslessly convert raster images to pdf with img2pdf
 
 The [img2pdf](https://gitlab.mister-muffin.de/josch/img2pdf) tool converts a list of image files to PDF. Unlike several other tools (such as ImageMagick), it does not re-encode the source images, but simply embeds them as PDF objects in their original formats. This means that the conversion is always lossless. The following example shows how to convert three [JP2 (JPEG 200 Part 1)](http://fileformats.archiveteam.org/wiki/JP2) images:
 
