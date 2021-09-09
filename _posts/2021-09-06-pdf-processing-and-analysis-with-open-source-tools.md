@@ -457,6 +457,8 @@ This gave me the following error for a PDF with an embedded JPEG 2000 image:
 SEVERE: Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
 ```
 
+This is a [known bug](https://issues.apache.org/jira/browse/PDFBOX-4681)
+
 -->
 
 ## Conversion to other (graphics) formats with pdftocairo
