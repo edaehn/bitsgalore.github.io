@@ -430,7 +430,7 @@ I did some limited testing with this tool in 2016. One issue I ran into is that 
 
 ### Other link extraction tools
 
-- Some years ago Ross Spencer wrote [a link extraction tool that uses Apache Tika](https://github.com/httpreserve/tikalinkextract). There's more info in [this blog post](https://openpreservation.org/blogs/hyperlinks-in-your-files-how-to-get-them-out-using-tikalinkextract/). I'm not sure if this tool is still maintained.
+- Some years ago Ross Spencer wrote [a link extraction tool that uses Apache Tika](https://github.com/httpreserve/tikalinkextract). There's more info in [this blog post](https://openpreservation.org/blogs/hyperlinks-in-your-files-how-to-get-them-out-using-tikalinkextract/).
 
 - Around the same time I wrote [this simple extraction script](https://gist.github.com/bitsgalore/aab680a9bccfc5496948b776ee06397c) that wraps around Apache Tika and the [xurl](https://github.com/mvdan/xurls) tool. I used this to extract URLs from MS Word documents, but this should probably work for PDF too (I haven't tested this though!).
 
