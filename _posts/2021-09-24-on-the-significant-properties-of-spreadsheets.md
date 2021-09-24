@@ -165,7 +165,7 @@ In addition, one component of the inSPECT methodology's stakeholder analysis is 
 
 > With spreadsheets, however, this is an immense task. Stakeholders use spreadsheets for a wide range of activities with no established set of functions that has to be used every time. Furthermore, we felt this would be difficult to accomplish thoroughly during interviews with stakeholders, considering the size of the task. Therefore, these last steps were not performed by us during this research.
 
-Instead, they limited themselves to drafting a list of "expected behaviours", which inSPECT defines as "the different types of activities that a user – any type of user – may wish to perform". But this turned out to be overly ambitious as well (p. 21, emphasis added by me):
+Instead, they limited themselves to drafting a list of "expected behaviours", which inSPECT defines as "the different types of activities that a user – any type of user – may wish to perform". But even this turned out to be overly ambitious as well (p. 21, emphasis added by me):
 
 > We soon realised that we would never establish an exhaustive list of all possible behaviours and **chose to use those behaviours that we found most important from our perspective as archives preserving spreadsheets**.
 
