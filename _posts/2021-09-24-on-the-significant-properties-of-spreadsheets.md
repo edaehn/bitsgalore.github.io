@@ -181,6 +181,10 @@ With that said, it's not clear to me how the results of the main body of this wo
 
 I'm also concerned about the largely context-agnostic view of "significant properties" that the authors express throughout the report. On the one hand, this results in a scope that will be unnecessarily wide for most real-world preservation actions (meaning that the number of properties to consider becomes unmanageable quickly). Simultaneously, the authors made several decisions that, taken together, have the effect that the needs and requirements of (future) users of the spreadsheet collections are only minimally represented. I expect this will seriously limit the utility of this exercise as a basis for making preservation decisions.
 
+## Link to report
+
+[The Significant Properties of Spreadsheets (OPF AIG Final Report)](https://zenodo.org/record/5468116)
+
 [^1]: See my posts on [Quattro Pro for DOS]({{ BASE_PATH }}/2014/10/29/quattro-pro-dos-obsolete-format-last) and [PDF/A as a preferred, sustainable format for spreadsheets?]({{ BASE_PATH }}/2016/12/09/pdfa-as-a-preferred-sustainable-format-for-spreadsheets).
 
 [^2]: It's worth noting here that a footnote on page 31 mentions how DNA are working on revising their format policy because the TIFF format "will not support the migration of dynamic properties". It also mentions that "\[o\]ur research has made clear how significant these are and why they must be preserved". This suggests that despite spending six years of research on the significant properties of spreadsheets, DNA still see no problem with TIFF as a target format for "simple"/"static" spreadsheets.
