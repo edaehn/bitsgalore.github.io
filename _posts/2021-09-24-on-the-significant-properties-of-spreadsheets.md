@@ -13,7 +13,7 @@ Earlier this month saw the publication of [The Significant Properties of Spreads
 
 <!-- more -->
 
-## Research rationale
+## Overall aim
 
 The authors describe the rationale behind their work as follows: 
 
