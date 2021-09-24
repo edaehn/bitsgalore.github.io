@@ -139,7 +139,7 @@ One important implication is that there is no "one size fits all" solution here.
 
 > \[I\]f you look closely at your digital preservation strategy, it boils down to finding the best way to preserve the significant properties of information.
 
-By contrast, taking the preservation itent as a starting point, a practical solution for the above case might look something like this: 
+By contrast, taking the preservation intent as a starting point, a practical solution for the above case might look something like this: 
 
 - Always keep the original spreadsheets (in their original formats)
 - Use emulation to ensure faithful rendering of these files in their original environment
