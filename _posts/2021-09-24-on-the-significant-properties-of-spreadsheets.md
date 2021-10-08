@@ -107,7 +107,7 @@ Because of the absence of any further examples or case studies, it remains uncle
 
 > Our experiences from the stakeholder interviews were that it can be extremely time and competency consuming to analyse every single property and behaviour for a complex content information type such as spreadsheets. In fact, for these kinds of analyses it can be counterproductive to conducting the interview if we do not try to stray away from the InSPECT approach and instead focus on facilitating a meaningful conversation with people and from this conversation try to deduce the behaviours necessary to preserve for future reuse of the data. The questions you instead can ask people are what they deem important to be able to do with the data and what data and associated functionality do they find important to preserve, if they were to reuse it in the future.
 
-I'm not surprised by this observation, but it doesn't inspire much confidence in using such analyses for any real-world applications.
+I'm not surprised by this observation, as it is consistent with earlier work by Euan Cochrane. In his 2012 [Rendering Matters report](https://web.archive.org/web/20130218111126/http://archives.govt.nz/rendering-matters-report-results-research-digital-object-rendering), he showed that for a migration-based approach, at least 13.5 hours were needed to test only 100 Office files (a mixture of word-processing, spreadsheet, database and presentation formats) comprehensively. This doesn't inspire much confidence in using such analyses at scale for any real-world applications.
 
 ## Significance in context
 
