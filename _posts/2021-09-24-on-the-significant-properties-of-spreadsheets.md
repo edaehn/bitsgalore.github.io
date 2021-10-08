@@ -185,6 +185,10 @@ I'm also concerned about the largely context-agnostic view of "significant prope
 
 [The Significant Properties of Spreadsheets (OPF AIG Final Report)](https://zenodo.org/record/5468116)
 
+## Revision history
+
+- 8 October 2021: added mention of Euan Cochrane's Rendering Matters report to examples, case studies section.
+
 [^1]: See my posts on [Quattro Pro for DOS]({{ BASE_PATH }}/2014/10/29/quattro-pro-dos-obsolete-format-last) and [PDF/A as a preferred, sustainable format for spreadsheets?]({{ BASE_PATH }}/2016/12/09/pdfa-as-a-preferred-sustainable-format-for-spreadsheets).
 
 [^2]: It's worth noting here that a footnote on page 31 mentions how DNA are working on revising their format policy because the TIFF format "will not support the migration of dynamic properties". It also mentions that "\[o\]ur research has made clear how significant these are and why they must be preserved". This suggests that despite spending six years of research on the significant properties of spreadsheets, DNA still see no problem with TIFF as a target format for "simple"/"static" spreadsheets.
