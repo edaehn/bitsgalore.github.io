@@ -22,7 +22,7 @@
 }
 
 #footer {
-    clear:both;
+  clear:both;
 }
 
 #sidebarLeft {
@@ -38,10 +38,26 @@
     max-width: 500px;
 }
 
-#sidebarFooterLeft {
+#footerLeft {
     float:left;
     width:17%;
     min-height: 1px;
+}
+
+#footerContent {
+  float:left;
+  width:48%;
+  max-width: 730px;
+  min-width: 500px;
+  font-family: 'Lato';
+  font-size: 18px;
+}
+
+#footerRight {
+  float:left;
+  width:35%;
+  min-width: 200px;
+  max-width: 500px;
 }
 
 .banner-header{
