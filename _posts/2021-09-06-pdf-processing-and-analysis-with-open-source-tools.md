@@ -355,7 +355,7 @@ More examples can be found in my 2017 post [Policy-based assessment with VeraPDF
 
 ## Text extraction
 
-Text extraction from PDF documents is notoriously hard. [This post](https://filingdb.com/b/pdf-text-extraction) gives a good overview of the main pitfalls. With that said, quite a few tools are available for this, and below I list a few that are useful starting points.
+Text extraction from PDF documents is notoriously hard. [This post](https://filingdb.com/b/pdf-text-extraction) gives a good overview of the main pitfalls. Tim Allison's excellent [Brief Overview of the Portable Document Format (PDF) and Some Challenges for Text Extraction](https://irsg.bcs.org/informer/wp-content/uploads/OverviewOfTextExtractionFromPDFs.pdf) provides a more in-depth discussion, and this really is a must-read for anyone seriously interested in this subject. With that said, quite a few tools are available, and below I list a few that are useful starting points.
 
 ### Extract text with pdftotext
 
@@ -705,6 +705,7 @@ I intend to make this post a "living" document, and will add more PDF "recipes" 
 - 7 September 2021: added sections on metadata extraction and Tika batch processing, following suggestions by Tim Allison.
 - 8 September 2021: added section on inspecting low-level PDF structure with iText RUPS, as suggested by Mark Stephens; added sections on PDFtk as suggested by Tyler Thorsted; corrected errors in *pdftocairo* and *gs* examples.
 - 9 September 2021: added section on image to PDF conversion.
+- 27 January 2022: added reference to Tim Allison's article on PDF text extraction.
 
 [^1]: Command line: `pdfinfo whatever.pdf`
 
