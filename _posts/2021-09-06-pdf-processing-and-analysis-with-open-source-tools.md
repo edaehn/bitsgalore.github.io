@@ -695,10 +695,11 @@ I intend to make this post a "living" document, and will add more PDF "recipes" 
 
 ## Further resources
 
-- [Moritz Mähr, "Working with batches of PDF files," The Programming Historian 9 (2020)](https://doi.org/10.46430/phen0088)
+- [Moritz Mähr, "Working with batches of PDF files", The Programming Historian 9 (2020)](https://doi.org/10.46430/phen0088)
 - [PDF tools in Community Owned Digital Preservation Tool Registry (COPTR)](https://coptr.digipres.org/index.php/PDF)
 - [Policy-based assessment with VeraPDF - a first impression]({{ BASE_PATH }}/2017/06/01/policy-based-assessment-with-verapdf-a-first-impression)
 - [What's so hard about PDF text extraction? ​](https://filingdb.com/b/pdf-text-extraction)
+- [Tim Allison, "Brief Overview of the Portable Document Format (PDF) and Some Challenges for Text Extraction"](https://irsg.bcs.org/informer/wp-content/uploads/OverviewOfTextExtractionFromPDFs.pdf)
 
 ## Revision history
 
