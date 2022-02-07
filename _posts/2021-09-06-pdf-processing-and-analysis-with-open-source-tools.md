@@ -776,6 +776,7 @@ I intend to make this post a "living" document, and will add more PDF "recipes" 
 - 8 September 2021: added section on inspecting low-level PDF structure with iText RUPS, as suggested by Mark Stephens; added sections on PDFtk as suggested by Tyler Thorsted; corrected errors in *pdftocairo* and *gs* examples.
 - 9 September 2021: added section on image to PDF conversion.
 - 27 January 2022: added reference to Tim Allison's article on PDF text extraction.
+- 7 February 2022: added sections on Exiftool, and added reference to Yvonne Tunnat's blog post on PDF validation with ExifTool.
 
 [^1]: Command line: `pdfinfo whatever.pdf`
 
