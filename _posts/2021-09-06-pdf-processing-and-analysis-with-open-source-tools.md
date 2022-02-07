@@ -161,6 +161,35 @@ Running Mutool (part of MuPDF, see above) with the `info` command returns inform
 mutool info whatever.pdf 
 ```
 
+### Check for errors with ExifTool
+
+[ExifTool](https://exiftool.org/) is designed for reading, writing and editing meta-information for a plethora of file formats, including PDF. Although it does not do full-fledged validation, it will report error and warning messages for various read issues, and these can be useful for identifying problematic PDFs. For example, here we use ExifTool on a PDF with some internal byte corruption:
+
+```
+exiftool corrupted.pdf
+```
+
+Result:
+
+```
+ExifTool Version Number         : 11.88
+File Name                       : corrupted.pdf
+Directory                       : .
+File Size                       : 87 kB
+File Modification Date/Time     : 2022:02:07 14:36:47+01:00
+File Access Date/Time           : 2022:02:07 14:37:11+01:00
+File Inode Change Date/Time     : 2022:02:07 14:36:59+01:00
+File Permissions                : rw-rw-r--
+File Type                       : PDF
+File Type Extension             : pdf
+MIME Type                       : application/pdf
+PDF Version                     : 1.3
+Linearized                      : No
+Warning                         : Invalid xref table
+```
+
+In this case the byte corruption results in an  "Invalid xref table" warning. Many other errors and warnings are possible. Check out [this blog post by Yvonne Tunnat](https://openpreservation.org/blogs/pdf-validation-with-exiftool-quick-and-not-so-dirty/) which discusses PDF "validation" with ExifTool in more detail.
+
 ### Other options
 
 - [VeraPDF](https://verapdf.org/) can provide useful information on damaged or invalid PDF documents. However, VeraPDF is primarily aimed at validation against [PDF/A](https://en.wikipedia.org/wiki/PDF/A) and [PDF/UA](https://en.wikipedia.org/wiki/PDF/UA) profiles, which are both subsets of [ISO 32000](https://en.wikipedia.org/wiki/PDF) (which defines the PDF format's full feature set). As a result, VeraPDF's validation output can be somewhat difficult to interpret for "regular" PDFS (i.e. documents that are not PDF/A or PDF/UA). Nevertheless, experienced users may find VeraPDF useful for such files as well.
@@ -284,6 +313,45 @@ xmpTPg:NPages: 1
 ```
 
 Tika offers several options for alternative output formats (e.g. XMP and JSON); these are all [explained here](https://tika.apache.org/2.1.0/gettingstarted.html) (section "Using Tika as a command line utility").
+
+### Extract metadata with ExifTool
+
+[ExifTool](https://exiftool.org/) is another good option for metadata extraction. Here's an example:
+
+```
+exiftool whatever.pdf
+```
+
+Result:
+
+```
+ExifTool Version Number         : 11.88
+File Name                       : whatever.pdf
+Directory                       : .
+File Size                       : 24 kB
+File Modification Date/Time     : 2021:09:02 12:23:32+02:00
+File Access Date/Time           : 2022:02:07 15:04:11+01:00
+File Inode Change Date/Time     : 2021:09:02 15:27:38+02:00
+File Permissions                : rw-rw-r--
+File Type                       : PDF
+File Type Extension             : pdf
+MIME Type                       : application/pdf
+PDF Version                     : 1.6
+Linearized                      : Yes
+Create Date                     : 2021:09:02 07:52:56+02:00
+Creator                         : PdfCompressor 3.1.32
+Modify Date                     : 2021:09:02 07:53:20+02:00
+XMP Toolkit                     : Adobe XMP Core 5.6-c017 91.164464, 2020/06/15-10:20:05
+Metadata Date                   : 2021:09:02 07:53:20+02:00
+Creator Tool                    : PdfCompressor 3.1.32
+Format                          : application/pdf
+Document ID                     : uuid:2ec84d65-f99d-49fe-9aac-bd0c1fff5e66
+Instance ID                     : uuid:28d0af59-9373-4358-88f2-c8c4db3915ed
+Producer                        : CVISION Technologies
+Page Count                      : 1
+```
+
+ExifTool can also write the extracted metadata to a variety of output formats, which is explained in the documentation.  
 
 ### Extract metadata from embedded documents
 
@@ -700,6 +768,7 @@ I intend to make this post a "living" document, and will add more PDF "recipes" 
 - [Policy-based assessment with VeraPDF - a first impression]({{ BASE_PATH }}/2017/06/01/policy-based-assessment-with-verapdf-a-first-impression)
 - [What's so hard about PDF text extraction? ​](https://filingdb.com/b/pdf-text-extraction)
 - [Tim Allison, "Brief Overview of the Portable Document Format (PDF) and Some Challenges for Text Extraction"](https://irsg.bcs.org/informer/wp-content/uploads/OverviewOfTextExtractionFromPDFs.pdf)
+- [Yvonne Tunnat, "PDF Validation with ExifTool – quick and not so dirty"](https://openpreservation.org/blogs/pdf-validation-with-exiftool-quick-and-not-so-dirty/)
 
 ## Revision history
 
