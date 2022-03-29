@@ -19,7 +19,7 @@ At the KB we've been using JP2 ([JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2
 The following table lists the requirements of our preservation master and access JP2s:
 
 |Parameter|Value (master)|Value (access)|
-|:---|:---|:---|
+|:--|:--|:--|
 |File format|JP2 (JPEG 2000 Part 1)|JP2 (JPEG 2000 Part 1)|
 |Compression type|Reversible 5-3 wavelet filter|Irreversible 7-9 wavelet filter|
 |Colour transform|Yes (only for colour images)|Yes (only for colour images)|
@@ -68,7 +68,7 @@ I compiled both Grok and OpenJPEG from the source code. For Kakadu I used the pr
 
 For each of the three codecs, I created a simple Bash script that takes an input and an output directory as its arguments. For each JP2 image in the input directory, the script goes through the following steps:
 
-1. Convert the JP2 to uncompressed TIFF.
+1. Decode (uncompress) the JP2 to uncompressed TIFF.
 2. Compress the TIFF to lossy JP2, using (to the maximum extent posssible) the KB's access JP2 requirements.
 3. Delete the TIFF file.
 
@@ -108,7 +108,7 @@ Below table shows the performance statistics for the three scripts:
 |Grok|0m21.906s|1m0.889s|
 |Kakadu|0m25.795s|0m50.065s|
 
-I was surprised to see that at 22 seconds, the Grok-based script was even (marginally) faster than the Kakadu-based one, which clocks in at 26 seconds)[^5]. The script that uses OpenJPEG is considerably slower at 1 minute and 18 seconds.
+It's worth noting that each of the figures encompasses a ful decode-enode cycle, with some additional overhead added by jprofile, and system commands that remove the temorary TIFF files. I was surprised to see that at 22 seconds, the Grok-based script was even (marginally) faster than the Kakadu-based one, which clocks in at 26 seconds)[^5]. The script that uses OpenJPEG is considerably slower at 1 minute and 18 seconds.
 
 ##  Conformance to KB access requirements
 
