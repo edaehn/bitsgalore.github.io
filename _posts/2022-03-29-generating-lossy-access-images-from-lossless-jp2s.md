@@ -54,7 +54,7 @@ Because of this, I only explored the full decode + re-compress approach here. Al
 
 For my tests I used an ordinary desktop PC with 4 CPU cores, an Intel i5-6500 CPU (3.20GHz) processor and 12 GB RAM. The operating system was Linux Mint 20.1 Ulyssa (which is based op Ubuntu Focal Fossa 20.04).
 
-## Tested codecs
+## Codecs
 
 I initially planned to create a small proof of concept workflow based on [Kakadu](https://kakadusoftware.com/), as I already had some old test scripts for compressing TIFF images to JP2s that follow the KB's master and access requirements. Then my colleague Sam Alloing suggested to have a look at the [Grok codec](https://github.com/GrokImageCompression/grok). Although I had been aware of Grok for some time, I had never got around to take it for a spin, mainly because I haven't been working much on anyting related to JPEG 20000 for the past few years. Since Grok is a fork of [OpenJPEG](https://www.openjpeg.org/), which the KB already uses [to decode JP2 images on the Delpher platform](https://lab.kb.nl/about-us/blog/kb-national-library-netherlands-adopts-openjpeg-delpher-and-more-0), it then made sense to include OpenJPEG as well. So, in the end I used:
 
