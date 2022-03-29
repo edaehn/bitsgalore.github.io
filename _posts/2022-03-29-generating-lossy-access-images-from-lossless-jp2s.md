@@ -82,6 +82,8 @@ The test scripts (which also contain the encoding parameter values for each code
 |Grok|<https://github.com/KBNLresearch/jp2totiff/blob/master/mastertoaccess-grok.sh>|
 |Kakadu|<https://github.com/KBNLresearch/jp2totiff/blob/master/mastertoaccess-kdu.sh>|
 
+## Performance
+
 I ran each of the scripts on a directory with 26 preservation master JP2s (144 MB) from the KB's collection of digitised books. Before running any of the scripts, I used the following command to empty my machine's cache memory:
 
 ```bash
@@ -97,8 +99,6 @@ The main metrics provided by this command are:
 
 - "real" - the actual amount of time passed between starting the script and its termination.
 - "user" - The sum of the processing times of each of the individual processors.
-
-## Performance
 
 Below table shows the performance statistics for the three scripts:
 
@@ -120,7 +120,7 @@ The next table summarises the jprofile analysis, by listing the deviations from 
 |Grok|XML box missing|
 |Kakadu|-|
 
-The OpenJPEG JP2s fall short on three aspects. An XML box with XMP metadata, a resolution box, and an ICC profile are all missing. This is not surprising, as OpenJPEG simply doesn't support these features at this stage. In the Grok JP2s, only the expected XML box is missing. This is because Grok wraps XMP metadata in a so-called "UUID box". This behaviour is consistent with the [ISO/IEC base media file format](https://en.wikipedia.org/wiki/ISO/IEC_base_media_file_format), and is supported by e.g. Exiftool and jpylyzer. Only the Kakadu JP2s are 100% compliant with the requirements. However, since the exact location of XMP metadata doesn't really matter for access, both the Kakadu and the Grok JP2s are satisfactory for our purposes.
+The OpenJPEG JP2s fall short on three aspects. An XML box with XMP metadata, a resolution box, and an ICC profile are all missing. This is not surprising, as OpenJPEG simply doesn't support these features at this stage. In the Grok JP2s, only the expected XML box is missing. This is because Grok wraps XMP metadata in a so-called "UUID box". This behaviour is consistent with the [ISO/IEC base media file format](https://en.wikipedia.org/wiki/ISO/IEC_base_media_file_format), and is supported by e.g. Exiftool and jpylyzer. Only the Kakadu JP2s are 100% compliant with the requirements. However, since the exact location of XMP metadata doesn't really matter for access, both the Kakadu and the Grok JP2s would be satisfactory for our purposes.
 
 ## Conclusions
 
