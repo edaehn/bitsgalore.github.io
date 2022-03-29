@@ -63,6 +63,141 @@
 
 
    <div class="post-entry">
+   <h1><a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s">Generating lossy access images from lossless JP2s</a></h1>
+   <div class="date">
+    <span>29 March 2022</span>
+   </div>
+   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
+   <figure class="image">
+  <img src="/images/2021/09/plumber-tools.jpg" alt="Plumbers Tool Box" />
+  <figcaption><a href="https://www.flickr.com/photos/130648318@N06/42662053232">Plumbers Tool Box</a> by <a href="https://www.flickr.com/photos/130648318@N06/">pszz</a> on Flickr. Used under <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY-NC-SA 2.0</a>.</figcaption>
+</figure>
+
+<p>At the KB we’ve been using JP2 (<a href="https://en.wikipedia.org/wiki/JPEG_2000">JPEG 2000</a> Part 1) as our primary image format for digitised newspapers, books and perioicals since 2007. The digitisation work is contracted out to external vendors, who supply the digitised pages as losslessly compressed preservation masters, as well as lossily compressed access images that are used for our <a href="https://www.delpher.nl/">Delpher</a> platform. Right now the KB is in the process of <a href="https://web.archive.org/web/20210215160819/https://www.kb.nl/en/news/2021/dutch-national-library-steps-into-a-new-future-of-digital-archiving">migrating its digital collections to a new preservation system</a>. This prompted some questions about the feasibility to generate the access JP2s from the preservation masters in-house at some point in the future, using software that runs inside the preservation system. As a first step in answering that question, I created some simple proof of concept workflows, using three different JPEG 2000 codecs. I then tested these workflows using preservation master images from our collection.</p>
+
+
+   <div class="buttonArea">
+   <a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s" class="button">Read more ...</a>
+  </div>
+   
+   <ul class="tag_box inline">
+     
+     
+
+
+
+
+  
+    <li>
+      <details>
+      <summary>JP2</summary>
+      <ul>
+      
+        <li><a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s">Generating lossy access images from lossless JP2s</a></li>
+      
+        <li><a href="/2015/12/08/jpylyzer-2015-round-up">Jpylyzer 2015 round-up</a></li>
+      
+        <li><a href="/2015/10/19/Response-to-report-on-JPEG-2000-expert-round-table">Response to report on JPEG 2000 expert round table</a></li>
+      
+        <li><a href="/2014/09/26/six-ways-decode-lossy-jp2">Six ways to decode a lossy JP2</a></li>
+      
+        <li><a href="/2014/09/11/jpylyzer-software-finalist-voor-digitale-duurzaamheidsprijs">Jpylyzer software finalist voor digitale duurzaamheidsprijs</a></li>
+      
+        <li><a href="/2013/08/19/optimising-archival-jp2s-derivation-access-copies">Optimising archival JP2s for the derivation of access copies</a></li>
+      
+        <li><a href="/2013/07/01/icc-profiles-and-resolution-jp2-update-2011-d-lib-paper">ICC profiles and resolution in JP2&#58; update on 2011 D-Lib paper</a></li>
+      
+        <li><a href="/2012/09/04/automated-assessment-jp2-against-technical-profile">Automated assessment of JP2 against a technical profile</a></li>
+      
+        <li><a href="/2012/04/23/update-jpylyzer">Update on jpylyzer</a></li>
+      
+        <li><a href="/2012/01/10/jpylyzer-documentation">Jpylyzer documentation</a></li>
+      
+        <li><a href="/2011/12/14/prototype-jp2-validator-and-properties-extractor">A prototype JP2 validator and properties extractor</a></li>
+      
+        <li><a href="/2011/09/01/simple-jp2-file-structure-checker">A simple JP2 file structure checker</a></li>
+      
+        <li><a href="/2011/06/06/paper-jpeg-2000-preservation-9">Paper on JPEG 2000 for preservation</a></li>
+      
+        <li><a href="/2010/12/02/ensuring-suitability-of-jpeg">Ensuring the suitability of JPEG 2000 for preservation</a></li>
+      
+      </ul>
+      </details>
+    </li>
+  
+    <li>
+      <details>
+      <summary>jpeg-2000</summary>
+      <ul>
+      
+        <li><a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s">Generating lossy access images from lossless JP2s</a></li>
+      
+        <li><a href="/2015/12/08/jpylyzer-2015-round-up">Jpylyzer 2015 round-up</a></li>
+      
+        <li><a href="/2015/10/19/Response-to-report-on-JPEG-2000-expert-round-table">Response to report on JPEG 2000 expert round table</a></li>
+      
+        <li><a href="/2014/09/26/six-ways-decode-lossy-jp2">Six ways to decode a lossy JP2</a></li>
+      
+        <li><a href="/2014/09/11/jpylyzer-software-finalist-voor-digitale-duurzaamheidsprijs">Jpylyzer software finalist voor digitale duurzaamheidsprijs</a></li>
+      
+        <li><a href="/2013/08/19/optimising-archival-jp2s-derivation-access-copies">Optimising archival JP2s for the derivation of access copies</a></li>
+      
+        <li><a href="/2013/07/01/icc-profiles-and-resolution-jp2-update-2011-d-lib-paper">ICC profiles and resolution in JP2&#58; update on 2011 D-Lib paper</a></li>
+      
+        <li><a href="/2012/09/04/automated-assessment-jp2-against-technical-profile">Automated assessment of JP2 against a technical profile</a></li>
+      
+        <li><a href="/2012/04/23/update-jpylyzer">Update on jpylyzer</a></li>
+      
+        <li><a href="/2012/01/10/jpylyzer-documentation">Jpylyzer documentation</a></li>
+      
+        <li><a href="/2011/12/14/prototype-jp2-validator-and-properties-extractor">A prototype JP2 validator and properties extractor</a></li>
+      
+        <li><a href="/2011/09/01/simple-jp2-file-structure-checker">A simple JP2 file structure checker</a></li>
+      
+        <li><a href="/2011/06/06/paper-jpeg-2000-preservation-9">Paper on JPEG 2000 for preservation</a></li>
+      
+        <li><a href="/2010/12/02/ensuring-suitability-of-jpeg">Ensuring the suitability of JPEG 2000 for preservation</a></li>
+      
+      </ul>
+      </details>
+    </li>
+  
+    <li>
+      <details>
+      <summary>jpylyzer</summary>
+      <ul>
+      
+        <li><a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s">Generating lossy access images from lossless JP2s</a></li>
+      
+        <li><a href="/2015/12/08/jpylyzer-2015-round-up">Jpylyzer 2015 round-up</a></li>
+      
+        <li><a href="/2014/09/11/jpylyzer-software-finalist-voor-digitale-duurzaamheidsprijs">Jpylyzer software finalist voor digitale duurzaamheidsprijs</a></li>
+      
+        <li><a href="/2013/04/23/adventures-debian-packaging">Adventures in Debian packaging</a></li>
+      
+        <li><a href="/2012/09/04/automated-assessment-jp2-against-technical-profile">Automated assessment of JP2 against a technical profile</a></li>
+      
+        <li><a href="/2012/04/23/update-jpylyzer">Update on jpylyzer</a></li>
+      
+        <li><a href="/2012/01/10/jpylyzer-documentation">Jpylyzer documentation</a></li>
+      
+        <li><a href="/2011/12/14/prototype-jp2-validator-and-properties-extractor">A prototype JP2 validator and properties extractor</a></li>
+      
+        <li><a href="/2011/09/01/simple-jp2-file-structure-checker">A simple JP2 file structure checker</a></li>
+      
+      </ul>
+      </details>
+    </li>
+  
+
+
+
+   </ul>
+  
+   </div>
+   <hr>
+
+   <div class="post-entry">
    <h1><a href="/2021/09/24/on-the-significant-properties-of-spreadsheets">On The Significant Properties of Spreadsheets</a></h1>
    <div class="date">
     <span>24 September 2021</span>
@@ -600,80 +735,6 @@
    </div>
    <hr>
 
-   <div class="post-entry">
-   <h1><a href="/2020/09/09/mapping-the-dutch-web-domain">Mapping the Dutch web domain</a></h1>
-   <div class="date">
-    <span>09 September 2020</span>
-   </div>
-   <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
-   <figure class="image">
-  <img src="/images/2020/09/wwwspace.png" alt="Satellite image of Wadden Sea" />
-  <figcaption><a href="https://commons.wikimedia.org/wiki/File:World_Wide_Web_-_Digital_Preservation.png">“World Wide Web - Digital Preservation”</a> by <a href="https://www.wikidata.org/wiki/Q55754361">Jørgen Stamp</a>, used under <a href="https://creativecommons.org/licenses/by/2.5/dk/deed.en">CC BY 2.5 DK</a>; <a href="https://commons.wikimedia.org/wiki/File:Wadden_Sea.jpg">“Wadden Sea”</a> by Envisat satellite, used under <a href="https://creativecommons.org/licenses/by-sa/3.0-igo">CC BY-SA 3.0-IGO</a>.</figcaption>
-</figure>
-
-<p>Earlier this year I wrote <a href="/2020/02/11/web-domain-geolocation-and-spatial-analysis">a blog post</a> about geo-locating web domains, and the subsequent analysis of the resulting data in <em>QGIS</em>. At the time, this work was meant as a proof of concept, and I had only tried it out on a small set of test data. We have now applied this methodology to the whole of the Dutch (<em>.nl</em>) web domain, and this follow-up post presents the results of this exercise.</p>
-
-
-   <div class="buttonArea">
-   <a href="/2020/09/09/mapping-the-dutch-web-domain" class="button">Read more ...</a>
-  </div>
-   
-   <ul class="tag_box inline">
-     
-     
-
-
-
-
-  
-    <li>
-      <details>
-      <summary>geodata</summary>
-      <ul>
-      
-        <li><a href="/2020/09/09/mapping-the-dutch-web-domain">Mapping the Dutch web domain</a></li>
-      
-        <li><a href="/2020/02/11/web-domain-geolocation-and-spatial-analysis">Web domain geolocation and spatial analysis with QGIS</a></li>
-      
-      </ul>
-      </details>
-    </li>
-  
-    <li>
-      <details>
-      <summary>web-archiving</summary>
-      <ul>
-      
-        <li><a href="/2020/09/09/mapping-the-dutch-web-domain">Mapping the Dutch web domain</a></li>
-      
-        <li><a href="/2020/06/30/restoring-liesbets-virtual-home">Restoring Liesbet's Virtual Home, a digital treasure from the early Dutch web</a></li>
-      
-        <li><a href="/2020/02/11/web-domain-geolocation-and-spatial-analysis">Web domain geolocation and spatial analysis with QGIS</a></li>
-      
-        <li><a href="/2018/07/11/crawling-offline-web-content-the-nl-menu-case">Crawling offline web content&#58; the NL-menu case</a></li>
-      
-        <li><a href="/2018/04/24/resurrecting-the-first-dutch-web-index-nl-menu-revisited">Resurrecting the first Dutch web index&#58; NL-menu revisited</a></li>
-      
-        <li><a href="/2015/01/06/Dutch-newspaper-wipes-articles-Internet-Archive-rescue">Dutch newspaper wipes out articles citing fabricated sources - Internet Archive to the rescue!</a></li>
-      
-        <li><a href="/2014/12/28/Perdiep-Ramesar-Internet-Archive">Perdiep Ramesar in het Internet Archive</a></li>
-      
-        <li><a href="/2014/11/13/Demise-Of-Dutch-Blogosphere">Demise of the Dutch Blogosphere</a></li>
-      
-        <li><a href="/2014/08/02/How-to-save-a-web-page-to-the-Internet-Archive">How to save a web page to the Internet Archive</a></li>
-      
-      </ul>
-      </details>
-    </li>
-  
-
-
-
-   </ul>
-  
-   </div>
-   <hr>
-
 
 <!-- Pagination links -->
 
@@ -1158,6 +1219,8 @@
       <summary>JP2</summary>
       <ul>
       
+        <li><a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s">Generating lossy access images from lossless JP2s</a></li>
+      
         <li><a href="/2015/12/08/jpylyzer-2015-round-up">Jpylyzer 2015 round-up</a></li>
       
         <li><a href="/2015/10/19/Response-to-report-on-JPEG-2000-expert-round-table">Response to report on JPEG 2000 expert round table</a></li>
@@ -1193,6 +1256,8 @@
       <summary>jpeg-2000</summary>
       <ul>
       
+        <li><a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s">Generating lossy access images from lossless JP2s</a></li>
+      
         <li><a href="/2015/12/08/jpylyzer-2015-round-up">Jpylyzer 2015 round-up</a></li>
       
         <li><a href="/2015/10/19/Response-to-report-on-JPEG-2000-expert-round-table">Response to report on JPEG 2000 expert round table</a></li>
@@ -1227,6 +1292,8 @@
       <details>
       <summary>jpylyzer</summary>
       <ul>
+      
+        <li><a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s">Generating lossy access images from lossless JP2s</a></li>
       
         <li><a href="/2015/12/08/jpylyzer-2015-round-up">Jpylyzer 2015 round-up</a></li>
       
@@ -1673,9 +1740,29 @@
   
     
       <details open="true">
-      <summary>2021</summary>
-      <h3>September</h3>
+      <summary>2022</summary>
+      <h3>March</h3>
       <ul>
+    
+  
+	<li><a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s">Generating lossy access images from lossless JP2s</a></li>
+	
+    
+      
+        </ul>
+        </details>
+        <details>
+        <summary>2021</summary>
+        <h3>September</h3>
+        <ul>
+      
+    
+  
+    
+    
+    
+    
+  
     
   
 	<li><a href="/2021/09/24/on-the-significant-properties-of-spreadsheets">On The Significant Properties of Spreadsheets</a></li>
