@@ -63,21 +63,23 @@
 
 
    <div class="post-entry">
-   <h1><a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s">Generating lossy access images from lossless JP2s</a></h1>
+   <h1><a href="/2022/03/30/generating-lossy-access-jp2s-from-lossless-preservation-masters">Generating lossy access JP2s from lossless preservation masters</a></h1>
    <div class="date">
-    <span>29 March 2022</span>
+    <span>30 March 2022</span>
    </div>
    <!-- This creates excerpt based on user-defined separator (which needs to be inserted in each post! -->
    <figure class="image">
-  <img src="/images/2021/09/plumber-tools.jpg" alt="Plumbers Tool Box" />
-  <figcaption><a href="https://www.flickr.com/photos/130648318@N06/42662053232">Plumbers Tool Box</a> by <a href="https://www.flickr.com/photos/130648318@N06/">pszz</a> on Flickr. Used under <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY-NC-SA 2.0</a>.</figcaption>
+  <img src="/images/2022/03/jm-cote-wiki.jpg" alt="Plumbers Tool Box" />
+  <figcaption><a href="https://commons.wikimedia.org/wiki/File:France_in_XXI_Century._Intencive_breeding.jpg">Intensive Breeding</a> by Jean Marc Cote, Public domain, via Wikimedia Commons.</figcaption>
 </figure>
 
-<p>At the KB we’ve been using JP2 (<a href="https://en.wikipedia.org/wiki/JPEG_2000">JPEG 2000</a> Part 1) as our primary image format for digitised newspapers, books and perioicals since 2007. The digitisation work is contracted out to external vendors, who supply the digitised pages as losslessly compressed preservation masters, as well as lossily compressed access images that are used for our <a href="https://www.delpher.nl/">Delpher</a> platform. Right now the KB is in the process of <a href="https://web.archive.org/web/20210215160819/https://www.kb.nl/en/news/2021/dutch-national-library-steps-into-a-new-future-of-digital-archiving">migrating its digital collections to a new preservation system</a>. This prompted some questions about the feasibility to generate the access JP2s from the preservation masters in-house at some point in the future, using software that runs inside the preservation system<sup id="fnref:6" role="doc-noteref"><a href="#fn:6" class="footnote" rel="footnote">1</a></sup>. As a first step towards answering that question, I created some simple proof of concept workflows, using three different JPEG 2000 codecs. I then tested these workflows using preservation master images from our collection. The main objective of this work was to find a workflow that both meets our current digitisation requirements, and is also sufficiently performant.</p>
+<p>At the KB we’ve been using JP2 (<a href="https://en.wikipedia.org/wiki/JPEG_2000">JPEG 2000</a> Part 1) as our primary image format for digitised newspapers, books and periodicals since 2007. The digitisation work is contracted out to external vendors, who supply the digitised pages as losslessly compressed preservation masters, as well as lossily compressed access images that are used within the <a href="https://www.delpher.nl/">Delpher</a> platform.</p>
+
+<p>Right now the KB is in the process of <a href="https://web.archive.org/web/20210215160819/https://www.kb.nl/en/news/2021/dutch-national-library-steps-into-a-new-future-of-digital-archiving">migrating its digital collections to a new preservation system</a>. This prompted the question whether it would be feasible to generate access JP2s from the preservation masters in-house at some point in the future, using software that runs inside the preservation system<sup id="fnref:6" role="doc-noteref"><a href="#fn:6" class="footnote" rel="footnote">1</a></sup>. As a first step towards answering that question, I created some simple proof of concept workflows, using three different JPEG 2000 codecs. I then tested these workflows with preservation master images from our collection. The main objective of this work was to find a workflow that both meets our current digitisation requirements, and is also sufficiently performant.</p>
 
 
    <div class="buttonArea">
-   <a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s" class="button">Read more ...</a>
+   <a href="/2022/03/30/generating-lossy-access-jp2s-from-lossless-preservation-masters" class="button">Read more ...</a>
   </div>
    
    <ul class="tag_box inline">
@@ -93,7 +95,7 @@
       <summary>JP2</summary>
       <ul>
       
-        <li><a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s">Generating lossy access images from lossless JP2s</a></li>
+        <li><a href="/2022/03/30/generating-lossy-access-jp2s-from-lossless-preservation-masters">Generating lossy access JP2s from lossless preservation masters</a></li>
       
         <li><a href="/2015/12/08/jpylyzer-2015-round-up">Jpylyzer 2015 round-up</a></li>
       
@@ -130,7 +132,7 @@
       <summary>jpeg-2000</summary>
       <ul>
       
-        <li><a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s">Generating lossy access images from lossless JP2s</a></li>
+        <li><a href="/2022/03/30/generating-lossy-access-jp2s-from-lossless-preservation-masters">Generating lossy access JP2s from lossless preservation masters</a></li>
       
         <li><a href="/2015/12/08/jpylyzer-2015-round-up">Jpylyzer 2015 round-up</a></li>
       
@@ -167,7 +169,7 @@
       <summary>jpylyzer</summary>
       <ul>
       
-        <li><a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s">Generating lossy access images from lossless JP2s</a></li>
+        <li><a href="/2022/03/30/generating-lossy-access-jp2s-from-lossless-preservation-masters">Generating lossy access JP2s from lossless preservation masters</a></li>
       
         <li><a href="/2015/12/08/jpylyzer-2015-round-up">Jpylyzer 2015 round-up</a></li>
       
@@ -1219,7 +1221,7 @@
       <summary>JP2</summary>
       <ul>
       
-        <li><a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s">Generating lossy access images from lossless JP2s</a></li>
+        <li><a href="/2022/03/30/generating-lossy-access-jp2s-from-lossless-preservation-masters">Generating lossy access JP2s from lossless preservation masters</a></li>
       
         <li><a href="/2015/12/08/jpylyzer-2015-round-up">Jpylyzer 2015 round-up</a></li>
       
@@ -1256,7 +1258,7 @@
       <summary>jpeg-2000</summary>
       <ul>
       
-        <li><a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s">Generating lossy access images from lossless JP2s</a></li>
+        <li><a href="/2022/03/30/generating-lossy-access-jp2s-from-lossless-preservation-masters">Generating lossy access JP2s from lossless preservation masters</a></li>
       
         <li><a href="/2015/12/08/jpylyzer-2015-round-up">Jpylyzer 2015 round-up</a></li>
       
@@ -1293,7 +1295,7 @@
       <summary>jpylyzer</summary>
       <ul>
       
-        <li><a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s">Generating lossy access images from lossless JP2s</a></li>
+        <li><a href="/2022/03/30/generating-lossy-access-jp2s-from-lossless-preservation-masters">Generating lossy access JP2s from lossless preservation masters</a></li>
       
         <li><a href="/2015/12/08/jpylyzer-2015-round-up">Jpylyzer 2015 round-up</a></li>
       
@@ -1745,7 +1747,7 @@
       <ul>
     
   
-	<li><a href="/2022/03/29/generating-lossy-access-images-from-lossless-jp2s">Generating lossy access images from lossless JP2s</a></li>
+	<li><a href="/2022/03/30/generating-lossy-access-jp2s-from-lossless-preservation-masters">Generating lossy access JP2s from lossless preservation masters</a></li>
 	
     
       

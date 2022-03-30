@@ -1,16 +1,18 @@
 ---
 layout: post
-title: Generating lossy access images from lossless JP2s
+title: Generating lossy access JP2s from lossless preservation masters
 tags: [JP2, jpeg-2000, jpylyzer]
 comment_id: 78
 ---
 
 <figure class="image">
-  <img src="{{ BASE_PATH }}/images/2021/09/plumber-tools.jpg" alt="Plumbers Tool Box">
-  <figcaption><a href="https://www.flickr.com/photos/130648318@N06/42662053232">Plumbers Tool Box</a> by <a href="https://www.flickr.com/photos/130648318@N06/">pszz</a> on Flickr. Used under <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY-NC-SA 2.0</a>.</figcaption>
+  <img src="{{ BASE_PATH }}/images/2022/03/jm-cote-wiki.jpg" alt="Plumbers Tool Box">
+  <figcaption><a href="https://commons.wikimedia.org/wiki/File:France_in_XXI_Century._Intencive_breeding.jpg">Intensive Breeding</a> by Jean Marc Cote, Public domain, via Wikimedia Commons.</figcaption>
 </figure>
 
-At the KB we've been using JP2 ([JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2000) Part 1) as our primary image format for digitised newspapers, books and perioicals since 2007. The digitisation work is contracted out to external vendors, who supply the digitised pages as losslessly compressed preservation masters, as well as lossily compressed access images that are used for our [Delpher](https://www.delpher.nl/) platform. Right now the KB is in the process of [migrating its digital collections to a new preservation system](https://web.archive.org/web/20210215160819/https://www.kb.nl/en/news/2021/dutch-national-library-steps-into-a-new-future-of-digital-archiving). This prompted some questions about the feasibility to generate the access JP2s from the preservation masters in-house at some point in the future, using software that runs inside the preservation system[^6]. As a first step towards answering that question, I created some simple proof of concept workflows, using three different JPEG 2000 codecs. I then tested these workflows using preservation master images from our collection. The main objective of this work was to find a workflow that both meets our current digitisation requirements, and is also sufficiently performant.
+At the KB we've been using JP2 ([JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2000) Part 1) as our primary image format for digitised newspapers, books and periodicals since 2007. The digitisation work is contracted out to external vendors, who supply the digitised pages as losslessly compressed preservation masters, as well as lossily compressed access images that are used within the [Delpher](https://www.delpher.nl/) platform.
+
+Right now the KB is in the process of [migrating its digital collections to a new preservation system](https://web.archive.org/web/20210215160819/https://www.kb.nl/en/news/2021/dutch-national-library-steps-into-a-new-future-of-digital-archiving). This prompted the question whether it would be feasible to generate access JP2s from the preservation masters in-house at some point in the future, using software that runs inside the preservation system[^6]. As a first step towards answering that question, I created some simple proof of concept workflows, using three different JPEG 2000 codecs. I then tested these workflows with preservation master images from our collection. The main objective of this work was to find a workflow that both meets our current digitisation requirements, and is also sufficiently performant.
 
 <!-- more -->
 
@@ -124,7 +126,7 @@ The OpenJPEG JP2s fall short on three aspects. An XML box with XMP metadata, a r
 
 ## Conclusions
 
-Although based on a small sample dataset, this proof of concept demonstrates that both Grok and Kakadu would be suitable for generating lossy access JP2s from our preservation masters. The performance of both codecs turned out to be comparable for the test data used. This means that with Grok we now have an open-source codec that is both sufficiently feature-rich and performant to be a viable alternative to commercial codecs like Kakadu. One potential hurdle for some users might be Grok's build process, which can be slightly complicated because it requires very recent versions of [CMake](https://cmake.org/) and [gcc](https://gcc.gnu.org/). However, using [Grok's documentation](https://github.com/KBNLresearch/jp2totiff/blob/master/doc/grok-installation.md) and [these useful additional instructions by Harvard's Bill Comstock](https://wiki.harvard.edu/confluence/display/DigitalImaging/Installing+OpenJPEG+on+Windows+10%2C+Linux%2C+and+MacOS) I found the process easier than expected in the end. I've [documented the full build and installation process that worked for me here](https://github.com/KBNLresearch/jp2totiff/blob/master/doc/grok-installation.md).
+Although based on only a small sample dataset, this proof of concept demonstrates that both Grok and Kakadu would be suitable for generating lossy access JP2s from our preservation masters. The performance of both codecs turned out to be comparable for the test data used. This means that with Grok we now have an open-source codec that is both sufficiently feature-rich and performant to be a viable alternative to commercial codecs like Kakadu. One potential hurdle for some users might be Grok's build process, which can be slightly involved because it requires very recent versions of [CMake](https://cmake.org/) and [gcc](https://gcc.gnu.org/). However, using [Grok's documentation](https://github.com/KBNLresearch/jp2totiff/blob/master/doc/grok-installation.md) and [these useful additional instructions by Harvard's Bill Comstock](https://wiki.harvard.edu/confluence/display/DigitalImaging/Installing+OpenJPEG+on+Windows+10%2C+Linux%2C+and+MacOS) I found the process easier than expected in the end. I've [documented the full build and installation process that worked for me here](https://github.com/KBNLresearch/jp2totiff/blob/master/doc/grok-installation.md).
 
 ## Acknowledgements
 
