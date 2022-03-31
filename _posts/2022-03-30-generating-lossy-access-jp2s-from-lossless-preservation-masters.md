@@ -110,7 +110,7 @@ Below table shows the performance statistics for the three scripts:
 |Grok|0m21.906s|1m0.889s|
 |Kakadu|0m25.795s|0m50.065s|
 
-It's worth noting that each of the figures encompasses a ful decode-enode cycle, with some additional overhead added by jprofile, and system commands that remove the temorary TIFF files. I was surprised to see that at 22 seconds, the Grok-based script was even (marginally) faster than the Kakadu-based one, which clocks in at 26 seconds)[^5]. The script that uses OpenJPEG is considerably slower at 1 minute and 18 seconds.
+It's worth noting that each of these figures encompasses a full decode-encode cycle, with some additional overhead added by jprofile, and system commands that remove the temorary TIFF files. I was surprised to see that at 22 seconds, the Grok-based script was even (marginally) faster than the Kakadu-based one, which clocks in at 26 seconds)[^5]. The script that uses OpenJPEG is considerably slower at 1 minute and 18 seconds.
 
 ##  Conformance to KB access requirements
 
