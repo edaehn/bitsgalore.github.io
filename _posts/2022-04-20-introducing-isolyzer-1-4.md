@@ -47,7 +47,7 @@ In addition to the above changes, this release also includes several minor bug f
 
 ## Installation
 
-As the current release candidate is a pre-release, make sure to include the `--pre` option if you install Isolyzer with pip. For example, for a fresh single-user install use: 
+As the current release candidate is a pre-release, make sure to include the `--pre` option if you install it with pip. For example, for a fresh single-user install use: 
 
 ```bash
 pip install isolyzer --pre --user
